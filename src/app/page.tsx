@@ -156,7 +156,7 @@ export default function Home() {
                       >
                         <Link
                           href={slide.primaryBtn.href}
-                          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-6 py-1.5 sm:py-2.5 rounded-full bg-[#BC0202] hover:bg-[#990000] text-white text-[11px] sm:text-sm md:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95"
+                          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-6 py-1.5 sm:py-2.5 rounded-full bg-[#ECBB0C] hover:bg-[#d9ab0b] text-white text-[11px] sm:text-sm md:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95"
                         >
                           <span>{slide.primaryBtn.text}</span>
                           <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -212,21 +212,24 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Torn Paper / Ragged Edge Effect (Replaces flat straight cut) */}
-        <div className="absolute -bottom-1 left-0 w-full overflow-hidden leading-none pointer-events-none z-20">
-          <svg
-            viewBox="0 0 1200 24"
-            preserveAspectRatio="none"
-            className="w-full h-3 sm:h-5 text-white dark:text-zinc-950 fill-current drop-shadow-[0_-3px_4px_rgba(0,0,0,0.18)]"
-          >
-            <path d="M0,24 L1200,24 L1200,18 L1190,10 L1182,17 L1175,5 L1168,13 L1160,16 L1152,8 L1145,15 L1138,3 L1130,12 L1122,16 L1115,7 L1108,14 L1100,2 L1092,11 L1085,17 L1078,8 L1070,15 L1062,4 L1055,12 L1048,17 L1040,6 L1032,14 L1025,1 L1018,10 L1010,16 L1002,7 L995,14 L988,2 L980,11 L972,16 L965,5 L958,13 L950,1 L942,10 L935,17 L928,6 L920,14 L912,3 L905,12 L898,17 L890,7 L882,14 L875,0 L868,11 L860,16 L852,6 L845,14 L838,2 L830,11 L822,17 L815,5 L808,13 L800,1 L792,10 L785,16 L778,7 L770,14 L762,2 L755,12 L748,17 L740,6 L732,14 L725,1 L718,11 L710,16 L702,7 L695,14 L688,3 L680,12 L672,17 L665,5 L658,13 L650,0 L642,10 L635,16 L628,6 L620,14 L612,2 L605,11 L598,17 L590,7 L582,14 L575,1 L568,11 L560,16 L552,5 L545,13 L538,2 L530,12 L522,17 L515,6 L508,14 L500,0 L492,10 L485,16 L478,7 L470,14 L462,3 L455,12 L448,17 L440,5 L432,13 L425,1 L418,11 L410,16 L402,6 L395,14 L388,2 L380,12 L372,17 L365,5 L358,13 L350,0 L342,10 L335,16 L328,7 L320,14 L312,2 L305,11 L298,17 L290,6 L282,14 L275,1 L268,11 L260,16 L252,5 L245,13 L238,3 L230,12 L222,17 L215,6 L208,14 L200,0 L192,10 L185,16 L178,7 L170,14 L162,2 L155,12 L148,17 L140,5 L132,13 L125,1 L118,11 L110,16 L102,6 L95,14 L88,3 L80,12 L72,17 L65,5 L58,13 L50,0 L42,10 L35,16 L28,6 L20,14 L12,2 L5,12 L0,17 Z" />
-          </svg>
-        </div>
+
 
       </section>
 
       {/* About Us Gyanshala Section */}
-      <section id="about" className="relative py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 overflow-hidden border-b border-zinc-100 dark:border-zinc-800">
+      <section id="about" className="relative py-14 sm:py-20 lg:py-24 overflow-hidden border-b border-zinc-100 dark:border-zinc-800">
+        {/* Background Image */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/Hero/GermanHero1.jpg"
+            alt="About Gyanshala Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-[1px]" />
+        </div>
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
@@ -254,53 +257,53 @@ export default function Home() {
               </p>
 
               {/* 3 Compact Highlights with Dedicated Icons */}
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-5" staggerDelay={0.08}>
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-3 pt-4 sm:pt-5" staggerDelay={0.08}>
                 <StaggerItem>
-                  <div className="flex items-center gap-3 py-1.5">
-                    <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-2.5 py-1 sm:py-1.5">
+                    <div className="w-12 h-12 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
                       <Image
-                        src="/Icons/01_german_courses_A1-C2.png"
+                        src="/Icons/01_german_courses_A1-C2-removebg-preview.png"
                         alt="German Courses A1–C2"
-                        width={44}
-                        height={44}
+                        width={48}
+                        height={48}
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold text-zinc-800 dark:text-zinc-200 leading-snug">
+                    <span className="text-base sm:text-xs md:text-sm font-bold sm:font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
                       German Courses — A1–C2
                     </span>
                   </div>
                 </StaggerItem>
 
                 <StaggerItem>
-                  <div className="flex items-center gap-3 py-1.5">
-                    <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-2.5 py-1 sm:py-1.5">
+                    <div className="w-12 h-12 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
                       <Image
-                        src="/Icons/02_experienced_trainers.png"
+                        src="/Icons/02_experienced_trainers-removebg-preview.png"
                         alt="Experienced Trainers"
-                        width={44}
-                        height={44}
+                        width={48}
+                        height={48}
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold text-zinc-800 dark:text-zinc-200 leading-snug">
+                    <span className="text-base sm:text-xs md:text-sm font-bold sm:font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
                       Experienced Trainers
                     </span>
                   </div>
                 </StaggerItem>
 
                 <StaggerItem>
-                  <div className="flex items-center gap-3 py-1.5">
-                    <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-2.5 py-1 sm:py-1.5">
+                    <div className="w-12 h-12 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
                       <Image
-                        src="/Icons/03_global_opportunities.png"
+                        src="/Icons/03_global_opportunities-removebg-preview.png"
                         alt="Guidance for Global Opportunities"
-                        width={44}
-                        height={44}
+                        width={48}
+                        height={48}
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold text-zinc-800 dark:text-zinc-200 leading-snug">
+                    <span className="text-base sm:text-xs md:text-sm font-bold sm:font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
                       Guidance for Global Opportunities
                     </span>
                   </div>
@@ -311,7 +314,7 @@ export default function Home() {
               <div className="pt-6 sm:pt-8">
                 <Link
                   href="/about-us"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-[#BC0202] hover:bg-[#990000] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-[#ECBB0C] hover:bg-[#d9ab0b] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <span>View More</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -329,9 +332,9 @@ export default function Home() {
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
               className="lg:col-span-5 relative mt-6 lg:mt-0 flex items-center justify-center"
             >
-              <div className="w-full max-w-[500px] aspect-[4/3] rounded-2xl overflow-hidden relative shadow-md">
+              <div className="w-full max-w-[500px] aspect-[4/3] overflow-hidden relative shadow-md">
                 <Image
-                  src="/homepage/About/Aboutus.png"
+                  src="/Aboutus.jpg"
                   alt="Gyanshala Academy - Collaborative Study Session"
                   fill
                   className="object-cover"
@@ -346,15 +349,27 @@ export default function Home() {
       </section>
 
       {/* German Courses Section */}
-      <section id="german-courses" className="py-12 sm:py-16 bg-zinc-50/60 dark:bg-zinc-900/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="german-courses" className="relative py-12 sm:py-16 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/germancourses/bgcolor.jpg"
+            alt="German Courses Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/25" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Section Header */}
           <FadeInUp className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
               German Courses
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+            <p className="mt-2 text-sm sm:text-base text-white/90">
               Comprehensive CEFR-aligned training from A1 to C2 levels.
             </p>
           </FadeInUp>
