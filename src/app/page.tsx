@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import FAQSection from "@/components/FAQSection";
 
 interface Slide {
   id: number;
@@ -25,17 +26,27 @@ const slides: Slide[] = [
     title: "Master German Language",
     highlight: "From A1 to C2 Levels",
     description: "Learn with native-standard curriculum, certified faculty, and interactive batches tailored for Goethe, TELC and ÖSD examinations.",
-    primaryBtn: { text: "German Courses", href: "/german/a1" },
+    primaryBtn: { text: "German Courses", href: "/german" },
     secondaryBtn: { text: "Enquiry Now", href: "/enquiry" },
   },
   {
     id: 2,
     image: "/Hero/IMG_20250806_121152807_HDR.jpg",
-    badge: "🎓 Study & Careers in Germany",
-    title: "Your Journey to Germany",
-    highlight: "Starts Here",
-    description: "Improve your German and explore pathways to study, pursue Ausbildung, and build your career in Germany.",
-    primaryBtn: { text: "Explore Germany Pathways", href: "/pathways/study-in-germany" },
+    badge: "🇩🇪 Study • Ausbildung • Careers in Germany",
+    title: "Study, Ausbildung & Careers",
+    highlight: "in Germany",
+    description: "Master German to unlock tuition-free university education, paid dual Ausbildung with monthly stipends, and high-demand nursing & engineering careers.",
+    primaryBtn: { text: "Explore Germany Pathways", href: "/pathways" },
+    secondaryBtn: { text: "Free Counseling", href: "/enquiry" },
+  },
+  {
+    id: 3,
+    image: "/Hero/hero3x.jpg",
+    badge: "🌍 Global Language Programs",
+    title: "Learn Beyond German",
+    highlight: "Master Global Languages",
+    description: "Along with our premier German courses, discover leading foreign languages with certified faculty to unlock worldwide academic and career opportunities.",
+    primaryBtn: { text: "View All Languages", href: "/languages" },
     secondaryBtn: { text: "Free Counseling", href: "/enquiry" },
   },
 ];
@@ -217,114 +228,45 @@ export default function Home() {
       </section>
 
       {/* About Us Gyanshala Section */}
-      <section id="about" className="relative py-14 sm:py-20 lg:py-24 overflow-hidden border-b border-zinc-100 dark:border-zinc-800">
-        {/* Background Image */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/Hero/GermanHero1.jpg"
-            alt="About Gyanshala Background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-white/85 dark:bg-zinc-950/85 backdrop-blur-[1px]" />
-        </div>
-
+      <section id="about" className="relative py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-[#FFFDF5] via-[#FFF9E5] to-[#FFF2CE] dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 overflow-hidden border-b border-amber-200/40 dark:border-zinc-800">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-            {/* Left Column: Content */}
+            {/* Left Column: Centered Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-7"
+              className="lg:col-span-7 flex flex-col items-center text-center px-2 sm:px-6"
             >
-              {/* Small Label */}
+              {/* Small Red Label */}
               <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BC0202] mb-2 sm:mb-3">
                 ABOUT GYANSHALA
               </p>
 
-              {/* Main Headline */}
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[40px] font-bold text-zinc-900 dark:text-white tracking-tight leading-tight">
+              {/* Serif Elegant Headline */}
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] font-bold text-zinc-900 dark:text-white tracking-tight leading-[1.18] max-w-lg">
                 Your Trusted Partner in German Language Learning
               </h2>
 
               {/* Description */}
-              <p className="mt-4 sm:mt-5 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
+              <p className="mt-4 text-xs sm:text-[14px] text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-xl mx-auto">
                 Gyanshala Foreign Language Academy was established in 2018 with a vision to help learners build strong German language skills and explore global opportunities. With structured courses, experienced trainers, and personalised guidance, we support students at every step of their German learning journey.
               </p>
 
-              {/* 3 Compact Highlights with Dedicated Icons */}
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-3 pt-4 sm:pt-5" staggerDelay={0.08}>
-                <StaggerItem>
-                  <div className="flex items-center gap-2.5 py-1 sm:py-1.5">
-                    <div className="w-12 h-12 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
-                      <Image
-                        src="/Icons/01_german_courses_A1-C2-removebg-preview.png"
-                        alt="German Courses A1–C2"
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <span className="text-base sm:text-xs md:text-sm font-bold sm:font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
-                      German Courses — A1–C2
-                    </span>
-                  </div>
-                </StaggerItem>
-
-                <StaggerItem>
-                  <div className="flex items-center gap-2.5 py-1 sm:py-1.5">
-                    <div className="w-12 h-12 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
-                      <Image
-                        src="/Icons/02_experienced_trainers-removebg-preview.png"
-                        alt="Experienced Trainers"
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <span className="text-base sm:text-xs md:text-sm font-bold sm:font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
-                      Experienced Trainers
-                    </span>
-                  </div>
-                </StaggerItem>
-
-                <StaggerItem>
-                  <div className="flex items-center gap-2.5 py-1 sm:py-1.5">
-                    <div className="w-12 h-12 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
-                      <Image
-                        src="/Icons/03_global_opportunities-removebg-preview.png"
-                        alt="Guidance for Global Opportunities"
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <span className="text-base sm:text-xs md:text-sm font-bold sm:font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
-                      Guidance for Global Opportunities
-                    </span>
-                  </div>
-                </StaggerItem>
-              </StaggerContainer>
-
-              {/* CTA Button: View More */}
-              <div className="pt-6 sm:pt-8">
+              {/* Golden Pill Button: View More */}
+              <div className="mt-6 sm:mt-8">
                 <Link
                   href="/about-us"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-[#ECBB0C] hover:bg-[#d9ab0b] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="inline-flex items-center justify-center px-8 sm:px-10 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold text-white bg-[#F6C42F] hover:bg-[#e5b320] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  <span>View More</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                  View More
                 </Link>
               </div>
             </motion.div>
 
-            {/* Right Column: About Us Image */}
+            {/* Right Column: About Us Image with Rounded Corners */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -332,13 +274,13 @@ export default function Home() {
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
               className="lg:col-span-5 relative mt-6 lg:mt-0 flex items-center justify-center"
             >
-              <div className="w-full max-w-[500px] aspect-[4/3] overflow-hidden relative shadow-md">
+              <div className="w-full max-w-[540px] aspect-[16/10] sm:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl relative border border-amber-200/50 dark:border-amber-900/30">
                 <Image
-                  src="/Aboutus.jpg"
-                  alt="Gyanshala Academy - Collaborative Study Session"
+                  src="/aboutus.png"
+                  alt="Gyanshala Foreign Language Academy - Your Trusted Partner in German Language Training"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 540px"
                   priority
                 />
               </div>
@@ -424,6 +366,181 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* Germany Pathways Section */}
+      <section id="pathways" className="relative py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <FadeInUp className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#BC0202]">
+              GLOBAL OPPORTUNITIES
+            </p>
+            <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+              Germany Pathways
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+              Explore your pathway to world-class education, paid dual vocational training, and rewarding careers in Germany.
+            </p>
+          </FadeInUp>
+
+          {/* 3 Pathway Cards Grid */}
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.08}>
+            {[
+              {
+                title: "Study in Germany",
+                description:
+                  "Pursue a Bachelor's or Master's degree at a German university. Get guidance on course selection, admission requirements, APS certification, and student visa preparation.",
+                target: "For students planning to pursue higher education in Germany.",
+                cta: "Explore Study Options →",
+                href: "/pathways/study-in-germany",
+                image: "/Pathways/studyingermany.png",
+              },
+              {
+                title: "Ausbildung in Germany",
+                description:
+                  "Learn a profession through practical workplace training and classroom education. Many dual training programmes offer a monthly allowance while you develop skills for a career in Germany.",
+                target: "For students who want professional training and practical work experience.",
+                cta: "Explore Ausbildung →",
+                href: "/pathways/ausbildung",
+                image: "/Pathways/ausbildung.png",
+              },
+              {
+                title: "Nursing in Germany",
+                description:
+                  "Explore nursing employment opportunities in Germany if you have a GNM, BSc Nursing, or another relevant nursing qualification. Understand qualification recognition, German language requirements, and the steps towards professional registration.",
+                target: "For qualified nurses looking to build their careers in Germany.",
+                cta: "Explore Nursing Careers →",
+                href: "/pathways/nursing-in-germany",
+                image: "/Pathways/nursingcareer.png",
+              },
+            ].map((pathway) => (
+              <StaggerItem key={pathway.title} className="h-full">
+                <Link
+                  href={pathway.href}
+                  className="group flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                >
+                  {/* Image Banner */}
+                  <div className="relative aspect-[16/10] bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                    <Image
+                      src={pathway.image}
+                      alt={pathway.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-[#BC0202] transition-colors">
+                        {pathway.title}
+                      </h3>
+                      <p className="mt-2.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                        {pathway.description}
+                      </p>
+                      <p className="mt-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                        {pathway.target}
+                      </p>
+                    </div>
+
+                    <div className="mt-5 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center text-xs sm:text-sm font-semibold text-[#BC0202] group-hover:translate-x-1 transition-transform">
+                      {pathway.cta}
+                    </div>
+                  </div>
+                </Link>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+        </div>
+      </section>
+
+      {/* Experienced Educators / Meet Our Team Section */}
+      <section id="team" className="py-14 sm:py-20 lg:py-24 bg-zinc-50/60 dark:bg-zinc-900/30 border-b border-zinc-100 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <FadeInUp className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#BC0202]">
+              EXPERIENCED EDUCATORS
+            </p>
+            <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+              Meet Our Team
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+              Our dedicated faculty members bring native-level proficiency, structured methodology, and individual mentorship to every batch.
+            </p>
+          </FadeInUp>
+
+          {/* Responsive Team Grid: 4 columns desktop, 2 columns mobile & tablet */}
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6" staggerDelay={0.06}>
+            {[
+              {
+                name: "Dilip Sinsinwar",
+                image: "/members/DILIP.SINSINWAR..jpeg",
+              },
+              {
+                name: "Claudia Zibell",
+                image: "/members/Claudia.Zibell.jpeg",
+              },
+              {
+                name: "Ashveer Singh",
+                image: "/members/ASHVEER.SINGH.jpeg",
+              },
+              {
+                name: "Ruchi Kaushik",
+                image: "/members/RUCHI.KAUSHIK.jpeg",
+              },
+              {
+                name: "Jhanvi Kumawat",
+                image: "/members/Jhanvi.kumawat.jpeg",
+              },
+              {
+                name: "Katrina",
+                image: "/members/KATRINA.jpeg",
+              },
+              {
+                name: "Mumal Rathore",
+                image: "/members/Mumal.Rathore.jpeg",
+              },
+              {
+                name: "Neeru Joshi",
+                image: "/members/Neeru.Joshi.jpeg",
+              },
+              {
+                name: "Niharika",
+                image: "/members/NIHARIKA..jpeg",
+              },
+            ].map((member) => (
+              <StaggerItem key={member.name} className="h-full">
+                <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm overflow-hidden flex flex-col hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all group">
+                  {/* Faculty Photo */}
+                  <div className="relative aspect-[4/5] bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                  </div>
+
+                  {/* Faculty Name */}
+                  <div className="p-2.5 sm:p-3.5 md:p-4 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center">
+                    <h3 className="text-xs sm:text-base lg:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-center">
+                      {member.name}
+                    </h3>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions (FAQ) Section */}
+      <FAQSection isHomepage={true} limit={8} />
 
     </main>
   );

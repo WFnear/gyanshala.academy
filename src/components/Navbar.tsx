@@ -163,6 +163,14 @@ export default function Navbar() {
             >
               About Us
             </Link>
+
+            {/* FAQs */}
+            <Link
+              href="/faqs"
+              className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
+            >
+              FAQs
+            </Link>
           </div>
 
           {/* Right Action: CTA Button & Mobile Trigger */}
@@ -354,6 +362,15 @@ export default function Navbar() {
             className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
           >
             About Us
+          </Link>
+
+          {/* FAQs */}
+          <Link
+            href="/faqs"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
+          >
+            FAQs
           </Link>
         </div>
 

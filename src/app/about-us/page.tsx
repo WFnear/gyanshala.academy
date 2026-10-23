@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
@@ -176,54 +177,31 @@ export default function AboutUsPage() {
       {/* =========================================================================
           SECTION 1 · ABOUT US HERO
           ========================================================================= */}
-      <section className="relative py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-zinc-50 via-white to-zinc-50/50 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900 border-b border-zinc-100 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Breadcrumbs & Hero Heading */}
+      <section className="relative min-h-[300px] sm:min-h-[360px] md:min-h-[420px] flex flex-col items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-24 text-white text-center bg-zinc-950">
+        {/* Background Image */}
+        <Image
+          src="/Hero/IMG_20250806_134431127_HDR.jpg"
+          alt="About Us - Gyanshala Foreign Language Academy"
+          fill
+          priority
+          className="object-cover object-center z-0"
+        />
+        {/* Dark Contrast Overlay */}
+        <div className="absolute inset-0 bg-black/60 sm:bg-black/55 z-[1]" />
+
+        {/* Centered Hero Content */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center text-center">
           <FadeInUp>
-            <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-              <Link href="/" className="hover:text-[#BC0202] transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-zinc-800 dark:text-zinc-200 font-semibold">About Us</span>
-            </nav>
+            {/* Main Heading: ABOUT US */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-wider uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
+              ABOUT US
+            </h1>
 
-            <div className="max-w-3xl">
-              {/* Small Tag */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#BC0202] bg-red-50 dark:bg-red-950/40 border border-red-200/60 dark:border-red-900/40 mb-4">
-                <span>🇩🇪</span> Gyanshala Foreign Language Academy
-              </div>
-
-              {/* Heading */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-900 dark:text-white tracking-tight leading-tight">
-                About Gyanshala Foreign Language Academy
-              </h1>
-
-              {/* Subheading */}
-              <p className="mt-4 text-base sm:text-lg lg:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                Empowering learners with German language skills, expert guidance, and pathways to global opportunities since 2018.
-              </p>
-            </div>
+            {/* Subtitle */}
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg text-white/95 font-medium tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] max-w-2xl mx-auto">
+              Empowering Learners with German Language Excellence Since 2018
+            </p>
           </FadeInUp>
-
-          {/* Large Responsive Hero Image Placeholder */}
-          <FadeInUp delay={0.15}>
-            <div className="mt-8 sm:mt-12 w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl bg-zinc-100 dark:bg-zinc-900 border-2 border-dashed border-zinc-300 dark:border-zinc-700 flex flex-col items-center justify-center p-6 text-center shadow-xs">
-              <div className="w-16 h-16 rounded-2xl bg-red-50 dark:bg-red-950/50 text-[#BC0202] flex items-center justify-center mb-3 border border-red-100 dark:border-red-900/40">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                </svg>
-              </div>
-              <p className="text-base sm:text-lg font-bold text-zinc-800 dark:text-zinc-200">
-                About Us Hero Image Placeholder
-              </p>
-              <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1 max-w-md">
-                High-resolution academy campus, classroom, or orientation banner (16:9 / 21:9 responsive ratio)
-              </p>
-            </div>
-          </FadeInUp>
-
         </div>
       </section>
 
@@ -235,16 +213,19 @@ export default function AboutUsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* Content Column */}
-            <FadeInUp className="lg:col-span-7 space-y-5">
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#BC0202]">
+            <FadeInUp className="lg:col-span-7 space-y-4">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BC0202]">
                 OUR STORY
               </p>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight leading-snug">
+              <h2
+                className="text-2xl sm:text-3xl lg:text-4xl xl:text-[40px] font-bold text-zinc-900 dark:text-white tracking-tight"
+                style={{ lineHeight: 1.08 }}
+              >
                 Our Journey Since 2018
               </h2>
 
-              <div className="space-y-4 text-zinc-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
+              <div className="mt-3.5 sm:mt-4 space-y-3 text-zinc-600 dark:text-zinc-300 text-xs sm:text-[14px] leading-relaxed">
                 <p>
                   Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.
                 </p>
@@ -254,19 +235,51 @@ export default function AboutUsPage() {
                 </p>
               </div>
 
-              {/* Journey Milestones Strip */}
-              <div className="pt-2 grid grid-cols-3 gap-3 border-t border-zinc-100 dark:border-zinc-800 text-center">
-                <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-900">
-                  <p className="text-xl sm:text-2xl font-black text-[#BC0202]">2018</p>
-                  <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">Founded</p>
+              {/* Journey Milestones Strip (Background-Free, Left-Right Layout, Small Font) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-4 lg:gap-6 pt-5 sm:pt-6 border-t border-zinc-100 dark:border-zinc-800">
+                {/* 01: 2018 */}
+                <div className="flex items-center gap-2.5">
+                  <span className="text-base sm:text-lg font-black text-[#BC0202] tracking-tight shrink-0">
+                    2018
+                  </span>
+                  <div>
+                    <h3 className="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-white leading-tight">
+                      Founded
+                    </h3>
+                    <p className="text-[9.5px] sm:text-[11px] text-zinc-500 dark:text-zinc-400 font-medium leading-tight mt-0.5">
+                      Established Center
+                    </p>
+                  </div>
                 </div>
-                <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-900">
-                  <p className="text-xl sm:text-2xl font-black text-[#BC0202]">A1–C2</p>
-                  <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">CEFR Levels</p>
+
+                {/* 02: A1-C2 */}
+                <div className="flex items-center gap-2.5">
+                  <span className="text-base sm:text-lg font-black text-[#BC0202] tracking-tight shrink-0">
+                    A1–C2
+                  </span>
+                  <div>
+                    <h3 className="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-white leading-tight">
+                      CEFR Levels
+                    </h3>
+                    <p className="text-[9.5px] sm:text-[11px] text-zinc-500 dark:text-zinc-400 font-medium leading-tight mt-0.5">
+                      Complete Training
+                    </p>
+                  </div>
                 </div>
-                <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-900">
-                  <p className="text-xl sm:text-2xl font-black text-[#BC0202]">Jaipur</p>
-                  <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">Center</p>
+
+                {/* 03: Jaipur */}
+                <div className="flex items-center gap-2.5">
+                  <span className="text-base sm:text-lg font-black text-[#BC0202] tracking-tight shrink-0">
+                    Jaipur
+                  </span>
+                  <div>
+                    <h3 className="text-[11px] sm:text-[13px] font-bold text-zinc-900 dark:text-white leading-tight">
+                      Center
+                    </h3>
+                    <p className="text-[9.5px] sm:text-[11px] text-zinc-500 dark:text-zinc-400 font-medium leading-tight mt-0.5">
+                      Rajasthan, India
+                    </p>
+                  </div>
                 </div>
               </div>
             </FadeInUp>
@@ -328,41 +341,30 @@ export default function AboutUsPage() {
             {missionVisionGoals.map((item) => (
               <StaggerItem key={item.title} className="h-full">
                 <div
-                  className="h-full p-6 sm:p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="h-full p-6 sm:p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-md transition-shadow flex flex-col"
                 >
-                  <div>
-                    <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/40 flex items-center justify-center mb-5 border border-red-100 dark:border-red-900/50">
-                      {item.icon}
-                    </div>
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">
+                    {item.title}
+                  </h3>
 
-                    <h3 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">
-                      {item.title}
-                    </h3>
+                  {item.content && (
+                    <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                      {item.content}
+                    </p>
+                  )}
 
-                    {item.content && (
-                      <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                        {item.content}
-                      </p>
-                    )}
-
-                    {item.goals && (
-                      <ul className="mt-4 space-y-2.5">
-                        {item.goals.map((goal, idx) => (
-                          <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-red-100 dark:bg-red-950/60 text-[#BC0202] text-[10px] font-bold shrink-0 mt-0.5">
-                              ✓
-                            </span>
-                            <span>{goal}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs font-semibold text-zinc-400">
-                    <span>Gyanshala Academy</span>
-                    <span className="text-[#BC0202] uppercase tracking-wider">{item.badge}</span>
-                  </div>
+                  {item.goals && (
+                    <ul className="mt-4 space-y-2.5">
+                      {item.goals.map((goal, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-red-100 dark:bg-red-950/60 text-[#BC0202] text-[10px] font-bold shrink-0 mt-0.5">
+                            ✓
+                          </span>
+                          <span>{goal}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </StaggerItem>
             ))}
