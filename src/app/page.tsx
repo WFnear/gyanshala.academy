@@ -5,7 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Josefin_Sans } from "next/font/google";
-import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import {
+  FadeInUp,
+  FadeInLeft,
+  FadeInRight,
+  FadeInScale,
+  StaggerContainer,
+  StaggerItem,
+  CardImageReveal,
+  CardTextReveal,
+  ScrollParallax,
+  AnimatedButton,
+} from "@/components/ScrollReveal";
 import FAQSection from "@/components/FAQSection";
 
 const josefin = Josefin_Sans({
@@ -278,7 +289,7 @@ const studentReviews = [
     image: "/Review/Jhanvi.Kumawat.jpeg",
     rating: 5,
     review:
-      "The German classes here are very interactive and practical. I like how the teachers focus on speaking from day one, instead of just theory. The sessions are fun, and I always feel motivated to practice more at home. It’s a perfect institute for beginners who want to learn German seriousl",
+      "The German classes here are very interactive and practical. I like how the teachers focus on speaking from day one, instead of just theory. The sessions are fun, and I always feel motivated to practice more at home. It’s a perfect institute for beginners who want to learn German seriously.",
   },
   {
     name: "Richa Singh",
@@ -483,13 +494,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
             {/* Left Column: Text Content matching About Us page */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-7"
-            >
+            <FadeInLeft className="lg:col-span-7">
               <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
                 OUR STORY
               </h3>
@@ -498,52 +503,52 @@ export default function Home() {
                 Our Journey Since 2018
               </h2>
 
-              <div
-                className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] xl:text-[22px] leading-[1.55] italic font-medium tracking-normal"
-                style={{
-                  fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                  letterSpacing: '0em',
-                }}
-              >
-                <p>
-                  Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.
-                </p>
+              <FadeInUp delay={0.1}>
+                <div
+                  className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] xl:text-[22px] leading-[1.55] italic font-medium tracking-normal"
+                  style={{
+                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                    letterSpacing: '0em',
+                  }}
+                >
+                  <p>
+                    Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.
+                  </p>
 
-                <p>
-                  Gyanshala works to connect learners with international educational opportunities and offers language learning, consultation, and student guidance services. The academy aims to help students choose programmes suited to their interests and career goals, while encouraging them to become confident global citizens rooted in their traditions and ready to face the world.
-                </p>
-              </div>
+                  <p>
+                    Gyanshala works to connect learners with international educational opportunities and offers language learning, consultation, and student guidance services. The academy aims to help students choose programmes suited to their interests and career goals, while encouraging them to become confident global citizens rooted in their traditions and ready to face the world.
+                  </p>
+                </div>
+              </FadeInUp>
 
               {/* View More Button */}
-              <div className="mt-6 sm:mt-8">
-                <Link
-                  href="/about-us"
-                  className="inline-flex items-center justify-center px-8 sm:px-10 py-3 rounded-xl text-base font-bold text-white bg-[#C00000] hover:bg-[#a00000] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  View More →
-                </Link>
-              </div>
-            </motion.div>
+              <FadeInUp delay={0.18} className="mt-6 sm:mt-8">
+                <AnimatedButton>
+                  <Link
+                    href="/about-us"
+                    className="inline-flex items-center justify-center px-8 sm:px-10 py-3 rounded-xl text-base font-bold text-white bg-[#C00000] hover:bg-[#a00000] shadow-md hover:shadow-lg transition-all"
+                  >
+                    View More →
+                  </Link>
+                </AnimatedButton>
+              </FadeInUp>
+            </FadeInLeft>
 
             {/* Right Column: About Us Image with No Radius */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-              className="lg:col-span-5 flex justify-center lg:justify-end"
-            >
-              <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-none overflow-hidden shadow-lg border border-zinc-200/60 dark:border-zinc-800">
-                <Image
-                  src="/aboutus.png"
-                  alt="Gyanshala Foreign Language Academy - Your Trusted Partner in German Language Training"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 500px"
-                  className="object-cover object-center"
-                  priority
-                />
-              </div>
-            </motion.div>
+            <FadeInRight delay={0.12} className="lg:col-span-5 flex justify-center lg:justify-end">
+              <ScrollParallax yOffset={35} className="w-full flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-none overflow-hidden shadow-lg border border-zinc-200/60 dark:border-zinc-800">
+                  <Image
+                    src="/aboutus.png"
+                    alt="Gyanshala Foreign Language Academy - Your Trusted Partner in German Language Training"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 500px"
+                    className="object-cover object-center"
+                    priority
+                  />
+                </div>
+              </ScrollParallax>
+            </FadeInRight>
 
           </div>
         </div>
@@ -576,7 +581,7 @@ export default function Home() {
           </FadeInUp>
 
           {/* Course Cards Grid */}
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" staggerDelay={0.07}>
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" staggerDelay={0.22}>
             {[
               { id: "a1", badge: "A1 Level", name: "A1 – Beginner Level" },
               { id: "a2", badge: "A2 Level", name: "A2 – Elementary Level" },
@@ -584,36 +589,47 @@ export default function Home() {
               { id: "b2", badge: "B2 Level", name: "B2 – Upper-Intermediate Level" },
               { id: "c1", badge: "C1 Level", name: "C1 – Advanced Level" },
               { id: "c2", badge: "C2 Level", name: "C2 – Proficiency Level" },
-            ].map((course) => (
-              <StaggerItem key={course.id} className="h-full">
-                <Link
-                  href={`/german/${course.id}`}
-                  className="group flex flex-col h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+            ].map((course, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <StaggerItem
+                  key={course.id}
+                  className="h-full"
+                  direction="alternate"
+                  index={index}
+                  hoverLift
                 >
-                  {/* Top Image Area with Level Badge */}
-                  <div className="relative w-full aspect-[16/10] sm:aspect-[3/2] flex items-center justify-center overflow-hidden select-none">
-                    <Image
-                      src="/greenbg.jpg"
-                      alt={course.badge}
-                      fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 380px"
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-black/15 group-hover:bg-black/10 transition-colors pointer-events-none" />
-                    <span className="relative z-10 text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.65)]">
-                      {course.badge}
-                    </span>
-                  </div>
+                  <Link
+                    href={`/german/${course.id}`}
+                    className="group flex flex-col h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                  >
+                    {/* Top Image Area with Level Badge */}
+                    <CardImageReveal reversed={!isEven} className="relative w-full aspect-[16/10] sm:aspect-[3/2] flex items-center justify-center overflow-hidden select-none">
+                      <Image
+                        src="/greenbg.jpg"
+                        alt={course.badge}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 380px"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-black/15 group-hover:bg-black/10 transition-colors pointer-events-none" />
+                      <span className="relative z-10 text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.65)]">
+                        {course.badge}
+                      </span>
+                    </CardImageReveal>
 
-                  {/* Bottom Area with Course Name */}
-                  <div className="p-3 sm:p-4 bg-[#FFFAF3] dark:bg-zinc-900 group-hover:bg-[#FCF9EA] dark:group-hover:bg-zinc-800/80 text-left transition-colors border-t border-zinc-200/60 dark:border-zinc-800">
-                    <p className="font-semibold text-xs sm:text-sm lg:text-base text-black dark:text-white leading-snug whitespace-nowrap">
-                      {course.name}
-                    </p>
-                  </div>
-                </Link>
-              </StaggerItem>
-            ))}
+                    {/* Bottom Area with Course Name (Enters from opposite direction, staggered) */}
+                    <CardTextReveal reversed={!isEven} delay={0.15}>
+                      <div className="p-3 sm:p-4 bg-[#FFFAF3] dark:bg-zinc-900 group-hover:bg-[#FCF9EA] dark:group-hover:bg-zinc-800/80 text-left transition-colors border-t border-zinc-200/60 dark:border-zinc-800">
+                        <p className="font-semibold text-xs sm:text-sm lg:text-base text-black dark:text-white leading-snug whitespace-nowrap">
+                          {course.name}
+                        </p>
+                      </div>
+                    </CardTextReveal>
+                  </Link>
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
 
         </div>
@@ -643,7 +659,7 @@ export default function Home() {
           </FadeInUp>
 
           {/* 3 Pathway Cards Grid */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.08}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.24}>
             {[
               {
                 title: "Study In Germany",
@@ -672,60 +688,65 @@ export default function Home() {
                 href: "/pathways/nursing-in-germany",
                 image: "/Pathways/nursingcareer.png",
               },
-            ].map((pathway) => (
-              <StaggerItem key={pathway.title} className="h-full">
+            ].map((pathway, index) => (
+              <StaggerItem key={pathway.title} className="h-full" direction="alternate" index={index} hoverLift>
                 <Link
                   href={pathway.href}
                   className="group flex flex-col h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden rounded-none"
                 >
                   {/* Image Banner */}
-                  <div className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                    <Image
-                      src={pathway.image}
-                      alt={pathway.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
-                    />
-                  </div>
+                  <CardImageReveal reversed={index % 2 !== 0}>
+                    <div className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                      <Image
+                        src={pathway.image}
+                        alt={pathway.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                      />
+                    </div>
+                  </CardImageReveal>
 
-                  {/* Red Title Banner */}
-                  <div className="bg-[#AC2424] py-3 sm:py-3.5 px-4 text-center">
-                    <h3
-                      className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-white tracking-normal leading-tight"
-                      style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                    >
-                      {pathway.title}
-                    </h3>
-                  </div>
-
-                  {/* Content Area */}
-                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-[#FFFAF3] dark:bg-zinc-900">
-                    <div className="space-y-3">
-                      <p
-                        className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
+                  {/* Red Title Banner & Content Area */}
+                  <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex flex-col">
+                    {/* Red Title Banner */}
+                    <div className="bg-[#AC2424] py-3 sm:py-3.5 px-4 text-center">
+                      <h3
+                        className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-white tracking-normal leading-tight"
                         style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
                       >
-                        {pathway.description}
-                      </p>
-                      <p
-                        className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
-                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                      >
-                        {pathway.target}
-                      </p>
+                        {pathway.title}
+                      </h3>
                     </div>
 
-                    {/* Yellow Button */}
-                    <div className="mt-6 pt-2">
-                      <span
-                        className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold italic shadow-sm transition-colors"
-                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                      >
-                        {pathway.cta}
-                      </span>
+                    {/* Content Area */}
+                    <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-[#FFFAF3] dark:bg-zinc-900">
+                      <div className="space-y-3">
+                        <p
+                          className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
+                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                        >
+                          {pathway.description}
+                        </p>
+                        <p
+                          className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
+                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                        >
+                          {pathway.target}
+                        </p>
+                      </div>
+
+                      {/* Yellow Button */}
+                      <div className="mt-6 pt-2">
+                        <span
+                          className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold italic shadow-sm transition-colors"
+                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                        >
+                          {pathway.cta}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </CardTextReveal>
                 </Link>
               </StaggerItem>
             ))}
@@ -748,7 +769,7 @@ export default function Home() {
           </FadeInUp>
 
           {/* Responsive Team Grid: 4 columns desktop, 2 columns mobile & tablet */}
-          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6" staggerDelay={0.06}>
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6" staggerDelay={0.22}>
             {[
               {
                 name: "Dilip Sinsinwar",
@@ -795,29 +816,33 @@ export default function Home() {
                 role: "English Language Trainer",
                 image: "/members/NIHARIKA..jpeg",
               },
-            ].map((member) => (
-              <StaggerItem key={member.name} className="h-full">
+            ].map((member, index) => (
+              <StaggerItem key={member.name} className="h-full" direction="alternate" index={index} hoverLift>
                 <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm overflow-hidden flex flex-col hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all group">
                   {/* Faculty Photo */}
-                  <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-center transition-transform duration-300"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
-                  </div>
+                  <CardImageReveal reversed={index % 2 !== 0}>
+                    <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-center transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    </div>
+                  </CardImageReveal>
 
                   {/* Faculty Info */}
-                  <div className="p-2.5 sm:p-3.5 md:p-4 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
-                    <h3 className="text-sm sm:text-base lg:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-center">
-                      {member.name}
-                    </h3>
-                    <p className="mt-1 text-xs sm:text-sm font-semibold text-[#C00000] leading-tight text-center">
-                      {member.role}
-                    </p>
-                  </div>
+                  <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex flex-col">
+                    <div className="p-2.5 sm:p-3.5 md:p-4 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
+                      <h3 className="text-sm sm:text-base lg:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-center">
+                        {member.name}
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm font-semibold text-[#C00000] leading-tight text-center">
+                        {member.role}
+                      </p>
+                    </div>
+                  </CardTextReveal>
                 </div>
               </StaggerItem>
             ))}
@@ -827,7 +852,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Gyanshala Section */}
-      <section id="why-choose-us" className={`relative pt-14 sm:pt-20 lg:pt-24 pb-0 lg:pb-24 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+      <section id="why-choose-us" className={`relative pt-14 sm:pt-20 lg:pt-24 pb-0 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
         {/* White Paper Background Texture with 100% Appearance */}
         <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
           <Image
@@ -854,7 +879,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-6 items-center">
             
             {/* Left Column (3 items: order-1 on mobile & desktop) */}
-            <div className="order-1 lg:order-1 lg:col-span-4 space-y-8 sm:space-y-10">
+            <FadeInLeft className="order-1 lg:order-1 lg:col-span-4 space-y-8 sm:space-y-10">
               {whyChoosePoints.slice(0, 3).map((point) => (
                 <div key={point.number} className="flex items-start gap-4 text-left group">
                   <div className="shrink-0 text-[#C00000] pt-1 transition-transform duration-300 group-hover:scale-110">
@@ -870,11 +895,11 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            </div>
+            </FadeInLeft>
 
             {/* Center Column: Cutout Student Visual (order-3 on mobile, order-2 on desktop) */}
-            <div className="order-3 lg:order-2 lg:col-span-4 flex items-end justify-center self-end lg:self-center pt-4 sm:pt-6 lg:pt-0">
-              <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[360px] aspect-[432/578] flex items-end justify-center">
+            <div className="order-3 lg:order-2 lg:col-span-4 flex items-end justify-center self-end pt-4 sm:pt-6 lg:pt-0">
+              <ScrollParallax yOffset={45} className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[420px] xl:max-w-[460px] aspect-[432/578] flex items-end justify-center">
                 <Image
                   src="/whychoose/whychooseus.png"
                   alt="Why Choose Gyanshala Foreign Language Academy"
@@ -882,11 +907,11 @@ export default function Home() {
                   className="object-contain object-bottom drop-shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
                   priority
                 />
-              </div>
+              </ScrollParallax>
             </div>
 
             {/* Right Column (3 items: order-2 on mobile so points 4-6 follow points 1-3, order-3 on desktop) */}
-            <div className="order-2 lg:order-3 lg:col-span-4 space-y-8 sm:space-y-10">
+            <FadeInRight className="order-2 lg:order-3 lg:col-span-4 space-y-8 sm:space-y-10">
               {whyChoosePoints.slice(3, 6).map((point) => (
                 <div key={point.number} className="flex items-start lg:flex-row-reverse gap-4 text-left lg:text-right group">
                   <div className="shrink-0 text-[#C00000] pt-1 transition-transform duration-300 group-hover:scale-110">
@@ -902,7 +927,7 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            </div>
+            </FadeInRight>
 
           </div>
 
@@ -923,24 +948,26 @@ export default function Home() {
           </FadeInUp>
 
           {/* Highlights of Gyanshala Card Grid (Matching Reference Design) */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.06}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.22}>
             {highlights.map((item, index) => (
-              <StaggerItem key={index} className="h-full">
+              <StaggerItem key={index} className="h-full" direction="alternate" index={index} hoverLift>
                 <div className="h-full p-6 sm:p-8 bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-2xl shadow-xs hover:shadow-xl hover:border-[#F59E0B]/50 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center group">
                   {/* Yellow/Gold Bordered Icon Container */}
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 border-[#F59E0B] bg-white dark:bg-zinc-800 flex items-center justify-center mb-5 shrink-0 group-hover:scale-110 group-hover:border-[#ECBB0C] group-hover:shadow-md transition-all duration-300">
-                    {item.icon}
-                  </div>
+                  <CardImageReveal reversed={index % 2 !== 0}>
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 border-[#F59E0B] bg-white dark:bg-zinc-800 flex items-center justify-center mb-5 shrink-0 group-hover:scale-110 group-hover:border-[#ECBB0C] group-hover:shadow-md transition-all duration-300">
+                      {item.icon}
+                    </div>
+                  </CardImageReveal>
 
-                  {/* Highlight Title */}
-                  <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white leading-snug mb-2.5 group-hover:text-[#C00000] transition-colors">
-                    {item.title}
-                  </h3>
-
-                  {/* Highlight Description */}
-                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
-                    {item.description}
-                  </p>
+                  {/* Highlight Title & Description */}
+                  <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex flex-col items-center">
+                    <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white leading-snug mb-2.5 group-hover:text-[#C00000] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                      {item.description}
+                    </p>
+                  </CardTextReveal>
                 </div>
               </StaggerItem>
             ))}
@@ -964,64 +991,68 @@ export default function Home() {
           </FadeInUp>
 
           {/* Video Cards Grid */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto" staggerDelay={0.08}>
-            {onlineVideos.map((video) => {
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto" staggerDelay={0.24}>
+            {onlineVideos.map((video, index) => {
               const isPlaying = playingVideoId === video.id;
 
               return (
-                <StaggerItem key={video.id} className="h-full">
+                <StaggerItem key={video.id} className="h-full" direction="alternate" index={index} hoverLift>
                   <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden flex flex-col group">
                     {/* YouTube Video Area */}
-                    <div className="relative w-full aspect-video bg-black overflow-hidden">
-                      {isPlaying ? (
-                        <iframe
-                          src={
-                            video.playlistId
-                              ? `https://www.youtube-nocookie.com/embed/${video.youtubeId}?list=${video.playlistId}&autoplay=1&rel=0`
-                              : `https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`
-                          }
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="w-full h-full border-0"
-                        />
-                      ) : (
-                        <div
-                          onClick={() => setPlayingVideoId(video.id)}
-                          className="relative w-full h-full cursor-pointer group/thumb"
-                        >
-                          <Image
-                            src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
-                            alt={video.title}
-                            fill
-                            unoptimized
-                            className="object-cover object-center group-hover/thumb:scale-105 transition-transform duration-500 ease-out"
+                    <CardImageReveal reversed={index % 2 !== 0}>
+                      <div className="relative w-full aspect-video bg-black overflow-hidden">
+                        {isPlaying ? (
+                          <iframe
+                            src={
+                              video.playlistId
+                                ? `https://www.youtube-nocookie.com/embed/${video.youtubeId}?list=${video.playlistId}&autoplay=1&rel=0`
+                                : `https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`
+                            }
+                            title={video.title}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-full border-0"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20 group-hover/thumb:from-black/50 transition-colors" />
+                        ) : (
+                          <div
+                            onClick={() => setPlayingVideoId(video.id)}
+                            className="relative w-full h-full cursor-pointer group/thumb"
+                          >
+                            <Image
+                              src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                              alt={video.title}
+                              fill
+                              unoptimized
+                              className="object-cover object-center group-hover/thumb:scale-105 transition-transform duration-500 ease-out"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20 group-hover/thumb:from-black/50 transition-colors" />
 
-                          {/* Duration Badge */}
-                          <span className="absolute bottom-3 right-3 px-2 py-0.5 text-xs font-medium text-white bg-black/80 rounded-md shadow-md z-10">
-                            {video.duration}
-                          </span>
+                            {/* Duration Badge */}
+                            <span className="absolute bottom-3 right-3 px-2 py-0.5 text-xs font-medium text-white bg-black/80 rounded-md shadow-md z-10">
+                              {video.duration}
+                            </span>
 
-                          {/* Red YouTube Play Button */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-2xl group-hover/thumb:scale-115 group-hover/thumb:bg-[#CC0000] transition-all transform">
-                              <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-current translate-x-0.5" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z" />
-                              </svg>
+                            {/* Red YouTube Play Button */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-2xl group-hover/thumb:scale-115 group-hover/thumb:bg-[#CC0000] transition-all transform">
+                                <svg className="w-6 h-6 sm:w-7 sm:h-7 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      )}
-                    </div>
+                        )}
+                      </div>
+                    </CardImageReveal>
 
                     {/* Card Content: Title */}
-                    <div className="p-4 sm:p-5 bg-white dark:bg-zinc-900 flex-1 flex items-center">
-                      <h3 className="font-bold text-base sm:text-lg text-zinc-900 dark:text-white group-hover:text-[#C00000] transition-colors leading-snug line-clamp-2">
-                        {video.title}
-                      </h3>
-                    </div>
+                    <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex items-center">
+                      <div className="p-4 sm:p-5 bg-white dark:bg-zinc-900 w-full flex items-center">
+                        <h3 className="font-bold text-base sm:text-lg text-zinc-900 dark:text-white group-hover:text-[#C00000] transition-colors leading-snug line-clamp-2">
+                          {video.title}
+                        </h3>
+                      </div>
+                    </CardTextReveal>
                   </div>
                 </StaggerItem>
               );
@@ -1073,56 +1104,63 @@ export default function Home() {
           </FadeInUp>
 
           {/* Reviews Grid */}
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6" staggerDelay={0.07}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl xl:max-w-6xl mx-auto" staggerDelay={0.24}>
             {studentReviews.map((item, idx) => (
-              <StaggerItem key={idx} className="h-full">
-                <div className="relative w-full h-full min-h-[500px] sm:min-h-[540px] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-zinc-200/50 dark:border-zinc-800 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-end group">
-                  {/* Full Student Background Image */}
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
+              <StaggerItem key={idx} className="h-full" direction="alternate" index={idx} hoverLift>
+                <div className="h-full bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-zinc-200/90 dark:border-zinc-800 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col group">
+                  {/* Cropped Student Photo on Top */}
+                  <CardImageReveal reversed={idx % 2 !== 0}>
+                    <div className="relative aspect-[4/3] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        style={{ objectPosition: "center 40%" }}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  </CardImageReveal>
 
-                  {/* Dark Gradient Overlay for Maximum Readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/10 pointer-events-none" />
+                  {/* White Card with Black Text Below Photo */}
+                  <CardTextReveal reversed={idx % 2 !== 0} delay={0.15} className="flex-1 flex flex-col justify-between p-6 sm:p-7 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800">
+                    <div>
+                      {/* 5 Stars */}
+                      <div className="flex items-center gap-1 text-[#ECBB0C] mb-3">
+                        {[...Array(item.rating)].map((_, i) => (
+                          <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
 
-                  {/* Overlay Content Directly on Image */}
-                  <div className="relative z-10 p-5 sm:p-6 flex flex-col justify-end text-white">
-                    {/* 5 Stars */}
-                    <div className="flex items-center gap-1 text-[#ECBB0C] mb-2.5">
-                      {[...Array(item.rating)].map((_, i) => (
-                        <svg key={i} className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-current" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
+                      {/* Review Text in Black / Dark text */}
+                      <p className="text-sm sm:text-base text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal italic mb-6">
+                        &ldquo;{item.review}&rdquo;
+                      </p>
                     </div>
 
-                    {/* Review Text */}
-                    <p className="text-xs sm:text-sm text-white/95 leading-relaxed font-normal mb-3.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
-                      &ldquo;{item.review}&rdquo;
-                    </p>
-
-                    {/* Student Name & Verified Google Badge */}
-                    <div className="pt-3 border-t border-white/20 flex items-center justify-between">
+                    {/* Student Name & Source */}
+                    <div className="pt-4 border-t border-zinc-200/80 dark:border-zinc-800 flex items-center justify-between">
                       <div>
-                        <h4 className="font-bold text-base sm:text-lg text-white leading-tight drop-shadow-md">
+                        <h4 className="font-bold text-base sm:text-lg text-zinc-950 dark:text-white leading-tight">
                           {item.name}
                         </h4>
-                        <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium mt-0.5">
-                          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          Verified Student
-                        </span>
+                        <p className="mt-0.5 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+                          Verified Student Review
+                        </p>
                       </div>
-                      <span className="text-xs font-semibold text-white/90 bg-white/15 px-2.5 py-1 rounded-full border border-white/25 backdrop-blur-xs">
-                        Google Review
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 rounded-full">
+                        <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
+                          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                        </svg>
+                        <span>Google</span>
                       </span>
                     </div>
-                  </div>
+                  </CardTextReveal>
                 </div>
               </StaggerItem>
             ))}

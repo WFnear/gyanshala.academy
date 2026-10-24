@@ -2,7 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Josefin_Sans, Poppins } from "next/font/google";
-import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import {
+  FadeInUp,
+  FadeInLeft,
+  FadeInRight,
+  StaggerContainer,
+  StaggerItem,
+  AnimatedButton,
+  CardImageReveal,
+  CardTextReveal,
+  ScrollParallax,
+} from "@/components/ScrollReveal";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -243,8 +253,8 @@ export default function AboutUsPage() {
           
           {/* Part 1: OUR STORY */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Content Column (Figma Typography: Josefin Sans, Mixed/32px, Auto line-height, 0% letter spacing) */}
-            <FadeInUp className="lg:col-span-7">
+            {/* Content Column */}
+            <FadeInLeft className="lg:col-span-7">
               <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
                 OUR STORY
               </h3>
@@ -253,26 +263,28 @@ export default function AboutUsPage() {
                 Our Journey Since 2018
               </h2>
 
-              <div
-                className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] xl:text-[22px] leading-[1.55] italic font-medium tracking-normal"
-                style={{
-                  fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                  letterSpacing: '0em',
-                }}
-              >
-                <p>
-                  Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.
-                </p>
+              <FadeInUp delay={0.1}>
+                <div
+                  className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] xl:text-[22px] leading-[1.55] italic font-medium tracking-normal"
+                  style={{
+                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                    letterSpacing: '0em',
+                  }}
+                >
+                  <p>
+                    Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.
+                  </p>
 
-                <p>
-                  Gyanshala works to connect learners with international educational opportunities and offers language learning, consultation, and student guidance services. The academy aims to help students choose programmes suited to their interests and career goals, while encouraging them to become confident global citizens rooted in their traditions and ready to face the world.
-                </p>
-              </div>
-            </FadeInUp>
+                  <p>
+                    Gyanshala works to connect learners with international educational opportunities and offers language learning, consultation, and student guidance services. The academy aims to help students choose programmes suited to their interests and career goals, while encouraging them to become confident global citizens rooted in their traditions and ready to face the world.
+                  </p>
+                </div>
+              </FadeInUp>
+            </FadeInLeft>
 
-            {/* Visual Column: Building Image with Border Radius Zero (Corner radius: 0) */}
-            <FadeInUp delay={0.15} className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-none overflow-hidden shadow-lg border border-zinc-200/60 dark:border-zinc-800">
+            {/* Visual Column: Building Image with Border Radius Zero */}
+            <FadeInRight delay={0.12} className="lg:col-span-5 flex justify-center lg:justify-end">
+              <ScrollParallax yOffset={35} className="relative w-full max-w-[500px] aspect-[4/3] rounded-none overflow-hidden shadow-lg border border-zinc-200/60 dark:border-zinc-800">
                 <Image
                   src="/aboutus.png"
                   alt="Gyanshala Foreign Language Academy - Campus & International Opportunities"
@@ -281,8 +293,8 @@ export default function AboutUsPage() {
                   className="object-cover object-center"
                   priority
                 />
-              </div>
-            </FadeInUp>
+              </ScrollParallax>
+            </FadeInRight>
           </div>
 
           {/* Part 2: PURPOSE & DIRECTION */}
@@ -385,7 +397,7 @@ export default function AboutUsPage() {
               </FadeInUp>
 
               {/* Responsive Faculty Grid matching Homepage: 4 columns desktop, 2-3 columns mobile & tablet */}
-              <StaggerContainer className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-6 max-w-7xl mx-auto" staggerDelay={0.06}>
+              <StaggerContainer className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-6 max-w-7xl mx-auto" staggerDelay={0.22}>
                 {[
                   {
                     name: "Dilip Sinsinwar",
@@ -432,29 +444,33 @@ export default function AboutUsPage() {
                     role: "English Language Trainer",
                     image: "/members/NIHARIKA..jpeg",
                   },
-                ].map((member) => (
-                  <StaggerItem key={member.name} className="h-full">
+                ].map((member, index) => (
+                  <StaggerItem key={member.name} className="h-full" direction="alternate" index={index} hoverLift>
                     <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm overflow-hidden flex flex-col hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all group">
                       {/* Faculty Photo */}
-                      <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover object-center transition-transform duration-300"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        />
-                      </div>
+                      <CardImageReveal reversed={index % 2 !== 0}>
+                        <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover object-center transition-transform duration-300"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          />
+                        </div>
+                      </CardImageReveal>
 
                       {/* Faculty Info */}
-                      <div className="p-2.5 sm:p-3.5 md:p-4 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
-                        <h3 className="text-sm sm:text-base lg:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-center">
-                          {member.name}
-                        </h3>
-                        <p className="mt-1 text-xs sm:text-sm font-semibold text-[#C00000] leading-tight text-center">
-                          {member.role}
-                        </p>
-                      </div>
+                      <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex flex-col">
+                        <div className="p-2.5 sm:p-3.5 md:p-4 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
+                          <h3 className="text-sm sm:text-base lg:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-center">
+                            {member.name}
+                          </h3>
+                          <p className="mt-1 text-xs sm:text-sm font-semibold text-[#C00000] leading-tight text-center">
+                            {member.role}
+                          </p>
+                        </div>
+                      </CardTextReveal>
                     </div>
                   </StaggerItem>
                 ))}
@@ -470,7 +486,7 @@ export default function AboutUsPage() {
         {/* =====================================================================
             SECTION 5 · WHY CHOOSE GYANSHALA?
             ===================================================================== */}
-        <section className={`relative pt-14 sm:pt-20 lg:pt-24 pb-0 lg:pb-24 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+        <section className={`relative pt-14 sm:pt-20 lg:pt-24 pb-0 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
           {/* White Paper Background Texture with 100% Appearance */}
           <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
             <Image
@@ -497,7 +513,7 @@ export default function AboutUsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-6 items-center">
               
               {/* Left Column (3 items: order-1 on mobile & desktop) */}
-              <div className="order-1 lg:order-1 lg:col-span-4 space-y-8 sm:space-y-10">
+              <FadeInLeft className="order-1 lg:order-1 lg:col-span-4 space-y-8 sm:space-y-10">
                 {whyChoosePoints.slice(0, 3).map((point) => (
                   <div key={point.number} className="flex items-start gap-4 text-left group">
                     <div className="shrink-0 text-[#C00000] pt-1 transition-transform duration-300 group-hover:scale-110">
@@ -513,11 +529,11 @@ export default function AboutUsPage() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </FadeInLeft>
 
               {/* Center Column: Cutout Student Visual (order-3 on mobile, order-2 on desktop) */}
-              <div className="order-3 lg:order-2 lg:col-span-4 flex items-end justify-center self-end lg:self-center pt-4 sm:pt-6 lg:pt-0">
-                <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[360px] aspect-[432/578] flex items-end justify-center">
+              <div className="order-3 lg:order-2 lg:col-span-4 flex items-end justify-center self-end pt-4 sm:pt-6 lg:pt-0">
+                <ScrollParallax yOffset={45} className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[420px] xl:max-w-[460px] aspect-[432/578] flex items-end justify-center">
                   <Image
                     src="/whychoose/whychooseus.png"
                     alt="Why Choose Gyanshala Foreign Language Academy"
@@ -525,11 +541,11 @@ export default function AboutUsPage() {
                     className="object-contain object-bottom drop-shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
                     priority
                   />
-                </div>
+                </ScrollParallax>
               </div>
 
               {/* Right Column (3 items: order-2 on mobile so points 4-6 follow points 1-3, order-3 on desktop) */}
-              <div className="order-2 lg:order-3 lg:col-span-4 space-y-8 sm:space-y-10">
+              <FadeInRight className="order-2 lg:order-3 lg:col-span-4 space-y-8 sm:space-y-10">
                 {whyChoosePoints.slice(3, 6).map((point) => (
                   <div key={point.number} className="flex items-start lg:flex-row-reverse gap-4 text-left lg:text-right group">
                     <div className="shrink-0 text-[#C00000] pt-1 transition-transform duration-300 group-hover:scale-110">
@@ -545,7 +561,7 @@ export default function AboutUsPage() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </FadeInRight>
 
             </div>
 
@@ -568,24 +584,26 @@ export default function AboutUsPage() {
               </FadeInUp>
 
               {/* Highlights of Gyanshala Card Grid (Matching Reference Design) */}
-              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.06}>
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.22}>
                 {highlights.map((item, index) => (
-                  <StaggerItem key={index} className="h-full">
+                  <StaggerItem key={index} className="h-full" direction="alternate" index={index} hoverLift>
                     <div className="h-full p-6 sm:p-8 bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-2xl shadow-xs hover:shadow-xl hover:border-[#F59E0B]/50 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center group">
                       {/* Yellow/Gold Bordered Icon Container */}
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 border-[#F59E0B] bg-white dark:bg-zinc-800 flex items-center justify-center mb-5 shrink-0 group-hover:scale-110 group-hover:border-[#ECBB0C] group-hover:shadow-md transition-all duration-300">
-                        {item.icon}
-                      </div>
+                      <CardImageReveal reversed={index % 2 !== 0}>
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 border-[#F59E0B] bg-white dark:bg-zinc-800 flex items-center justify-center mb-5 shrink-0 group-hover:scale-110 group-hover:border-[#ECBB0C] group-hover:shadow-md transition-all duration-300">
+                          {item.icon}
+                        </div>
+                      </CardImageReveal>
 
-                      {/* Highlight Title */}
-                      <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white leading-snug mb-2.5 group-hover:text-[#C00000] transition-colors">
-                        {item.title}
-                      </h3>
-
-                      {/* Highlight Description */}
-                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
-                        {item.description}
-                      </p>
+                      {/* Highlight Title & Description */}
+                      <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex flex-col items-center">
+                        <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white leading-snug mb-2.5 group-hover:text-[#C00000] transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                          {item.description}
+                        </p>
+                      </CardTextReveal>
                     </div>
                   </StaggerItem>
                 ))}
@@ -673,30 +691,36 @@ export default function AboutUsPage() {
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
-        <FadeInUp className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-            Start Your German Learning Journey Today
-          </h2>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <FadeInUp>
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+              Start Your German Learning Journey Today
+            </h2>
+          </FadeInUp>
 
-          <p
-            className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: '0em',
-            }}
-          >
-            Connect with our team to explore German courses and find the right learning path for your goals.
-          </p>
-
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/enquiry"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+          <FadeInUp delay={0.1}>
+            <p
+              className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: '0em',
+              }}
             >
-              Book a Free Demo
-            </Link>
-          </div>
-        </FadeInUp>
+              Connect with our team to explore German courses and find the right learning path for your goals.
+            </p>
+          </FadeInUp>
+
+          <FadeInUp delay={0.2} className="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <AnimatedButton>
+              <Link
+                href="/enquiry"
+                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all"
+              >
+                Book a Free Demo
+              </Link>
+            </AnimatedButton>
+          </FadeInUp>
+        </div>
       </section>
 
     </main>

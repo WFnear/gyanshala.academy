@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Josefin_Sans } from "next/font/google";
-import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -103,34 +103,38 @@ export default function GermanOverviewPage() {
           </FadeInUp>
 
           {/* Course Cards Grid (Exact Homepage Style with Green BG) */}
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" staggerDelay={0.07}>
-            {coursesData.map((course) => (
-              <StaggerItem key={course.id} className="h-full">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" staggerDelay={0.22}>
+            {coursesData.map((course, index) => (
+              <StaggerItem key={course.id} className="h-full" direction="alternate" index={index} hoverLift>
                 <Link
                   href={`/german/${course.id}`}
                   className="group flex flex-col h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
                 >
                   {/* Top Image Area with Level Badge and Green BG */}
-                  <div className="relative w-full aspect-[16/10] sm:aspect-[3/2] flex items-center justify-center overflow-hidden select-none">
-                    <Image
-                      src="/greenbg.jpg"
-                      alt={course.badge}
-                      fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 380px"
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-black/15 group-hover:bg-black/10 transition-colors pointer-events-none" />
-                    <span className="relative z-10 text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.65)]">
-                      {course.badge}
-                    </span>
-                  </div>
+                  <CardImageReveal reversed={index % 2 !== 0}>
+                    <div className="relative w-full aspect-[16/10] sm:aspect-[3/2] flex items-center justify-center overflow-hidden select-none">
+                      <Image
+                        src="/greenbg.jpg"
+                        alt={course.badge}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 380px"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-black/15 group-hover:bg-black/10 transition-colors pointer-events-none" />
+                      <span className="relative z-10 text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.65)]">
+                        {course.badge}
+                      </span>
+                    </div>
+                  </CardImageReveal>
 
                   {/* Bottom Area with Course Name */}
-                  <div className="p-3 sm:p-4 bg-[#FFFAF3] dark:bg-zinc-900 group-hover:bg-[#FCF9EA] dark:group-hover:bg-zinc-800/80 text-left transition-colors border-t border-zinc-200/60 dark:border-zinc-800">
-                    <p className="font-semibold text-xs sm:text-sm lg:text-base text-black dark:text-white leading-snug whitespace-nowrap">
-                      {course.name}
-                    </p>
-                  </div>
+                  <CardTextReveal reversed={index % 2 !== 0} delay={0.15}>
+                    <div className="p-3 sm:p-4 bg-[#FFFAF3] dark:bg-zinc-900 group-hover:bg-[#FCF9EA] dark:group-hover:bg-zinc-800/80 text-left transition-colors border-t border-zinc-200/60 dark:border-zinc-800">
+                      <p className="font-semibold text-xs sm:text-sm lg:text-base text-black dark:text-white leading-snug whitespace-nowrap">
+                        {course.name}
+                      </p>
+                    </div>
+                  </CardTextReveal>
                 </Link>
               </StaggerItem>
             ))}
@@ -163,26 +167,32 @@ export default function GermanOverviewPage() {
             </h2>
           </FadeInUp>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.08}>
-            {cefrHighlights.map((tier) => (
-              <StaggerItem key={tier.level} className="h-full">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.24}>
+            {cefrHighlights.map((tier, index) => (
+              <StaggerItem key={tier.level} className="h-full" direction="alternate" index={index} hoverLift>
                 <div className="h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md p-6 sm:p-8 flex flex-col justify-between">
                   <div className="space-y-4">
-                    <span className="inline-block px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white bg-[#BC0202] rounded-none">
-                      {tier.level}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white">
-                      {tier.title}
-                    </h3>
-                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed italic">
-                      {tier.desc}
-                    </p>
+                    <CardImageReveal reversed={index % 2 !== 0}>
+                      <span className="inline-block px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white bg-[#BC0202] rounded-none">
+                        {tier.level}
+                      </span>
+                      <h3 className="mt-3 text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white">
+                        {tier.title}
+                      </h3>
+                    </CardImageReveal>
+                    <CardTextReveal reversed={index % 2 !== 0} delay={0.15}>
+                      <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed italic">
+                        {tier.desc}
+                      </p>
+                    </CardTextReveal>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800">
-                    <p className="text-xs sm:text-sm font-semibold text-[#BC0202]">
-                      🎯 {tier.target}
-                    </p>
-                  </div>
+                  <CardTextReveal reversed={index % 2 !== 0} delay={0.2}>
+                    <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                      <p className="text-xs sm:text-sm font-semibold text-[#BC0202]">
+                        🎯 {tier.target}
+                      </p>
+                    </div>
+                  </CardTextReveal>
                 </div>
               </StaggerItem>
             ))}
@@ -205,30 +215,36 @@ export default function GermanOverviewPage() {
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
-        <FadeInUp className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-            Start Your German Learning Journey Today
-          </h2>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <FadeInUp>
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+              Start Your German Learning Journey Today
+            </h2>
+          </FadeInUp>
 
-          <p
-            className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: '0em',
-            }}
-          >
-            Join interactive batches led by certified trainers. Comprehensive preparation for Goethe-Zertifikat, telc, and ÖSD examinations.
-          </p>
-
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/enquiry"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+          <FadeInUp delay={0.1}>
+            <p
+              className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: '0em',
+              }}
             >
-              Book a Free Demo
-            </Link>
-          </div>
-        </FadeInUp>
+              Join interactive batches led by certified trainers. Comprehensive preparation for Goethe-Zertifikat, telc, and ÖSD examinations.
+            </p>
+          </FadeInUp>
+
+          <FadeInUp delay={0.2} className="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <AnimatedButton>
+              <Link
+                href="/enquiry"
+                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all"
+              >
+                Book a Free Demo
+              </Link>
+            </AnimatedButton>
+          </FadeInUp>
+        </div>
       </section>
     </main>
   );

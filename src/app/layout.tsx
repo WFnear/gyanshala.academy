@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { EnquiryModalProvider } from "@/context/EnquiryModalContext";
 import EnquiryModal from "@/components/EnquiryModal";
+import FloatingContactButtons from "@/components/FloatingContactButtons";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </div>
           <Footer />
           <EnquiryModal />
+          <FloatingContactButtons />
         </EnquiryModalProvider>
       </body>
     </html>

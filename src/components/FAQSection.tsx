@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Josefin_Sans } from "next/font/google";
-import { FadeInUp } from "@/components/ScrollReveal";
+import { FadeInUp, FadeInScale, AnimatedButton } from "@/components/ScrollReveal";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -576,19 +576,21 @@ export default function FAQSection({
 
         {/* Read More Button on Homepage */}
         {isHomepage && (
-          <div className="mt-10 sm:mt-12 flex justify-center">
-            <Link
-              href="/faqs"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#ECBB0C] hover:bg-[#d9ab0b] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-none shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 group"
-            >
-              <span>READ MORE FAQS →</span>
-            </Link>
-          </div>
+          <FadeInUp delay={0.12} className="mt-10 sm:mt-12 flex justify-center">
+            <AnimatedButton>
+              <Link
+                href="/faqs"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#ECBB0C] hover:bg-[#d9ab0b] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-none shadow-md hover:shadow-lg transition-all group"
+              >
+                <span>READ MORE FAQS →</span>
+              </Link>
+            </AnimatedButton>
+          </FadeInUp>
         )}
 
         {/* Bottom CTA Block with Background Image (Hidden on Homepage) */}
         {(showBottomCTA ?? !isHomepage) && (
-          <div className="relative mt-12 sm:mt-16 overflow-hidden rounded-none border border-zinc-300 dark:border-zinc-800 shadow-xl">
+          <FadeInScale delay={0.1} className="relative mt-12 sm:mt-16 overflow-hidden rounded-none border border-zinc-300 dark:border-zinc-800 shadow-xl">
             {/* Background Image: 100% Appearance, No Black Shadow */}
             <Image
               src="/StillHaveQuestions.jpg"
@@ -615,15 +617,17 @@ export default function FAQSection({
                 </p>
               </div>
               <div className="flex-shrink-0 w-full sm:w-auto">
-                <Link
-                  href="/enquiry"
-                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 bg-[#ECBB0C] hover:bg-[#d9ab0b] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-none shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  ENQUIRE NOW & GET FREE COUNSELING →
-                </Link>
+                <AnimatedButton>
+                  <Link
+                    href="/enquiry"
+                    className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 bg-[#ECBB0C] hover:bg-[#d9ab0b] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-none shadow-md hover:shadow-lg transition-all"
+                  >
+                    ENQUIRE NOW &amp; GET FREE COUNSELING →
+                  </Link>
+                </AnimatedButton>
               </div>
             </div>
-          </div>
+          </FadeInScale>
         )}
 
       </div>

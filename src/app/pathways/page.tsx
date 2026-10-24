@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Josefin_Sans } from "next/font/google";
-import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -142,61 +142,66 @@ export default function PathwaysIndexPage() {
           </FadeInUp>
 
           {/* 3 Pathway Cards Grid (Exact Homepage Style) */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.08}>
-            {pathwaysData.map((pathway) => (
-              <StaggerItem key={pathway.title} className="h-full">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.24}>
+            {pathwaysData.map((pathway, index) => (
+              <StaggerItem key={pathway.title} className="h-full" direction="alternate" index={index} hoverLift>
                 <Link
                   href={pathway.href}
                   className="group flex flex-col h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden rounded-none"
                 >
                   {/* Image Banner */}
-                  <div className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                    <Image
-                      src={pathway.image}
-                      alt={pathway.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
-                    />
-                  </div>
+                  <CardImageReveal reversed={index % 2 !== 0}>
+                    <div className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                      <Image
+                        src={pathway.image}
+                        alt={pathway.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                      />
+                    </div>
+                  </CardImageReveal>
 
-                  {/* Red Title Banner */}
-                  <div className="bg-[#AC2424] py-3 sm:py-3.5 px-4 text-center">
-                    <h3
-                      className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-white tracking-normal leading-tight"
-                      style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                    >
-                      {pathway.title}
-                    </h3>
-                  </div>
-
-                  {/* Content Area */}
-                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-[#FFFAF3] dark:bg-zinc-900">
-                    <div className="space-y-3">
-                      <p
-                        className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
+                  {/* Red Title Banner & Content Area */}
+                  <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex flex-col">
+                    {/* Red Title Banner */}
+                    <div className="bg-[#AC2424] py-3 sm:py-3.5 px-4 text-center">
+                      <h3
+                        className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-white tracking-normal leading-tight"
                         style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
                       >
-                        {pathway.description}
-                      </p>
-                      <p
-                        className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
-                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                      >
-                        {pathway.target}
-                      </p>
+                        {pathway.title}
+                      </h3>
                     </div>
 
-                    {/* Yellow Button */}
-                    <div className="mt-6 pt-2">
-                      <span
-                        className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold italic shadow-sm transition-colors"
-                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                      >
-                        {pathway.cta}
-                      </span>
+                    {/* Content Area */}
+                    <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-[#FFFAF3] dark:bg-zinc-900">
+                      <div className="space-y-3">
+                        <p
+                          className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
+                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                        >
+                          {pathway.description}
+                        </p>
+                        <p
+                          className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
+                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                        >
+                          {pathway.target}
+                        </p>
+                      </div>
+
+                      {/* Yellow Button */}
+                      <div className="mt-6 pt-2">
+                        <span
+                          className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold italic shadow-sm transition-colors"
+                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                        >
+                          {pathway.cta}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </CardTextReveal>
                 </Link>
               </StaggerItem>
             ))}
@@ -219,16 +224,20 @@ export default function PathwaysIndexPage() {
             </h2>
           </FadeInUp>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" staggerDelay={0.06}>
-            {pathwayFeatures.map((item) => (
-              <StaggerItem key={item.title}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" staggerDelay={0.22}>
+            {pathwayFeatures.map((item, index) => (
+              <StaggerItem key={item.title} direction="alternate" index={index} hoverLift>
                 <div className="flex items-center gap-3.5 sm:gap-4 p-2 bg-transparent">
-                  <div className="text-[#C00000] shrink-0">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-zinc-900 dark:text-white leading-snug">
-                    {item.title}
-                  </h3>
+                  <CardImageReveal reversed={index % 2 !== 0}>
+                    <div className="text-[#C00000] shrink-0">
+                      {item.icon}
+                    </div>
+                  </CardImageReveal>
+                  <CardTextReveal reversed={index % 2 !== 0} delay={0.15}>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-zinc-900 dark:text-white leading-snug">
+                      {item.title}
+                    </h3>
+                  </CardTextReveal>
                 </div>
               </StaggerItem>
             ))}
@@ -251,30 +260,36 @@ export default function PathwaysIndexPage() {
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
-        <FadeInUp className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-            Ready to Start Your Journey to Germany?
-          </h2>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <FadeInUp>
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+              Ready to Start Your Journey to Germany?
+            </h2>
+          </FadeInUp>
 
-          <p
-            className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: '0em',
-            }}
-          >
-            Get personalized counseling from our experts on admissions, language requirements, APS certification, and visas.
-          </p>
-
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/enquiry"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+          <FadeInUp delay={0.1}>
+            <p
+              className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: '0em',
+              }}
             >
-              Book Free Counseling
-            </Link>
-          </div>
-        </FadeInUp>
+              Get personalized counseling from our experts on admissions, language requirements, APS certification, and visas.
+            </p>
+          </FadeInUp>
+
+          <FadeInUp delay={0.2} className="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <AnimatedButton>
+              <Link
+                href="/enquiry"
+                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all"
+              >
+                Book Free Counseling
+              </Link>
+            </AnimatedButton>
+          </FadeInUp>
+        </div>
       </section>
     </main>
   );

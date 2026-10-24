@@ -38,7 +38,9 @@ export default function GermanCourseHero({
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-black text-white tracking-[0.06em] uppercase drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               {title}
             </h1>
+          </FadeInUp>
 
+          <FadeInUp delay={0.12}>
             {/* Subtitle */}
             <p className="mt-2.5 sm:mt-3 text-sm sm:text-base md:text-lg lg:text-[22px] text-white font-medium italic tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] max-w-3xl mx-auto">
               {subtitle}

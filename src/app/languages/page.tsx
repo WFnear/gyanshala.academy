@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Josefin_Sans } from "next/font/google";
-import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -93,30 +93,34 @@ export default function AllLanguagesPage() {
           </FadeInUp>
 
           {/* Language Cards Grid (Flag Image & Language Name Only) */}
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6" staggerDelay={0.07}>
-            {languagesData.map((lang) => (
-              <StaggerItem key={lang.name} className="h-full">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6" staggerDelay={0.22}>
+            {languagesData.map((lang, index) => (
+              <StaggerItem key={lang.name} className="h-full" direction="alternate" index={index} hoverLift>
                 <Link
                   href={lang.href}
                   className="group flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
                 >
                   {/* Flag Image */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
-                    <Image
-                      src={lang.image}
-                      alt={`${lang.name} Language - Gyanshala Foreign Language Academy`}
-                      fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 300px"
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
+                  <CardImageReveal reversed={index % 2 !== 0}>
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+                      <Image
+                        src={lang.image}
+                        alt={`${lang.name} Language - Gyanshala Foreign Language Academy`}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 300px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </CardImageReveal>
 
                   {/* Language Name Only */}
-                  <div className="p-3.5 sm:p-4 bg-white dark:bg-zinc-900 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-800/80 text-center transition-colors border-t border-zinc-100 dark:border-zinc-800">
-                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-zinc-900 dark:text-white tracking-wide">
-                      {lang.name}
-                    </h3>
-                  </div>
+                  <CardTextReveal reversed={index % 2 !== 0} delay={0.15}>
+                    <div className="p-3.5 sm:p-4 bg-white dark:bg-zinc-900 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-800/80 text-center transition-colors border-t border-zinc-100 dark:border-zinc-800">
+                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-zinc-900 dark:text-white tracking-wide">
+                        {lang.name}
+                      </h3>
+                    </div>
+                  </CardTextReveal>
                 </Link>
               </StaggerItem>
             ))}
@@ -140,30 +144,36 @@ export default function AllLanguagesPage() {
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
-        <FadeInUp className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-            Start Your Language Learning Journey Today
-          </h2>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <FadeInUp>
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+              Start Your Language Learning Journey Today
+            </h2>
+          </FadeInUp>
 
-          <p
-            className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: '0em',
-            }}
-          >
-            Learn German, French, Spanish, or English with certified native & expert trainers at Gyanshala Academy.
-          </p>
-
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/enquiry"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+          <FadeInUp delay={0.1}>
+            <p
+              className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: '0em',
+              }}
             >
-              Book a Free Demo
-            </Link>
-          </div>
-        </FadeInUp>
+              Learn German, French, Spanish, or English with certified native & expert trainers at Gyanshala Academy.
+            </p>
+          </FadeInUp>
+
+          <FadeInUp delay={0.2} className="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <AnimatedButton>
+              <Link
+                href="/enquiry"
+                className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all"
+              >
+                Book a Free Demo
+              </Link>
+            </AnimatedButton>
+          </FadeInUp>
+        </div>
       </section>
     </main>
   );
