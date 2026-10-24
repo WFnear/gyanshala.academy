@@ -45,6 +45,7 @@ export default function Footer() {
     { label: "Experienced Faculty", href: "/#team" },
     { label: "Frequently Asked Questions", href: "/faqs" },
     { label: "Course Enquiry & Demo", href: "/enquiry" },
+    { label: "Find Us on Google Maps", href: "https://maps.google.com/?cid=14451730170732164818" },
     { label: "Terms & Conditions", href: "/terms-and-conditions" },
     { label: "Privacy Policy", href: "/privacy-policy" },
   ];
@@ -116,7 +117,21 @@ export default function Footer() {
             <div className="pt-2 space-y-3 text-sm sm:text-base text-zinc-300">
               <div className="flex items-start gap-3">
                 <span className="text-[#ECBB0C] text-lg sm:text-xl shrink-0">📍</span>
-                <span>Jaipur, Rajasthan, India</span>
+                <div>
+                  <a
+                    href="https://maps.google.com/?cid=14451730170732164818"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#ECBB0C] transition-colors underline-offset-2 hover:underline font-semibold text-white inline-flex items-center gap-1.5"
+                    title="Open Gyanshala Academy on Google Maps"
+                  >
+                    <span>Gyanshala Foreign Language Academy</span>
+                    <svg className="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                  </a>
+                  <p className="text-xs sm:text-sm text-zinc-400">Jaipur, Rajasthan, India</p>
+                </div>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#ECBB0C] text-lg sm:text-xl shrink-0">🎓</span>
@@ -218,17 +233,37 @@ export default function Footer() {
               Navigation
             </h3>
             <ul className="space-y-3 text-sm sm:text-base">
-              {quickLinks.map((q) => (
-                <li key={q.label}>
-                  <Link
-                    href={q.href}
-                    className="text-zinc-200 hover:text-[#ECBB0C] transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="text-[#BC0202] font-black text-lg leading-none transition-transform group-hover:translate-x-1">›</span>
-                    <span className="group-hover:translate-x-0.5 transition-transform">{q.label}</span>
-                  </Link>
-                </li>
-              ))}
+              {quickLinks.map((q) => {
+                const isExternal = q.href.startsWith("http");
+                return (
+                  <li key={q.label}>
+                    {isExternal ? (
+                      <a
+                        href={q.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-200 hover:text-[#ECBB0C] transition-colors flex items-center gap-2 group"
+                      >
+                        <span className="text-[#BC0202] font-black text-lg leading-none transition-transform group-hover:translate-x-1">›</span>
+                        <span className="group-hover:translate-x-0.5 transition-transform flex items-center gap-1.5">
+                          {q.label}
+                          <svg className="w-3 h-3 text-zinc-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                          </svg>
+                        </span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={q.href}
+                        className="text-zinc-200 hover:text-[#ECBB0C] transition-colors flex items-center gap-2 group"
+                      >
+                        <span className="text-[#BC0202] font-black text-lg leading-none transition-transform group-hover:translate-x-1">›</span>
+                        <span className="group-hover:translate-x-0.5 transition-transform">{q.label}</span>
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
 
             <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider pt-3 text-[#ECBB0C]">
@@ -253,6 +288,23 @@ export default function Footer() {
             </ul>
           </div>
 
+        </div>
+
+        {/* Google Maps Embed Section */}
+        <div className="mt-10 sm:mt-12 pt-8 sm:pt-10 border-t border-zinc-800/80">
+          <div className="w-full h-[240px] sm:h-[300px] lg:h-[340px] rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-950">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.4882305359088!2d75.79787511132368!3d26.887996161054378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db7b90c6f5f83%3A0xc88edc05904936d2!2sGyanshala%20Foreign%20Language%20Academy!5e0!3m2!1sen!2sin!4v1792853886790!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Gyanshala Foreign Language Academy Google Map Location"
+              className="w-full h-full"
+            />
+          </div>
         </div>
       </div>
 

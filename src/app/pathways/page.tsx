@@ -89,7 +89,7 @@ const pathwayFeatures = [
 
 export default function PathwaysIndexPage() {
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className={`w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
       {/* =========================================================================
           HERO SECTION
           ========================================================================= */}
@@ -118,7 +118,7 @@ export default function PathwaysIndexPage() {
       {/* =========================================================================
           MAIN GERMANY PATHWAYS SECTION (HOMEPAGE SECTION STYLE)
           ========================================================================= */}
-      <section id="pathways" className="relative py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 overflow-hidden">
+      <section id="pathways" className="relative py-14 sm:py-20 lg:py-24 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
         {/* White Paper Background Texture */}
         <div className="absolute inset-0 z-0 opacity-60 dark:opacity-25 pointer-events-none">
           <Image
@@ -147,7 +147,7 @@ export default function PathwaysIndexPage() {
               <StaggerItem key={pathway.title} className="h-full">
                 <Link
                   href={pathway.href}
-                  className="group flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden rounded-none"
+                  className="group flex flex-col h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden rounded-none"
                 >
                   {/* Image Banner */}
                   <div className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
@@ -171,7 +171,7 @@ export default function PathwaysIndexPage() {
                   </div>
 
                   {/* Content Area */}
-                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white dark:bg-zinc-900">
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-[#FFFAF3] dark:bg-zinc-900">
                     <div className="space-y-3">
                       <p
                         className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
@@ -208,7 +208,7 @@ export default function PathwaysIndexPage() {
       {/* =========================================================================
           KEY ADVANTAGES OF CHOOSING GERMANY
           ========================================================================= */}
-      <section className="py-14 sm:py-20 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800">
+      <section className="py-14 sm:py-20 bg-[#FCF9EA] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
             <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
@@ -269,7 +269,7 @@ export default function PathwaysIndexPage() {
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/enquiry"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-[#BC0202] bg-white hover:bg-zinc-100 shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
             >
               Book Free Counseling
             </Link>

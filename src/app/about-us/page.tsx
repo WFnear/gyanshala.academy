@@ -91,15 +91,60 @@ export default function AboutUsPage() {
   ];
 
   const highlights = [
-    { title: "Expert Language Training", icon: "👨‍🏫" },
-    { title: "Courses from A1 to B2", icon: "📚" },
-    { title: "Practical Communication Skills", icon: "🗣️" },
-    { title: "International Exam Preparation", icon: "📝" },
-    { title: "Flexible Learning Modes", icon: "🕒" },
-    { title: "Interactive Teaching Methods", icon: "💡" },
-    { title: "Personalised Student Support", icon: "🤝" },
-    { title: "Career-Oriented Learning", icon: "🎯" },
-    { title: "Quality Education at Affordable Fees", icon: "💰" },
+    {
+      title: "Exceptional Study Material",
+      description: "Diverse study material to our students for a world class language knowledge.",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#F59E0B] fill-current" viewBox="0 0 24 24">
+          <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 4h2v5l-1-.75L9 9V4zm9 16H6V4h1v7l2-1.5 2 1.5V4h7v16z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Certified Language Trainer",
+      description: "Empowering you to achieve fluency and confidence in your chosen language.",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#F59E0B] fill-current" viewBox="0 0 24 24">
+          <path d="M20.5 9.5l.9-2.2-2.2-.9.2-2.4-2.4-.2-.9-2.2-2.2.9-1.9-1.5-1.9 1.5-2.2-.9-.9 2.2-2.4.2.2 2.4-2.2.9.9 2.2-1.5 1.9 1.5 1.9-.9 2.2 2.2.9-.2 2.4 2.4.2.9 2.2 2.2-.9 1.9 1.5 1.9-1.5 2.2.9.9-2.2 2.4-.2-.2-2.4 2.2-.9-.9-2.2 1.5-1.9z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Study Abroad Counselling",
+      description: "Expert study abroad counseling to guide your journey toward global education opportunities.",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#F59E0B] fill-current" viewBox="0 0 24 24">
+          <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 8.55L4.47 9 12 4.91 19.53 9 12 11.55zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Flexible Hours",
+      description: "Learn from your comfort zone with multiple batch timing options.",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#F59E0B] fill-current" viewBox="0 0 24 24">
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 14.5l-4.2-2.5.7-1.2 3.5 2.1V7h1.5v9.5z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Smart Classrooms",
+      description: "Study with interactive digital setups and advanced modern learning facilities.",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#F59E0B] fill-current" viewBox="0 0 24 24">
+          <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12zm-9-9l-4 3 4 3V8z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Ausbildung in Germany",
+      description: "Complete pathway guidance for vocational training and career opportunities in Germany.",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#F59E0B] fill-current" viewBox="0 0 24 24">
+          <path d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 12c-4.42 0-8 2.24-8 5v2h16v-2c0-2.76-3.58-5-8-5zm1-3.5h-2l-1 4 2 3 2-3-1-4z" />
+        </svg>
+      ),
+    },
   ];
 
   const resources = [
@@ -141,7 +186,7 @@ export default function AboutUsPage() {
   ];
 
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans ${josefin.variable} ${poppins.variable}`}>
+    <main className={`w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans ${josefin.variable} ${poppins.variable}`}>
       
       {/* =========================================================================
           SECTION 1 · ABOUT US HERO
@@ -177,7 +222,7 @@ export default function AboutUsPage() {
       {/* =========================================================================
           CONTINUOUS WHITE PAPER WRAPPER (SECTIONS 2 TO 8 · SEAMLESS, NO DIVIDING LINES)
           ========================================================================= */}
-      <div className="relative bg-white dark:bg-zinc-950 overflow-hidden">
+      <div className="relative bg-[#FCF9EA] dark:bg-zinc-950 overflow-hidden">
         {/* Truly Continuous White Paper Background Texture - Appearance 70% */}
         <div className="absolute inset-0 z-0 opacity-70 dark:opacity-30 pointer-events-none">
           <Image
@@ -325,9 +370,9 @@ export default function AboutUsPage() {
       </div>
 
       {/* =========================================================================
-          SECTION 4 · OUR TEAM / MEMBERS (Pure White Background)
+          SECTION 4 · OUR TEAM / MEMBERS
           ========================================================================= */}
-      <section className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 ${josefin.className}`}>
+      <section className={`py-14 sm:py-20 lg:py-24 bg-[#FBFBFB] dark:bg-zinc-950 ${josefin.className}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               
               <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
@@ -344,59 +389,71 @@ export default function AboutUsPage() {
                 {[
                   {
                     name: "Dilip Sinsinwar",
+                    role: "German Language Trainer",
                     image: "/members/DILIP.SINSINWAR..jpeg",
                   },
                   {
                     name: "Claudia Zibell",
+                    role: "German Language Native Speaker",
                     image: "/members/Claudia.Zibell.jpeg",
                   },
                   {
                     name: "Ashveer Singh",
+                    role: "German Language Trainer",
                     image: "/members/ASHVEER.SINGH.jpeg",
                   },
                   {
                     name: "Ruchi Kaushik",
+                    role: "Spanish Language Trainer",
                     image: "/members/RUCHI.KAUSHIK.jpeg",
                   },
                   {
                     name: "Jhanvi Kumawat",
+                    role: "German Language Trainer",
                     image: "/members/Jhanvi.kumawat.jpeg",
                   },
                   {
-                    name: "Katrina",
+                    name: "Katharina Shevchuk",
+                    role: "English/German & Russian Language Trainer",
                     image: "/members/KATRINA.jpeg",
                   },
                   {
                     name: "Mumal Rathore",
+                    role: "French Language Trainer",
                     image: "/members/Mumal.Rathore.jpeg",
                   },
                   {
                     name: "Neeru Joshi",
+                    role: "German Language Trainer",
                     image: "/members/Neeru.Joshi.jpeg",
                   },
                   {
                     name: "Niharika",
+                    role: "English Language Trainer",
                     image: "/members/NIHARIKA..jpeg",
                   },
                 ].map((member) => (
                   <StaggerItem key={member.name} className="h-full">
                     <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm overflow-hidden flex flex-col hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all group">
                       {/* Faculty Photo */}
-                      <div className="relative aspect-[4/5] bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                      <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
                         <Image
                           src={member.image}
                           alt={member.name}
                           fill
-                          className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                          className="object-cover object-center transition-transform duration-300"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         />
                       </div>
 
-                      {/* Faculty Name */}
-                      <div className="p-2.5 sm:p-3.5 md:p-4 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center">
-                        <h3 className="text-xs sm:text-base lg:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-center">
+                      {/* Faculty Info */}
+                      <div className="p-2.5 sm:p-3.5 md:p-4 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
+                        <h3 className="text-sm sm:text-base lg:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-center">
                           {member.name}
                         </h3>
+                        <p className="mt-1 text-xs sm:text-sm font-semibold text-[#C00000] leading-tight text-center">
+                          {member.role}
+                        </p>
                       </div>
                     </div>
                   </StaggerItem>
@@ -407,39 +464,90 @@ export default function AboutUsPage() {
       </section>
 
       {/* =========================================================================
-          SECTIONS 5 TO 8 · (Pure White Background)
+          SECTIONS 5 TO 8 · (Soft Ivory Background)
           ========================================================================= */}
-      <div className="bg-white dark:bg-zinc-950">
+      <div className="bg-[#FCF9EA] dark:bg-zinc-950">
         {/* =====================================================================
             SECTION 5 · WHY CHOOSE GYANSHALA?
             ===================================================================== */}
-        <section className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 ${josefin.className}`}>
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className={`relative pt-14 sm:pt-20 lg:pt-24 pb-0 lg:pb-24 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+          {/* White Paper Background Texture with 100% Appearance */}
+          <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
+            <Image
+              src="/whitepaper.jpg"
+              alt="Paper background texture"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <FadeInUp className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-2">
+              <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C00000] leading-none mb-2">
                 WHY LEARN WITH US
               </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-black dark:text-white tracking-normal leading-tight">
                 Why Choose Gyanshala?
               </h2>
             </FadeInUp>
 
-            {/* 6 Clean Cardless Feature Items Matching Screenshot */}
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 sm:gap-x-12 sm:gap-y-12 lg:gap-x-14 lg:gap-y-12" staggerDelay={0.06}>
-              {whyChoosePoints.map((point) => (
-                <StaggerItem key={point.number}>
-                  <div className="flex items-center gap-3.5 sm:gap-4">
-                    <div className="shrink-0 text-[#C00000]">
+            {/* 3-Column Symmetrical Layout (Matching Reference Style) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-6 items-center">
+              
+              {/* Left Column (3 items: order-1 on mobile & desktop) */}
+              <div className="order-1 lg:order-1 lg:col-span-4 space-y-8 sm:space-y-10">
+                {whyChoosePoints.slice(0, 3).map((point) => (
+                  <div key={point.number} className="flex items-start gap-4 text-left group">
+                    <div className="shrink-0 text-[#C00000] pt-1 transition-transform duration-300 group-hover:scale-110">
                       {point.icon}
                     </div>
-                    <h3 className="text-base sm:text-lg lg:text-[19px] font-bold text-black dark:text-white leading-snug">
-                      {point.title}
-                    </h3>
+                    <div>
+                      <h3 className="text-base sm:text-lg lg:text-[19px] font-bold text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
+                        {point.title}
+                      </h3>
+                      <p className="mt-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                        {point.description}
+                      </p>
+                    </div>
                   </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+                ))}
+              </div>
+
+              {/* Center Column: Cutout Student Visual (order-3 on mobile, order-2 on desktop) */}
+              <div className="order-3 lg:order-2 lg:col-span-4 flex items-end justify-center self-end lg:self-center pt-4 sm:pt-6 lg:pt-0">
+                <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[360px] aspect-[432/578] flex items-end justify-center">
+                  <Image
+                    src="/whychoose/whychooseus.png"
+                    alt="Why Choose Gyanshala Foreign Language Academy"
+                    fill
+                    className="object-contain object-bottom drop-shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* Right Column (3 items: order-2 on mobile so points 4-6 follow points 1-3, order-3 on desktop) */}
+              <div className="order-2 lg:order-3 lg:col-span-4 space-y-8 sm:space-y-10">
+                {whyChoosePoints.slice(3, 6).map((point) => (
+                  <div key={point.number} className="flex items-start lg:flex-row-reverse gap-4 text-left lg:text-right group">
+                    <div className="shrink-0 text-[#C00000] pt-1 transition-transform duration-300 group-hover:scale-110">
+                      {point.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-base sm:text-lg lg:text-[19px] font-bold text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
+                        {point.title}
+                      </h3>
+                      <p className="mt-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                        {point.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
 
           </div>
         </section>
@@ -447,7 +555,7 @@ export default function AboutUsPage() {
           {/* =====================================================================
               SECTION 6 · HIGHLIGHTS OF GYANSHALA
               ===================================================================== */}
-          <section className={`py-14 sm:py-20 lg:py-24 ${josefin.className}`}>
+          <section className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               
               <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
@@ -459,17 +567,25 @@ export default function AboutUsPage() {
                 </h2>
               </FadeInUp>
 
-              {/* 9 Clean Cardless Grid Highlights */}
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10" staggerDelay={0.05}>
+              {/* Highlights of Gyanshala Card Grid (Matching Reference Design) */}
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.06}>
                 {highlights.map((item, index) => (
-                  <StaggerItem key={index}>
-                    <div className="flex items-center gap-3.5 sm:gap-4">
-                      <span className="text-2xl sm:text-3xl shrink-0">
+                  <StaggerItem key={index} className="h-full">
+                    <div className="h-full p-6 sm:p-8 bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-2xl shadow-xs hover:shadow-xl hover:border-[#F59E0B]/50 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center group">
+                      {/* Yellow/Gold Bordered Icon Container */}
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 border-[#F59E0B] bg-white dark:bg-zinc-800 flex items-center justify-center mb-5 shrink-0 group-hover:scale-110 group-hover:border-[#ECBB0C] group-hover:shadow-md transition-all duration-300">
                         {item.icon}
-                      </span>
-                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-zinc-900 dark:text-white leading-snug">
+                      </div>
+
+                      {/* Highlight Title */}
+                      <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white leading-snug mb-2.5 group-hover:text-[#C00000] transition-colors">
                         {item.title}
                       </h3>
+
+                      {/* Highlight Description */}
+                      <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                        {item.description}
+                      </p>
                     </div>
                   </StaggerItem>
                 ))}
@@ -481,10 +597,9 @@ export default function AboutUsPage() {
           {/* =====================================================================
               SECTION 8 · USEFUL GERMAN LEARNING RESOURCES
               ===================================================================== */}
-          <section className={`py-14 sm:py-20 lg:py-24 ${josefin.className}`}>
+          <section className={`py-12 sm:py-16 overflow-hidden ${josefin.className}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
-              <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+              <FadeInUp className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
                 <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
                   EXTERNAL PORTALS
                 </h3>
@@ -492,39 +607,51 @@ export default function AboutUsPage() {
                   Useful German Learning Resources
                 </h2>
               </FadeInUp>
+            </div>
 
-              {/* 7 Clean Cardless Official Portals with Official Icons */}
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8" staggerDelay={0.05}>
-                {resources.map((res) => (
-                  <StaggerItem key={res.name}>
-                    <a
-                      href={res.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3.5 sm:gap-4 group hover:opacity-80 transition-opacity"
-                    >
-                      <div className="w-10 h-10 sm:w-11 sm:h-11 shrink-0 flex items-center justify-center">
-                        <Image
-                          src={res.icon}
-                          alt={res.name}
-                          width={44}
-                          height={44}
-                          className="object-contain max-h-10 max-w-10 rounded-md"
+            {/* Infinite Looping Marquee Track */}
+            <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] py-4">
+              <div className="animate-marquee flex items-center gap-12 sm:gap-16">
+                {[...resources, ...resources, ...resources, ...resources].map((res, index) => (
+                  <a
+                    key={`${res.name}-${index}`}
+                    href={res.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3.5 sm:gap-4 shrink-0 bg-transparent transition-transform hover:scale-105"
+                  >
+                    {/* Shape-Free, Bigger Logo */}
+                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 shrink-0 flex items-center justify-center">
+                      <Image
+                        src={res.icon}
+                        alt={res.name}
+                        width={80}
+                        height={80}
+                        className="object-contain w-full h-full drop-shadow-xs group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    {/* Name Beside Icon */}
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <span className="text-lg sm:text-xl lg:text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-[#C00000] transition-colors whitespace-nowrap leading-snug">
+                        {res.name}
+                      </span>
+                      <svg
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:text-[#C00000] transition-colors shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                         />
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <h3 className="text-base sm:text-lg lg:text-xl font-bold text-zinc-900 dark:text-white group-hover:text-[#C00000] transition-colors leading-snug">
-                          {res.name}
-                        </h3>
-                        <svg className="w-4 h-4 text-zinc-400 group-hover:text-[#C00000] transition-colors shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                      </div>
-                    </a>
-                  </StaggerItem>
+                      </svg>
+                    </div>
+                  </a>
                 ))}
-              </StaggerContainer>
-
+              </div>
             </div>
           </section>
       </div>
@@ -564,7 +691,7 @@ export default function AboutUsPage() {
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/enquiry"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-[#BC0202] bg-white hover:bg-zinc-100 shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
             >
               Book a Free Demo
             </Link>

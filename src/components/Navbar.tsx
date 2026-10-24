@@ -28,7 +28,7 @@ export default function Navbar() {
   ];
 
   const allLanguages = [
-    { label: "German", href: "/german/a1" },
+    { label: "German", href: "/german" },
     { label: "French", href: "/languages/french" },
     { label: "Spanish", href: "/languages/spanish" },
     { label: "English", href: "/languages/english" },
@@ -62,8 +62,8 @@ export default function Navbar() {
 
             {/* German Courses Dropdown */}
             <div className="relative group">
-              <button
-                type="button"
+              <Link
+                href="/german"
                 className="flex items-center gap-1 px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors cursor-pointer"
               >
                 <span>German Courses</span>
@@ -76,7 +76,7 @@ export default function Navbar() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
-              </button>
+              </Link>
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 min-w-max pt-2 z-50">
                 <div style={{ backgroundColor: "#ffffff" }} className="bg-[#ffffff] rounded-xl shadow-xl border border-gray-100 p-2 min-w-[270px]">
                   {germanCourses.map((item) => (

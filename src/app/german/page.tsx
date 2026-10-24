@@ -50,7 +50,7 @@ const cefrHighlights = [
 
 export default function GermanOverviewPage() {
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className={`w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
       {/* =========================================================================
           HERO SECTION
           ========================================================================= */}
@@ -79,7 +79,7 @@ export default function GermanOverviewPage() {
       {/* =========================================================================
           MAIN GERMAN COURSES SECTION
           ========================================================================= */}
-      <section id="german-courses" className="relative py-14 sm:py-20 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 overflow-hidden">
+      <section id="german-courses" className="relative py-14 sm:py-20 bg-[#FCF9EA] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
         {/* White Paper Background Texture */}
         <div className="absolute inset-0 z-0 opacity-60 dark:opacity-25 pointer-events-none">
           <Image
@@ -108,7 +108,7 @@ export default function GermanOverviewPage() {
               <StaggerItem key={course.id} className="h-full">
                 <Link
                   href={`/german/${course.id}`}
-                  className="group flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                  className="group flex flex-col h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
                 >
                   {/* Top Image Area with Level Badge and Green BG */}
                   <div className="relative w-full aspect-[16/10] sm:aspect-[3/2] flex items-center justify-center overflow-hidden select-none">
@@ -125,8 +125,8 @@ export default function GermanOverviewPage() {
                     </span>
                   </div>
 
-                  {/* Bottom Area with Course Name (White BG + Black Text) */}
-                  <div className="p-3 sm:p-4 bg-white dark:bg-zinc-900 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-800/80 text-left transition-colors border-t border-zinc-100 dark:border-zinc-800">
+                  {/* Bottom Area with Course Name */}
+                  <div className="p-3 sm:p-4 bg-[#FFFAF3] dark:bg-zinc-900 group-hover:bg-[#FCF9EA] dark:group-hover:bg-zinc-800/80 text-left transition-colors border-t border-zinc-200/60 dark:border-zinc-800">
                     <p className="font-semibold text-xs sm:text-sm lg:text-base text-black dark:text-white leading-snug whitespace-nowrap">
                       {course.name}
                     </p>
@@ -142,7 +142,7 @@ export default function GermanOverviewPage() {
       {/* =========================================================================
           CEFR LEVELS FRAMEWORK OVERVIEW
           ========================================================================= */}
-      <section className="relative py-14 sm:py-20 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 overflow-hidden">
+      <section className="relative py-14 sm:py-20 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
         {/* White Paper Background Texture */}
         <div className="absolute inset-0 z-0 opacity-60 dark:opacity-25 pointer-events-none">
           <Image
@@ -166,7 +166,7 @@ export default function GermanOverviewPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.08}>
             {cefrHighlights.map((tier) => (
               <StaggerItem key={tier.level} className="h-full">
-                <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md p-6 sm:p-8 flex flex-col justify-between">
+                <div className="h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md p-6 sm:p-8 flex flex-col justify-between">
                   <div className="space-y-4">
                     <span className="inline-block px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white bg-[#BC0202] rounded-none">
                       {tier.level}
@@ -223,7 +223,7 @@ export default function GermanOverviewPage() {
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/enquiry"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-[#BC0202] bg-white hover:bg-zinc-100 shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-white bg-[#BC0202] hover:bg-[#990202] shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
             >
               Book a Free Demo
             </Link>

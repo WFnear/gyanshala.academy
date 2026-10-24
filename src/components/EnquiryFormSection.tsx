@@ -48,12 +48,12 @@ export default function EnquiryFormSection() {
   };
 
   return (
-    <section className={`relative py-12 sm:py-16 lg:py-20 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 overflow-hidden ${josefin.className}`}>
+    <section className={`relative py-12 sm:py-16 lg:py-20 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden ${josefin.className}`}>
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Enquiry Card (No Image, Clean Centered Form) */}
         <FadeInUp>
-          <div className="w-full max-w-[620px] mx-auto bg-white border border-zinc-200/90 dark:border-zinc-800 shadow-xl overflow-hidden p-6 sm:p-10 text-zinc-900 rounded-none sm:rounded-sm">
+          <div className="w-full max-w-[620px] mx-auto bg-[#FFFAF3] border border-zinc-200/90 dark:border-zinc-800 shadow-xl overflow-hidden p-6 sm:p-10 text-zinc-900 rounded-none sm:rounded-sm">
             {submitted ? (
                 <div className="py-12 sm:py-16 text-center space-y-4">
                   <div className="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center text-green-600">

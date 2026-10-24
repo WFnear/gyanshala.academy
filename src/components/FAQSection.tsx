@@ -459,7 +459,7 @@ export default function FAQSection({
   };
 
   return (
-    <section id="faqs" className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 ${josefin.className}`}>
+    <section id="faqs" className={`py-14 sm:py-20 lg:py-24 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
@@ -484,7 +484,7 @@ export default function FAQSection({
                 placeholder="Search questions by keyword (e.g., fees, Goethe, B2, Ausbildung)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-3 pl-10 text-sm bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 rounded-none focus:outline-none focus:border-[#BC0202] dark:focus:border-[#BC0202] transition-colors"
+                className="w-full px-4 py-3 pl-10 text-sm bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 rounded-none focus:outline-none focus:border-[#BC0202] dark:focus:border-[#BC0202] transition-colors"
               />
               <svg
                 className="absolute left-3.5 top-3.5 w-4 h-4 text-zinc-400 dark:text-zinc-500"
