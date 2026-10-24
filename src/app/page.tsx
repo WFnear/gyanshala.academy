@@ -60,6 +60,119 @@ const slides: Slide[] = [
   },
 ];
 
+const externalResources = [
+  {
+    name: "DAAD",
+    url: "https://www.daad.de/en/",
+    icon: "/partners/daad.png",
+  },
+  {
+    name: "German Radio",
+    url: "https://www.deutschland.fm/",
+    icon: "/partners/german-radio.png",
+  },
+  {
+    name: "Goethe-Institut",
+    url: "https://www.goethe.de/ins/in/en/sta/del.html",
+    icon: "/partners/goethe.png",
+  },
+  {
+    name: "telc Exam",
+    url: "https://deutsch-pruefung.de/",
+    icon: "/partners/telc.png",
+  },
+  {
+    name: "Deutsche Welle (DW)",
+    url: "https://www.dw.com/",
+    icon: "/partners/dw.png",
+  },
+  {
+    name: "Germany in India",
+    url: "https://india.diplo.de/",
+    icon: "/partners/germany-in-india.png",
+  },
+  {
+    name: "Make it in Germany",
+    url: "https://www.make-it-in-germany.com/en/",
+    icon: "/partners/make-it-in-germany.png",
+  },
+];
+
+const whyChoosePoints = [
+  {
+    number: "01",
+    title: "Experienced German Language Trainers",
+    description: "Learn from qualified and dedicated German language experts.",
+    icon: (
+      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#C00000]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+      </svg>
+    ),
+  },
+  {
+    number: "02",
+    title: "German Courses from A1 to C2",
+    description: "Progress step by step from beginner to advanced proficiency.",
+    icon: (
+      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#C00000]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      </svg>
+    ),
+  },
+  {
+    number: "03",
+    title: "Spoken German & Exam Preparation",
+    description: "Develop practical communication skills and prepare for recognised examinations.",
+    icon: (
+      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#C00000]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v5.018z" />
+      </svg>
+    ),
+  },
+  {
+    number: "04",
+    title: "Flexible Batch Timings",
+    description: "Choose a batch that fits your daily schedule.",
+    icon: (
+      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#C00000]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
+    number: "05",
+    title: "Affordable German Classes in Jaipur",
+    description: "Quality German language training at reasonable fees.",
+    icon: (
+      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#C00000]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 0a1.5 1.5 0 00-1.5 1.5v8.25a1.5 1.5 0 001.5 1.5m16.5-11.25a1.5 1.5 0 011.5 1.5v8.25a1.5 1.5 0 01-1.5 1.5m-16.5 0h16.5m-18 3h19.5a.75.75 0 00.75-.75v-.75H1.5v.75a.75.75 0 00.75.75z" />
+      </svg>
+    ),
+  },
+  {
+    number: "06",
+    title: "Online and Offline Classes",
+    description: "Learn through online sessions or in-person classroom training.",
+    icon: (
+      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#C00000]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3" />
+      </svg>
+    ),
+  },
+];
+
+const highlights = [
+  { title: "Expert Language Training", icon: "👨‍🏫" },
+  { title: "Courses from A1 to B2", icon: "📚" },
+  { title: "Practical Communication Skills", icon: "🗣️" },
+  { title: "International Exam Preparation", icon: "📝" },
+  { title: "Flexible Learning Modes", icon: "🕒" },
+  { title: "Interactive Teaching Methods", icon: "💡" },
+  { title: "Personalised Student Support", icon: "🤝" },
+  { title: "Career-Oriented Learning", icon: "🎯" },
+  { title: "Quality Education at Affordable Fees", icon: "💰" },
+];
+
 export default function Home() {
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef<number | null>(null);
@@ -581,6 +694,116 @@ export default function Home() {
             ))}
           </StaggerContainer>
 
+        </div>
+      </section>
+
+      {/* Why Choose Gyanshala Section */}
+      <section id="why-choose-us" className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 ${josefin.className}`}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-2">
+              WHY LEARN WITH US
+            </h3>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              Why Choose Gyanshala?
+            </h2>
+          </FadeInUp>
+
+          {/* 6 Clean Cardless Feature Items Matching Screenshot */}
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 sm:gap-x-12 sm:gap-y-12 lg:gap-x-14 lg:gap-y-12" staggerDelay={0.06}>
+            {whyChoosePoints.map((point) => (
+              <StaggerItem key={point.number}>
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="shrink-0 text-[#C00000]">
+                    {point.icon}
+                  </div>
+                  <h3 className="text-base sm:text-lg lg:text-[19px] font-bold text-black dark:text-white leading-snug">
+                    {point.title}
+                  </h3>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+        </div>
+      </section>
+
+      {/* Highlights of Gyanshala Section */}
+      <section id="highlights" className={`py-14 sm:py-20 lg:py-24 bg-zinc-50/70 dark:bg-zinc-900/40 border-b border-zinc-100 dark:border-zinc-800 ${josefin.className}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              KEY FEATURES
+            </h3>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              Highlights of Gyanshala
+            </h2>
+          </FadeInUp>
+
+          {/* 9 Responsive Card Grid Highlights */}
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" staggerDelay={0.05}>
+            {highlights.map((item, index) => (
+              <StaggerItem key={index} className="h-full">
+                <div className="h-full p-4 sm:p-5 bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-xs hover:shadow-md hover:border-[#C00000]/40 transition-all flex items-center gap-3.5 sm:gap-4 group">
+                  <span className="text-2xl sm:text-3xl shrink-0 p-2 sm:p-2.5 bg-zinc-50 dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 rounded-none group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </span>
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
+                    {item.title}
+                  </h3>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+        </div>
+      </section>
+
+      {/* External Portals / Useful German Learning Resources Section */}
+      <section id="external-portals" className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 ${josefin.className}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              EXTERNAL PORTALS
+            </h3>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              Useful German Learning Resources
+            </h2>
+          </FadeInUp>
+
+          {/* 7 Clean Official Portals with Official Icons */}
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6" staggerDelay={0.05}>
+            {externalResources.map((res) => (
+              <StaggerItem key={res.name} className="h-full">
+                <a
+                  href={res.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-md hover:border-[#C00000]/40 transition-all group h-full"
+                >
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center bg-white dark:bg-zinc-800 p-1.5 border border-zinc-100 dark:border-zinc-700">
+                    <Image
+                      src={res.icon}
+                      alt={res.name}
+                      width={44}
+                      height={44}
+                      className="object-contain max-h-10 max-w-10"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between flex-1 gap-2">
+                    <h3 className="text-base sm:text-lg lg:text-[19px] font-bold text-zinc-900 dark:text-white group-hover:text-[#C00000] transition-colors leading-snug">
+                      {res.name}
+                    </h3>
+                    <svg className="w-4 h-4 text-zinc-400 group-hover:text-[#C00000] transition-colors shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                  </div>
+                </a>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 

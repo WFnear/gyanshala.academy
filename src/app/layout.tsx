@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { EnquiryModalProvider } from "@/context/EnquiryModalContext";
 import EnquiryModal from "@/components/EnquiryModal";
 
@@ -24,7 +25,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className={`${raleway.className} min-h-full flex flex-col`}>
         <EnquiryModalProvider>
           <Navbar />
-          {children}
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
           <EnquiryModal />
         </EnquiryModalProvider>
       </body>

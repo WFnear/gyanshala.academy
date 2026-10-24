@@ -589,7 +589,7 @@ export default function FAQSection({
         {/* Bottom CTA Block with Background Image (Hidden on Homepage) */}
         {(showBottomCTA ?? !isHomepage) && (
           <div className="relative mt-12 sm:mt-16 overflow-hidden rounded-none border border-zinc-300 dark:border-zinc-800 shadow-xl">
-            {/* Background Image */}
+            {/* Background Image: 100% Appearance, No Black Shadow */}
             <Image
               src="/StillHaveQuestions.jpg"
               alt="Still Have Questions - Gyanshala Foreign Language Academy"
@@ -598,22 +598,19 @@ export default function FAQSection({
               sizes="(max-width: 1024px) 100vw, 1024px"
             />
 
-            {/* Dark Contrast Overlay for clear readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/80 to-black/70 sm:to-black/60 z-[1]" />
-
             {/* Content */}
             <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="max-w-2xl text-white">
                 <span className="inline-block px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest bg-[#BC0202] text-white rounded-none">
                   Still Have Questions?
                 </span>
-                <h3 className="mt-2.5 text-lg sm:text-2xl font-bold text-white tracking-tight drop-shadow-sm">
+                <h3 className="mt-2.5 text-lg sm:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   Start Your German Language Journey with Gyanshala Foreign Language Academy!
                 </h3>
-                <p className="mt-2.5 text-xs sm:text-sm text-zinc-200 leading-relaxed">
+                <p className="mt-2.5 text-xs sm:text-sm text-white font-medium leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
                   Whether you are a beginner or an advanced learner, our German language courses are designed to help you strengthen your language skills and work towards your academic, professional, and personal goals.
                 </p>
-                <p className="mt-2 text-xs font-semibold text-zinc-300">
+                <p className="mt-2 text-xs font-bold text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
                   Learn German. Build Confidence. Explore Global Opportunities.
                 </p>
               </div>

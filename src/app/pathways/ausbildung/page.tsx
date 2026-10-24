@@ -1,24 +1,71 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FadeInUp } from "@/components/ScrollReveal";
+import { Josefin_Sans } from "next/font/google";
+import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+
+const josefin = Josefin_Sans({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-josefin",
+});
 
 export const metadata: Metadata = {
-  title: "Ausbildung in Germany – Earn While You Learn | Gyanshala Academy",
+  title: "Ausbildung in Germany – Dual Vocational Training | Gyanshala Academy",
   description:
-    "Complete guide to Dual Vocational Training (Ausbildung) in Germany for Indian students: Class 12 eligibility, monthly stipends (€724–€1,014+), German language levels (B1/B2), popular professions, visa process, and career opportunities.",
+    "Earn while you learn in Germany through Dual Ausbildung: 2–3.5 years duration, Class 12 eligibility, monthly allowances (€724–€1,014+ gross in 2026), B1/B2 German requirement, and 18-month job seeker permit.",
 };
 
 export default function AusbildungPage() {
+  const applicationSteps = [
+    {
+      step: "01",
+      title: "Choose a profession",
+      desc: "Select a suitable vocational career and check the employer’s eligibility criteria.",
+    },
+    {
+      step: "02",
+      title: "Build your German",
+      desc: "Prepare to B1 or B2 as required for the occupation and interview.",
+    },
+    {
+      step: "03",
+      title: "Prepare documents",
+      desc: "Gather passport, academic certificates, language evidence, CV and motivation letter.",
+    },
+    {
+      step: "04",
+      title: "Apply & interview",
+      desc: "Apply to German employers or training schools and complete selection interviews.",
+    },
+    {
+      step: "05",
+      title: "Secure a contract",
+      desc: "Receive the Ausbildung training agreement or applicable school admission evidence.",
+    },
+    {
+      step: "06",
+      title: "Apply for the visa",
+      desc: "Submit the required contract, financial evidence, insurance and other documents.",
+    },
+    {
+      step: "07",
+      title: "Travel & start training",
+      desc: "Complete visa and arrival formalities, then begin your programme.",
+    },
+  ];
+
   return (
-    <main className="w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
+    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
       
       {/* =========================================================================
           HERO SECTION (SAME DESIGN AS ABOUT US)
           ========================================================================= */}
       <section className="relative min-h-[220px] sm:min-h-[260px] md:min-h-[300px] lg:min-h-[340px] flex flex-col items-center justify-center overflow-hidden py-14 sm:py-16 md:py-20 text-white text-center bg-zinc-950">
         <Image
-          src="/Pathways/ausbildung.png"
+          src="/Hero/hero3.jpg"
           alt="Ausbildung in Germany - Gyanshala Foreign Language Academy"
           fill
           priority
@@ -32,563 +79,457 @@ export default function AusbildungPage() {
               AUSBILDUNG IN GERMANY
             </h1>
             <p className="mt-2.5 sm:mt-3 text-sm sm:text-base md:text-lg lg:text-[22px] text-white font-medium italic tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] max-w-3xl mx-auto">
-              Earn While You Learn • Start Your Professional Career in Germany with Paid Vocational Training
+              Earn while you learn • Build a skilled career in Germany
             </p>
           </FadeInUp>
         </div>
       </section>
 
       {/* =========================================================================
-          MAIN ARTICLE CONTENT
+          CONTINUOUS WHITE PAPER WRAPPER (ABOUT US STYLE)
           ========================================================================= */}
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-zinc-700 dark:text-zinc-300 leading-relaxed text-sm sm:text-base space-y-12 sm:space-y-16">
+      <div className="relative bg-white dark:bg-zinc-950 overflow-hidden">
+        {/* Truly Continuous White Paper Background Texture - Appearance 70% */}
+        <div className="absolute inset-0 z-0 opacity-70 dark:opacity-30 pointer-events-none">
+          <Image
+            src="/whitepaper.jpg"
+            alt="Paper background texture"
+            fill
+            className="object-cover object-top contrast-[1.12] brightness-[0.96]"
+            priority
+          />
+        </div>
 
-        {/* 1. Introduction Banner */}
-        <section className="space-y-4">
-          <div className="border-l-4 border-[#BC0202] pl-4 sm:pl-6 space-y-2">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BC0202]">
-              Vocational Career Pathway
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-              Start Your Professional Career in Germany with Paid Vocational Training!
-            </h2>
-          </div>
-          <p className="text-base sm:text-lg font-medium text-zinc-800 dark:text-zinc-200">
-            Completed Your 12th? Explore Career Opportunities in Germany Through Ausbildung!
-          </p>
-          <p>
-            Germany offers an excellent opportunity for international students to gain practical professional qualifications through its internationally respected vocational training system, known as <strong>Ausbildung</strong>.
-          </p>
-          <p>
-            Ausbildung combines practical workplace training with theoretical education, helping students develop industry-relevant skills while working towards a recognised German vocational qualification.
-          </p>
-          <p>
-            In many dual Ausbildung programmes, students receive a monthly training allowance from their German employer, allowing them to earn money while developing valuable professional experience.
-          </p>
-          <p>
-            At <strong>Gyanshala Foreign Language Academy, Jaipur</strong>, we help aspiring students build the German language skills and communication confidence needed to prepare for Ausbildung opportunities in Germany.
-          </p>
-          <div className="p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-none text-center font-bold text-zinc-900 dark:text-white tracking-wide">
-            Learn German. Develop Professional Skills. Build Your Future in Germany.
-          </div>
-        </section>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 space-y-16 sm:space-y-20">
 
-        {/* 2. What is Ausbildung */}
-        <section className="space-y-5 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">System Overview</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              What is Ausbildung in Germany?
-            </h2>
-          </div>
-          <p>
-            Ausbildung is Germany&apos;s structured vocational education and training system. It prepares students for skilled professions through a combination of classroom education and practical industry training.
-          </p>
-          <p>
-            The most common form, known as <strong>Duale Ausbildung (Dual Vocational Training)</strong>, allows students to learn professional skills while receiving hands-on training with a German employer.
-          </p>
-          
-          <div className="space-y-3">
-            <p className="font-semibold text-zinc-900 dark:text-white">
-              During the programme, students generally divide their training between:
-            </p>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#BC0202] mt-2 shrink-0" />
-                <span>
-                  <strong className="text-zinc-900 dark:text-white">Practical Training:</strong> Working with a German company or organisation to develop professional skills.
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#BC0202] mt-2 shrink-0" />
-                <span>
-                  <strong className="text-zinc-900 dark:text-white">Theoretical Education:</strong> Attending a vocational school (<em>Berufsschule</em>) to learn the academic and technical knowledge required for the profession.
-                </span>
-              </li>
-            </ul>
-          </div>
-          <p>
-            Most Ausbildung programmes last approximately <strong>2 to 3.5 years</strong>, depending on the selected occupation. After completing the required training and successfully passing the examinations, students receive a recognised vocational qualification in their chosen profession.
-          </p>
-
-          {/* Programme Highlights Box */}
-          <div className="p-5 sm:p-6 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-3">
-            <h3 className="font-bold text-zinc-900 dark:text-white text-base sm:text-lg">
-              Ausbildung in Germany – Programme Highlights
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm">
-              <div><strong>Destination:</strong> Germany 🇩🇪</div>
-              <div><strong>Programme Type:</strong> Vocational Education &amp; Training</div>
-              <div><strong>Training Duration:</strong> Generally 2–3.5 years</div>
-              <div><strong>Education:</strong> Class 12 or equivalent qualification</div>
-              <div><strong>German Language:</strong> Usually B1 or higher (B2 for some)</div>
-              <div><strong>Training Allowance:</strong> Paid in dual vocational training</div>
-              <div><strong>Work Experience:</strong> Practical training with German employer</div>
-              <div><strong>Qualification:</strong> Recognised German vocational qualification</div>
-              <div><strong>Career Opportunities:</strong> Potential employment &amp; growth</div>
-              <div><strong>Visa:</strong> German national vocational visa required</div>
-            </div>
-          </div>
-        </section>
-
-        {/* 3. Types of Ausbildung */}
-        <section className="space-y-6 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Training Formats</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              Types of Ausbildung in Germany
-            </h2>
-          </div>
-
-          <div className="space-y-5">
-            <div className="p-5 sm:p-6 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-3">
-              <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
-                1. Dual Ausbildung (Duale Berufsausbildung)
+          {/* SECTION 1: OVERVIEW */}
+          <FadeInUp className="space-y-6">
+            <div>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                VOCATIONAL PATHWAY
               </h3>
-              <p>
-                Dual Ausbildung is the most common vocational training system in Germany. Students gain practical experience with an employer while attending a vocational school.
-              </p>
-              <p className="font-semibold text-zinc-900 dark:text-white text-xs sm:text-sm">Main Features:</p>
-              <ul className="space-y-1.5 text-xs sm:text-sm pl-2">
-                {[
-                  "Combination of practical and theoretical learning",
-                  "Monthly training allowance paid by the employer",
-                  "Structured professional training",
-                  "Industry-recognised qualifications",
-                  "Opportunities for employment after successful completion",
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#BC0202] shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 pt-1">
-                Dual Ausbildung programmes are available in fields such as engineering trades, hospitality, logistics, retail, and various technical professions.
-              </p>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Dual Vocational Training in Germany
+              </h2>
             </div>
 
-            <div className="p-5 sm:p-6 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-3">
-              <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
-                2. School-Based Ausbildung (Schulische Ausbildung)
+            <h4 className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-[#C00000] leading-snug">
+              Earn While You Learn • Practical Skills &amp; Recognised Qualification
+            </h4>
+
+            <div
+              className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium tracking-normal"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: "0em",
+              }}
+            >
+              <p>
+                Ausbildung is Germany&apos;s vocational training pathway. It combines practical training with an employer and classroom learning at a vocational school. Many dual programmes pay a monthly training allowance and lead to a recognised professional qualification.
+              </p>
+            </div>
+          </FadeInUp>
+
+          {/* SECTION 2: AT A GLANCE */}
+          <section className="space-y-6">
+            <FadeInUp>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                SUMMARY
               </h3>
-              <p>
-                School-based Ausbildung primarily takes place at specialised vocational schools, sometimes with practical training periods in companies or institutions.
-              </p>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
-                Unlike dual vocational training, school-based programmes do not always provide a monthly allowance. Some private schools may also charge tuition fees. Certain healthcare training programmes follow different funding and remuneration arrangements. Students should verify the programme structure, fees, training allowance, and qualification recognition before applying.
-              </p>
-            </div>
-          </div>
-        </section>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                At a Glance
+              </h2>
+            </FadeInUp>
 
-        {/* 4. Popular Ausbildung Courses */}
-        <section className="space-y-5 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Popular Careers</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              Popular Ausbildung Courses in Germany
-            </h2>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              Germany offers hundreds of recognised vocational training occupations across different professional sectors.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              {
-                title: "Nursing and Healthcare",
-                role: "Pflegefachfrau / Pflegefachmann",
-                desc: "Prepares students for professional nursing responsibilities in hospitals, healthcare facilities, and care homes. 3-year duration combining theory with supervised clinical practice.",
-              },
-              {
-                title: "Hotel Management and Hospitality",
-                role: "Hotelfachmann / Hotelfachfrau",
-                desc: "Prepares students for dynamic careers in international hotels, restaurants, guest services, culinary operations, and hospitality management.",
-              },
-              {
-                title: "Information Technology (IT)",
-                role: "Fachinformatiker / Fachinformatikerin",
-                desc: "Develops hands-on expertise in software application development, system integration, cybersecurity, network administration, and IT infrastructure.",
-              },
-              {
-                title: "Mechatronics and Electronics",
-                role: "Mechatroniker / Elektroniker",
-                desc: "Technical training covering complex mechanical assemblies, electrical equipment, industrial automated machinery, and modern maintenance.",
-              },
-              {
-                title: "Logistics and Warehouse Management",
-                role: "Fachkraft für Lagerlogistik",
-                desc: "Focuses on global inventory management, freight routing, modern warehouse operations, digitised dispatch, and supply chain processes.",
-              },
-              {
-                title: "Retail and Sales",
-                role: "Kaufmann / Kauffrau im Einzelhandel",
-                desc: "Teaches professional customer relations, brand retail merchandising, inventory accounting, stock control, and commercial sales management.",
-              },
-              {
-                title: "Culinary Arts & Professional Cooking",
-                role: "Koch / Köchin",
-                desc: "Comprehensive culinary vocational training covering kitchen brigade operations, international food preparation, nutrition, and hygiene standards.",
-              },
-              {
-                title: "Automotive Technology",
-                role: "Kfz-Mechatroniker",
-                desc: "Hands-on diagnostic and repair training in vehicle electronics, hybrid/electric powertrains, engine mechanics, and automotive engineering.",
-              },
-            ].map((course, idx) => (
-              <div key={idx} className="p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-1.5">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-sm sm:text-base">
-                  {course.title}
-                </h3>
-                <p className="text-[11px] font-semibold text-[#BC0202]">
-                  {course.role}
-                </p>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400">
-                  {course.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
-            * Programme availability, qualifications, language requirements, and training allowances vary by employer, profession, and location.
-          </p>
-        </section>
-
-        {/* 5. Eligibility Criteria */}
-        <section className="space-y-5 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Requirements</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              Eligibility Criteria for Ausbildung in Germany
-            </h2>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              Indian students interested in Ausbildung must satisfy the requirements of the selected employer, vocational school, and relevant German authorities.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <div className="border-l-2 border-zinc-300 dark:border-zinc-700 pl-4 space-y-1">
-              <h3 className="font-bold text-zinc-900 dark:text-white">Educational Qualification</h3>
-              <p className="text-xs sm:text-sm">
-                Students who have completed <strong>Class 12</strong> may apply for suitable Ausbildung opportunities. Some vocational training programmes may also be accessible with other qualifying school-leaving certificates, subject to employer requirements and educational recognition rules.
-              </p>
-            </div>
-
-            <div className="border-l-2 border-zinc-300 dark:border-zinc-700 pl-4 space-y-1">
-              <h3 className="font-bold text-zinc-900 dark:text-white">German Language Proficiency</h3>
-              <p className="text-xs sm:text-sm">
-                German language proficiency is one of the most important requirements for Ausbildung:
-              </p>
-              <ul className="text-xs sm:text-sm space-y-1 pt-1">
-                <li><strong>A1–A2:</strong> Foundation levels for learning German</li>
-                <li><strong>B1:</strong> Common minimum expectation for many Ausbildung programmes</li>
-                <li><strong>B2:</strong> Often preferred or required for programmes involving more advanced communication, particularly healthcare/nursing</li>
-              </ul>
-            </div>
-
-            <div className="border-l-2 border-zinc-300 dark:border-zinc-700 pl-4 space-y-1">
-              <h3 className="font-bold text-zinc-900 dark:text-white">Age Requirements</h3>
-              <p className="text-xs sm:text-sm">
-                There is no single general maximum age that applies to every Ausbildung contract. However, certain visa categories have specific age limits (for example, the visa to seek an Ausbildung place in Germany requires applicants to be under 35).
-              </p>
-            </div>
-
-            <div className="border-l-2 border-zinc-300 dark:border-zinc-700 pl-4 space-y-1">
-              <h3 className="font-bold text-zinc-900 dark:text-white">Other Essential Documents</h3>
-              <p className="text-xs sm:text-sm">
-                Valid passport, Class 10 &amp; 12 certificates, German language certificates, German-format professional CV &amp; motivation letter, confirmed training contract (<em>Ausbildungsvertrag</em>), proof of health insurance, and financial evidence.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 6. Ausbildung Salary / Allowance Table */}
-        <section className="space-y-6 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Earn While You Learn</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              Ausbildung Salary in Germany – Monthly Allowances
-            </h2>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              One of the major advantages of dual Ausbildung is the opportunity to receive a monthly training allowance. The allowance increases each training year as your professional skills develop.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto border border-zinc-200 dark:border-zinc-800">
-            <table className="w-full text-left text-xs sm:text-sm">
-              <thead className="bg-zinc-100 dark:bg-zinc-800/80 text-zinc-900 dark:text-white font-bold">
-                <tr>
-                  <th className="p-3 sm:p-3.5 border-b border-zinc-200 dark:border-zinc-700">Training Year</th>
-                  <th className="p-3 sm:p-3.5 border-b border-zinc-200 dark:border-zinc-700">Statutory Minimum Monthly Allowance (2026)</th>
-                  <th className="p-3 sm:p-3.5 border-b border-zinc-200 dark:border-zinc-700">Notes</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
-                {[
-                  { year: "First Year", allowance: "€724 Gross / month", notes: "Minimum legal rate for arrangements starting in 2026" },
-                  { year: "Second Year", allowance: "€854 Gross / month", notes: "18% statutory increment" },
-                  { year: "Third Year", allowance: "€977 Gross / month", notes: "35% statutory increment over year 1" },
-                  { year: "Fourth Year", allowance: "€1,014 Gross / month", notes: "Applicable for 3.5-year technical programmes" },
-                ].map((row, idx) => (
-                  <tr key={idx} className="hover:bg-zinc-50 dark:hover:bg-zinc-900/50">
-                    <td className="p-3 sm:p-3.5 font-bold text-zinc-900 dark:text-white">{row.year}</td>
-                    <td className="p-3 sm:p-3.5 font-bold text-[#BC0202]">{row.allowance}</td>
-                    <td className="p-3 sm:p-3.5 text-zinc-500 dark:text-zinc-400">{row.notes}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
-            * These amounts are gross minimum statutory allowances for covered training arrangements starting in 2026. Many professions (especially Nursing, IT, and Automotive) offer significantly higher collective agreement allowances (often €1,000–€1,300+ per month). A training allowance does not automatically guarantee that a student satisfies financial requirements for a visa; additional proof of funds may be necessary if living costs exceed the net allowance.
-          </p>
-        </section>
-
-        {/* 7. Language Training at Gyanshala */}
-        <section className="space-y-5 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Language Preparation</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              German Language Training for Ausbildung at Gyanshala
-            </h2>
-            <p className="mt-2 text-zinc-800 dark:text-zinc-200 font-semibold">
-              Your German Language Journey Starts Here!
-            </p>
-            <p className="mt-1 text-zinc-600 dark:text-zinc-400">
-              Strong German communication skills help students prepare for Ausbildung interviews, vocational school lessons, workplace responsibilities, and everyday life in Germany. At Gyanshala Foreign Language Academy, students develop their German language skills progressively through structured CEFR-based training:
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            {[
-              { level: "A1 – Beginner", desc: "Learn everyday expressions, pronunciation, vocabulary, and basic German communication." },
-              { level: "A2 – Elementary", desc: "Develop conversational skills, strengthen grammar, and communicate in familiar situations." },
-              { level: "B1 – Intermediate", desc: "Build independent communication skills, express opinions, and prepare for common Ausbildung language expectations." },
-              { level: "B2 – Upper-Intermediate", desc: "Improve professional communication, listening comprehension, advanced grammar, and confidence for programmes requiring higher language levels." },
-            ].map((course, idx) => (
-              <div key={idx} className="p-3.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-sm">{course.level}</h3>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">{course.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-2 pt-2">
-            <h3 className="font-bold text-zinc-900 dark:text-white">Our Language Training Emphasises:</h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {[
-                "German speaking and pronunciation",
-                "Grammar and vocabulary development",
-                "Listening and reading comprehension",
-                "Writing and email communication",
-                "Everyday conversation practice",
-                "Goethe examination-oriented preparation",
-                "German communication for interviews and professional situations",
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#BC0202] shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* 8. Step-by-Step Application Roadmap */}
-        <section className="space-y-6 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Application Roadmap</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              Step-by-Step Process to Apply for Ausbildung in Germany
-            </h2>
-          </div>
-
-          <div className="space-y-3.5">
-            {[
-              { step: "Step 1", title: "Choose Your Career Field", desc: "Select a vocational training profession based on your educational background, interests, skills, and career goals." },
-              { step: "Step 2", title: "Learn German", desc: "Develop German language proficiency, usually to B1 or B2 level depending on the training programme and employer requirements." },
-              { step: "Step 3", title: "Prepare Your Documents", desc: "Prepare your passport, educational certificates, German language evidence, professional German-format CV, and motivation letter." },
-              { step: "Step 4", title: "Apply for Ausbildung Positions", desc: "Search for suitable vacancies and submit applications directly to German employers or accredited training institutions." },
-              { step: "Step 5", title: "Attend Interviews", desc: "Shortlisted candidates are invited to online interviews, assessments, or language evaluations with prospective employers." },
-              { step: "Step 6", title: "Receive a Training Contract", desc: "Successful candidates receive a signed training agreement (Ausbildungsvertrag) registered with the competent chamber (IHK/HWK)." },
-              { step: "Step 7", title: "Apply for the German Visa", desc: "Apply through the official German visa process with the German Missions in India, submitting your contract, language proof, and insurance." },
-              { step: "Step 8", title: "Travel to Germany and Begin Training", desc: "After receiving your visa, complete travel arrangements, city registration (Anmeldung), and begin your paid vocational training programme." },
-            ].map((s, idx) => (
-              <div key={idx} className="p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex gap-4 items-start">
-                <span className="px-2.5 py-1 bg-[#BC0202] text-white text-xs font-bold shrink-0">
-                  {s.step}
-                </span>
-                <div>
-                  <h3 className="font-bold text-zinc-900 dark:text-white text-sm sm:text-base">
-                    {s.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                    {s.desc}
+                { label: "Duration", val: "Usually 2–3.5 years" },
+                { label: "Eligibility", val: "Class 12 / Accepted Qualification" },
+                { label: "German Language", val: "Usually B1; B2 for some roles" },
+                { label: "Training Format", val: "Workplace + Vocational School" },
+                { label: "Pay", val: "Monthly Allowance in Dual Training" },
+                { label: "Visa", val: "Appropriate German National Visa" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className="p-5 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800 shadow-sm"
+                >
+                  <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C00000]">
+                    {stat.label}
+                  </p>
+                  <p className="text-base sm:text-lg lg:text-xl font-bold text-black dark:text-white mt-1">
+                    {stat.val}
                   </p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 9. Career Opportunities After Ausbildung */}
-        <section className="space-y-4 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Future Growth</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              Career Opportunities After Completing Ausbildung
-            </h2>
-          </div>
-          <p>
-            Successfully completing Ausbildung can create opportunities for professional employment and further career development in Germany.
-          </p>
-          <div className="p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-2">
-            <p className="font-bold text-zinc-900 dark:text-white">Graduates may:</p>
-            <ul className="space-y-1.5 text-xs sm:text-sm">
-              {[
-                "Apply for qualified employment in their trained profession",
-                "Seek opportunities with their training employer or other companies in Germany",
-                "Pursue advanced professional qualifications (Master Craftsman / Meister or Fachwirt)",
-                "Undertake further specialised vocational education",
-                "Explore higher education pathways where eligible",
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#BC0202] shrink-0" />
-                  <span>{item}</span>
-                </li>
               ))}
-            </ul>
-          </div>
-          <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
-            Eligible non-EU graduates may apply for a residence permit to seek qualified employment for <strong>up to 18 months</strong> after completing vocational training. Long-term employment, residence, or permanent settlement is subject to applicable immigration rules and individual eligibility.
-          </p>
-        </section>
+            </div>
+          </section>
 
-        {/* 10. Why Choose Gyanshala */}
-        <section className="space-y-4 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Gyanshala Advantage</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              Why Choose Gyanshala Foreign Language Academy?
-            </h2>
-            <p className="mt-1 text-zinc-800 dark:text-zinc-200 font-semibold">
-              Build Your German Language Foundation for Germany
-            </p>
-          </div>
-          <p>
-            At Gyanshala Foreign Language Academy, we believe that strong language skills are essential for successful communication in international education and professional environments. Our German language programmes are designed to help students develop practical language abilities through structured lessons, grammar practice, vocabulary exercises, and communication-based learning.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
-            {[
-              "Structured German language training from beginner to advanced levels",
-              "Emphasis on real-life speaking and listening",
-              "German grammar and vocabulary development",
-              "Goethe examination-oriented preparation",
-              "Communication skills relevant to education and work",
-              "Guidance in identifying appropriate language learning goals",
-              "Progressive preparation for German-speaking environments",
-            ].map((pt, idx) => (
-              <div key={idx} className="p-2.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#BC0202] shrink-0" />
-                <span>{pt}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+          {/* SECTION 3: TWO MAIN TRAINING FORMATS */}
+          <section className="space-y-6">
+            <FadeInUp>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                TRAINING STRUCTURE
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Two Main Training Formats
+              </h2>
+            </FadeInUp>
 
-        {/* 11. Frequently Asked Questions */}
-        <section className="space-y-6 border-t border-zinc-100 dark:border-zinc-800 pt-10">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#BC0202]">Common Inquiries</p>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-zinc-900 dark:text-white mt-1">
-              Frequently Asked Questions About Ausbildung in Germany
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              {
-                q: "1. Can I apply for Ausbildung after completing Class 12 in India?",
-                a: "Yes. Indian students who have completed Class 12 can apply for suitable Ausbildung programmes, provided they meet the educational, language, and employer-specific requirements.",
-              },
-              {
-                q: "2. Is Ausbildung free in Germany?",
-                a: "Many dual Ausbildung programmes do not charge tuition fees and instead provide a training allowance. However, applicants may still need to pay for language learning, documentation, visa fees, travel, accommodation, and other expenses. School-based programmes may have different fee structures.",
-              },
-              {
-                q: "3. Is German B1 sufficient for Ausbildung?",
-                a: "B1 is commonly required for many programmes. However, individual employers and professions may require B2 or another level.",
-              },
-              {
-                q: "4. Is IELTS mandatory for Ausbildung in Germany?",
-                a: "IELTS is not generally a standard requirement for German-language Ausbildung. German language proficiency is usually more relevant, but applicants must follow the requirements of their chosen programme.",
-              },
-              {
-                q: "5. Can I receive a salary during Ausbildung?",
-                a: "Students in dual vocational training receive a training allowance from their employer. The amount depends on their occupation and training contract.",
-              },
-              {
-                q: "6. Can I work in Germany after completing Ausbildung?",
-                a: "Yes, successful graduates may seek qualified employment, subject to obtaining the appropriate residence permission and fulfilling any professional requirements.",
-              },
-              {
-                q: "7. Can I settle permanently in Germany after Ausbildung?",
-                a: "Ausbildung may contribute towards a longer-term career and residence pathway, but permanent residence is not automatic. Applicants must meet the applicable immigration requirements.",
-              },
-              {
-                q: "8. Does Gyanshala guarantee Ausbildung admission or a German visa?",
-                a: "No. Employer selection, training contracts, examination outcomes, and visa decisions are handled by the relevant organisations and German authorities. German language training does not guarantee admission, placement, or visa approval.",
-              },
-            ].map((faq, idx) => (
-              <div key={idx} className="p-4 sm:p-5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-2">
-                <h3 className="font-bold text-zinc-900 dark:text-white text-sm sm:text-base">
-                  {faq.q}
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  {faq.a}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-2">
+                <h4 className="text-xl font-bold text-black dark:text-white flex items-center gap-2">
+                  <span className="text-[#C00000] font-bold select-none">•</span>
+                  <span>Dual Ausbildung</span>
+                </h4>
+                <p
+                  className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.55] italic font-medium"
+                  style={{
+                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                    letterSpacing: "0em",
+                  }}
+                >
+                  Practical work with an employer plus vocational school; typically includes a monthly training allowance.
                 </p>
               </div>
-            ))}
-          </div>
-        </section>
 
-        {/* 12. CTA Section */}
-        <section className="p-6 sm:p-8 bg-[#BC0202] text-white space-y-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Start Your Ausbildung Journey with Gyanshala!
+              <div className="p-6 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-2">
+                <h4 className="text-xl font-bold text-black dark:text-white flex items-center gap-2">
+                  <span className="text-[#C00000] font-bold select-none">•</span>
+                  <span>School-based Ausbildung</span>
+                </h4>
+                <p
+                  className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.55] italic font-medium"
+                  style={{
+                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                    letterSpacing: "0em",
+                  }}
+                >
+                  Primarily taught at a vocational school with practical placements; payment and tuition rules vary.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION 4: WHO CAN APPLY? */}
+          <section className="space-y-6">
+            <FadeInUp>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                CANDIDATE CRITERIA
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Who Can Apply?
+              </h2>
+            </FadeInUp>
+
+            <div
+              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-3 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: "0em",
+              }}
+            >
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#C00000] font-bold select-none">•</span>
+                  <span>Indian applicants with Class 12 or another accepted school qualification, subject to employer and programme criteria.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#C00000] font-bold select-none">•</span>
+                  <span>German language proficiency: B1 is common; B2 may be preferred or required, particularly in healthcare.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#C00000] font-bold select-none">•</span>
+                  <span>Valid passport, education records, language proof, CV, motivation letter and, for the direct visa route, a training contract.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-[#C00000] font-bold select-none">•</span>
+                  <span>Visa applicants may need health insurance and financial evidence. There is no universal maximum age for all Ausbildung contracts; the separate visa to seek a training place requires applicants to be under 35.</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          {/* SECTION 5: POPULAR CAREER FIELDS */}
+          <section className="space-y-6">
+            <FadeInUp>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                SECTORS &amp; OCCUPATIONS
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Popular Career Fields
+              </h2>
+            </FadeInUp>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+              {[
+                "Nursing & healthcare",
+                "Hospitality & hotel services",
+                "IT",
+                "Mechatronics & electronics",
+                "Logistics",
+                "Retail & sales",
+                "Culinary arts",
+                "Automotive technology",
+              ].map((field, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800 shadow-sm text-center font-bold text-sm sm:text-base text-zinc-900 dark:text-zinc-100"
+                >
+                  {field}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* SECTION 6: MONTHLY TRAINING ALLOWANCE — 2026 */}
+          <section className="space-y-6">
+            <FadeInUp>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                REMUNERATION
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Monthly Training Allowance — 2026
+              </h2>
+              <p
+                className="mt-2 text-zinc-800 dark:text-zinc-200 text-base sm:text-lg lg:text-[20px] leading-[1.55] italic font-medium"
+                style={{
+                  fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                  letterSpacing: "0em",
+                }}
+              >
+                Statutory gross minimums for covered dual-training contracts starting in 2026:
+              </p>
+            </FadeInUp>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+              {[
+                { year: "Year 1", amt: "€724" },
+                { year: "Year 2", amt: "€854" },
+                { year: "Year 3", amt: "€977" },
+                { year: "Year 4", amt: "€1,014" },
+              ].map((row, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800 shadow-sm"
+                >
+                  <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-zinc-500">
+                    {row.year}
+                  </p>
+                  <p className="text-2xl sm:text-3xl font-black text-[#C00000] mt-1">
+                    {row.amt}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p
+              className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.55] italic font-medium"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: "0em",
+              }}
+            >
+              Actual allowances vary by occupation, employer, training year and contract; school-based programmes may follow different rules. The allowance may not fully meet visa financial requirements.
+            </p>
+          </section>
+
+          {/* SECTION 7: YOUR PATHWAY TO GERMANY — HOW TO APPLY */}
+          <section className="space-y-8">
+            <FadeInUp>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                ROADMAP
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Your Pathway to Germany — How to Apply
+              </h2>
+            </FadeInUp>
+
+            <div className="space-y-3.5">
+              {applicationSteps.map((s, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 sm:p-5 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800 shadow-sm flex items-start gap-4"
+                >
+                  <span className="px-3 py-1 bg-[#C00000] text-white text-sm font-bold shrink-0">
+                    {s.step}
+                  </span>
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold text-black dark:text-white">
+                      {s.title}
+                    </h4>
+                    <p
+                      className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[19px] leading-[1.5] italic font-medium mt-0.5"
+                      style={{
+                        fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                        letterSpacing: "0em",
+                      }}
+                    >
+                      {s.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* SECTION 8: COSTS AND CAREER OPPORTUNITIES */}
+          <section className="space-y-6">
+            <FadeInUp>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                FINANCIALS &amp; FUTURE
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Costs &amp; Career Opportunities
+              </h2>
+            </FadeInUp>
+
+            <div
+              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: "0em",
+              }}
+            >
+              <p>
+                Many dual programmes have no tuition fee and provide a training allowance. Students may still need to cover German lessons, application documents, visa, travel, housing and living expenses; some school-based programmes charge tuition.
+              </p>
+              <p>
+                After successfully finishing Ausbildung, graduates may seek qualified work, further training or specialisation. Eligible non-EU graduates may apply for a residence permit to look for qualified work for up to 18 months. Employment and permanent residence are not automatic.
+              </p>
+            </div>
+          </section>
+
+          {/* SECTION 9: GERMAN PREPARATION WITH GYANSHALA */}
+          <FadeInUp className="space-y-4">
+            <div>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                LANGUAGE EXCELLENCE
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                German Preparation with Gyanshala
+              </h2>
+            </div>
+
+            <div
+              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium"
+              style={{
+                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                letterSpacing: "0em",
+              }}
+            >
+              <p>
+                Gyanshala Foreign Language Academy, Jaipur offers structured German training, from A1 foundations and A2 conversation through B1 independent communication and B2 professional language. Lessons focus on speaking, grammar, listening, reading, writing, Goethe exam-oriented preparation and interview communication.
+              </p>
+            </div>
+          </FadeInUp>
+
+          {/* SECTION 10: QUICK ANSWERS */}
+          <section className="space-y-6">
+            <FadeInUp>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                FAQ
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Quick Answers
+              </h2>
+            </FadeInUp>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Is IELTS required?",
+                  a: "Not generally for German-language Ausbildung; programme-specific rules apply.",
+                },
+                {
+                  q: "Is the programme always paid?",
+                  a: "Dual training normally pays an allowance; school-based arrangements vary.",
+                },
+                {
+                  q: "Is a job or visa guaranteed?",
+                  a: "No. Employers, training providers and German authorities make the relevant decisions.",
+                },
+              ].map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 sm:p-6 bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-1.5"
+                >
+                  <h4 className="text-lg sm:text-xl font-bold text-black dark:text-white">
+                    {faq.q}
+                  </h4>
+                  <p
+                    className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] italic font-medium"
+                    style={{
+                      fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                      letterSpacing: "0em",
+                    }}
+                  >
+                    {faq.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* SECTION 11: DISCLAIMER */}
+          <footer
+            className="p-5 sm:p-6 bg-zinc-100/90 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1.5 italic font-medium"
+            style={{
+              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+              letterSpacing: "0em",
+            }}
+          >
+            <p className="font-bold uppercase tracking-widest text-zinc-800 dark:text-zinc-200 not-italic">
+              Important Notice
+            </p>
+            <p>
+              Gyanshala provides German language training and related guidance. Ausbildung placement, training stipends, visas and immigration outcomes are not guaranteed. Requirements and fees may change; confirm details with the employer and official German authorities before applying or paying.
+            </p>
+          </footer>
+
+        </div>
+      </div>
+
+      {/* =========================================================================
+          FINAL CTA (EXACT SAME DESIGN AS ABOUT US)
+          ========================================================================= */}
+      <section className="relative py-16 sm:py-20 lg:py-24 text-white overflow-hidden bg-zinc-950">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/Germany.jpg"
+            alt="German Language Training"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/45" />
+        </div>
+
+        <FadeInUp className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+            Start Your German Learning Journey Today
           </h2>
-          <p className="text-sm sm:text-base text-white/90 max-w-2xl mx-auto">
-            Learn German Today. Prepare for Professional Opportunities in Germany Tomorrow! Are you ready to explore vocational training opportunities in Germany? Develop the language skills you need to communicate with confidence.
+
+          <p
+            className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            style={{
+              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+              letterSpacing: "0em",
+            }}
+          >
+            Start Your German Language Journey with Gyanshala Foreign Language Academy, Jaipur. Enquire about A1–B2 courses.
           </p>
-          <div className="pt-2">
+
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/enquiry"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#ECBB0C] hover:bg-[#d9ab0b] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl text-base font-bold text-[#BC0202] bg-white hover:bg-zinc-100 shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              Enquire About German Courses (A1 to B2) →
+              Book a Free Demo
             </Link>
           </div>
-          <p className="text-xs text-white/80 pt-2">
-            Gyanshala Foreign Language Academy • Jaipur, Rajasthan, India
-          </p>
-        </section>
-
-        {/* 13. Important Disclaimer */}
-        <footer className="p-4 sm:p-5 bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 space-y-2">
-          <p className="font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
-            Important Disclaimer
-          </p>
-          <p>
-            Gyanshala Foreign Language Academy provides German language education and related guidance. Training placements, employer contracts, stipend amounts, programme eligibility, and visa approvals depend on third-party decisions and applicable German requirements.
-          </p>
-          <p>
-            All fees for optional educational or advisory services, where applicable, should be explained separately and transparently. No training position, salary, visa approval, or immigration outcome is guaranteed.
-          </p>
-        </footer>
-
-      </article>
+        </FadeInUp>
+      </section>
 
     </main>
   );

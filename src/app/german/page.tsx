@@ -56,7 +56,7 @@ export default function GermanOverviewPage() {
           ========================================================================= */}
       <section className="relative min-h-[220px] sm:min-h-[260px] md:min-h-[300px] lg:min-h-[340px] flex flex-col items-center justify-center overflow-hidden py-14 sm:py-16 md:py-20 text-white text-center bg-zinc-950">
         <Image
-          src="/Hero/GermanHero1.jpg"
+          src="/Hero/hero3.jpg"
           alt="German Courses - Gyanshala Foreign Language Academy"
           fill
           priority

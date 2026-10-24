@@ -11,7 +11,7 @@ export default function EnglishPage() {
     <GermanCourseHero
       title="ENGLISH LANGUAGE"
       subtitle="Spoken English, Business Communication & IELTS / TOEFL Preparation"
-      image="/Hero/GermanHero3.jpg"
+      image="/Hero/hero3.jpg"
     />
   );
 }

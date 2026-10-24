@@ -12,7 +12,7 @@ interface GermanCourseHeroProps {
 export default function GermanCourseHero({
   title,
   subtitle,
-  image = "/Hero/IMG_20250806_134431127_HDR.jpg",
+  image = "/Hero/hero3.jpg",
 }: GermanCourseHeroProps) {
   return (
     <main className="w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">

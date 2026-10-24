@@ -11,7 +11,7 @@ export default function SpanishPage() {
     <GermanCourseHero
       title="SPANISH LANGUAGE"
       subtitle="Interactive Spanish Language Training • DELE & SIELE Preparation"
-      image="/Hero/GermanHero2.jpg"
+      image="/Hero/hero3.jpg"
     />
   );
 }

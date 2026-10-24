@@ -74,7 +74,7 @@ export default function AboutUsPage() {
       description: "Quality German language training at reasonable fees.",
       icon: (
         <svg className="w-8 h-8 text-[#C00000]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6H2.25m0 0v10.5m0-10.5h19.5m0 0v10.5m-19.5 0h19.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 0a1.5 1.5 0 00-1.5 1.5v8.25a1.5 1.5 0 001.5 1.5m16.5-11.25a1.5 1.5 0 011.5 1.5v8.25a1.5 1.5 0 01-1.5 1.5m-16.5 0h16.5m-18 3h19.5a.75.75 0 00.75-.75v-.75H1.5v.75a.75.75 0 00.75.75z" />
         </svg>
       ),
     },
@@ -414,35 +414,35 @@ export default function AboutUsPage() {
             SECTION 5 · WHY CHOOSE GYANSHALA?
             ===================================================================== */}
         <section className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 ${josefin.className}`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
-              <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-                <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
-                  WHY LEARN WITH US
-                </h3>
-                <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
-                  Why Choose Gyanshala?
-                </h2>
-              </FadeInUp>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <FadeInUp className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-2">
+                WHY LEARN WITH US
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                Why Choose Gyanshala?
+              </h2>
+            </FadeInUp>
 
-              {/* 6 Clean Items: Icon + Title Only */}
-              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10" staggerDelay={0.06}>
-                {whyChoosePoints.map((point) => (
-                  <StaggerItem key={point.number}>
-                    <div className="flex items-center gap-3.5 sm:gap-4">
-                      <div className="text-[#C00000] shrink-0">
-                        {point.icon}
-                      </div>
-                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-zinc-900 dark:text-white leading-snug">
-                        {point.title}
-                      </h3>
+            {/* 6 Clean Cardless Feature Items Matching Screenshot */}
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 sm:gap-x-12 sm:gap-y-12 lg:gap-x-14 lg:gap-y-12" staggerDelay={0.06}>
+              {whyChoosePoints.map((point) => (
+                <StaggerItem key={point.number}>
+                  <div className="flex items-center gap-3.5 sm:gap-4">
+                    <div className="shrink-0 text-[#C00000]">
+                      {point.icon}
                     </div>
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
+                    <h3 className="text-base sm:text-lg lg:text-[19px] font-bold text-black dark:text-white leading-snug">
+                      {point.title}
+                    </h3>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
 
-            </div>
-          </section>
+          </div>
+        </section>
 
           {/* =====================================================================
               SECTION 6 · HIGHLIGHTS OF GYANSHALA

@@ -11,7 +11,7 @@ export default function FrenchPage() {
     <GermanCourseHero
       title="FRENCH LANGUAGE"
       subtitle="Comprehensive French Language Training • DELF & DALF Preparation"
-      image="/Hero/GermanHero1.jpg"
+      image="/Hero/hero3.jpg"
     />
   );
 }
