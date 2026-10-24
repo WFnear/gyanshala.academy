@@ -272,28 +272,28 @@ const onlineVideos: OnlineVideo[] = [
 const studentReviews = [
   {
     name: "Karan Pareek",
-    image: "/Review/KaranPareek.jpeg",
+    image: "/Review/KaranPareek.png",
     rating: 5,
     review:
       "I had a wonderful experience learning German at “Gyanshala Foreign Language Academy”. The classes were well-structured, engaging, and easy to understand. Special thanks to Dillip Sir for his guidance, patience, and constant support. I truly appreciate his efforts and highly recommend this institute to anyone learning German.",
   },
   {
     name: "Anjali Choudhary",
-    image: "/Review/Anjali.Choudhary.jpeg",
+    image: "/Review/AnjaliChoudhary.png",
     rating: 5,
     review:
       "Seit einem Jahr lerne ich Deutsch und glücklicherweise habe ich meine B1 Prüfung bestanden🏆🏆 . Zurzeit lerne ich B2 Kurs...Ich sammle hier viele Erfahrungen und das Umfeld des Unterrichts ist auch aüßerst einwandfrei und die Lehrer sind auch sehr hilfreich und unterstüztend uns beim Problem...Ich empfehle allen das Gyanshala institute zu beitreten",
   },
   {
     name: "Jhanvi Kumawat",
-    image: "/Review/Jhanvi.Kumawat.jpeg",
+    image: "/Review/JhanviKumawat.png",
     rating: 5,
     review:
       "The German classes here are very interactive and practical. I like how the teachers focus on speaking from day one, instead of just theory. The sessions are fun, and I always feel motivated to practice more at home. It’s a perfect institute for beginners who want to learn German seriously.",
   },
   {
     name: "Richa Singh",
-    image: "/Review/Richa.singh.jpeg",
+    image: "/Review/RichaSingh.png",
     rating: 5,
     review:
       "I recently finished my German classes here and I have to say, the faculty is amazing. They really know their stuff and have a deep and thorough Knowledge of the German language. Instead of just making you memorize a textbook, they actually break down tricky grammar and sentence structures so it's easier to grasp the concepts. The teachers are super supportive and patient whenever you get stuck. They are incredible and respond whenever you need help. Definitely recommend.",
@@ -1108,22 +1108,24 @@ export default function Home() {
             {studentReviews.map((item, idx) => (
               <StaggerItem key={idx} className="h-full" direction="alternate" index={idx} hoverLift>
                 <div className="h-full bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-zinc-200/90 dark:border-zinc-800 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col group">
-                  {/* Cropped Student Photo on Top */}
+                  {/* Student Photo on Top */}
                   <CardImageReveal reversed={idx % 2 !== 0}>
-                    <div className="relative aspect-[4/3] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                    <div
+                      className="relative aspect-[490/370] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden"
+                      style={{ aspectRatio: "490 / 370" }}
+                    >
                       <Image
                         src={item.image}
                         alt={item.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                        style={{ objectPosition: "center 40%" }}
+                        className="object-cover transition-transform duration-500 ease-out"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     </div>
                   </CardImageReveal>
 
                   {/* White Card with Black Text Below Photo */}
-                  <CardTextReveal reversed={idx % 2 !== 0} delay={0.15} className="flex-1 flex flex-col justify-between p-6 sm:p-7 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800">
+                  <CardTextReveal reversed={idx % 2 !== 0} delay={0.15} className="flex-1 flex flex-col justify-between p-5 sm:p-7 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800">
                     <div>
                       {/* 5 Stars */}
                       <div className="flex items-center gap-1 text-[#ECBB0C] mb-3">
