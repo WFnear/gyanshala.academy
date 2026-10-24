@@ -4,7 +4,16 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { Josefin_Sans } from "next/font/google";
 import { FadeInUp } from "@/components/ScrollReveal";
+
+const josefin = Josefin_Sans({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-josefin",
+});
 
 interface FAQItem {
   id: number;
@@ -21,6 +30,7 @@ interface FAQSectionProps {
   limit?: number;
   showFilters?: boolean;
   showHeading?: boolean;
+  showBottomCTA?: boolean;
 }
 
 const CATEGORIES = [
@@ -353,6 +363,7 @@ export default function FAQSection({
   limit,
   showFilters = true,
   showHeading = true,
+  showBottomCTA,
 }: FAQSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [openIds, setOpenIds] = useState<number[]>([1]); // First FAQ open by default
@@ -391,7 +402,7 @@ export default function FAQSection({
     return (
       <div
         key={faq.id}
-        className="border-b border-zinc-200 dark:border-zinc-800 transition-colors"
+        className="border-b border-zinc-200/80 dark:border-zinc-800 transition-colors"
       >
         {/* Minimalist Question Row */}
         <button
@@ -400,12 +411,12 @@ export default function FAQSection({
           className="w-full text-left py-4 sm:py-5 flex items-start justify-between gap-4 group focus:outline-none cursor-pointer"
           aria-expanded={isOpen}
         >
-          <span className="text-sm sm:text-base font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-[#BC0202] transition-colors leading-snug">
+          <span className="text-base sm:text-[17px] lg:text-lg font-normal text-zinc-900 dark:text-zinc-100 group-hover:text-[#C00000] dark:group-hover:text-white transition-colors leading-snug">
             {faq.question}
           </span>
 
           {/* Plus / Minus Indicator */}
-          <span className="flex-shrink-0 text-xl font-light text-zinc-400 dark:text-zinc-500 group-hover:text-[#BC0202] transition-colors select-none w-6 h-6 flex items-center justify-center">
+          <span className="flex-shrink-0 text-xl font-light text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors select-none w-6 h-6 flex items-center justify-center">
             {isOpen ? "—" : "+"}
           </span>
         </button>
@@ -420,7 +431,7 @@ export default function FAQSection({
               transition={{ duration: 0.2 }}
               className="overflow-hidden"
             >
-              <div className="pb-5 pt-1 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed space-y-2.5">
+              <div className="pb-5 pt-1 text-sm sm:text-[15px] md:text-base text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed space-y-3">
                 {faq.answers.map((paragraph, idx) => (
                   <p key={idx}>{paragraph}</p>
                 ))}
@@ -448,21 +459,18 @@ export default function FAQSection({
   };
 
   return (
-    <section id="faqs" className="py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faqs" className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 ${josefin.className}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         {showHeading && (
-          <FadeInUp className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#BC0202]">
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
               FREQUENTLY ASKED QUESTIONS
-            </p>
-            <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-              Frequently Asked Questions (FAQs)
+            </h3>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              FAQ
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-              Your Questions Answered – Start Your German Language Learning Journey with Confidence! 🇩🇪
-            </p>
           </FadeInUp>
         )}
 
@@ -578,46 +586,48 @@ export default function FAQSection({
           </div>
         )}
 
-        {/* Bottom CTA Block with Background Image */}
-        <div className="relative mt-12 sm:mt-16 overflow-hidden rounded-none border border-zinc-300 dark:border-zinc-800 shadow-xl">
-          {/* Background Image */}
-          <Image
-            src="/StillHaveQuestions.jpg"
-            alt="Still Have Questions - Gyanshala Foreign Language Academy"
-            fill
-            className="object-cover object-center z-0"
-            sizes="(max-width: 1024px) 100vw, 1024px"
-          />
+        {/* Bottom CTA Block with Background Image (Hidden on Homepage) */}
+        {(showBottomCTA ?? !isHomepage) && (
+          <div className="relative mt-12 sm:mt-16 overflow-hidden rounded-none border border-zinc-300 dark:border-zinc-800 shadow-xl">
+            {/* Background Image */}
+            <Image
+              src="/StillHaveQuestions.jpg"
+              alt="Still Have Questions - Gyanshala Foreign Language Academy"
+              fill
+              className="object-cover object-center z-0"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
 
-          {/* Dark Contrast Overlay for clear readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/80 to-black/70 sm:to-black/60 z-[1]" />
+            {/* Dark Contrast Overlay for clear readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/80 to-black/70 sm:to-black/60 z-[1]" />
 
-          {/* Content */}
-          <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="max-w-2xl text-white">
-              <span className="inline-block px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest bg-[#BC0202] text-white rounded-none">
-                Still Have Questions?
-              </span>
-              <h3 className="mt-2.5 text-lg sm:text-2xl font-bold text-white tracking-tight drop-shadow-sm">
-                Start Your German Language Journey with Gyanshala Foreign Language Academy!
-              </h3>
-              <p className="mt-2.5 text-xs sm:text-sm text-zinc-200 leading-relaxed">
-                Whether you are a beginner or an advanced learner, our German language courses are designed to help you strengthen your language skills and work towards your academic, professional, and personal goals.
-              </p>
-              <p className="mt-2 text-xs font-semibold text-zinc-300">
-                Learn German. Build Confidence. Explore Global Opportunities.
-              </p>
-            </div>
-            <div className="flex-shrink-0 w-full sm:w-auto">
-              <Link
-                href="/enquiry"
-                className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 bg-[#ECBB0C] hover:bg-[#d9ab0b] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-none shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-              >
-                ENQUIRE NOW & GET FREE COUNSELING →
-              </Link>
+            {/* Content */}
+            <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="max-w-2xl text-white">
+                <span className="inline-block px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest bg-[#BC0202] text-white rounded-none">
+                  Still Have Questions?
+                </span>
+                <h3 className="mt-2.5 text-lg sm:text-2xl font-bold text-white tracking-tight drop-shadow-sm">
+                  Start Your German Language Journey with Gyanshala Foreign Language Academy!
+                </h3>
+                <p className="mt-2.5 text-xs sm:text-sm text-zinc-200 leading-relaxed">
+                  Whether you are a beginner or an advanced learner, our German language courses are designed to help you strengthen your language skills and work towards your academic, professional, and personal goals.
+                </p>
+                <p className="mt-2 text-xs font-semibold text-zinc-300">
+                  Learn German. Build Confidence. Explore Global Opportunities.
+                </p>
+              </div>
+              <div className="flex-shrink-0 w-full sm:w-auto">
+                <Link
+                  href="/enquiry"
+                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 bg-[#ECBB0C] hover:bg-[#d9ab0b] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-none shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  ENQUIRE NOW & GET FREE COUNSELING →
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
       </div>
     </section>

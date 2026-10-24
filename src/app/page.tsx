@@ -4,8 +4,17 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Josefin_Sans } from "next/font/google";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import FAQSection from "@/components/FAQSection";
+
+const josefin = Josefin_Sans({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-josefin",
+});
 
 interface Slide {
   id: number;
@@ -45,7 +54,7 @@ const slides: Slide[] = [
     badge: "🌍 Global Language Programs",
     title: "Learn Beyond German",
     highlight: "Master Global Languages",
-    description: "Along with our premier German courses, discover leading foreign languages with certified faculty to unlock worldwide academic and career opportunities.",
+    description: "",
     primaryBtn: { text: "View All Languages", href: "/languages" },
     secondaryBtn: { text: "Free Counseling", href: "/enquiry" },
   },
@@ -227,60 +236,80 @@ export default function Home() {
 
       </section>
 
-      {/* About Us Gyanshala Section */}
-      <section id="about" className="relative py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-[#FFFDF5] via-[#FFF9E5] to-[#FFF2CE] dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 overflow-hidden border-b border-amber-200/40 dark:border-zinc-800">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      {/* About Us Gyanshala Section - Matching About Us Page Typography & Design */}
+      <section id="about" className={`relative py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 overflow-hidden border-b border-zinc-100 dark:border-zinc-800 ${josefin.className}`}>
+        {/* White Paper Background Texture with 70% Opacity */}
+        <div className="absolute inset-0 z-0 opacity-70 dark:opacity-30 pointer-events-none">
+          <Image
+            src="/whitepaper.jpg"
+            alt="Paper background texture"
+            fill
+            className="object-cover object-center contrast-[1.12] brightness-[0.96]"
+            priority
+          />
+        </div>
 
-            {/* Left Column: Centered Text Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+            {/* Left Column: Text Content matching About Us page */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-7 flex flex-col items-center text-center px-2 sm:px-6"
+              className="lg:col-span-7"
             >
-              {/* Small Red Label */}
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#BC0202] mb-2 sm:mb-3">
-                ABOUT GYANSHALA
-              </p>
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                OUR STORY
+              </h3>
 
-              {/* Serif Elegant Headline */}
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] font-bold text-zinc-900 dark:text-white tracking-tight leading-[1.18] max-w-lg">
-                Your Trusted Partner in German Language Learning
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight mb-4">
+                Our Journey Since 2018
               </h2>
 
-              {/* Description */}
-              <p className="mt-4 text-xs sm:text-[14px] text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-xl mx-auto">
-                Gyanshala Foreign Language Academy was established in 2018 with a vision to help learners build strong German language skills and explore global opportunities. With structured courses, experienced trainers, and personalised guidance, we support students at every step of their German learning journey.
-              </p>
+              <div
+                className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] xl:text-[22px] leading-[1.55] italic font-medium tracking-normal"
+                style={{
+                  fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
+                  letterSpacing: '0em',
+                }}
+              >
+                <p>
+                  Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.
+                </p>
 
-              {/* Golden Pill Button: View More */}
+                <p>
+                  Gyanshala works to connect learners with international educational opportunities and offers language learning, consultation, and student guidance services. The academy aims to help students choose programmes suited to their interests and career goals, while encouraging them to become confident global citizens rooted in their traditions and ready to face the world.
+                </p>
+              </div>
+
+              {/* View More Button */}
               <div className="mt-6 sm:mt-8">
                 <Link
                   href="/about-us"
-                  className="inline-flex items-center justify-center px-8 sm:px-10 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold text-white bg-[#F6C42F] hover:bg-[#e5b320] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="inline-flex items-center justify-center px-8 sm:px-10 py-3 rounded-xl text-base font-bold text-white bg-[#C00000] hover:bg-[#a00000] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  View More
+                  View More →
                 </Link>
               </div>
             </motion.div>
 
-            {/* Right Column: About Us Image with Rounded Corners */}
+            {/* Right Column: About Us Image with No Radius */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-              className="lg:col-span-5 relative mt-6 lg:mt-0 flex items-center justify-center"
+              className="lg:col-span-5 flex justify-center lg:justify-end"
             >
-              <div className="w-full max-w-[540px] aspect-[16/10] sm:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl relative border border-amber-200/50 dark:border-amber-900/30">
+              <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-none overflow-hidden shadow-lg border border-zinc-200/60 dark:border-zinc-800">
                 <Image
                   src="/aboutus.png"
                   alt="Gyanshala Foreign Language Academy - Your Trusted Partner in German Language Training"
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 540px"
+                  sizes="(max-width: 1024px) 100vw, 500px"
+                  className="object-cover object-center"
                   priority
                 />
               </div>
@@ -291,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* German Courses Section */}
-      <section id="german-courses" className="relative py-12 sm:py-16 overflow-hidden">
+      <section id="german-courses" className={`relative py-12 sm:py-16 overflow-hidden ${josefin.className}`}>
         {/* Background Image */}
         <div className="absolute inset-0 -z-10">
           <Image
@@ -307,13 +336,13 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Section Header */}
-          <FadeInUp className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#ECBB0C] leading-none mb-1">
+              LANGUAGE TRAINING
+            </h3>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-normal leading-tight">
               German Courses
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-white/90">
-              Comprehensive CEFR-aligned training from A1 to C2 levels.
-            </p>
           </FadeInUp>
 
           {/* Course Cards Grid */}
@@ -331,31 +360,24 @@ export default function Home() {
                   href={`/german/${course.id}`}
                   className="group flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
                 >
-                  {/* Top Marble Area with Level Badge */}
-                  <div
-                    className="relative w-full aspect-[16/10] sm:aspect-[3/2] flex items-center justify-center overflow-hidden select-none"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 35% 30%, #fbf3ea 0%, #ecd4be 42%, #e0bd9c 75%, #cfab84 100%)",
-                    }}
-                  >
-                    {/* Subtle marble texture veins */}
-                    <div
-                      className="absolute inset-0 opacity-40 mix-blend-multiply pointer-events-none"
-                      style={{
-                        backgroundImage: `radial-gradient(circle at 18% 25%, rgba(255,255,255,0.7) 0%, transparent 45%),
-                                          radial-gradient(circle at 82% 75%, rgba(168,118,74,0.35) 0%, transparent 55%),
-                                          radial-gradient(circle at 50% 85%, rgba(200,150,110,0.4) 0%, transparent 40%)`,
-                      }}
+                  {/* Top Image Area with Level Badge */}
+                  <div className="relative w-full aspect-[16/10] sm:aspect-[3/2] flex items-center justify-center overflow-hidden select-none">
+                    <Image
+                      src="/greenbg.jpg"
+                      alt={course.badge}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 380px"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
-                    <span className="relative z-10 text-2xl sm:text-4xl lg:text-5xl font-black text-black tracking-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.32)]">
+                    <div className="absolute inset-0 bg-black/15 group-hover:bg-black/10 transition-colors pointer-events-none" />
+                    <span className="relative z-10 text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.65)]">
                       {course.badge}
                     </span>
                   </div>
 
-                  {/* Bottom Red Area with Course Name */}
-                  <div className="p-3 sm:p-4 bg-[#BC0202] group-hover:bg-[#9e0202] text-left transition-colors">
-                    <p className="font-semibold text-xs sm:text-sm lg:text-base text-white leading-snug whitespace-nowrap">
+                  {/* Bottom Area with Course Name */}
+                  <div className="p-3 sm:p-4 bg-white dark:bg-zinc-900 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-800/80 text-left transition-colors border-t border-zinc-100 dark:border-zinc-800">
+                    <p className="font-semibold text-xs sm:text-sm lg:text-base text-black dark:text-white leading-snug whitespace-nowrap">
                       {course.name}
                     </p>
                   </div>
@@ -368,26 +390,33 @@ export default function Home() {
       </section>
 
       {/* Germany Pathways Section */}
-      <section id="pathways" className="relative py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="pathways" className={`relative py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 overflow-hidden ${josefin.className}`}>
+        {/* White Paper Background Texture */}
+        <div className="absolute inset-0 z-0 opacity-60 dark:opacity-25 pointer-events-none">
+          <Image
+            src="/whitepaper.jpg"
+            alt="Paper background texture"
+            fill
+            className="object-cover object-center contrast-[1.12] brightness-[0.96]"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <FadeInUp className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#BC0202]">
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
               GLOBAL OPPORTUNITIES
-            </p>
-            <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+            </h3>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
               Germany Pathways
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-              Explore your pathway to world-class education, paid dual vocational training, and rewarding careers in Germany.
-            </p>
           </FadeInUp>
 
           {/* 3 Pathway Cards Grid */}
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.08}>
             {[
               {
-                title: "Study in Germany",
+                title: "Study In Germany",
                 description:
                   "Pursue a Bachelor's or Master's degree at a German university. Get guidance on course selection, admission requirements, APS certification, and student visa preparation.",
                 target: "For students planning to pursue higher education in Germany.",
@@ -417,35 +446,54 @@ export default function Home() {
               <StaggerItem key={pathway.title} className="h-full">
                 <Link
                   href={pathway.href}
-                  className="group flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                  className="group flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden rounded-none"
                 >
                   {/* Image Banner */}
-                  <div className="relative aspect-[16/10] bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                  <div className="relative aspect-[16/10] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
                     <Image
                       src={pathway.image}
                       alt={pathway.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                     />
                   </div>
 
-                  {/* Content */}
-                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-[#BC0202] transition-colors">
-                        {pathway.title}
-                      </h3>
-                      <p className="mt-2.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                  {/* Red Title Banner */}
+                  <div className="bg-[#AC2424] py-3 sm:py-3.5 px-4 text-center">
+                    <h3
+                      className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-white tracking-normal leading-tight"
+                      style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                    >
+                      {pathway.title}
+                    </h3>
+                  </div>
+
+                  {/* Content Area */}
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white dark:bg-zinc-900">
+                    <div className="space-y-3">
+                      <p
+                        className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
+                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                      >
                         {pathway.description}
                       </p>
-                      <p className="mt-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                      <p
+                        className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
+                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                      >
                         {pathway.target}
                       </p>
                     </div>
 
-                    <div className="mt-5 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center text-xs sm:text-sm font-semibold text-[#BC0202] group-hover:translate-x-1 transition-transform">
-                      {pathway.cta}
+                    {/* Yellow Button */}
+                    <div className="mt-6 pt-2">
+                      <span
+                        className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold italic shadow-sm transition-colors"
+                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
+                      >
+                        {pathway.cta}
+                      </span>
                     </div>
                   </div>
                 </Link>
@@ -457,19 +505,16 @@ export default function Home() {
       </section>
 
       {/* Experienced Educators / Meet Our Team Section */}
-      <section id="team" className="py-14 sm:py-20 lg:py-24 bg-zinc-50/60 dark:bg-zinc-900/30 border-b border-zinc-100 dark:border-zinc-800">
+      <section id="team" className={`py-14 sm:py-20 lg:py-24 bg-zinc-50/60 dark:bg-zinc-900/30 border-b border-zinc-100 dark:border-zinc-800 ${josefin.className}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <FadeInUp className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#BC0202]">
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
               EXPERIENCED EDUCATORS
-            </p>
-            <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+            </h3>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
               Meet Our Team
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-              Our dedicated faculty members bring native-level proficiency, structured methodology, and individual mentorship to every batch.
-            </p>
           </FadeInUp>
 
           {/* Responsive Team Grid: 4 columns desktop, 2 columns mobile & tablet */}

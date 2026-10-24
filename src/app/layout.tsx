@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { EnquiryModalProvider } from "@/context/EnquiryModalContext";
+import EnquiryModal from "@/components/EnquiryModal";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -20,8 +22,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${raleway.variable} h-full antialiased`}
     >
       <body className={`${raleway.className} min-h-full flex flex-col`}>
-        <Navbar />
-        {children}
+        <EnquiryModalProvider>
+          <Navbar />
+          {children}
+          <EnquiryModal />
+        </EnquiryModalProvider>
       </body>
     </html>
   );
