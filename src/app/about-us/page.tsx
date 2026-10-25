@@ -286,7 +286,7 @@ export default function AboutUsPage() {
             <FadeInRight delay={0.12} className="lg:col-span-5 flex justify-center lg:justify-end">
               <ScrollParallax yOffset={35} className="relative w-full max-w-[500px] aspect-[4/3] rounded-none overflow-hidden shadow-lg border border-zinc-200/60 dark:border-zinc-800">
                 <Image
-                  src="/aboutus.png"
+                  src="/Aboutusgyanshala.in.png"
                   alt="Gyanshala Foreign Language Academy - Campus & International Opportunities"
                   fill
                   sizes="(max-width: 1024px) 100vw, 500px"

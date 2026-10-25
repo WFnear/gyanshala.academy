@@ -345,6 +345,32 @@ export default function Home() {
     touchEndX.current = null;
   };
 
+  const reviewsTrackRef = useRef<HTMLDivElement>(null);
+
+  const scrollPrevReview = () => {
+    if (reviewsTrackRef.current) {
+      const container = reviewsTrackRef.current;
+      const cardWidth = container.clientWidth / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1);
+      if (container.scrollLeft <= 10) {
+        container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      }
+    }
+  };
+
+  const scrollNextReview = () => {
+    if (reviewsTrackRef.current) {
+      const container = reviewsTrackRef.current;
+      const cardWidth = container.clientWidth / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1);
+      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: cardWidth, behavior: "smooth" });
+      }
+    }
+  };
+
 
   return (
     <main className="w-full overflow-x-hidden">
@@ -539,7 +565,7 @@ export default function Home() {
               <ScrollParallax yOffset={35} className="w-full flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-none overflow-hidden shadow-lg border border-zinc-200/60 dark:border-zinc-800">
                   <Image
-                    src="/aboutus.png"
+                    src="/Aboutusgyanshala.in.png"
                     alt="Gyanshala Foreign Language Academy - Your Trusted Partner in German Language Training"
                     fill
                     sizes="(max-width: 1024px) 100vw, 500px"
@@ -1078,82 +1104,103 @@ export default function Home() {
       </section>
 
       {/* Student Reviews & Testimonials Section */}
-      <section id="reviews" className={`py-14 sm:py-20 lg:py-24 bg-[#FCF9EA] dark:bg-zinc-900/40 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+      <section id="reviews" className={`py-12 sm:py-16 lg:py-20 bg-[#FCF9EA] dark:bg-zinc-900/40 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Section Header */}
-          <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
-              STUDENT REVIEWS
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
-              What Our Students Say
-            </h2>
-            <div className="mt-3 flex items-center justify-center gap-2">
-              <div className="flex items-center text-[#ECBB0C]">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+          {/* Section Header with Left/Right Navigation */}
+          <FadeInUp className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+            <div>
+              <h3 className="text-xl sm:text-2xl lg:text-[28px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                STUDENT REVIEWS
+              </h3>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                What Our Students Say
+              </h2>
+              <div className="mt-2.5 flex items-center gap-2">
+                <div className="flex items-center text-[#ECBB0C]">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-xs sm:text-sm font-bold text-zinc-800 dark:text-zinc-200">
+                  4.9 / 5.0 Rating (350+ Google Reviews)
+                </span>
               </div>
-              <span className="text-sm sm:text-base font-bold text-zinc-800 dark:text-zinc-200">
-                4.9 / 5.0 Rating (350+ Google Reviews)
-              </span>
+            </div>
+
+            {/* Slider Navigation Buttons */}
+            <div className="flex items-center gap-2 self-start sm:self-auto">
+              <button
+                type="button"
+                onClick={scrollPrevReview}
+                aria-label="Previous review"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-colors flex items-center justify-center shadow-xs cursor-pointer active:scale-95"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={scrollNextReview}
+                aria-label="Next review"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-colors flex items-center justify-center shadow-xs cursor-pointer active:scale-95"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
             </div>
           </FadeInUp>
 
-          {/* Reviews Grid */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl xl:max-w-6xl mx-auto" staggerDelay={0.24}>
+          {/* Reviews Track: 3 Cards in 1 Row on Desktop, 2 on Tablet, 1 on Mobile */}
+          <div
+            ref={reviewsTrackRef}
+            className="flex items-stretch gap-5 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
             {studentReviews.map((item, idx) => (
-              <StaggerItem key={idx} className="h-full" direction="alternate" index={idx} hoverLift>
-                <div className="h-full bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-zinc-200/90 dark:border-zinc-800 transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col group">
-                  {/* Student Photo on Top */}
-                  <CardImageReveal reversed={idx % 2 !== 0}>
-                    <div
-                      className="relative aspect-[490/370] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden"
-                      style={{ aspectRatio: "490 / 370" }}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        className="object-cover transition-transform duration-500 ease-out"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                  </CardImageReveal>
-
-                  {/* White Card with Black Text Below Photo */}
-                  <CardTextReveal reversed={idx % 2 !== 0} delay={0.15} className="flex-1 flex flex-col justify-between p-5 sm:p-7 bg-white dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800">
-                    <div>
-                      {/* 5 Stars */}
-                      <div className="flex items-center gap-1 text-[#ECBB0C] mb-3">
-                        {[...Array(item.rating)].map((_, i) => (
-                          <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
+              <div
+                key={idx}
+                className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start flex flex-col"
+              >
+                <div className="h-full bg-white dark:bg-zinc-900 rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-md border border-zinc-200/90 dark:border-zinc-800 transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    {/* Header: Circle Profile Pic + Name, Stars & Google Badge */}
+                    <div className="flex items-start justify-between gap-3 mb-3.5">
+                      <div className="flex items-center gap-3">
+                        {/* Profile Pic in Medium Circle */}
+                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-[#C00000] ring-2 ring-[#C00000]/15 shadow-2xs shrink-0 bg-zinc-100 dark:bg-zinc-800">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            fill
+                            className="object-cover object-center"
+                            sizes="(max-width: 640px) 48px, 56px"
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <h4 className="font-bold text-sm sm:text-base text-zinc-950 dark:text-white leading-tight truncate">
+                            {item.name}
+                          </h4>
+                          <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                            Verified Student Review
+                          </p>
+                          {/* 5 Stars */}
+                          <div className="flex items-center gap-0.5 text-[#ECBB0C] mt-1">
+                            {[...Array(item.rating)].map((_, i) => (
+                              <svg key={i} className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                              </svg>
+                            ))}
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Review Text in Black / Dark text */}
-                      <p className="text-sm sm:text-base text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal italic mb-6">
-                        &ldquo;{item.review}&rdquo;
-                      </p>
-                    </div>
-
-                    {/* Student Name & Source */}
-                    <div className="pt-4 border-t border-zinc-200/80 dark:border-zinc-800 flex items-center justify-between">
-                      <div>
-                        <h4 className="font-bold text-base sm:text-lg text-zinc-950 dark:text-white leading-tight">
-                          {item.name}
-                        </h4>
-                        <p className="mt-0.5 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-                          Verified Student Review
-                        </p>
-                      </div>
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 rounded-full">
-                        <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
+                      {/* Google Badge */}
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full shrink-0 border border-zinc-200/60 dark:border-zinc-700">
+                        <svg className="w-3 h-3 shrink-0" viewBox="0 0 24 24">
                           <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                           <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                           <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
@@ -1162,11 +1209,16 @@ export default function Home() {
                         <span>Google</span>
                       </span>
                     </div>
-                  </CardTextReveal>
+
+                    {/* Compact Review Text */}
+                    <p className="text-xs sm:text-[13px] text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal italic pt-2.5 border-t border-zinc-100 dark:border-zinc-800">
+                      &ldquo;{item.review}&rdquo;
+                    </p>
+                  </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
 
         </div>
       </section>
