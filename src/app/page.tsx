@@ -1043,7 +1043,7 @@ export default function Home() {
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   className="w-full h-full snap-start flex flex-col"
                 >
-                  <div className="h-full bg-white dark:bg-zinc-900 border border-white/30 dark:border-zinc-800 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col group">
+                  <div className="h-full bg-white dark:bg-zinc-900 border border-white/30 dark:border-zinc-800 rounded-none shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col group">
                     {/* Student Image (Aspect Square) */}
                     <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
                       <Image
