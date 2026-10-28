@@ -1246,40 +1246,28 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Slider Navigation Buttons + Auto-slide Indicator */}
-            <div className="flex items-center gap-2.5 self-start sm:self-auto">
+            {/* Slider Navigation Buttons */}
+            <div className="flex items-center gap-2 self-start sm:self-auto">
               <button
                 type="button"
-                onClick={() => setIsReviewsPaused((prev) => !prev)}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-750 px-3 py-1.5 rounded-full border border-zinc-200/90 dark:border-zinc-700 transition-colors shadow-2xs cursor-pointer active:scale-95"
-                title={isReviewsPaused ? "Resume auto slide" : "Pause auto slide"}
+                onClick={scrollPrevReview}
+                aria-label="Previous review"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-all flex items-center justify-center shadow-xs cursor-pointer active:scale-90"
               >
-                <span className={`w-2 h-2 rounded-full ${isReviewsPaused ? "bg-amber-500" : "bg-emerald-500 animate-pulse"}`} />
-                <span>{isReviewsPaused ? "Paused" : "Auto-slide On"}</span>
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
               </button>
-
-              <div className="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={scrollPrevReview}
-                  aria-label="Previous review"
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-all flex items-center justify-center shadow-xs cursor-pointer active:scale-90"
-                >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  onClick={scrollNextReview}
-                  aria-label="Next review"
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-all flex items-center justify-center shadow-xs cursor-pointer active:scale-90"
-                >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                  </svg>
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={scrollNextReview}
+                aria-label="Next review"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-all flex items-center justify-center shadow-xs cursor-pointer active:scale-90"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
             </div>
           </FadeInUp>
 
