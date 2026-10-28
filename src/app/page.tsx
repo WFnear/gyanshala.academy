@@ -548,6 +548,46 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [isReviewsPaused]);
 
+  // Our Students in Germany Slider (4 cards at a time, left/right arrows, auto-slide)
+  const studentsTrackRef = useRef<HTMLDivElement>(null);
+  const [isStudentsPaused, setIsStudentsPaused] = useState(false);
+
+  const scrollPrevStudents = () => {
+    if (studentsTrackRef.current) {
+      const container = studentsTrackRef.current;
+      const scrollAmount = container.clientWidth;
+      if (container.scrollLeft <= 20) {
+        container.scrollTo({ left: container.scrollWidth - container.clientWidth, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      }
+    }
+  };
+
+  const scrollNextStudents = () => {
+    if (studentsTrackRef.current) {
+      const container = studentsTrackRef.current;
+      const scrollAmount = container.clientWidth;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (container.scrollLeft >= maxScroll - 20) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }
+    }
+  };
+
+  // Auto slide 4 students every 3.5 seconds (paused on hover / touch)
+  useEffect(() => {
+    if (isStudentsPaused) return;
+
+    const timer = setInterval(() => {
+      scrollNextStudents();
+    }, 3500);
+
+    return () => clearInterval(timer);
+  }, [isStudentsPaused]);
+
 
   return (
     <main className="w-full overflow-x-hidden">
@@ -946,20 +986,10 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          OUR STUDENTS IN GERMANY SECTION
+          OUR STUDENTS IN GERMANY SECTION - WHITE BG, 4 CARDS PER SLIDE WITH ARROWS
           ========================================================================= */}
-      <section id="students-in-germany" className="relative py-14 sm:py-20 lg:py-24 bg-[#FCF9EA] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
-        {/* Subtle Decorative Background Texture */}
-        <div className="absolute inset-0 z-0 opacity-50 dark:opacity-20 pointer-events-none">
-          <Image
-            src="/whitepaper.jpg"
-            alt="Paper background texture"
-            fill
-            className="object-cover object-center contrast-[1.12] brightness-[0.96]"
-          />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="students-in-germany" className="relative py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Heading */}
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-zinc-900 dark:text-zinc-100 tracking-[-0.01em] leading-tight">
@@ -967,32 +997,76 @@ export default function Home() {
             </h2>
           </FadeInUp>
 
-          {/* Students Grid: 5 columns desktop (3 rows of 5), 3 columns tablet, 2 columns mobile */}
-          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5 lg:gap-6" staggerDelay={0.08}>
-            {studentsInGermany.map((student, index) => (
-              <StaggerItem key={student.name} className="h-full" direction="alternate" index={index} hoverLift>
-                <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-2xl shadow-xs hover:shadow-xl hover:border-[#C00000]/40 transition-all duration-300 overflow-hidden flex flex-col group">
-                  {/* Student Image (Aspect Square) */}
-                  <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                    <Image
-                      src={student.image}
-                      alt={student.name}
-                      fill
-                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                    />
-                  </div>
+          {/* Students Slider: 4 cards visible on desktop, Left & Right arrows without BG */}
+          <div className="relative px-4 sm:px-8 lg:px-10">
 
-                  {/* Student Name */}
-                  <div className="p-3 sm:p-3.5 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
-                    <h3 className="font-bold text-sm sm:text-base text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
-                      {student.name}
-                    </h3>
+            {/* Left Arrow: Transparent, No BG, on Card's Left Flank */}
+            <button
+              type="button"
+              onClick={scrollPrevStudents}
+              aria-label="Previous students"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+            >
+              <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+
+            {/* Right Arrow: Transparent, No BG, on Card's Right Flank */}
+            <button
+              type="button"
+              onClick={scrollNextStudents}
+              aria-label="Next students"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+            >
+              <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+
+            {/* Students Track: 4 Cards on Desktop (calc(25% - 18px)), scrolls 4 cards at a time */}
+            <div
+              ref={studentsTrackRef}
+              onMouseEnter={() => setIsStudentsPaused(true)}
+              onMouseLeave={() => setIsStudentsPaused(false)}
+              onTouchStart={() => setIsStudentsPaused(true)}
+              onTouchEnd={() => setIsStudentsPaused(false)}
+              className="flex items-stretch gap-5 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {studentsInGermany.map((student, idx) => (
+                <motion.div
+                  key={student.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-20px" }}
+                  transition={{ duration: 0.45, delay: (idx % 4) * 0.08 }}
+                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                  className="w-[calc(50%-10px)] sm:w-[calc(33.333%-14px)] lg:w-[calc(25%-18px)] shrink-0 snap-start flex flex-col"
+                >
+                  <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-2xl shadow-xs hover:shadow-xl hover:border-[#C00000]/40 transition-all duration-300 overflow-hidden flex flex-col group">
+                    {/* Student Image (Aspect Square) */}
+                    <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                      <Image
+                        src={student.image}
+                        alt={student.name}
+                        fill
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      />
+                    </div>
+
+                    {/* Student Name */}
+                    <div className="p-3 sm:p-3.5 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
+                      <h3 className="font-bold text-sm sm:text-base text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
+                        {student.name}
+                      </h3>
+                    </div>
                   </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+                </motion.div>
+              ))}
+            </div>
+
+          </div>
         </div>
       </section>
 
