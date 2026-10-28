@@ -238,10 +238,6 @@ export default function AboutUsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Content Column */}
             <FadeInLeft className="lg:col-span-7">
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3 sm:mb-4">
-                OUR STORY
-              </p>
-
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-normal text-zinc-900 dark:text-zinc-100 tracking-[-0.01em] leading-[1.12] mb-6 sm:mb-7">
                 Our journey since <span className="text-[#A61911] italic font-normal">2018</span>
               </h2>
