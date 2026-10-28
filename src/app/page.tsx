@@ -630,6 +630,14 @@ export default function Home() {
           />
         </div>
 
+        {/* Soft White Shadow & Glow Layer: Above white paper, below text & image content */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center p-3 sm:p-6 lg:p-8"
+        >
+          <div className="w-full h-full max-w-7xl mx-auto rounded-3xl bg-white/70 dark:bg-zinc-950/70 shadow-[0_0_100px_60px_rgba(255,255,255,0.95)] dark:shadow-[0_0_100px_60px_rgba(0,0,0,0.85)]" />
+        </div>
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
