@@ -721,7 +721,7 @@ export default function Home() {
       </section>
 
       {/* About Us Gyanshala Section - Matching About Us Page Typography & Design */}
-      <section id="about" className="relative py-14 sm:py-20 lg:py-24 bg-[#FCF9EA] dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800">
+      <section id="about" className="relative pt-5 sm:pt-8 lg:pt-10 pb-14 sm:pb-20 lg:pb-24 bg-[#FCF9EA] dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800">
         {/* White Paper Background Texture with 70% Opacity */}
         <div className="absolute inset-0 z-0 opacity-70 dark:opacity-30 pointer-events-none">
           <Image
@@ -997,15 +997,15 @@ export default function Home() {
             </h2>
           </FadeInUp>
 
-          {/* Students Slider: 4 cards visible on desktop, Left & Right arrows without BG */}
-          <div className="relative px-4 sm:px-8 lg:px-10">
+          {/* Students Slider: 2 rows flowing into columns, Left & Right arrows without BG */}
+          <div className="relative px-7 sm:px-10 lg:px-12">
 
             {/* Left Arrow: Transparent, No BG, on Card's Left Flank */}
             <button
               type="button"
               onClick={scrollPrevStudents}
               aria-label="Previous students"
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+              className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
             >
               <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -1017,31 +1017,31 @@ export default function Home() {
               type="button"
               onClick={scrollNextStudents}
               aria-label="Next students"
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+              className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
             >
               <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>
 
-            {/* Students Track: 4 Cards on Desktop (calc(25% - 18px)), scrolls 4 cards at a time */}
+            {/* Students Track: 2 Rows flowing into columns, scrolls smoothly */}
             <div
               ref={studentsTrackRef}
               onMouseEnter={() => setIsStudentsPaused(true)}
               onMouseLeave={() => setIsStudentsPaused(false)}
               onTouchStart={() => setIsStudentsPaused(true)}
               onTouchEnd={() => setIsStudentsPaused(false)}
-              className="flex items-stretch gap-5 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="grid grid-rows-2 grid-flow-col auto-cols-[calc(50%-7px)] sm:auto-cols-[calc(33.333%-11px)] lg:auto-cols-[calc(25%-18px)] gap-3.5 sm:gap-4 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
               {studentsInGermany.map((student, idx) => (
                 <motion.div
                   key={student.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-20px" }}
-                  transition={{ duration: 0.45, delay: (idx % 4) * 0.08 }}
-                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
-                  className="w-[calc(50%-10px)] sm:w-[calc(33.333%-14px)] lg:w-[calc(25%-18px)] shrink-0 snap-start flex flex-col"
+                  transition={{ duration: 0.4, delay: (idx % 4) * 0.06 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  className="w-full h-full snap-start flex flex-col"
                 >
                   <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-2xl shadow-xs hover:shadow-xl hover:border-[#C00000]/40 transition-all duration-300 overflow-hidden flex flex-col group">
                     {/* Student Image (Aspect Square) */}
@@ -1056,8 +1056,8 @@ export default function Home() {
                     </div>
 
                     {/* Student Name */}
-                    <div className="p-3 sm:p-3.5 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
-                      <h3 className="font-bold text-sm sm:text-base text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
+                    <div className="p-2 sm:p-3 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
+                      <h3 className="font-bold text-xs sm:text-sm lg:text-base text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
                         {student.name}
                       </h3>
                     </div>
