@@ -355,8 +355,8 @@ export default function AboutUsPage() {
                 </h2>
               </FadeInUp>
 
-              {/* Responsive Faculty Grid matching Homepage: 4 columns desktop, 2-3 columns mobile & tablet */}
-              <StaggerContainer className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-6 max-w-7xl mx-auto" staggerDelay={0.22}>
+              {/* Responsive Faculty Grid matching Homepage: 3 columns desktop & tablet, 2 columns mobile */}
+              <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3.5 sm:gap-6 max-w-6xl mx-auto" staggerDelay={0.15}>
                 {[
                   {
                     name: "Dilip Sinsinwar",
@@ -391,12 +391,17 @@ export default function AboutUsPage() {
                   {
                     name: "Mumal Rathore",
                     role: "French Language Trainer",
-                    image: "/teammembers/Mumal Rathore Maam French Language Trainer.png",
+                    image: "/teammembers/Mumal.Rathore.png",
                   },
                   {
                     name: "Neeru Joshi",
                     role: "German Language Trainer",
-                    image: "/teammembers/Neeru Joshi German Langauge Trainer.png",
+                    image: "/teammembers/Neeru.Joshi.png",
+                  },
+                  {
+                    name: "Niharika",
+                    role: "English Language Trainer",
+                    image: "/teammembers/Niharika Maam English Language Trainer.png",
                   },
                 ].map((member, index) => (
                   <StaggerItem key={member.name} className="h-full" direction="alternate" index={index} hoverLift>
