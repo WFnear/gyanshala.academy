@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Josefin_Sans } from "next/font/google";
 import { useEnquiryModal } from "@/context/EnquiryModalContext";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
 
 const courseOptions = [
   "German A1 (Beginner Level)",
@@ -73,7 +65,7 @@ export default function EnquiryModal() {
       {/* Modal Container */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`relative w-full max-w-[580px] bg-white rounded-none sm:rounded-sm shadow-2xl overflow-hidden p-6 sm:p-8 sm:px-10 max-h-[92vh] overflow-y-auto text-zinc-900 ${josefin.className}`}
+        className="relative w-full max-w-[580px] bg-white rounded-none sm:rounded-sm shadow-2xl overflow-hidden p-6 sm:p-8 sm:px-10 max-h-[92vh] overflow-y-auto text-zinc-900 font-sans"
         style={{ letterSpacing: "0.01em" }}
       >
         {/* Close Button (X) */}
@@ -102,8 +94,8 @@ export default function EnquiryModal() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-zinc-900 italic">Thank You!</h3>
-              <p className="text-zinc-600 italic text-base max-w-sm mx-auto">
+              <h3 className="text-2xl font-bold text-zinc-900">Thank You!</h3>
+              <p className="text-zinc-600 text-base max-w-sm mx-auto">
                 Your enquiry has been received. Our counselor will contact you shortly.
               </p>
             </div>
@@ -113,7 +105,7 @@ export default function EnquiryModal() {
               <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-1.5 sm:gap-4">
                 <label
                   htmlFor="modal-name"
-                  className="text-lg sm:text-2xl text-black font-medium italic select-none"
+                  className="text-base sm:text-lg text-black font-semibold select-none"
                 >
                   Name
                 </label>
@@ -132,7 +124,7 @@ export default function EnquiryModal() {
               <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-1.5 sm:gap-4">
                 <label
                   htmlFor="modal-email"
-                  className="text-lg sm:text-2xl text-black font-medium italic select-none"
+                  className="text-base sm:text-lg text-black font-semibold select-none"
                 >
                   Email
                 </label>
@@ -151,7 +143,7 @@ export default function EnquiryModal() {
               <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-1.5 sm:gap-4">
                 <label
                   htmlFor="modal-phone"
-                  className="text-lg sm:text-2xl text-black font-medium italic select-none"
+                  className="text-base sm:text-lg text-black font-semibold select-none"
                 >
                   Phone No
                 </label>
@@ -192,7 +184,7 @@ export default function EnquiryModal() {
               <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-1.5 sm:gap-4">
                 <label
                   htmlFor="modal-courses"
-                  className="text-lg sm:text-2xl text-black font-medium italic select-none"
+                  className="text-base sm:text-lg text-black font-semibold select-none"
                 >
                   Courses
                 </label>

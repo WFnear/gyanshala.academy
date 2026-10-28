@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans, Raleway } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,9 +7,24 @@ import { EnquiryModalProvider } from "@/context/EnquiryModalContext";
 import EnquiryModal from "@/components/EnquiryModal";
 import FloatingContactButtons from "@/components/FloatingContactButtons";
 
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
 const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -21,9 +36,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${raleway.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} ${playfair.variable} ${raleway.variable} h-full antialiased`}
     >
-      <body className={`${raleway.className} min-h-full flex flex-col`}>
+      <body className={`${plusJakarta.className} min-h-full flex flex-col font-sans`}>
         <EnquiryModalProvider>
           <Navbar />
           <div className="flex-1">

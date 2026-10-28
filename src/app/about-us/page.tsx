@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Josefin_Sans, Poppins } from "next/font/google";
 import {
   FadeInUp,
   FadeInLeft,
@@ -13,22 +12,6 @@ import {
   CardTextReveal,
   ScrollParallax,
 } from "@/components/ScrollReveal";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-poppins",
-});
 
 export const metadata: Metadata = {
   title: "About Us | Gyanshala Foreign Language Academy - Jaipur",
@@ -196,7 +179,7 @@ export default function AboutUsPage() {
   ];
 
   return (
-    <main className={`w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans ${josefin.variable} ${poppins.variable}`}>
+    <main className="w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       
       {/* =========================================================================
           SECTION 1 · ABOUT US HERO
@@ -248,29 +231,23 @@ export default function AboutUsPage() {
           {/* =====================================================================
               SECTIONS 2 & 3 · OUR STORY & PURPOSE & DIRECTION
               ===================================================================== */}
-          <section className={`py-14 sm:py-20 lg:py-24 ${josefin.className}`}>
+          <section className="py-14 sm:py-20 lg:py-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20 lg:space-y-24">
           
           {/* Part 1: OUR STORY */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Content Column */}
             <FadeInLeft className="lg:col-span-7">
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3 sm:mb-4">
                 OUR STORY
-              </h3>
+              </p>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight mb-4">
-                Our Journey Since 2018
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-normal text-zinc-900 dark:text-zinc-100 tracking-[-0.01em] leading-[1.12] mb-6 sm:mb-7">
+                Our journey since <span className="text-[#A61911] italic font-normal">2018</span>
               </h2>
 
               <FadeInUp delay={0.1}>
-                <div
-                  className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] xl:text-[22px] leading-[1.55] italic font-medium tracking-normal"
-                  style={{
-                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                    letterSpacing: '0em',
-                  }}
-                >
+                <div className="space-y-4 sm:space-y-5 text-zinc-700 dark:text-zinc-300 text-base sm:text-lg lg:text-[17.5px] leading-[1.75] font-normal not-italic tracking-normal">
                   <p>
                     Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.
                   </p>
@@ -302,59 +279,41 @@ export default function AboutUsPage() {
             <FadeInUp>
               {/* Headings - Center Aligned */}
               <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-                <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                   PURPOSE &amp; DIRECTION
-                </h3>
+                </p>
 
-                <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[46px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                   Our Mission, Vision &amp; Goals
                 </h2>
               </div>
 
               {/* Our Mission */}
               <div className="space-y-2">
-                <h4 className="text-2xl sm:text-3xl lg:text-[30px] font-bold italic text-[#C00000] leading-snug">
+                <h4 className="font-serif text-2xl sm:text-3xl lg:text-[30px] font-normal italic text-[#A61911] leading-snug">
                   Our Mission
                 </h4>
-                <p
-                  className="text-zinc-800 dark:text-zinc-200 text-base sm:text-lg lg:text-[22px] xl:text-[24px] leading-[1.55] italic font-medium tracking-normal"
-                  style={{
-                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                    letterSpacing: '0em',
-                  }}
-                >
+                <p className="text-zinc-700 dark:text-zinc-300 text-base sm:text-lg lg:text-[18px] leading-[1.75] font-normal not-italic tracking-normal">
                   Our mission at Gyanshala Foreign Language Academy is to deliver high-quality German language classes in Jaipur that are structured, practical, and aligned with international standards. We aim to help learners communicate confidently in German and prepare effectively for academic, professional, and exam-related goals.
                 </p>
               </div>
 
               {/* Our Vision */}
               <div className="mt-7 sm:mt-9 space-y-2">
-                <h4 className="text-2xl sm:text-3xl lg:text-[30px] font-bold italic text-[#C00000] leading-snug">
+                <h4 className="font-serif text-2xl sm:text-3xl lg:text-[30px] font-normal italic text-[#A61911] leading-snug">
                   Our Vision
                 </h4>
-                <p
-                  className="text-zinc-800 dark:text-zinc-200 text-base sm:text-lg lg:text-[22px] xl:text-[24px] leading-[1.55] italic font-medium tracking-normal"
-                  style={{
-                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                    letterSpacing: '0em',
-                  }}
-                >
+                <p className="text-zinc-700 dark:text-zinc-300 text-base sm:text-lg lg:text-[18px] leading-[1.75] font-normal not-italic tracking-normal">
                   Our vision is to become a trusted and leading German language institute in Jaipur, recognised for academic excellence, practical teaching methods, and student success. We aspire to empower learners with strong German language skills and connect them to global opportunities in education, employment, and professional development.
                 </p>
               </div>
 
               {/* Our Goals */}
               <div className="mt-7 sm:mt-9 space-y-3">
-                <h4 className="text-2xl sm:text-3xl lg:text-[30px] font-bold italic text-[#C00000] leading-snug">
+                <h4 className="font-serif text-2xl sm:text-3xl lg:text-[30px] font-normal italic text-[#A61911] leading-snug">
                   Our Goals
                 </h4>
-                <ul
-                  className="space-y-2.5 text-zinc-800 dark:text-zinc-200 text-base sm:text-lg lg:text-[22px] xl:text-[24px] leading-[1.55] italic font-medium tracking-normal"
-                  style={{
-                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                    letterSpacing: '0em',
-                  }}
-                >
+                <ul className="space-y-2.5 text-zinc-700 dark:text-zinc-300 text-base sm:text-lg lg:text-[18px] leading-[1.75] font-normal not-italic tracking-normal">
                   <li className="flex items-start gap-2.5">
                     <span className="text-[#C00000] font-bold select-none">•</span>
                     <span>Offer CEFR-aligned German language courses from A1 to C2.</span>
@@ -384,14 +343,14 @@ export default function AboutUsPage() {
       {/* =========================================================================
           SECTION 4 · OUR TEAM / MEMBERS
           ========================================================================= */}
-      <section className={`py-14 sm:py-20 lg:py-24 bg-[#FBFBFB] dark:bg-zinc-950 ${josefin.className}`}>
+      <section className="py-14 sm:py-20 lg:py-24 bg-[#FBFBFB] dark:bg-zinc-950">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               
               <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-                <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                   EXPERIENCED EDUCATORS
-                </h3>
-                <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                </p>
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                   Meet Our Members
                 </h2>
               </FadeInUp>
@@ -402,47 +361,42 @@ export default function AboutUsPage() {
                   {
                     name: "Dilip Sinsinwar",
                     role: "German Language Trainer",
-                    image: "/members/DILIP.SINSINWAR..jpeg",
+                    image: "/teammembers/Dilip Sinsinwar Sir German Language Expert.png",
                   },
                   {
                     name: "Claudia Zibell",
                     role: "German Language Native Speaker",
-                    image: "/members/Claudia.Zibell.jpeg",
+                    image: "/teammembers/Claudia Zibell Maam German langauge Native Speaker.png",
                   },
                   {
                     name: "Ashveer Singh",
                     role: "German Language Trainer",
-                    image: "/members/ASHVEER.SINGH.jpeg",
+                    image: "/teammembers/Ashveer Singh Sir German Language Expert.png",
                   },
                   {
                     name: "Ruchi Kaushik",
                     role: "Spanish Language Trainer",
-                    image: "/members/RUCHI.KAUSHIK.jpeg",
+                    image: "/teammembers/Ruchi Kausik Maam Spanish Language Trainer.png",
                   },
                   {
                     name: "Jhanvi Kumawat",
                     role: "German Language Trainer",
-                    image: "/members/Jhanvi.kumawat.jpeg",
+                    image: "/teammembers/Jhanvi Kumawat German Language Trainer.png",
                   },
                   {
                     name: "Katharina Shevchuk",
                     role: "English/German & Russian Language Trainer",
-                    image: "/members/KATRINA.jpeg",
+                    image: "/teammembers/Katharina Shevchuk Maam EnglishGerman & Russian Language Trainer.png",
                   },
                   {
                     name: "Mumal Rathore",
                     role: "French Language Trainer",
-                    image: "/members/Mumal.Rathore.jpeg",
+                    image: "/teammembers/Mumal Rathore Maam French Language Trainer.png",
                   },
                   {
                     name: "Neeru Joshi",
                     role: "German Language Trainer",
-                    image: "/members/Neeru.Joshi.jpeg",
-                  },
-                  {
-                    name: "Niharika",
-                    role: "English Language Trainer",
-                    image: "/members/NIHARIKA..jpeg",
+                    image: "/teammembers/Neeru Joshi German Langauge Trainer.png",
                   },
                 ].map((member, index) => (
                   <StaggerItem key={member.name} className="h-full" direction="alternate" index={index} hoverLift>
@@ -486,7 +440,7 @@ export default function AboutUsPage() {
         {/* =====================================================================
             SECTION 5 · WHY CHOOSE GYANSHALA?
             ===================================================================== */}
-        <section className={`relative pt-14 sm:pt-20 lg:pt-24 pb-0 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+        <section className="relative pt-14 sm:pt-20 lg:pt-24 pb-0 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800">
           {/* White Paper Background Texture with 100% Appearance */}
           <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
             <Image
@@ -501,10 +455,10 @@ export default function AboutUsPage() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <FadeInUp className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-              <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C00000] leading-none mb-2">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 WHY LEARN WITH US
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Why Choose Gyanshala?
               </h2>
             </FadeInUp>
@@ -571,14 +525,14 @@ export default function AboutUsPage() {
           {/* =====================================================================
               SECTION 6 · HIGHLIGHTS OF GYANSHALA
               ===================================================================== */}
-          <section className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+          <section className="py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               
               <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-                <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                   KEY FEATURES
-                </h3>
-                <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                </p>
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                   Highlights of Gyanshala
                 </h2>
               </FadeInUp>
@@ -615,13 +569,13 @@ export default function AboutUsPage() {
           {/* =====================================================================
               SECTION 8 · USEFUL GERMAN LEARNING RESOURCES
               ===================================================================== */}
-          <section className={`py-12 sm:py-16 overflow-hidden ${josefin.className}`}>
+          <section className="py-12 sm:py-16 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <FadeInUp className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
-                <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                   EXTERNAL PORTALS
-                </h3>
-                <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+                </p>
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                   Useful German Learning Resources
                 </h2>
               </FadeInUp>
@@ -677,7 +631,7 @@ export default function AboutUsPage() {
       {/* =========================================================================
           SECTION 9 · FINAL CTA
           ========================================================================= */}
-      <section className={`relative py-16 sm:py-20 lg:py-24 text-white overflow-hidden bg-zinc-950 ${josefin.className}`}>
+      <section className="relative py-16 sm:py-20 lg:py-24 text-white overflow-hidden bg-zinc-950">
         {/* Background Image: Germany.jpg with 100% Appearance */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -699,13 +653,7 @@ export default function AboutUsPage() {
           </FadeInUp>
 
           <FadeInUp delay={0.1}>
-            <p
-              className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: '0em',
-              }}
-            >
+            <p className="text-base sm:text-lg lg:text-[20px] text-white/90 max-w-2xl mx-auto leading-[1.6] font-normal not-italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               Connect with our team to explore German courses and find the right learning path for your goals.
             </p>
           </FadeInUp>

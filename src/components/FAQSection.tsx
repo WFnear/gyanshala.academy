@@ -4,16 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp, FadeInScale, AnimatedButton } from "@/components/ScrollReveal";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 interface FAQItem {
   id: number;
@@ -459,17 +450,17 @@ export default function FAQSection({
   };
 
   return (
-    <section id="faqs" className={`py-14 sm:py-20 lg:py-24 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+    <section id="faqs" className="py-14 sm:py-20 lg:py-24 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         {showHeading && (
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               FREQUENTLY ASKED QUESTIONS
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
-              FAQ
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
+              Everything You Need to Know
             </h2>
           </FadeInUp>
         )}

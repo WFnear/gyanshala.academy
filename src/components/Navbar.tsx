@@ -25,6 +25,7 @@ export default function Navbar() {
     { label: "Study in Germany", href: "/pathways/study-in-germany" },
     { label: "Ausbildung in Germany", href: "/pathways/ausbildung" },
     { label: "Nursing in Germany", href: "/pathways/nursing-in-germany" },
+    { label: "Our Students in Germany 🇩🇪", href: "/#students-in-germany" },
   ];
 
   const allLanguages = [
@@ -42,11 +43,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <Image
-              src="/Logo/newlogox.png"
+              src="/Logo/LOGO.NEW.GYANSHALA.png"
               alt="Gyanshala Foreign Language Academy"
-              width={350}
-              height={100}
-              className="h-14 sm:h-18 lg:h-24 xl:h-26 w-auto object-contain transition-transform group-hover:scale-102"
+              width={360}
+              height={110}
+              className="h-14 sm:h-18 lg:h-22 xl:h-24 w-auto object-contain transition-transform group-hover:scale-102"
               priority
             />
           </Link>
@@ -224,10 +225,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-5 py-4 border-b border-white/15">
           <Link href="/" onClick={() => setMobileMenuOpen(false)}>
             <Image
-              src="/Logo/newlogox.png"
+              src="/Logo/LOGO.NEW.GYANSHALA.png"
               alt="Gyanshala Foreign Language Academy"
               width={220}
-              height={60}
+              height={70}
               className="h-12 sm:h-14 w-auto object-contain"
             />
           </Link>

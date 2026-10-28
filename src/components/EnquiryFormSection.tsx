@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp } from "@/components/ScrollReveal";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
 
 const courseOptions = [
   "German A1 (Beginner Level)",
@@ -48,7 +40,7 @@ export default function EnquiryFormSection() {
   };
 
   return (
-    <section className={`relative py-12 sm:py-16 lg:py-20 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden ${josefin.className}`}>
+    <section className="relative py-12 sm:py-16 lg:py-20 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden font-sans">
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Enquiry Card (No Image, Clean Centered Form) */}
@@ -61,8 +53,8 @@ export default function EnquiryFormSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-zinc-900 italic">Thank You!</h3>
-                  <p className="text-zinc-600 italic text-base sm:text-lg max-w-sm mx-auto">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-zinc-900">Thank You!</h3>
+                  <p className="text-zinc-600 text-base sm:text-lg max-w-sm mx-auto">
                     Your enquiry has been successfully submitted. Our senior educational counselor will contact you shortly.
                   </p>
                   <div className="pt-2">
@@ -89,7 +81,7 @@ export default function EnquiryFormSection() {
                   <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-1.5 sm:gap-4">
                     <label
                       htmlFor="enquiry-name"
-                      className="text-lg sm:text-2xl text-black font-medium italic select-none"
+                      className="text-base sm:text-lg text-black font-semibold select-none"
                     >
                       Name
                     </label>
@@ -108,7 +100,7 @@ export default function EnquiryFormSection() {
                   <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-1.5 sm:gap-4">
                     <label
                       htmlFor="enquiry-email"
-                      className="text-lg sm:text-2xl text-black font-medium italic select-none"
+                      className="text-base sm:text-lg text-black font-semibold select-none"
                     >
                       Email
                     </label>
@@ -127,7 +119,7 @@ export default function EnquiryFormSection() {
                   <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-1.5 sm:gap-4">
                     <label
                       htmlFor="enquiry-phone"
-                      className="text-lg sm:text-2xl text-black font-medium italic select-none"
+                      className="text-base sm:text-lg text-black font-semibold select-none"
                     >
                       Phone No
                     </label>
@@ -168,7 +160,7 @@ export default function EnquiryFormSection() {
                   <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-1.5 sm:gap-4">
                     <label
                       htmlFor="enquiry-courses"
-                      className="text-lg sm:text-2xl text-black font-medium italic select-none"
+                      className="text-base sm:text-lg text-black font-semibold select-none"
                     >
                       Courses
                     </label>

@@ -2,15 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Josefin_Sans } from "next/font/google";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 export default function Footer() {
   const currentYear = 2026;
@@ -92,7 +83,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className={`w-full bg-[#111111] text-zinc-300 ${josefin.className}`}>
+    <footer className="w-full bg-[#111111] text-zinc-300 font-sans">
       
       {/* Main Footer Links Columns */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -102,15 +93,15 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-4 space-y-5">
             <Link href="/" className="inline-block">
               <Image
-                src="/Logo/newlogox.png"
+                src="/Logo/LOGO.NEW.GYANSHALA.png"
                 alt="Gyanshala Foreign Language Academy"
                 width={360}
-                height={120}
-                className="h-20 sm:h-24 lg:h-28 w-auto object-contain brightness-110 transition-transform hover:scale-105"
+                height={110}
+                className="h-16 sm:h-20 lg:h-24 w-auto object-contain brightness-105 transition-transform hover:scale-105"
               />
             </Link>
 
-            <p className="text-base sm:text-lg text-zinc-200 leading-relaxed italic pr-2">
+            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed pr-2">
               Gyanshala – Foreign Language Academy was established in 2018 in Jaipur to support students in their learning journey and connect them with international education, Ausbildung, and professional opportunities in Germany and Europe.
             </p>
 

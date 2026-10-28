@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Josefin_Sans } from "next/font/google";
 import {
   FadeInUp,
   FadeInLeft,
@@ -18,14 +17,6 @@ import {
   AnimatedButton,
 } from "@/components/ScrollReveal";
 import FAQSection from "@/components/FAQSection";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 interface Slide {
   id: number;
@@ -271,32 +262,102 @@ const onlineVideos: OnlineVideo[] = [
 
 const studentReviews = [
   {
-    name: "Karan Pareek",
-    image: "/Review/KaranPareek.png",
+    name: "Suraj Dhayal",
+    image: "/Review/Suraj dhayal.jpeg",
     rating: 5,
     review:
-      "I had a wonderful experience learning German at “Gyanshala Foreign Language Academy”. The classes were well-structured, engaging, and easy to understand. Special thanks to Dillip Sir for his guidance, patience, and constant support. I truly appreciate his efforts and highly recommend this institute to anyone learning German.",
+      "Gyanshala Foreign Language Academy is a finest institute in Lalkothi Jaipur for learning German language. The teachers are very supportive and hardworking. They are always ready to help you. The environment of the institute is very rich. Highly recommend!",
   },
   {
-    name: "Anjali Choudhary",
-    image: "/Review/AnjaliChoudhary.png",
+    name: "Ramjhan Chhimpa",
+    image: "/Review/Ramjhan Chhimpa.jpeg",
     rating: 5,
     review:
-      "Seit einem Jahr lerne ich Deutsch und glücklicherweise habe ich meine B1 Prüfung bestanden🏆🏆 . Zurzeit lerne ich B2 Kurs...Ich sammle hier viele Erfahrungen und das Umfeld des Unterrichts ist auch aüßerst einwandfrei und die Lehrer sind auch sehr hilfreich und unterstüztend uns beim Problem...Ich empfehle allen das Gyanshala institute zu beitreten",
+      "I joined German language classes in Jaipur here and I must say the teaching quality is very good. The faculty is supportive, friendly, and always ready to clear doubts. The classes are interactive with lots of speaking practice, which makes learning enjoyable. Overall, a great place to improve German.",
   },
   {
-    name: "Jhanvi Kumawat",
-    image: "/Review/JhanviKumawat.png",
+    name: "Suvidhi Loonker",
+    image: "/Review/Suvidhi Loonker.jpeg",
     rating: 5,
     review:
-      "The German classes here are very interactive and practical. I like how the teachers focus on speaking from day one, instead of just theory. The sessions are fun, and I always feel motivated to practice more at home. It’s a perfect institute for beginners who want to learn German seriously.",
+      "I had an incredible experience at this German coaching institute! The faculty members are extremely knowledgeable, approachable, and genuinely dedicated to ensuring each student’s success. The learning atmosphere is positive, supportive, and highly conducive to acquiring language skills. Whether you’re a beginner or looking to refine your knowledge, this institute provides the perfect balance of structured teaching and practical exercises. I wholeheartedly recommend it to anyone looking for a top-tier German language learning experience.",
   },
   {
-    name: "Richa Singh",
-    image: "/Review/RichaSingh.png",
+    name: "Shivam Tak",
+    image: "/Review/Shivam tak.png",
     rating: 5,
     review:
-      "I recently finished my German classes here and I have to say, the faculty is amazing. They really know their stuff and have a deep and thorough Knowledge of the German language. Instead of just making you memorize a textbook, they actually break down tricky grammar and sentence structures so it's easier to grasp the concepts. The teachers are super supportive and patient whenever you get stuck. They are incredible and respond whenever you need help. Definitely recommend.",
+      "Gyanshala is actually having some quality teaching and support toward student. It is a really very good experience. All the details covered by faculty is really great. Every smallest information was well explained by faculty. I am really thankful to Gyanshala teachers for making German language so easy to learn and understand.",
+  },
+  {
+    name: "Jatin Sharma",
+    image: "/Review/Jatin Sharma.jpeg",
+    rating: 5,
+    review:
+      "The Gyanshala Foreign Language Academy is an excellent place to learn languages. I am currently doing the English spoken course here, and I have seen a lot of improvement in myself. The teachers are knowledgeable, experienced, and very supportive with a friendly attitude. Thanks to their guidance, I can now speak English more fluently and confidently.",
+  },
+  {
+    name: "Deepak Chaudhary",
+    image: "/Review/Deepak Choudhary.jpeg",
+    rating: 5,
+    review:
+      "I recently completed a course at Gyanshala academy, and I must say it exceeded my expectations. The instructors were not only highly knowledgeable but also incredibly patient, catering to the varying skill levels of each student with tailored teaching methods. The curriculum was well-structured, covering all aspects of the language from grammar to conversational skills, and the small class sizes ensured ample opportunity for interaction and practice. Overall, I highly recommend Gyanshala Academy Institute to anyone looking to master the language effectively and enjoyably.",
+  },
+  {
+    name: "Khushi Sharma",
+    image: "/Review/Khushi Sharma.jpeg",
+    rating: 5,
+    review:
+      "I would 100% recommend this institute for all learners. I am learning German here and my experience here is just so amazing. Teachers and the whole environment is so good. Dilip sir and Ashweer sir are brilliant and fantastic teachers. They support and understand students and are the most helpful. This institute provide the best nurturing environment. Anyone who needs guidance for studying abroad and learning foreign language must attend here. Tested and recommend institute.",
+  },
+  {
+    name: "Akshat Pandey",
+    image: "/Review/Akshat Pandey.jpeg",
+    rating: 5,
+    review:
+      "I started learning German here exact 1 year before and now I have completed B2 certification. From the level A1 to B2 I had the most amazing experience here while studying and interacting with others. Teachers here have very deep knowledge about everything like getting job in the German field, studying abroad and Techniques for the slow learners.",
+  },
+  {
+    name: "Rahul Soni",
+    image: "/Review/Rahul Soni.jpeg",
+    rating: 5,
+    review:
+      "Das ist ein schönes Institut und die Lehrer sind nett und hilfreich. Ich empfehle das Institut für alle, die Deutsch in Jaipur lernen wollen.",
+  },
+  {
+    name: "Lavesh Rajput",
+    image: "/Review/Lavesh Rajput.jpeg",
+    rating: 5,
+    review:
+      "GYANSHALA is a great place to learn foreign languages, where you get a healthy environment and great support from the staff. Their personalised attention to their students help to learn even faster. Well equipped digital classroom, interaction with natives and supportive faculty are also a very big support to the students. Coming to the career guidance and counseling, it is also a strong side of Gyanshala.",
+  },
+  {
+    name: "Jayalaxmi",
+    image: "/Review/Jayalaxmi.jpeg",
+    rating: 5,
+    review:
+      "Had an excellent experience here. The teachers are well qualified. It made learning german easy. This institute is highly recommended to everyone who wishes to learn any foreign language.",
+  },
+  {
+    name: "Shailja Rathore",
+    image: "/Review/Shailja Rathore.jpeg",
+    rating: 5,
+    review:
+      "Wenn jemand in Jaipur deutsch lernen möchte, der am Gyanshala Institut einmal besuchen soll. Die Lehrer sind sehr hilfreich und freundlich. Das Lernen am Gyanshala fühlt nie schwer, sondern genießt man die Atmosphäre!",
+  },
+  {
+    name: "Veronica Velasco",
+    image: "/Review/Veronica Velasco.jpeg",
+    rating: 5,
+    review:
+      "I had a fantastic experience learning German at Gyanshala Foreign Language Academy with Mr. Dilip Sinsinwar. Thanks to his excellent teaching methods and patient guidance, I was able to complete the A1 level in a short period of time. Mr. Sinsinwar made the lessons engaging and easy to understand, which greatly helped in building my confidence with the language. The academy provides a supportive learning environment, and I highly recommend it to anyone looking to learn German quickly and effectively. Vielen Dank, Mr. Sinsinwar and Gyanshala!",
+  },
+  {
+    name: "Sanju Punia",
+    image: "/Review/Sanju Punia.jpeg",
+    rating: 5,
+    review:
+      "Best german language institute in jaipur. I am from Haryana and joined here for B1 and B2 level. I am learning from Disha Mam and found the class best among all the classes I've taken earlier in Jaipur as well as Delhi. For students interested in studying or working in Germany, the academy offers counseling services, assistance with university admissions, visa applications, and information on job opportunities within its network. Supporting staff, positive environment. Highly recommended! ✅✨",
   },
 ];
 
@@ -504,7 +565,7 @@ export default function Home() {
       </section>
 
       {/* About Us Gyanshala Section - Matching About Us Page Typography & Design */}
-      <section id="about" className={`relative py-14 sm:py-20 lg:py-24 bg-[#FCF9EA] dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+      <section id="about" className="relative py-14 sm:py-20 lg:py-24 bg-[#FCF9EA] dark:bg-zinc-950 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800">
         {/* White Paper Background Texture with 70% Opacity */}
         <div className="absolute inset-0 z-0 opacity-70 dark:opacity-30 pointer-events-none">
           <Image
@@ -519,24 +580,18 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-            {/* Left Column: Text Content matching About Us page */}
+            {/* Left Column: Text Content matching the reference typography */}
             <FadeInLeft className="lg:col-span-7">
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3 sm:mb-4">
                 OUR STORY
-              </h3>
+              </p>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight mb-4">
-                Our Journey Since 2018
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-normal text-zinc-900 dark:text-zinc-100 tracking-[-0.01em] leading-[1.12] mb-6 sm:mb-7">
+                Our journey since <span className="text-[#A61911] italic font-normal">2018</span>
               </h2>
 
               <FadeInUp delay={0.1}>
-                <div
-                  className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] xl:text-[22px] leading-[1.55] italic font-medium tracking-normal"
-                  style={{
-                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                    letterSpacing: '0em',
-                  }}
-                >
+                <div className="space-y-4 sm:space-y-5 text-zinc-700 dark:text-zinc-300 text-base sm:text-lg lg:text-[17.5px] leading-[1.75] font-normal not-italic tracking-normal">
                   <p>
                     Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.
                   </p>
@@ -548,13 +603,14 @@ export default function Home() {
               </FadeInUp>
 
               {/* View More Button */}
-              <FadeInUp delay={0.18} className="mt-6 sm:mt-8">
+              <FadeInUp delay={0.18} className="mt-7 sm:mt-8">
                 <AnimatedButton>
                   <Link
                     href="/about-us"
-                    className="inline-flex items-center justify-center px-8 sm:px-10 py-3 rounded-xl text-base font-bold text-white bg-[#C00000] hover:bg-[#a00000] shadow-md hover:shadow-lg transition-all"
+                    className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 rounded-none text-base font-semibold text-white bg-[#A61911] hover:bg-[#8A140D] shadow-sm hover:shadow-md transition-all group"
                   >
-                    View More →
+                    <span>View More</span>
+                    <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
                   </Link>
                 </AnimatedButton>
               </FadeInUp>
@@ -581,7 +637,7 @@ export default function Home() {
       </section>
 
       {/* German Courses Section */}
-      <section id="german-courses" className={`relative py-12 sm:py-16 overflow-hidden ${josefin.className}`}>
+      <section id="german-courses" className="relative py-12 sm:py-16 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 -z-10">
           <Image
@@ -598,10 +654,10 @@ export default function Home() {
 
           {/* Section Header */}
           <FadeInUp className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#ECBB0C] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#ECBB0C] leading-none mb-3">
               LANGUAGE TRAINING
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-white tracking-normal leading-tight">
               German Courses
             </h2>
           </FadeInUp>
@@ -662,7 +718,7 @@ export default function Home() {
       </section>
 
       {/* Germany Pathways Section */}
-      <section id="pathways" className={`relative py-14 sm:py-20 lg:py-24 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden ${josefin.className}`}>
+      <section id="pathways" className="relative py-14 sm:py-20 lg:py-24 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
         {/* White Paper Background Texture */}
         <div className="absolute inset-0 z-0 opacity-60 dark:opacity-25 pointer-events-none">
           <Image
@@ -676,10 +732,10 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               GLOBAL OPPORTUNITIES
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Germany Pathways
             </h2>
           </FadeInUp>
@@ -737,10 +793,7 @@ export default function Home() {
                   <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex flex-col">
                     {/* Red Title Banner */}
                     <div className="bg-[#AC2424] py-3 sm:py-3.5 px-4 text-center">
-                      <h3
-                        className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-white tracking-normal leading-tight"
-                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                      >
+                      <h3 className="text-xl sm:text-2xl lg:text-[26px] font-bold text-white tracking-normal leading-tight">
                         {pathway.title}
                       </h3>
                     </div>
@@ -748,26 +801,17 @@ export default function Home() {
                     {/* Content Area */}
                     <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-[#FFFAF3] dark:bg-zinc-900">
                       <div className="space-y-3">
-                        <p
-                          className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
-                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                        >
+                        <p className="text-base sm:text-lg leading-[1.6] text-zinc-800 dark:text-zinc-200 font-normal">
                           {pathway.description}
                         </p>
-                        <p
-                          className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
-                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                        >
+                        <p className="text-base sm:text-lg leading-[1.6] text-zinc-800 dark:text-zinc-200 font-normal">
                           {pathway.target}
                         </p>
                       </div>
 
                       {/* Yellow Button */}
                       <div className="mt-6 pt-2">
-                        <span
-                          className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold italic shadow-sm transition-colors"
-                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                        >
+                        <span className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold shadow-sm transition-colors">
                           {pathway.cta}
                         </span>
                       </div>
@@ -781,15 +825,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* =========================================================================
+          OUR STUDENTS IN GERMANY SECTION
+          ========================================================================= */}
+      <section id="students-in-germany" className="relative py-14 sm:py-20 lg:py-24 bg-[#FCF9EA] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
+        {/* Subtle Decorative Background Texture */}
+        <div className="absolute inset-0 z-0 opacity-50 dark:opacity-20 pointer-events-none">
+          <Image
+            src="/whitepaper.jpg"
+            alt="Paper background texture"
+            fill
+            className="object-cover object-center contrast-[1.12] brightness-[0.96]"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Main Heading */}
+          <FadeInUp className="text-center max-w-4xl mx-auto">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-zinc-900 dark:text-zinc-100 tracking-[-0.01em] leading-tight">
+              Our Students in Germany
+            </h2>
+          </FadeInUp>
+        </div>
+      </section>
+
       {/* Experienced Educators / Meet Our Team Section */}
-      <section id="team" className={`py-14 sm:py-20 lg:py-24 bg-[#FBFBFB] dark:bg-zinc-900/30 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+      <section id="team" className="py-14 sm:py-20 lg:py-24 bg-[#FBFBFB] dark:bg-zinc-900/30 border-b border-zinc-200/60 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               EXPERIENCED EDUCATORS
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Meet Our Team
             </h2>
           </FadeInUp>
@@ -800,47 +868,42 @@ export default function Home() {
               {
                 name: "Dilip Sinsinwar",
                 role: "German Language Trainer",
-                image: "/members/DILIP.SINSINWAR..jpeg",
+                image: "/teammembers/Dilip Sinsinwar Sir German Language Expert.png",
               },
               {
                 name: "Claudia Zibell",
                 role: "German Language Native Speaker",
-                image: "/members/Claudia.Zibell.jpeg",
+                image: "/teammembers/Claudia Zibell Maam German langauge Native Speaker.png",
               },
               {
                 name: "Ashveer Singh",
                 role: "German Language Trainer",
-                image: "/members/ASHVEER.SINGH.jpeg",
+                image: "/teammembers/Ashveer Singh Sir German Language Expert.png",
               },
               {
                 name: "Ruchi Kaushik",
                 role: "Spanish Language Trainer",
-                image: "/members/RUCHI.KAUSHIK.jpeg",
+                image: "/teammembers/Ruchi Kausik Maam Spanish Language Trainer.png",
               },
               {
                 name: "Jhanvi Kumawat",
                 role: "German Language Trainer",
-                image: "/members/Jhanvi.kumawat.jpeg",
+                image: "/teammembers/Jhanvi Kumawat German Language Trainer.png",
               },
               {
                 name: "Katharina Shevchuk",
                 role: "English/German & Russian Language Trainer",
-                image: "/members/KATRINA.jpeg",
+                image: "/teammembers/Katharina Shevchuk Maam EnglishGerman & Russian Language Trainer.png",
               },
               {
                 name: "Mumal Rathore",
                 role: "French Language Trainer",
-                image: "/members/Mumal.Rathore.jpeg",
+                image: "/teammembers/Mumal Rathore Maam French Language Trainer.png",
               },
               {
                 name: "Neeru Joshi",
                 role: "German Language Trainer",
-                image: "/members/Neeru.Joshi.jpeg",
-              },
-              {
-                name: "Niharika",
-                role: "English Language Trainer",
-                image: "/members/NIHARIKA..jpeg",
+                image: "/teammembers/Neeru Joshi German Langauge Trainer.png",
               },
             ].map((member, index) => (
               <StaggerItem key={member.name} className="h-full" direction="alternate" index={index} hoverLift>
@@ -878,7 +941,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Gyanshala Section */}
-      <section id="why-choose-us" className={`relative pt-14 sm:pt-20 lg:pt-24 pb-0 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+      <section id="why-choose-us" className="relative pt-14 sm:pt-20 lg:pt-24 pb-0 overflow-hidden border-b border-zinc-200/60 dark:border-zinc-800">
         {/* White Paper Background Texture with 100% Appearance */}
         <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
           <Image
@@ -893,10 +956,10 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <FadeInUp className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C00000] leading-none mb-2">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               WHY LEARN WITH US
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Why Choose Gyanshala?
             </h2>
           </FadeInUp>
@@ -961,14 +1024,14 @@ export default function Home() {
       </section>
 
       {/* Highlights of Gyanshala Section */}
-      <section id="highlights" className={`py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+      <section id="highlights" className="py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               KEY FEATURES
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Highlights of Gyanshala
             </h2>
           </FadeInUp>
@@ -1003,17 +1066,17 @@ export default function Home() {
       </section>
 
       {/* Learn German Online (YouTube Video Lessons) Section */}
-      <section id="learn-online" className={`py-14 sm:py-20 lg:py-24 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+      <section id="learn-online" className="py-14 sm:py-20 lg:py-24 bg-[#F5EFE3] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               LEARN GERMAN ONLINE
-            </h2>
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Free Video Lessons
-            </h3>
+            </h2>
           </FadeInUp>
 
           {/* Video Cards Grid */}
@@ -1104,16 +1167,16 @@ export default function Home() {
       </section>
 
       {/* Student Reviews & Testimonials Section */}
-      <section id="reviews" className={`py-12 sm:py-16 lg:py-20 bg-[#FCF9EA] dark:bg-zinc-900/40 border-b border-zinc-200/60 dark:border-zinc-800 ${josefin.className}`}>
+      <section id="reviews" className="py-12 sm:py-16 lg:py-20 bg-[#FCF9EA] dark:bg-zinc-900/40 border-b border-zinc-200/60 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header with Left/Right Navigation */}
           <FadeInUp className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
             <div>
-              <h3 className="text-xl sm:text-2xl lg:text-[28px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 STUDENT REVIEWS
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 What Our Students Say
               </h2>
               <div className="mt-2.5 flex items-center gap-2">
@@ -1211,7 +1274,7 @@ export default function Home() {
                     </div>
 
                     {/* Compact Review Text */}
-                    <p className="text-xs sm:text-[13px] text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal italic pt-2.5 border-t border-zinc-100 dark:border-zinc-800">
+                    <p className="text-xs sm:text-[13.5px] text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal not-italic pt-2.5 border-t border-zinc-100 dark:border-zinc-800">
                       &ldquo;{item.review}&rdquo;
                     </p>
                   </div>
@@ -1227,13 +1290,13 @@ export default function Home() {
       <FAQSection isHomepage={true} limit={8} />
 
       {/* External Portals / Useful German Learning Resources Section */}
-      <section id="external-portals" className={`py-12 sm:py-16 bg-[#FCF9EA] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden ${josefin.className}`}>
+      <section id="external-portals" className="py-12 sm:py-16 bg-[#FCF9EA] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               EXTERNAL PORTALS
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Useful German Learning Resources
             </h2>
           </FadeInUp>
