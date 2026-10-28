@@ -474,13 +474,13 @@ export default function Home() {
     }
   };
 
-  // Auto slide reviews every 3.5 seconds (paused on hover / touch)
+  // Auto slide reviews every 2 seconds (faster, brisk pace; paused on hover / touch)
   useEffect(() => {
     if (isReviewsPaused) return;
 
     const timer = setInterval(() => {
       scrollNextReview();
-    }, 3500);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, [isReviewsPaused]);
