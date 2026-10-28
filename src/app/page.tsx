@@ -919,8 +919,8 @@ export default function Home() {
             </h2>
           </FadeInUp>
 
-          {/* Responsive Team Grid: 3 columns desktop & tablet, 2 columns mobile */}
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3.5 sm:gap-6 max-w-6xl mx-auto" staggerDelay={0.15}>
+          {/* Responsive Team Grid: 4 columns desktop (4, 4, 1), 2 columns mobile */}
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6" staggerDelay={0.15}>
             {[
               {
                 name: "Dilip Sinsinwar",
