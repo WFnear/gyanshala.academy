@@ -389,6 +389,69 @@ const studentReviews = [
   },
 ];
 
+const studentsInGermany = [
+  {
+    name: "Akshat Pandey",
+    image: "/studentsingermany/AKSHAT PANDEY.png",
+  },
+  {
+    name: "Ankit Maan",
+    image: "/studentsingermany/ANKIT MAAN.png",
+  },
+  {
+    name: "Anukalp Lawania",
+    image: "/studentsingermany/ANUKALP LAWANIA.png",
+  },
+  {
+    name: "Deepak Choudhary",
+    image: "/studentsingermany/DEEPAK CHOUDHARY.png",
+  },
+  {
+    name: "Jayalaxmi",
+    image: "/studentsingermany/JAAYALAXMI.png",
+  },
+  {
+    name: "Lavesh Rajput",
+    image: "/studentsingermany/LAVESH RAJPUT.png",
+  },
+  {
+    name: "Mehul Kumawat",
+    image: "/studentsingermany/MEHUL KUMAWAT.png",
+  },
+  {
+    name: "Rahul Soni",
+    image: "/studentsingermany/RAHUL SONI.png",
+  },
+  {
+    name: "Riya Ahuja",
+    image: "/studentsingermany/RIYA AHUJA.png",
+  },
+  {
+    name: "Saurav Yadav",
+    image: "/studentsingermany/SAURAV YADAV.png",
+  },
+  {
+    name: "Shailja Rathore",
+    image: "/studentsingermany/SHAILJJA RATHOD.png",
+  },
+  {
+    name: "Shivam Tak",
+    image: "/studentsingermany/SHIVAM TAK.png",
+  },
+  {
+    name: "Shubhangi",
+    image: "/studentsingermany/SHUBHANGI.png",
+  },
+  {
+    name: "Suvidhi Loonker",
+    image: "/studentsingermany/SUVIDHI LOONKER.png",
+  },
+  {
+    name: "Yuganshu Sharma",
+    image: "/studentsingermany/YUGANSHU SHARMA.png",
+  },
+];
+
 export default function Home() {
   const [current, setCurrent] = useState(0);
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
@@ -898,11 +961,38 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Heading */}
-          <FadeInUp className="text-center max-w-4xl mx-auto">
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-zinc-900 dark:text-zinc-100 tracking-[-0.01em] leading-tight">
               Our Students in Germany
             </h2>
           </FadeInUp>
+
+          {/* Students Grid: 5 columns desktop (3 rows of 5), 3 columns tablet, 2 columns mobile */}
+          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5 lg:gap-6" staggerDelay={0.08}>
+            {studentsInGermany.map((student, index) => (
+              <StaggerItem key={student.name} className="h-full" direction="alternate" index={index} hoverLift>
+                <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-2xl shadow-xs hover:shadow-xl hover:border-[#C00000]/40 transition-all duration-300 overflow-hidden flex flex-col group">
+                  {/* Student Image (Aspect Square) */}
+                  <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+                    <Image
+                      src={student.image}
+                      alt={student.name}
+                      fill
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                    />
+                  </div>
+
+                  {/* Student Name */}
+                  <div className="p-3 sm:p-3.5 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
+                    <h3 className="font-bold text-sm sm:text-base text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
+                      {student.name}
+                    </h3>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
