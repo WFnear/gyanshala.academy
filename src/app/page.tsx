@@ -435,15 +435,28 @@ export default function Home() {
   };
 
   const reviewsTrackRef = useRef<HTMLDivElement>(null);
+  const [isReviewsPaused, setIsReviewsPaused] = useState(false);
+
+  const getReviewStep = () => {
+    if (!reviewsTrackRef.current) return 360;
+    const container = reviewsTrackRef.current;
+    const firstCard = container.firstElementChild as HTMLElement | null;
+    if (firstCard) {
+      const style = window.getComputedStyle(container);
+      const gap = parseFloat(style.columnGap || style.gap || "20") || 20;
+      return firstCard.offsetWidth + gap;
+    }
+    return 360;
+  };
 
   const scrollPrevReview = () => {
     if (reviewsTrackRef.current) {
       const container = reviewsTrackRef.current;
-      const cardWidth = container.clientWidth / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1);
-      if (container.scrollLeft <= 10) {
-        container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
+      const step = getReviewStep();
+      if (container.scrollLeft <= 15) {
+        container.scrollTo({ left: container.scrollWidth - container.clientWidth, behavior: "smooth" });
       } else {
-        container.scrollBy({ left: -cardWidth, behavior: "smooth" });
+        container.scrollBy({ left: -step, behavior: "smooth" });
       }
     }
   };
@@ -451,14 +464,26 @@ export default function Home() {
   const scrollNextReview = () => {
     if (reviewsTrackRef.current) {
       const container = reviewsTrackRef.current;
-      const cardWidth = container.clientWidth / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1);
-      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+      const step = getReviewStep();
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (container.scrollLeft >= maxScroll - 20) {
         container.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        container.scrollBy({ left: cardWidth, behavior: "smooth" });
+        container.scrollBy({ left: step, behavior: "smooth" });
       }
     }
   };
+
+  // Auto slide reviews every 3.5 seconds (paused on hover / touch)
+  useEffect(() => {
+    if (isReviewsPaused) return;
+
+    const timer = setInterval(() => {
+      scrollNextReview();
+    }, 3500);
+
+    return () => clearInterval(timer);
+  }, [isReviewsPaused]);
 
 
   return (
@@ -1221,65 +1246,93 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Slider Navigation Buttons */}
-            <div className="flex items-center gap-2 self-start sm:self-auto">
+            {/* Slider Navigation Buttons + Auto-slide Indicator */}
+            <div className="flex items-center gap-2.5 self-start sm:self-auto">
               <button
                 type="button"
-                onClick={scrollPrevReview}
-                aria-label="Previous review"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-colors flex items-center justify-center shadow-xs cursor-pointer active:scale-95"
+                onClick={() => setIsReviewsPaused((prev) => !prev)}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-750 px-3 py-1.5 rounded-full border border-zinc-200/90 dark:border-zinc-700 transition-colors shadow-2xs cursor-pointer active:scale-95"
+                title={isReviewsPaused ? "Resume auto slide" : "Pause auto slide"}
               >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
+                <span className={`w-2 h-2 rounded-full ${isReviewsPaused ? "bg-amber-500" : "bg-emerald-500 animate-pulse"}`} />
+                <span>{isReviewsPaused ? "Paused" : "Auto-slide On"}</span>
               </button>
-              <button
-                type="button"
-                onClick={scrollNextReview}
-                aria-label="Next review"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-colors flex items-center justify-center shadow-xs cursor-pointer active:scale-95"
-              >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </button>
+
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={scrollPrevReview}
+                  aria-label="Previous review"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-all flex items-center justify-center shadow-xs cursor-pointer active:scale-90"
+                >
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={scrollNextReview}
+                  aria-label="Next review"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-all flex items-center justify-center shadow-xs cursor-pointer active:scale-90"
+                >
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </FadeInUp>
 
           {/* Reviews Track: 3 Cards in 1 Row on Desktop, 2 on Tablet, 1 on Mobile */}
           <div
             ref={reviewsTrackRef}
+            onMouseEnter={() => setIsReviewsPaused(true)}
+            onMouseLeave={() => setIsReviewsPaused(false)}
+            onTouchStart={() => setIsReviewsPaused(true)}
+            onTouchEnd={() => setIsReviewsPaused(false)}
             className="flex items-stretch gap-5 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {studentReviews.map((item, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 0.45, delay: (idx % 3) * 0.08 }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
                 className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start flex flex-col"
               >
-                <div className="h-full bg-white dark:bg-zinc-900 rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-md border border-zinc-200/90 dark:border-zinc-800 transition-all duration-300 flex flex-col justify-between group">
-                  <div>
+                <div className="relative h-full bg-white dark:bg-zinc-900 rounded-2xl p-4 sm:p-5 shadow-xs hover:shadow-xl border border-zinc-200/90 hover:border-[#C00000]/40 dark:border-zinc-800 dark:hover:border-[#C00000]/40 transition-all duration-300 flex flex-col justify-between group overflow-hidden">
+                  {/* Decorative Quote Mark */}
+                  <div className="absolute right-3.5 top-3 text-zinc-100 dark:text-zinc-800/40 pointer-events-none group-hover:text-red-50 dark:group-hover:text-zinc-800 transition-colors duration-300">
+                    <svg className="w-8 h-8 fill-current opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                  </div>
+
+                  <div className="relative z-10">
                     {/* Header: Circle Profile Pic + Name, Stars & Google Badge */}
                     <div className="flex items-start justify-between gap-3 mb-3.5">
                       <div className="flex items-center gap-3">
-                        {/* Profile Pic in Medium Circle */}
-                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-[#C00000] ring-2 ring-[#C00000]/15 shadow-2xs shrink-0 bg-zinc-100 dark:bg-zinc-800">
+                        {/* Profile Pic in Medium Circle with Hover Ring Animation */}
+                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-[#C00000] ring-2 ring-[#C00000]/15 group-hover:ring-4 group-hover:ring-[#C00000]/30 shadow-2xs shrink-0 bg-zinc-100 dark:bg-zinc-800 transition-all duration-300">
                           <Image
                             src={item.image}
                             alt={item.name}
                             fill
-                            className="object-cover object-center"
+                            className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                             sizes="(max-width: 640px) 48px, 56px"
                           />
                         </div>
                         <div className="min-w-0">
-                          <h4 className="font-bold text-sm sm:text-base text-zinc-950 dark:text-white leading-tight truncate">
+                          <h4 className="font-bold text-sm sm:text-base text-zinc-950 dark:text-white leading-tight truncate group-hover:text-[#C00000] dark:group-hover:text-red-400 transition-colors duration-200">
                             {item.name}
                           </h4>
                           <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">
                             Verified Student Review
                           </p>
-                          {/* 5 Stars */}
-                          <div className="flex items-center gap-0.5 text-[#ECBB0C] mt-1">
+                          {/* 5 Stars with gentle scale on card hover */}
+                          <div className="flex items-center gap-0.5 text-[#ECBB0C] mt-1 group-hover:scale-105 transition-transform duration-300 origin-left">
                             {[...Array(item.rating)].map((_, i) => (
                               <svg key={i} className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -1290,7 +1343,7 @@ export default function Home() {
                       </div>
 
                       {/* Google Badge */}
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full shrink-0 border border-zinc-200/60 dark:border-zinc-700">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full shrink-0 border border-zinc-200/60 dark:border-zinc-700 shadow-2xs group-hover:border-[#C00000]/30 transition-colors">
                         <svg className="w-3 h-3 shrink-0" viewBox="0 0 24 24">
                           <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                           <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -1307,7 +1360,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
