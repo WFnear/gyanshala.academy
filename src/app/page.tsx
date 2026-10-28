@@ -1018,9 +1018,9 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <FadeInUp className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
-              WHY LEARN WITH US
-            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
+              Why Learn With Us?
+            </h2>
           </FadeInUp>
 
           {/* 3-Column Symmetrical Layout (Matching Reference Style) */}
