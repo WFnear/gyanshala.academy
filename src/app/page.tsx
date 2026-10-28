@@ -1226,8 +1226,8 @@ export default function Home() {
       <section id="reviews" className="py-12 sm:py-16 lg:py-20 bg-[#FCF9EA] dark:bg-zinc-900/40 border-b border-zinc-200/60 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Section Header with Left/Right Navigation */}
-          <FadeInUp className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+          {/* Section Header */}
+          <FadeInUp className="mb-8 sm:mb-10">
             <div>
               <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 STUDENT REVIEWS
@@ -1248,41 +1248,44 @@ export default function Home() {
                 </span>
               </div>
             </div>
-
-            {/* Slider Navigation Buttons */}
-            <div className="flex items-center gap-2 self-start sm:self-auto">
-              <button
-                type="button"
-                onClick={scrollPrevReview}
-                aria-label="Previous review"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-all flex items-center justify-center shadow-xs cursor-pointer active:scale-90"
-              >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                onClick={scrollNextReview}
-                aria-label="Next review"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-[#C00000] hover:text-white hover:border-[#C00000] transition-all flex items-center justify-center shadow-xs cursor-pointer active:scale-90"
-              >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </button>
-            </div>
           </FadeInUp>
 
-          {/* Reviews Track: 3 Cards in 1 Row on Desktop, 2 on Tablet, 1 on Mobile */}
-          <div
-            ref={reviewsTrackRef}
-            onMouseEnter={() => setIsReviewsPaused(true)}
-            onMouseLeave={() => setIsReviewsPaused(false)}
-            onTouchStart={() => setIsReviewsPaused(true)}
-            onTouchEnd={() => setIsReviewsPaused(false)}
-            className="flex items-stretch gap-5 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-          >
+          {/* Reviews Slider Container with Flanking Left/Right Arrows (Without BG) */}
+          <div className="relative px-4 sm:px-8 lg:px-10">
+
+            {/* Left Arrow: Transparent, No BG, on Card's Left Flank */}
+            <button
+              type="button"
+              onClick={scrollPrevReview}
+              aria-label="Previous review"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+            >
+              <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+
+            {/* Right Arrow: Transparent, No BG, on Card's Right Flank */}
+            <button
+              type="button"
+              onClick={scrollNextReview}
+              aria-label="Next review"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+            >
+              <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+
+            {/* Reviews Track: 3 Cards in 1 Row on Desktop, 2 on Tablet, 1 on Mobile */}
+            <div
+              ref={reviewsTrackRef}
+              onMouseEnter={() => setIsReviewsPaused(true)}
+              onMouseLeave={() => setIsReviewsPaused(false)}
+              onTouchStart={() => setIsReviewsPaused(true)}
+              onTouchEnd={() => setIsReviewsPaused(false)}
+              className="flex items-stretch gap-5 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            >
             {studentReviews.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -1353,6 +1356,8 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+            </div>
+
           </div>
 
         </div>
