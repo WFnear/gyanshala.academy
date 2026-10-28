@@ -357,7 +357,7 @@ export default function FAQSection({
   showBottomCTA,
 }: FAQSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [openIds, setOpenIds] = useState<number[]>([1]); // First FAQ open by default
+  const [openIds, setOpenIds] = useState<number[]>([]); // Default all closed
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const toggleFAQ = (id: number) => {
