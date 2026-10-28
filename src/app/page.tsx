@@ -986,13 +986,13 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          OUR STUDENTS IN GERMANY SECTION - WHITE BG, 4 CARDS PER SLIDE WITH ARROWS
+          OUR STUDENTS IN GERMANY SECTION - RED BG (#BC0202), 2 ROWS & COLUMNS WITH ARROWS
           ========================================================================= */}
-      <section id="students-in-germany" className="relative py-14 sm:py-20 lg:py-24 bg-white dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800 overflow-hidden">
+      <section id="students-in-germany" className="relative py-14 sm:py-20 lg:py-24 bg-[#BC0202] dark:bg-[#990202] border-b border-red-950/40 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Heading */}
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-zinc-900 dark:text-zinc-100 tracking-[-0.01em] leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
               Our Students in Germany
             </h2>
           </FadeInUp>
@@ -1005,7 +1005,7 @@ export default function Home() {
               type="button"
               onClick={scrollPrevStudents}
               aria-label="Previous students"
-              className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+              className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] select-none"
             >
               <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -1017,7 +1017,7 @@ export default function Home() {
               type="button"
               onClick={scrollNextStudents}
               aria-label="Next students"
-              className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+              className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] select-none"
             >
               <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -1043,7 +1043,7 @@ export default function Home() {
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   className="w-full h-full snap-start flex flex-col"
                 >
-                  <div className="h-full bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 rounded-2xl shadow-xs hover:shadow-xl hover:border-[#C00000]/40 transition-all duration-300 overflow-hidden flex flex-col group">
+                  <div className="h-full bg-white dark:bg-zinc-900 border border-white/30 dark:border-zinc-800 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col group">
                     {/* Student Image (Aspect Square) */}
                     <div className="relative aspect-square bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
                       <Image
