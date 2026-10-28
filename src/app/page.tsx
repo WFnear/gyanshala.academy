@@ -262,6 +262,34 @@ const onlineVideos: OnlineVideo[] = [
 
 const studentReviews = [
   {
+    name: "Karan Pareek",
+    image: "/Review/KaranPareek.png",
+    rating: 5,
+    review:
+      "I had a wonderful experience learning German at “Gyanshala Foreign Language Academy”. The classes were well-structured, engaging, and easy to understand. Special thanks to Dillip Sir for his guidance, patience, and constant support. I truly appreciate his efforts and highly recommend this institute to anyone learning German.",
+  },
+  {
+    name: "Anjali Choudhary",
+    image: "/Review/AnjaliChoudhary.png",
+    rating: 5,
+    review:
+      "Seit einem Jahr lerne ich Deutsch und glücklicherweise habe ich meine B1 Prüfung bestanden🏆🏆 . Zurzeit lerne ich B2 Kurs...Ich sammle hier viele Erfahrungen und das Umfeld des Unterrichts ist auch aüßerst einwandfrei und die Lehrer sind auch sehr hilfreich und unterstüztend uns beim Problem...Ich empfehle allen das Gyanshala institute zu beitreten",
+  },
+  {
+    name: "Jhanvi Kumawat",
+    image: "/Review/JhanviKumawat.png",
+    rating: 5,
+    review:
+      "The German classes here are very interactive and practical. I like how the teachers focus on speaking from day one, instead of just theory. The sessions are fun, and I always feel motivated to practice more at home. It’s a perfect institute for beginners who want to learn German seriously.",
+  },
+  {
+    name: "Richa Singh",
+    image: "/Review/RichaSingh.png",
+    rating: 5,
+    review:
+      "I recently finished my German classes here and I have to say, the faculty is amazing. They really know their stuff and have a deep and thorough Knowledge of the German language. Instead of just making you memorize a textbook, they actually break down tricky grammar and sentence structures so it's easier to grasp the concepts. The teachers are super supportive and patient whenever you get stuck. They are incredible and respond whenever you need help. Definitely recommend.",
+  },
+  {
     name: "Suraj Dhayal",
     image: "/Review/Suraj dhayal.jpeg",
     rating: 5,
