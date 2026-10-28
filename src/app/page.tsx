@@ -1079,7 +1079,7 @@ export default function Home() {
                       <h3 className="text-sm sm:text-base lg:text-lg font-bold text-zinc-900 dark:text-white tracking-tight leading-snug text-center">
                         {member.name}
                       </h3>
-                      <p className="mt-1 text-xs sm:text-sm font-semibold text-[#C00000] leading-tight text-center">
+                      <p className="mt-1 text-xs sm:text-sm font-normal text-black dark:text-zinc-300 leading-tight text-center">
                         {member.role}
                       </p>
                     </div>
