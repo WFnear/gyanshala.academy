@@ -534,9 +534,6 @@ export default function AboutUsPage() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               
               <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
-                  KEY FEATURES
-                </p>
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                   Highlights of Gyanshala
                 </h2>
