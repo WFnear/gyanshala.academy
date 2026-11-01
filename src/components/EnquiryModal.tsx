@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useEnquiryModal } from "@/context/EnquiryModalContext";
+import { submitEnquiry } from "@/lib/sendEnquiry";
 
 const courseOptions = [
   "German A1 (Beginner Level)",
@@ -31,16 +32,24 @@ export default function EnquiryModal() {
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setErrorMsg("");
 
-    // Simulate submission (or future API integration)
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      await submitEnquiry({
+        name,
+        email,
+        phone: `${countryCode} ${phone}`,
+        course,
+        message,
+      });
+
       setSubmitted(true);
       setTimeout(() => {
         setSubmitted(false);
@@ -52,7 +61,12 @@ export default function EnquiryModal() {
         setMessage("");
         closeEnquiryModal();
       }, 2500);
-    }, 600);
+    } catch (err: unknown) {
+      console.error("Modal enquiry submission error:", err);
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -228,6 +242,12 @@ export default function EnquiryModal() {
                   className="w-full bg-[#D9D9D9] text-zinc-950 font-medium px-3.5 py-2 text-sm sm:text-base rounded-none border border-transparent focus:outline-none focus:bg-[#cfcfcf] transition-colors resize-none"
                 />
               </div>
+
+              {errorMsg && (
+                <div className="p-3 bg-red-50 border border-red-300 text-red-700 text-xs sm:text-sm rounded">
+                  {errorMsg}
+                </div>
+              )}
 
               {/* Row 6: Submit Button */}
               <div className="flex flex-col sm:grid sm:grid-cols-[125px_1fr] sm:items-center gap-2 sm:gap-4 pt-2 sm:pt-2">
