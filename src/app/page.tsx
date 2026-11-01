@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -439,6 +439,10 @@ const studentsInGermany = [
     image: "/studentsingermany/SHIVAM TAK.png",
   },
   {
+    name: "Shubham Gupta",
+    image: "/studentsingermany/Shubham Gupta.png",
+  },
+  {
     name: "Shubhangi",
     image: "/studentsingermany/SHUBHANGI.png",
   },
@@ -551,6 +555,45 @@ export default function Home() {
   // Our Students in Germany Slider (4 cards at a time, left/right arrows, auto-slide)
   const studentsTrackRef = useRef<HTMLDivElement>(null);
   const [isStudentsPaused, setIsStudentsPaused] = useState(false);
+  const [studentsActiveIndex, setStudentsActiveIndex] = useState(0);
+  const [studentsTotalPages, setStudentsTotalPages] = useState(2);
+
+  const updateStudentsPagination = useCallback(() => {
+    if (!studentsTrackRef.current) return;
+    const container = studentsTrackRef.current;
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    if (clientWidth <= 0) return;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll <= 5) {
+      setStudentsTotalPages(1);
+      setStudentsActiveIndex(0);
+      return;
+    }
+    const pages = Math.max(1, Math.round(scrollWidth / clientWidth));
+    setStudentsTotalPages(pages);
+
+    const progress = Math.min(1, Math.max(0, scrollLeft / maxScroll));
+    const active = Math.min(pages - 1, Math.round(progress * (pages - 1)));
+    setStudentsActiveIndex(active);
+  }, []);
+
+  const scrollToStudentPage = (pageIndex: number) => {
+    if (!studentsTrackRef.current) return;
+    const container = studentsTrackRef.current;
+    const { scrollWidth, clientWidth } = container;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll <= 0 || studentsTotalPages <= 1) return;
+    const targetScroll = (pageIndex / (studentsTotalPages - 1)) * maxScroll;
+    container.scrollTo({ left: targetScroll, behavior: "smooth" });
+    setStudentsActiveIndex(pageIndex);
+  };
+
+  useEffect(() => {
+    updateStudentsPagination();
+    const handleResize = () => updateStudentsPagination();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [updateStudentsPagination]);
 
   const scrollPrevStudents = () => {
     if (studentsTrackRef.current) {
@@ -910,7 +953,7 @@ export default function Home() {
                 target: "For students planning to pursue higher education in Germany.",
                 cta: "Explore Study Options →",
                 href: "/pathways/study-in-germany",
-                image: "/Pathways/studyingermany.png",
+                image: "/Pathways/students in germany .png",
               },
               {
                 title: "Ausbildung in Germany",
@@ -919,7 +962,7 @@ export default function Home() {
                 target: "For students who want professional training and practical work experience.",
                 cta: "Explore Ausbildung →",
                 href: "/pathways/ausbildung",
-                image: "/Pathways/ausbildung.png",
+                image: "/Pathways/ausbildung in germnay.png",
               },
               {
                 title: "Nursing in Germany",
@@ -928,7 +971,7 @@ export default function Home() {
                 target: "For qualified nurses looking to build their careers in Germany.",
                 cta: "Explore Nursing Careers →",
                 href: "/pathways/nursing-in-germany",
-                image: "/Pathways/nursingcareer.png",
+                image: "/Pathways/nursing jobs in germnay.png",
               },
             ].map((pathway, index) => (
               <StaggerItem key={pathway.title} className="h-full" direction="alternate" index={index} hoverLift>
@@ -998,16 +1041,16 @@ export default function Home() {
           </FadeInUp>
 
           {/* Students Slider: 2 rows flowing into columns, Left & Right arrows without BG */}
-          <div className="relative px-7 sm:px-10 lg:px-12">
+          <div className="relative px-12 sm:px-16 lg:px-24 xl:px-28">
 
             {/* Left Arrow: Transparent, No BG, on Card's Left Flank */}
             <button
               type="button"
               onClick={scrollPrevStudents}
               aria-label="Previous students"
-              className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] select-none"
+              className="absolute left-0 sm:left-1 lg:left-3 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-120 active:scale-90 p-1.5 cursor-pointer focus:outline-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] select-none"
             >
-              <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 sm:w-11 sm:h-11 lg:w-14 lg:h-14 stroke-[2.75]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
@@ -1017,9 +1060,9 @@ export default function Home() {
               type="button"
               onClick={scrollNextStudents}
               aria-label="Next students"
-              className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] select-none"
+              className="absolute right-0 sm:right-1 lg:right-3 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-120 active:scale-90 p-1.5 cursor-pointer focus:outline-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] select-none"
             >
-              <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 sm:w-11 sm:h-11 lg:w-14 lg:h-14 stroke-[2.75]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>
@@ -1027,6 +1070,7 @@ export default function Home() {
             {/* Students Track: 2 Rows flowing into columns, scrolls smoothly */}
             <div
               ref={studentsTrackRef}
+              onScroll={updateStudentsPagination}
               onMouseEnter={() => setIsStudentsPaused(true)}
               onMouseLeave={() => setIsStudentsPaused(false)}
               onTouchStart={() => setIsStudentsPaused(true)}
@@ -1065,6 +1109,33 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Slide Dot Indicators */}
+            {studentsTotalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-5 sm:mt-7">
+                {Array.from({ length: studentsTotalPages }).map((_, idx) => {
+                  const isActive = studentsActiveIndex === idx;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => scrollToStudentPage(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      aria-current={isActive ? "true" : undefined}
+                      className="p-1 sm:p-1.5 cursor-pointer focus:outline-none group select-none"
+                    >
+                      <span
+                        className={`block rounded-full transition-all duration-300 ${
+                          isActive
+                            ? "w-7 sm:w-8 h-2 sm:h-2.5 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+                            : "w-2 sm:w-2.5 h-2 sm:h-2.5 bg-white/40 group-hover:bg-white/80 group-hover:scale-110"
+                        }`}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            )}
 
           </div>
         </div>
@@ -1177,6 +1248,14 @@ export default function Home() {
             className="object-cover object-center"
             priority
           />
+        </div>
+
+        {/* Soft White Shadow & Glow Layer: Above white paper, below text & image content */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center p-3 sm:p-6 lg:p-8"
+        >
+          <div className="w-full h-full max-w-7xl mx-auto rounded-3xl bg-white/70 dark:bg-zinc-950/70 shadow-[0_0_100px_60px_rgba(255,255,255,0.95)] dark:shadow-[0_0_100px_60px_rgba(0,0,0,0.85)]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1415,16 +1494,16 @@ export default function Home() {
           </FadeInUp>
 
           {/* Reviews Slider Container with Flanking Left/Right Arrows (Without BG) */}
-          <div className="relative px-4 sm:px-8 lg:px-10">
+          <div className="relative px-8 sm:px-12 lg:px-16">
 
             {/* Left Arrow: Transparent, No BG, on Card's Left Flank */}
             <button
               type="button"
               onClick={scrollPrevReview}
               aria-label="Previous review"
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+              className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-120 active:scale-90 p-1.5 cursor-pointer focus:outline-none select-none"
             >
-              <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
@@ -1434,9 +1513,9 @@ export default function Home() {
               type="button"
               onClick={scrollNextReview}
               aria-label="Next review"
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-125 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-sm select-none"
+              className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 text-zinc-500 hover:text-[#C00000] dark:text-zinc-400 dark:hover:text-red-400 transition-all duration-200 transform hover:scale-120 active:scale-90 p-1.5 cursor-pointer focus:outline-none select-none"
             >
-              <svg className="w-7 h-7 sm:w-9 sm:h-9 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>

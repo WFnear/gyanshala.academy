@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 export const metadata: Metadata = {
   title: "Direct Nursing Jobs in Germany for Indian Nurses | Gyanshala Academy",
@@ -76,7 +68,7 @@ export default function NursingInGermanyPage() {
   ];
 
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className="w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       
       {/* =========================================================================
           HERO SECTION (SAME DESIGN AS ABOUT US)
@@ -123,24 +115,20 @@ export default function NursingInGermanyPage() {
           {/* SECTION 1: OVERVIEW */}
           <FadeInUp className="space-y-6">
             <div>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 HEALTHCARE CAREER PATHWAY
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Nursing Opportunities in German Hospitals &amp; Care Facilities
               </h2>
             </div>
 
-            <h4 className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-[#C00000] leading-snug">
+            <h4 className="font-serif text-2xl sm:text-3xl lg:text-[30px] font-normal italic text-[#A61911] leading-snug">
               Already Qualified as a Nurse in India? • Your Gateway to Germany
             </h4>
 
             <div
-              className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium tracking-normal"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
+              className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] font-normal not-italic tracking-normal"
             >
               <p>
                 Already qualified as a nurse in India? Germany offers employment opportunities in hospitals, clinics, rehabilitation units and specialised care facilities. To work as a fully recognised nurse, you must meet German qualification-recognition, language, professional-authorisation and visa requirements.
@@ -151,10 +139,10 @@ export default function NursingInGermanyPage() {
           {/* SECTION 2: WHO CAN APPLY? */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 ELIGIBILITY
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Who Can Apply?
               </h2>
             </FadeInUp>
@@ -186,11 +174,7 @@ export default function NursingInGermanyPage() {
                     {item.title}
                   </p>
                   <p
-                    className="text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[19px] leading-[1.5] italic font-medium"
-                    style={{
-                      fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                      letterSpacing: "0em",
-                    }}
+                    className="text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[19px] leading-[1.5] font-normal not-italic"
                   >
                     {item.desc}
                   </p>
@@ -204,11 +188,7 @@ export default function NursingInGermanyPage() {
                 DIRECT JOB ≠ NURSING AUSBILDUNG
               </p>
               <p
-                className="text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[19px] leading-[1.5] italic font-medium"
-                style={{
-                  fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                  letterSpacing: "0em",
-                }}
+                className="text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[19px] leading-[1.5] font-normal not-italic"
               >
                 This pathway is for already-qualified nurses. Ausbildung is initial vocational nursing training, usually taking three years. Full nursing practice in Germany still requires recognition and authorisation.
               </p>
@@ -218,10 +198,10 @@ export default function NursingInGermanyPage() {
           {/* SECTION 3: QUALIFICATION RECOGNITION (ANERKENNUNG) */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 ANERKENNUNG
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Qualification Recognition (Anerkennung)
               </h2>
             </FadeInUp>
@@ -238,11 +218,7 @@ export default function NursingInGermanyPage() {
                         {item.title}
                       </h4>
                       <p
-                        className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] italic font-medium"
-                        style={{
-                          fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                          letterSpacing: "0em",
-                        }}
+                        className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] font-normal not-italic"
                       >
                         {item.desc}
                       </p>
@@ -256,10 +232,10 @@ export default function NursingInGermanyPage() {
           {/* SECTION 4: MAIN VISA PATHWAYS */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 IMMIGRATION ROUTES
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Main Visa Pathways
               </h2>
             </FadeInUp>
@@ -277,11 +253,7 @@ export default function NursingInGermanyPage() {
                   </tr>
                 </thead>
                 <tbody
-                  className="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-900 dark:text-zinc-100 text-sm sm:text-base lg:text-[18px] italic font-medium"
-                  style={{
-                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                    letterSpacing: "0em",
-                  }}
+                  className="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-900 dark:text-zinc-100 text-sm sm:text-base lg:text-[18px] font-normal not-italic"
                 >
                   <tr className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
                     <td className="p-3.5 sm:p-4 font-bold text-[#C00000] not-italic">
@@ -315,10 +287,10 @@ export default function NursingInGermanyPage() {
           {/* SECTION 5: YOUR PATHWAY TO A GERMAN NURSING CAREER */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 ROADMAP
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Your Pathway to a German Nursing Career — How to Apply
               </h2>
             </FadeInUp>
@@ -335,11 +307,7 @@ export default function NursingInGermanyPage() {
                         {s.title}
                       </h4>
                       <p
-                        className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] italic font-medium"
-                        style={{
-                          fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                          letterSpacing: "0em",
-                        }}
+                        className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] font-normal not-italic"
                       >
                         {s.desc}
                       </p>
@@ -353,10 +321,10 @@ export default function NursingInGermanyPage() {
           {/* SECTION 6: DOCUMENTS TO PREPARE */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 CHECKLIST
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Documents to Prepare
               </h2>
             </FadeInUp>
@@ -374,11 +342,7 @@ export default function NursingInGermanyPage() {
                   </tr>
                 </thead>
                 <tbody
-                  className="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-900 dark:text-zinc-100 text-sm sm:text-base lg:text-[18px] italic font-medium"
-                  style={{
-                    fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                    letterSpacing: "0em",
-                  }}
+                  className="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-900 dark:text-zinc-100 text-sm sm:text-base lg:text-[18px] font-normal not-italic"
                 >
                   <tr className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
                     <td className="p-3.5 sm:p-4 font-bold text-black dark:text-white not-italic">
@@ -412,20 +376,16 @@ export default function NursingInGermanyPage() {
           {/* SECTION 7: SALARY, WORKPLACES & FUTURE PROSPECTS */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 REMUNERATION &amp; SETTINGS
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Salary, Workplaces &amp; Future Prospects
               </h2>
             </FadeInUp>
 
             <div
-              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
+              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] font-normal not-italic"
             >
               <p>
                 Official occupational data report a median of approximately <strong>€4,587 gross/month</strong> for full-time general healthcare nurses. This is not a guaranteed starting salary: pay varies by role, recognition status, employer, location and shifts. Gross pay is before tax and social-insurance deductions.
@@ -439,20 +399,16 @@ export default function NursingInGermanyPage() {
           {/* SECTION 8: STAY SAFE WHEN CONSIDERING AN OFFER */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 CONSUMER ADVISORY
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Stay Safe When Considering an Offer
               </h2>
             </FadeInUp>
 
             <div
-              className="p-6 sm:p-8 bg-amber-50/90 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 shadow-sm space-y-3 text-amber-950 dark:text-amber-200 text-base sm:text-lg lg:text-[20px] leading-[1.55] italic font-medium"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
+              className="p-6 sm:p-8 bg-amber-50/90 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 shadow-sm space-y-3 text-amber-950 dark:text-amber-200 text-base sm:text-lg lg:text-[20px] leading-[1.55] font-normal not-italic"
             >
               <p>
                 Verify the employer, whether the position is a nurse or assistant role, recognition arrangements, gross pay, deductions, accommodation costs, recruitment fees and refund clauses. Always request written terms.
@@ -466,20 +422,16 @@ export default function NursingInGermanyPage() {
           {/* SECTION 9: GERMAN PREPARATION WITH GYANSHALA */}
           <FadeInUp className="space-y-4">
             <div>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 LANGUAGE EXCELLENCE
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 German Preparation with Gyanshala
               </h2>
             </div>
 
             <div
-              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
+              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] font-normal not-italic"
             >
               <p>
                 Gyanshala Foreign Language Academy, Jaipur, offers structured German A1–B2 language training focused on speaking, grammar, listening, reading, writing, Goethe exam-oriented preparation and professional communication for healthcare specialists. Enquire about course batches and intensive language preparation.
@@ -489,11 +441,7 @@ export default function NursingInGermanyPage() {
 
           {/* SECTION 10: DISCLAIMER */}
           <footer
-            className="p-5 sm:p-6 bg-zinc-100/90 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1.5 italic font-medium"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: "0em",
-            }}
+            className="p-5 sm:p-6 bg-zinc-100/90 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1.5 font-normal not-italic"
           >
             <p className="font-bold uppercase tracking-widest text-zinc-800 dark:text-zinc-200 not-italic">
               Important Notice
@@ -522,16 +470,12 @@ export default function NursingInGermanyPage() {
         </div>
 
         <FadeInUp className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
             Start Your German Learning Journey Today
           </h2>
 
           <p
-            className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: "0em",
-            }}
+            className="text-base sm:text-lg lg:text-[20px] text-white/90 max-w-2xl mx-auto leading-[1.6] font-normal not-italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           >
             Start Your German Language Journey with Gyanshala Foreign Language Academy, Jaipur. Enquire about A1–B2 courses.
           </p>

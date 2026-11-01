@@ -1,15 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp } from "@/components/ScrollReveal";
 import EnquiryFormSection from "@/components/EnquiryFormSection";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Enquiry Now | Gyanshala Foreign Language Academy",
@@ -18,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function EnquiryPage() {
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className="w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       {/* =========================================================================
           HERO SECTION (SAME DESIGN AS ABOUT US)
           ========================================================================= */}

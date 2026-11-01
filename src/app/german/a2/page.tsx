@@ -1,16 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 export const metadata: Metadata = {
   title: "German A2 Course (Elementary Level) | Gyanshala Foreign Language Academy",
@@ -67,7 +58,7 @@ export default function GermanA2Page() {
   ];
 
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className="w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       
       {/* =========================================================================
           HERO SECTION (SAME DESIGN AS ABOUT US)
@@ -114,25 +105,19 @@ export default function GermanA2Page() {
           {/* SECTION 1: COURSE OVERVIEW */}
           <FadeInUp className="space-y-6">
             <div>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3 sm:mb-4">
                 COURSE OVERVIEW
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight mb-4">
                 German Language Course – A2 (Elementary Level)
               </h2>
             </div>
 
-            <h4 className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-[#C00000] leading-snug">
+            <h4 className="font-serif text-2xl sm:text-3xl lg:text-[30px] font-normal italic text-[#A61911] leading-snug">
               Take Your German Language Skills to the Next Level! 🇩🇪
             </h4>
 
-            <div
-              className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium tracking-normal"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
-            >
+            <div className="space-y-4 sm:space-y-5 text-zinc-700 dark:text-zinc-300 text-base sm:text-lg lg:text-[17.5px] leading-[1.75] font-normal not-italic tracking-normal">
               <p>
                 The German A2 Course is designed for learners who have completed the A1 level or already possess basic knowledge of the German language. This course focuses on strengthening essential grammar, expanding vocabulary, and improving communication skills for everyday situations.
               </p>
@@ -181,10 +166,10 @@ export default function GermanA2Page() {
           {/* SECTION 3: WHAT YOU'LL LEARN */}
           <section className="space-y-8">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 CURRICULUM &amp; MODULES
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 What You&apos;ll Learn
               </h2>
             </FadeInUp>
@@ -197,13 +182,7 @@ export default function GermanA2Page() {
                       <span className="text-[#C00000] font-bold select-none">•</span>
                       <span>{item.title}</span>
                     </h4>
-                    <p
-                      className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] italic font-medium pl-4"
-                      style={{
-                        fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                        letterSpacing: "0em",
-                      }}
-                    >
+                    <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed pl-4 font-normal not-italic">
                       {item.desc}
                     </p>
                   </div>
@@ -215,28 +194,22 @@ export default function GermanA2Page() {
           {/* SECTION 4: LEARNING OUTCOME */}
           <FadeInUp className="space-y-4">
             <div>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 OUTCOMES &amp; PROGRESSION
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Learning Outcome
               </h2>
             </div>
 
-            <div
-              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-3 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
-            >
+            <div className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm space-y-3 text-zinc-700 dark:text-zinc-300 text-base sm:text-lg leading-[1.75] font-normal not-italic">
               <p>
                 After successfully completing the German A2 course, students will be able to communicate in familiar everyday situations, understand commonly used expressions, write simple emails, and describe personal experiences with greater confidence.
               </p>
               <p>
                 Learners will have a stronger foundation in German grammar and communication, preparing them to advance to the <strong>B1 Intermediate Level</strong>.
               </p>
-              <p className="text-[#C00000] font-bold not-italic">
+              <p className="text-[#A61911] font-bold not-italic">
                 Recommended Prerequisite: German A1 Level or equivalent knowledge.
               </p>
             </div>
@@ -261,17 +234,11 @@ export default function GermanA2Page() {
         </div>
 
         <FadeInUp className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
             Start Your German Learning Journey Today
           </h2>
 
-          <p
-            className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: "0em",
-            }}
-          >
+          <p className="text-base sm:text-lg lg:text-[20px] text-white/90 max-w-2xl mx-auto leading-[1.6] font-normal not-italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
             Connect with our team to explore German courses and find the right learning path for your goals.
           </p>
 

@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Josefin_Sans } from "next/font/google";
+
 import { FadeInUp } from "@/components/ScrollReveal";
 
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 export const metadata: Metadata = {
   title: "Terms and Conditions | Gyanshala Foreign Language Academy",
@@ -20,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function TermsAndConditionsPage() {
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className="w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       
       {/* =========================================================================
           HERO BANNER
@@ -90,12 +83,12 @@ export default function TermsAndConditionsPage() {
             <p className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">Gyanshala Foreign Language Academy provides language education and training programmes designed to develop practical communication skills.</p>
             <p className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">Our German language programmes may include the following proficiency levels:</p>
             <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-zinc-700 dark:text-zinc-300 pl-2 sm:pl-3">
-              <li>A1 – Beginner</li>
-              <li>A2 – Elementary</li>
-              <li>B1 – Intermediate</li>
-              <li>B2 – Upper-Intermediate</li>
-              <li>C1 – Advanced</li>
-              <li>C2 – Mastery / Proficiency</li>
+              <li>A1 â€“ Beginner</li>
+              <li>A2 â€“ Elementary</li>
+              <li>B1 â€“ Intermediate</li>
+              <li>B2 â€“ Upper-Intermediate</li>
+              <li>C1 â€“ Advanced</li>
+              <li>C2 â€“ Mastery / Proficiency</li>
             </ul>
             <p className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">Courses may cover grammar, vocabulary, pronunciation, listening, reading, writing, speaking, and examination-oriented preparation.</p>
             <p className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">Course structures, teaching methodologies, schedules, and learning resources may vary according to the selected programme.</p>
@@ -354,13 +347,13 @@ export default function TermsAndConditionsPage() {
                 Gyanshala Foreign Language Academy
               </p>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400 pt-1">
-                <span>📍 Jaipur, Rajasthan, India</span>
-                <span>•</span>
-                <span>✉️ <a href="mailto:info@gyanshala.in" className="text-[#C00000] hover:underline">info@gyanshala.in</a></span>
-                <span>•</span>
-                <span>📞 <a href="tel:8239218436" className="text-[#C00000] hover:underline">+91 8239218436</a></span>
-                <span>•</span>
-                <span>🌐 <Link href="/" className="text-[#C00000] hover:underline">www.gyanshala.in</Link></span>
+                <span>ðŸ“ Jaipur, Rajasthan, India</span>
+                <span>â€¢</span>
+                <span>âœ‰ï¸ <a href="mailto:info@gyanshala.in" className="text-[#C00000] hover:underline">info@gyanshala.in</a></span>
+                <span>â€¢</span>
+                <span>ðŸ“ž <a href="tel:8239218436" className="text-[#C00000] hover:underline">+91 8239218436</a></span>
+                <span>â€¢</span>
+                <span>ðŸŒ <Link href="/" className="text-[#C00000] hover:underline">www.gyanshala.in</Link></span>
               </div>
             </div>
           </div>

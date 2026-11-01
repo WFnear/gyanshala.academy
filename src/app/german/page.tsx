@@ -1,16 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 export const metadata: Metadata = {
   title: "German Courses A1–C2 | Gyanshala Foreign Language Academy",
@@ -50,7 +41,7 @@ const cefrHighlights = [
 
 export default function GermanOverviewPage() {
   return (
-    <main className={`w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className="w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       {/* =========================================================================
           HERO SECTION
           ========================================================================= */}
@@ -94,10 +85,10 @@ export default function GermanOverviewPage() {
 
           {/* Section Header */}
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               LANGUAGE TRAINING
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               German Courses
             </h2>
           </FadeInUp>
@@ -159,11 +150,11 @@ export default function GermanOverviewPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               CURRICULUM STRUCTURE
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
-              CEFR Levels & Learning Objectives
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
+              CEFR Levels &amp; Learning Objectives
             </h2>
           </FadeInUp>
 
@@ -217,19 +208,13 @@ export default function GermanOverviewPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <FadeInUp>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
               Start Your German Learning Journey Today
             </h2>
           </FadeInUp>
 
           <FadeInUp delay={0.1}>
-            <p
-              className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: '0em',
-              }}
-            >
+            <p className="text-base sm:text-lg lg:text-[20px] text-white/90 max-w-2xl mx-auto leading-[1.6] font-normal not-italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               Join interactive batches led by certified trainers. Comprehensive preparation for Goethe-Zertifikat, telc, and ÖSD examinations.
             </p>
           </FadeInUp>

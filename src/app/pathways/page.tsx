@@ -1,16 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 export const metadata: Metadata = {
   title: "Germany Pathways | Gyanshala Foreign Language Academy",
@@ -26,7 +17,7 @@ const pathwaysData = [
     target: "For students planning to pursue higher education in Germany.",
     cta: "Explore Study Options →",
     href: "/pathways/study-in-germany",
-    image: "/Pathways/studyingermany.png",
+    image: "/Pathways/students in germany .png",
   },
   {
     title: "Ausbildung in Germany",
@@ -35,7 +26,7 @@ const pathwaysData = [
     target: "For students who want professional training and practical work experience.",
     cta: "Explore Ausbildung →",
     href: "/pathways/ausbildung",
-    image: "/Pathways/ausbildung.png",
+    image: "/Pathways/ausbildung in germnay.png",
   },
   {
     title: "Nursing in Germany",
@@ -44,7 +35,7 @@ const pathwaysData = [
     target: "For qualified nurses looking to build their careers in Germany.",
     cta: "Explore Nursing Careers →",
     href: "/pathways/nursing-in-germany",
-    image: "/Pathways/nursingcareer.png",
+    image: "/Pathways/nursing jobs in germnay.png",
   },
 ];
 
@@ -89,7 +80,7 @@ const pathwayFeatures = [
 
 export default function PathwaysIndexPage() {
   return (
-    <main className={`w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className="w-full overflow-x-hidden bg-[#FCF9EA] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       {/* =========================================================================
           HERO SECTION
           ========================================================================= */}
@@ -109,7 +100,7 @@ export default function PathwaysIndexPage() {
               GERMANY PATHWAYS
             </h1>
             <p className="mt-2.5 sm:mt-3 text-sm sm:text-base md:text-lg lg:text-[22px] text-white font-medium italic tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] max-w-3xl mx-auto">
-              Study, Ausbildung & Professional Career Opportunities in Germany
+              Study, Ausbildung &amp; Professional Career Opportunities in Germany
             </p>
           </FadeInUp>
         </div>
@@ -133,10 +124,10 @@ export default function PathwaysIndexPage() {
           
           {/* Section Header */}
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               GLOBAL OPPORTUNITIES
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Germany Pathways
             </h2>
           </FadeInUp>
@@ -166,10 +157,7 @@ export default function PathwaysIndexPage() {
                   <CardTextReveal reversed={index % 2 !== 0} delay={0.15} className="flex-1 flex flex-col">
                     {/* Red Title Banner */}
                     <div className="bg-[#AC2424] py-3 sm:py-3.5 px-4 text-center">
-                      <h3
-                        className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-white tracking-normal leading-tight"
-                        style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                      >
+                      <h3 className="text-xl sm:text-2xl lg:text-[26px] font-bold text-white tracking-normal leading-tight">
                         {pathway.title}
                       </h3>
                     </div>
@@ -177,26 +165,17 @@ export default function PathwaysIndexPage() {
                     {/* Content Area */}
                     <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-[#FFFAF3] dark:bg-zinc-900">
                       <div className="space-y-3">
-                        <p
-                          className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
-                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                        >
+                        <p className="text-base sm:text-lg leading-[1.6] text-zinc-800 dark:text-zinc-200 font-normal">
                           {pathway.description}
                         </p>
-                        <p
-                          className="text-base sm:text-lg lg:text-[18px] leading-[1.45] text-zinc-950 dark:text-zinc-100 font-medium italic"
-                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                        >
+                        <p className="text-base sm:text-lg leading-[1.6] text-zinc-800 dark:text-zinc-200 font-normal">
                           {pathway.target}
                         </p>
                       </div>
 
                       {/* Yellow Button */}
                       <div className="mt-6 pt-2">
-                        <span
-                          className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold italic shadow-sm transition-colors"
-                          style={{ fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif' }}
-                        >
+                        <span className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-none bg-[#FBAE17] group-hover:bg-[#e09c12] text-white text-base sm:text-lg font-bold shadow-sm transition-colors">
                           {pathway.cta}
                         </span>
                       </div>
@@ -216,10 +195,10 @@ export default function PathwaysIndexPage() {
       <section className="py-14 sm:py-20 bg-[#FCF9EA] dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               WHY GERMANY?
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Key Advantages for Indian Aspirants
             </h2>
           </FadeInUp>
@@ -262,19 +241,13 @@ export default function PathwaysIndexPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <FadeInUp>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
               Ready to Start Your Journey to Germany?
             </h2>
           </FadeInUp>
 
           <FadeInUp delay={0.1}>
-            <p
-              className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: '0em',
-              }}
-            >
+            <p className="text-base sm:text-lg lg:text-[20px] text-white/90 max-w-2xl mx-auto leading-[1.6] font-normal not-italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               Get personalized counseling from our experts on admissions, language requirements, APS certification, and visas.
             </p>
           </FadeInUp>

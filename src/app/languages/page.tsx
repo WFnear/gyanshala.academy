@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
-
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "600", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "All Languages | Gyanshala Foreign Language Academy",
@@ -40,7 +33,7 @@ const languagesData = [
 
 export default function AllLanguagesPage() {
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className="w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       {/* =========================================================================
           HERO SECTION (SAME DESIGN & HEIGHT AS ABOUT US)
           ========================================================================= */}
@@ -84,10 +77,10 @@ export default function AllLanguagesPage() {
           
           {/* Section Header */}
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
               LEARN BEYOND GERMAN
-            </h3>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
               Master Global Languages
             </h2>
           </FadeInUp>
@@ -146,20 +139,14 @@ export default function AllLanguagesPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <FadeInUp>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
               Start Your Language Learning Journey Today
             </h2>
           </FadeInUp>
 
           <FadeInUp delay={0.1}>
-            <p
-              className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: '0em',
-              }}
-            >
-              Learn German, French, Spanish, or English with certified native & expert trainers at Gyanshala Academy.
+            <p className="text-base sm:text-lg lg:text-[20px] text-white/90 max-w-2xl mx-auto leading-[1.6] font-normal not-italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              Learn German, French, Spanish, or English with certified native &amp; expert trainers at Gyanshala Academy.
             </p>
           </FadeInUp>
 

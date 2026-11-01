@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Josefin_Sans } from "next/font/google";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-josefin",
-});
 
 export const metadata: Metadata = {
   title: "Study in Germany – Essential Guide for Indian Students | Gyanshala Academy",
@@ -51,7 +43,7 @@ export default function StudyInGermanyPage() {
   ];
 
   return (
-    <main className={`w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 ${josefin.className}`}>
+    <main className="w-full overflow-x-hidden bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans">
       
       {/* =========================================================================
           HERO SECTION (SAME DESIGN AS ABOUT US)
@@ -98,24 +90,20 @@ export default function StudyInGermanyPage() {
           {/* SECTION 1: OVERVIEW */}
           <FadeInUp className="space-y-6">
             <div>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 ACADEMIC EXCELLENCE
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Higher Education in Germany
               </h2>
             </div>
 
-            <h4 className="text-2xl sm:text-3xl lg:text-[28px] font-bold italic text-[#C00000] leading-snug">
+            <h4 className="font-serif text-2xl sm:text-3xl lg:text-[30px] font-normal italic text-[#A61911] leading-snug">
               World-Class Degrees &amp; Low-Tuition Opportunities
             </h4>
 
             <div
-              className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium tracking-normal"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
+              className="space-y-4 text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] font-normal not-italic tracking-normal"
             >
               <p>
                 Germany offers globally recognised degrees, research and industry exposure, and many low-tuition public university programmes. Students can choose German- or English-taught options across engineering, IT, business, science, healthcare and more.
@@ -126,10 +114,10 @@ export default function StudyInGermanyPage() {
           {/* SECTION 2: 01 PROGRAMMES & ADMISSION ELIGIBILITY */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 01 ADMISSION ELIGIBILITY
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Programmes &amp; Eligibility Criteria
               </h2>
             </FadeInUp>
@@ -147,7 +135,7 @@ export default function StudyInGermanyPage() {
                     <td className="p-4 font-bold text-[#C00000]">
                       Bachelor’s (usually 3–4 years)
                     </td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       Class XII alone does not automatically qualify for direct entry. For common Indian routes from winter 2026/27, APS India specifies at least 70% overall in Class XII, plus the appropriate Studienkolleg route OR one successful academic year in a recognised Bachelor’s programme for possible subject-restricted direct entry.
                     </td>
                   </tr>
@@ -155,7 +143,7 @@ export default function StudyInGermanyPage() {
                     <td className="p-4 font-bold text-[#C00000]">
                       Master’s (usually 1–2 years)
                     </td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       Requires a recognised, relevant Bachelor’s degree, appropriate grades/credits and any programme-specific conditions.
                     </td>
                   </tr>
@@ -163,7 +151,7 @@ export default function StudyInGermanyPage() {
                     <td className="p-4 font-bold text-[#C00000]">
                       MBA / Business
                     </td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       Requirements vary; work experience and tuition fees are common.
                     </td>
                   </tr>
@@ -171,7 +159,7 @@ export default function StudyInGermanyPage() {
                     <td className="p-4 font-bold text-[#C00000]">
                       PhD / Research
                     </td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       University, supervisor, funding, qualification and language criteria vary by programme.
                     </td>
                   </tr>
@@ -180,11 +168,7 @@ export default function StudyInGermanyPage() {
             </div>
 
             <div
-              className="p-5 sm:p-6 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[19px] leading-[1.55] italic font-medium"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
+              className="p-5 sm:p-6 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[19px] leading-[1.55] font-normal not-italic"
             >
               <strong>Studienkolleg:</strong> A typically one-year preparatory route ending in the <em>Feststellungsprüfung (FSP)</em>. Tracks include T (technical), M (medical/science), W (business), G (humanities) and S (languages). Completing it does not guarantee a university place.
             </div>
@@ -193,10 +177,10 @@ export default function StudyInGermanyPage() {
           {/* SECTION 3: 02 LANGUAGE REQUIREMENTS */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 02 PROFICIENCY
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Language Requirements
               </h2>
             </FadeInUp>
@@ -214,7 +198,7 @@ export default function StudyInGermanyPage() {
                     <td className="p-4 font-bold text-[#C00000]">
                       Studienkolleg
                     </td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       Commonly German B1–B2; entrance tests may apply.
                     </td>
                   </tr>
@@ -222,7 +206,7 @@ export default function StudyInGermanyPage() {
                     <td className="p-4 font-bold text-[#C00000]">
                       German-taught degrees
                     </td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       Often B2 or C1; accepted tests may include TestDaF, DSH, Goethe or telc, depending on the university.
                     </td>
                   </tr>
@@ -230,7 +214,7 @@ export default function StudyInGermanyPage() {
                     <td className="p-4 font-bold text-[#C00000]">
                       English-taught degrees
                     </td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       An accepted English test such as IELTS may be needed. German remains valuable for everyday life, internships and jobs.
                     </td>
                   </tr>
@@ -242,18 +226,14 @@ export default function StudyInGermanyPage() {
           {/* SECTION 4: 03 UNIVERSITIES & STUDY COSTS */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 03 FINANCIAL PLANNING
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Universities &amp; Study Costs
               </h2>
               <p
-                className="mt-2 text-zinc-800 dark:text-zinc-200 text-base sm:text-lg lg:text-[20px] leading-[1.55] italic font-medium"
-                style={{
-                  fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                  letterSpacing: "0em",
-                }}
+                className="mt-2 text-zinc-800 dark:text-zinc-200 text-base sm:text-lg lg:text-[20px] leading-[1.55] font-normal not-italic"
               >
                 <strong>University types:</strong> Public universities, universities of applied sciences (practical focus), and private universities. Confirm recognition, accreditation and programme fees.
               </p>
@@ -270,25 +250,25 @@ export default function StudyInGermanyPage() {
                 <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
                   <tr className="hover:bg-zinc-50 dark:hover:bg-zinc-900/50">
                     <td className="p-4 font-bold text-[#C00000]">Tuition</td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       Many public Bachelor’s and consecutive Master’s programmes charge no tuition; exceptions exist. Baden-Württemberg generally charges relevant non-EU students €1,500 per semester, subject to exemptions.
                     </td>
                   </tr>
                   <tr className="hover:bg-zinc-50 dark:hover:bg-zinc-900/50">
                     <td className="p-4 font-bold text-[#C00000]">Semester contribution</td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       Approximately €70–€430, varying by institution.
                     </td>
                   </tr>
                   <tr className="hover:bg-zinc-50 dark:hover:bg-zinc-900/50">
                     <td className="p-4 font-bold text-[#C00000]">Living expenses</td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       Budget approximately €900–€1,200 monthly; large cities may cost more.
                     </td>
                   </tr>
                   <tr className="hover:bg-zinc-50 dark:hover:bg-zinc-900/50">
                     <td className="p-4 font-bold text-[#C00000]">2026 blocked account</td>
-                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed italic font-medium">
+                    <td className="p-4 text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal not-italic">
                       <strong>€11,904</strong> for one year (€992 monthly withdrawal), where this is the chosen proof of funds. It is the student’s money, not tuition.
                     </td>
                   </tr>
@@ -300,10 +280,10 @@ export default function StudyInGermanyPage() {
           {/* SECTION 5: 04 APS, SCHOLARSHIPS & VISA */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 04 DOCUMENTATION
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 APS, Scholarships &amp; Visa Preparation
               </h2>
             </FadeInUp>
@@ -330,11 +310,7 @@ export default function StudyInGermanyPage() {
                       <span>{card.title}</span>
                     </h4>
                     <p
-                      className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] italic font-medium"
-                      style={{
-                        fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                        letterSpacing: "0em",
-                      }}
+                      className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] font-normal not-italic"
                     >
                       {card.desc}
                     </p>
@@ -347,10 +323,10 @@ export default function StudyInGermanyPage() {
           {/* SECTION 6: 05 APPLICATION PROCESS */}
           <section className="space-y-8">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 05 ROADMAP
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Application Process — 7 Practical Steps
               </h2>
             </FadeInUp>
@@ -365,11 +341,7 @@ export default function StudyInGermanyPage() {
                     {s.step}
                   </span>
                   <p
-                    className="text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[20px] leading-[1.5] italic font-medium"
-                    style={{
-                      fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                      letterSpacing: "0em",
-                    }}
+                    className="text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[20px] leading-[1.5] font-normal not-italic"
                   >
                     {s.desc}
                   </p>
@@ -381,10 +353,10 @@ export default function StudyInGermanyPage() {
           {/* SECTION 7: 06 INTAKES, PART-TIME WORK & CAREERS */}
           <section className="space-y-6">
             <FadeInUp>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 06 CAREER PROSPECTS
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Intakes, Part-Time Work &amp; Careers
               </h2>
             </FadeInUp>
@@ -417,11 +389,7 @@ export default function StudyInGermanyPage() {
                     <span>{box.title}</span>
                   </h4>
                   <p
-                    className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] italic font-medium"
-                    style={{
-                      fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                      letterSpacing: "0em",
-                    }}
+                    className="text-zinc-800 dark:text-zinc-200 text-sm sm:text-base lg:text-[18px] leading-[1.5] font-normal not-italic"
                   >
                     {box.desc}
                   </p>
@@ -433,20 +401,16 @@ export default function StudyInGermanyPage() {
           {/* SECTION 8: 07 PREPARE WITH GYANSHALA */}
           <FadeInUp className="space-y-4">
             <div>
-              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold uppercase tracking-normal text-[#C00000] leading-none mb-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
                 07 LANGUAGE PREPARATION
-              </h3>
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-black dark:text-white tracking-normal leading-tight">
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
                 Prepare with Gyanshala Foreign Language Academy
               </h2>
             </div>
 
             <div
-              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] italic font-medium"
-              style={{
-                fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-                letterSpacing: "0em",
-              }}
+              className="p-6 sm:p-8 bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/90 dark:border-zinc-800 shadow-sm text-zinc-900 dark:text-zinc-100 text-base sm:text-lg lg:text-[21px] leading-[1.55] font-normal not-italic"
             >
               <p>
                 At Gyanshala Foreign Language Academy, Jaipur, students can build German-language skills from A1 to C2, including grammar, speaking, listening, reading, writing, everyday communication and Goethe-oriented preparation. Strong German skills can support university study, daily life and future employment, even in an English-taught programme.
@@ -456,11 +420,7 @@ export default function StudyInGermanyPage() {
 
           {/* SECTION 9: DISCLAIMER */}
           <footer
-            className="p-5 sm:p-6 bg-zinc-100/90 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1.5 italic font-medium"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: "0em",
-            }}
+            className="p-5 sm:p-6 bg-zinc-100/90 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1.5 font-normal not-italic"
           >
             <p className="font-bold uppercase tracking-widest text-zinc-800 dark:text-zinc-200 not-italic">
               Important Notice
@@ -489,16 +449,12 @@ export default function StudyInGermanyPage() {
         </div>
 
         <FadeInUp className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
             Start Your German Learning Journey Today
           </h2>
 
           <p
-            className="text-base sm:text-lg lg:text-[21px] text-white max-w-2xl mx-auto leading-[1.55] italic font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-            style={{
-              fontFamily: 'var(--font-josefin), "Josefin Sans", sans-serif',
-              letterSpacing: "0em",
-            }}
+            className="text-base sm:text-lg lg:text-[20px] text-white/90 max-w-2xl mx-auto leading-[1.6] font-normal not-italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           >
             Learn German. Study Globally. Build Your Future. Connect with our team to prepare for German university admissions.
           </p>
