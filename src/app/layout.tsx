@@ -30,6 +30,13 @@ const raleway = Raleway({
 export const metadata: Metadata = {
   title: "Gyanshala Academy - German Language & Global Pathways | Jaipur",
   description: "Learn German (A1-C2), explore Germany study, Ausbildung, and nursing pathways, and learn foreign languages at Gyanshala Academy Jaipur.",
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
