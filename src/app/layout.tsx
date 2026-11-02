@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans, Raleway } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { EnquiryModalProvider } from "@/context/EnquiryModalContext";
-import EnquiryModal from "@/components/EnquiryModal";
-import FloatingContactButtons from "@/components/FloatingContactButtons";
+import SiteLayoutWrapper from "@/components/SiteLayoutWrapper";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -39,22 +35,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
       className={`${plusJakarta.variable} ${playfair.variable} ${raleway.variable} h-full antialiased`}
     >
       <body className={`${plusJakarta.className} min-h-full flex flex-col font-sans`}>
-        <EnquiryModalProvider>
-          <Navbar />
-          <div className="flex-1">
-            {children}
-          </div>
-          <Footer />
-          <EnquiryModal />
-          <FloatingContactButtons />
-        </EnquiryModalProvider>
+        <SiteLayoutWrapper>{children}</SiteLayoutWrapper>
       </body>
     </html>
   );

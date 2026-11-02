@@ -1,0 +1,837 @@
+{
+  "navbar": [
+    {
+      "id": "nav-1",
+      "label": "Home",
+      "href": "/",
+      "order_index": 1,
+      "is_active": true
+    },
+    {
+      "id": "nav-2",
+      "label": "German Courses",
+      "href": "/german",
+      "order_index": 2,
+      "is_active": true,
+      "children": [
+        {
+          "id": "sub-1-1",
+          "label": "A1 – Beginner Level",
+          "href": "/german/a1",
+          "order_index": 1,
+          "is_active": true
+        },
+        {
+          "id": "sub-1-2",
+          "label": "A2 – Elementary Level",
+          "href": "/german/a2",
+          "order_index": 2,
+          "is_active": true
+        },
+        {
+          "id": "sub-1-3",
+          "label": "B1 – Intermediate Level",
+          "href": "/german/b1",
+          "order_index": 3,
+          "is_active": true
+        },
+        {
+          "id": "sub-1-4",
+          "label": "B2 – Upper-Intermediate Level",
+          "href": "/german/b2",
+          "order_index": 4,
+          "is_active": true
+        },
+        {
+          "id": "sub-1-5",
+          "label": "C1 – Advanced Level",
+          "href": "/german/c1",
+          "order_index": 5,
+          "is_active": true
+        },
+        {
+          "id": "sub-1-6",
+          "label": "C2 – Proficiency Level",
+          "href": "/german/c2",
+          "order_index": 6,
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "id": "nav-3",
+      "label": "Germany Pathways",
+      "href": "/pathways",
+      "order_index": 3,
+      "is_active": true,
+      "children": [
+        {
+          "id": "sub-2-1",
+          "label": "Study in Germany",
+          "href": "/pathways/study-in-germany",
+          "order_index": 1,
+          "is_active": true
+        },
+        {
+          "id": "sub-2-2",
+          "label": "Ausbildung in Germany",
+          "href": "/pathways/ausbildung",
+          "order_index": 2,
+          "is_active": true
+        },
+        {
+          "id": "sub-2-3",
+          "label": "Nursing in Germany",
+          "href": "/pathways/nursing-in-germany",
+          "order_index": 3,
+          "is_active": true
+        },
+        {
+          "id": "sub-2-4",
+          "label": "Our Students in Germany 🇩🇪",
+          "href": "/#students-in-germany",
+          "order_index": 4,
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "id": "nav-4",
+      "label": "All Languages",
+      "href": "/languages",
+      "order_index": 4,
+      "is_active": true,
+      "children": [
+        {
+          "id": "sub-3-1",
+          "label": "German",
+          "href": "/german",
+          "order_index": 1,
+          "is_active": true
+        },
+        {
+          "id": "sub-3-2",
+          "label": "French",
+          "href": "/languages/french",
+          "order_index": 2,
+          "is_active": true
+        },
+        {
+          "id": "sub-3-3",
+          "label": "Spanish",
+          "href": "/languages/spanish",
+          "order_index": 3,
+          "is_active": true
+        },
+        {
+          "id": "sub-3-4",
+          "label": "English",
+          "href": "/languages/english",
+          "order_index": 4,
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "id": "nav-5",
+      "label": "About Us",
+      "href": "/about-us",
+      "order_index": 5,
+      "is_active": true
+    },
+    {
+      "id": "nav-6",
+      "label": "FAQs",
+      "href": "/faqs",
+      "order_index": 6,
+      "is_active": true
+    }
+  ],
+  "navbar_cta": {
+    "text": "Enquiry Now",
+    "href": "/enquiry",
+    "is_active": true
+  },
+  "homepage_sections": [
+    {
+      "id": "sec-hero",
+      "key": "hero",
+      "name": "Hero Slider",
+      "is_active": true,
+      "order_index": 1,
+      "slides": [
+        {
+          "id": 1,
+          "image": "/Hero/IMG_20250806_170204918_HDR.jpg",
+          "badge": "🇩🇪 Premier German Institute in Jaipur",
+          "title": "Master German Language",
+          "highlight": "From A1 to C2 Levels",
+          "description": "Learn with native-standard curriculum, certified faculty, and interactive batches tailored for Goethe, TELC and ÖSD examinations.",
+          "primaryBtn": {
+            "text": "German Courses",
+            "href": "/german"
+          },
+          "secondaryBtn": {
+            "text": "Enquiry Now",
+            "href": "/enquiry"
+          }
+        },
+        {
+          "id": 2,
+          "image": "/Hero/IMG_20250806_121152807_HDR.jpg",
+          "badge": "🇩🇪 Study • Ausbildung • Careers in Germany",
+          "title": "Study, Ausbildung & Careers",
+          "highlight": "in Germany",
+          "description": "Master German to unlock tuition-free university education, paid dual Ausbildung with monthly stipends, and high-demand nursing & engineering careers.",
+          "primaryBtn": {
+            "text": "Explore Germany Pathways",
+            "href": "/pathways"
+          },
+          "secondaryBtn": {
+            "text": "Free Counseling",
+            "href": "/enquiry"
+          }
+        },
+        {
+          "id": 3,
+          "image": "/Hero/hero3x.jpg",
+          "badge": "🌍 Global Language Programs",
+          "title": "Learn Beyond German",
+          "highlight": "Master Global Languages",
+          "description": "Expand your career horizon with our specialized courses in French, Spanish, and Business English with personalized coaching.",
+          "primaryBtn": {
+            "text": "View All Languages",
+            "href": "/languages"
+          },
+          "secondaryBtn": {
+            "text": "Free Counseling",
+            "href": "/enquiry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sec-partners",
+      "key": "partners",
+      "name": "Useful German Learning Resources",
+      "is_active": true,
+      "order_index": 2
+    },
+    {
+      "id": "sec-why-choose",
+      "key": "why_choose",
+      "name": "Why Learn With Us?",
+      "is_active": true,
+      "order_index": 3,
+      "heading": "Why Learn With Us?",
+      "subheading": "Comprehensive German language education tailored for your success in Germany and global careers.",
+      "points": [
+        {
+          "number": "01",
+          "title": "Experienced German Language Trainers",
+          "description": "Learn from qualified and dedicated German language experts with years of teaching excellence."
+        },
+        {
+          "number": "02",
+          "title": "German Courses from A1 to C2",
+          "description": "Progress step by step from beginner to advanced proficiency."
+        },
+        {
+          "number": "03",
+          "title": "Spoken German & Exam Preparation",
+          "description": "Develop practical communication skills and prepare for recognised examinations."
+        },
+        {
+          "number": "04",
+          "title": "Flexible Batch Timings",
+          "description": "Choose a batch that fits your daily schedule."
+        },
+        {
+          "number": "05",
+          "title": "Affordable German Classes in Jaipur",
+          "description": "Quality German language training at reasonable fees."
+        },
+        {
+          "number": "06",
+          "title": "Online and Offline Classes",
+          "description": "Learn through online sessions or in-person classroom training."
+        }
+      ]
+    },
+    {
+      "id": "sec-highlights",
+      "key": "highlights",
+      "name": "Highlights of Gyanshala",
+      "is_active": true,
+      "order_index": 4,
+      "items": [
+        {
+          "title": "Exceptional Study Material",
+          "description": "Diverse study material to our students for a world class language knowledge."
+        },
+        {
+          "title": "Certified Language Trainer",
+          "description": "Empowering you to achieve fluency and confidence in your chosen language."
+        },
+        {
+          "title": "Study Abroad Counselling",
+          "description": "Expert study abroad counseling to guide your journey toward global education opportunities."
+        },
+        {
+          "title": "Flexible Hours",
+          "description": "Learn from your comfort zone with multiple batch timing options."
+        },
+        {
+          "title": "Smart Classrooms",
+          "description": "Study with interactive digital setups and advanced modern learning facilities."
+        },
+        {
+          "title": "Ausbildung in Germany",
+          "description": "Complete pathway guidance for vocational training and career opportunities in Germany."
+        }
+      ]
+    },
+    {
+      "id": "sec-courses",
+      "key": "courses",
+      "name": "German Courses",
+      "is_active": true,
+      "order_index": 5
+    },
+    {
+      "id": "sec-counseling",
+      "key": "counseling",
+      "name": "Free Counseling & Demo Class",
+      "is_active": true,
+      "order_index": 6,
+      "title": "Book Your Free Demo Class & Counseling Session",
+      "subtitle": "Speak directly with certified language trainers and study in Germany pathway experts."
+    },
+    {
+      "id": "sec-videos",
+      "key": "videos",
+      "name": "Free Video Lessons",
+      "is_active": true,
+      "order_index": 7,
+      "videos": [
+        {
+          "id": "video-1",
+          "youtubeId": "UfaGlQcIKvE",
+          "title": "Nursing Jobs in Germany - Complete Process for Indian Nurses",
+          "trainer": "Gyanshala Germany Pathway Experts",
+          "level": "Nursing in Germany",
+          "duration": "Full Guide"
+        },
+        {
+          "id": "video-2",
+          "youtubeId": "M5B2xEpXJGI",
+          "title": "Ausbildung in Germany - Vocational Training & Career Guide for Indian Students",
+          "trainer": "Gyanshala Germany Pathway Experts",
+          "level": "Ausbildung in Germany",
+          "duration": "Full Guide"
+        },
+        {
+          "id": "video-3",
+          "youtubeId": "IhXq68yXfu0",
+          "playlistId": "PLIzfqeLAM3cSNdu9yssdtxrPu-ZsMFCzA",
+          "title": "A1 German Language Grammar Topics - Complete Series",
+          "trainer": "Dilip Sinsinwar | German Language Trainer",
+          "level": "A1 Grammar Series",
+          "duration": "Full Playlist",
+          "isPlaylist": true
+        }
+      ]
+    },
+    {
+      "id": "sec-students",
+      "key": "students_in_germany",
+      "name": "Our Students in Germany",
+      "is_active": true,
+      "order_index": 8,
+      "students": [
+        {
+          "id": "sig-1",
+          "name": "Jayalakshmi S",
+          "image": "/studentsingermany/JAAYALAXMI.png",
+          "degree": "PhD in Medical Microbiology",
+          "university": "Universitätsklinikum, Heidelberg",
+          "destination": "Universitätsklinikum, Heidelberg",
+          "course_cleared": "PhD in Medical Microbiology",
+          "is_active": true,
+          "order_index": 1
+        },
+        {
+          "id": "sig-2",
+          "name": "Lavesh Rajput",
+          "image": "/studentsingermany/LAVESH RAJPUT.png",
+          "degree": "Technical Logistics",
+          "university": "University of Duisburg-Essen",
+          "destination": "University of Duisburg-Essen",
+          "course_cleared": "Technical Logistics",
+          "is_active": true,
+          "order_index": 2
+        },
+        {
+          "id": "sig-3",
+          "name": "Mehul Kumawat",
+          "image": "/studentsingermany/MEHUL KUMAWAT.png",
+          "degree": "Water Science and Engineering",
+          "university": "Karlsruhe Institute of Technology, Karlsruhe",
+          "destination": "Karlsruhe Institute of Technology, Karlsruhe",
+          "course_cleared": "Water Science and Engineering",
+          "is_active": true,
+          "order_index": 3
+        },
+        {
+          "id": "sig-4",
+          "name": "Rahul Soni",
+          "image": "/studentsingermany/RAHUL SONI.png",
+          "degree": "Computational Mechanics",
+          "university": "Essen Duisburg Universität, Essen",
+          "destination": "Essen Duisburg Universität, Essen",
+          "course_cleared": "Computational Mechanics",
+          "is_active": true,
+          "order_index": 4
+        },
+        {
+          "id": "sig-5",
+          "name": "Deepak Choudhary",
+          "image": "/studentsingermany/DEEPAK CHOUDHARY.png",
+          "degree": "Masters in Business Administration",
+          "university": "Otto-von-Guericke-University Magdeburg",
+          "destination": "Otto-von-Guericke-University Magdeburg",
+          "course_cleared": "Masters in Business Administration",
+          "is_active": true,
+          "order_index": 5
+        },
+        {
+          "id": "sig-6",
+          "name": "Ankit Maan",
+          "image": "/studentsingermany/ANKIT MAAN.png",
+          "degree": "Master's in Digital Technologies",
+          "university": "TU Clausthal, Wolfsburg",
+          "destination": "TU Clausthal, Wolfsburg",
+          "course_cleared": "Master's in Digital Technologies",
+          "is_active": true,
+          "order_index": 6
+        },
+        {
+          "id": "sig-7",
+          "name": "Akshat Pandey",
+          "image": "/studentsingermany/AKSHAT PANDEY.png",
+          "degree": "MS in Technische Logistik",
+          "university": "Universität Duisburg-Essen, Osnabrück",
+          "destination": "Universität Duisburg-Essen, Osnabrück",
+          "course_cleared": "MS in Technische Logistik",
+          "is_active": true,
+          "order_index": 7
+        },
+        {
+          "id": "sig-8",
+          "name": "Suvidhi Loonker",
+          "image": "/studentsingermany/SUVIDHI LOONKER.png",
+          "degree": "MSc International Management",
+          "university": "Hochschule Fulda",
+          "destination": "Hochschule Fulda",
+          "course_cleared": "MSc International Management",
+          "is_active": true,
+          "order_index": 8
+        },
+        {
+          "id": "sig-9",
+          "name": "Anukalp Lawania",
+          "image": "/studentsingermany/ANUKALP LAWANIA.png",
+          "degree": "Scientific Instrumentation (M.Sc.)",
+          "university": "Ernst-Abbe-Hochschule Jena",
+          "destination": "Ernst-Abbe-Hochschule Jena",
+          "course_cleared": "Scientific Instrumentation (M.Sc.)",
+          "is_active": true,
+          "order_index": 9
+        },
+        {
+          "id": "sig-10",
+          "name": "Shubhangi",
+          "image": "/studentsingermany/SHUBHANGI.png",
+          "degree": "M.Sc. in Data Science",
+          "university": "Ludwig Maximilian University of Munich",
+          "destination": "Ludwig Maximilian University of Munich",
+          "course_cleared": "M.Sc. in Data Science",
+          "is_active": true,
+          "order_index": 10
+        },
+        {
+          "id": "sig-11",
+          "name": "Shubham Gupta",
+          "image": "/studentsingermany/Shubham Gupta.png",
+          "degree": "MS in Technical Logistics",
+          "university": "Universität Duisburg-Essen, Magdeburg",
+          "destination": "Universität Duisburg-Essen, Magdeburg",
+          "course_cleared": "MS in Technical Logistics",
+          "is_active": true,
+          "order_index": 11
+        },
+        {
+          "id": "sig-12",
+          "name": "Saurabh Yadav",
+          "image": "/studentsingermany/SAURAV YADAV.png",
+          "degree": "MSc in Mechatronics",
+          "university": "Universität Duisburg-Essen, Mülheim an der Ruhr, NRW",
+          "destination": "Universität Duisburg-Essen, Mülheim an der Ruhr, NRW",
+          "course_cleared": "MSc in Mechatronics",
+          "is_active": true,
+          "order_index": 12
+        },
+        {
+          "id": "sig-13",
+          "name": "Riya Ahuja",
+          "image": "/studentsingermany/RIYA AHUJA.png",
+          "degree": "MSc in Data Science",
+          "university": "Technical University of Braunschweig",
+          "destination": "Technical University of Braunschweig",
+          "course_cleared": "MSc in Data Science",
+          "is_active": true,
+          "order_index": 13
+        },
+        {
+          "id": "sig-14",
+          "name": "Shivam Tak",
+          "image": "/studentsingermany/SHIVAM TAK.png",
+          "degree": "Commercial Vehicle Technology",
+          "university": "RPTU Rheinland-Pfälzische Technische Universität",
+          "destination": "RPTU Rheinland-Pfälzische Technische Universität",
+          "course_cleared": "Commercial Vehicle Technology",
+          "is_active": true,
+          "order_index": 14
+        },
+        {
+          "id": "sig-15",
+          "name": "Yuganshu Sharma",
+          "image": "/studentsingermany/YUGANSHU SHARMA.png",
+          "degree": "Scientific Instrumentation (M.Sc.)",
+          "university": "Ernst-Abbe-Hochschule Jena",
+          "destination": "Ernst-Abbe-Hochschule Jena",
+          "course_cleared": "Scientific Instrumentation (M.Sc.)",
+          "is_active": true,
+          "order_index": 15
+        },
+        {
+          "id": "sig-16",
+          "name": "Shailja Rathore",
+          "image": "/studentsingermany/SHAILJJA RATHOD.png",
+          "degree": "Scientific Instrumentation (M.Sc.)",
+          "university": "Ernst-Abbe-Hochschule Jena",
+          "destination": "Ernst-Abbe-Hochschule Jena",
+          "course_cleared": "Scientific Instrumentation (M.Sc.)",
+          "is_active": true,
+          "order_index": 16
+        }
+      ]
+    },
+    {
+      "id": "sec-reviews",
+      "key": "reviews",
+      "name": "What Our Students Say",
+      "is_active": true,
+      "order_index": 9,
+      "reviews": [
+        {
+          "name": "Karan Pareek",
+          "image": "/Review/KaranPareek.png",
+          "rating": 5,
+          "review": "I had a wonderful experience learning German at “Gyanshala Foreign Language Academy”. The classes were well-structured, engaging, and easy to understand. Special thanks to Dillip Sir for his guidance, patience, and constant support. I truly appreciate his efforts and highly recommend this institute to anyone learning German."
+        },
+        {
+          "name": "Anjali Choudhary",
+          "image": "/Review/AnjaliChoudhary.png",
+          "rating": 5,
+          "review": "Seit einem Jahr lerne ich Deutsch und glücklicherweise habe ich meine B1 Prüfung bestanden🏆🏆 . Zurzeit lerne ich B2 Kurs...Ich sammle hier viele Erfahrungen und das Umfeld des Unterrichts ist auch aüßerst einwandfrei und die Lehrer sind auch sehr hilfreich und unterstüztend uns beim Problem...Ich empfehle allen das Gyanshala institute zu beitreten"
+        },
+        {
+          "name": "Jhanvi Kumawat",
+          "image": "/Review/JhanviKumawat.png",
+          "rating": 5,
+          "review": "The German classes here are very interactive and practical. I like how the teachers focus on speaking from day one, instead of just theory. The sessions are fun, and I always feel motivated to practice more at home. It’s a perfect institute for beginners who want to learn German seriously."
+        },
+        {
+          "name": "Richa Singh",
+          "image": "/Review/RichaSingh.png",
+          "rating": 5,
+          "review": "I recently finished my German classes here and I have to say, the faculty is amazing. They really know their stuff and have a deep and thorough Knowledge of the German language. Instead of just making you memorize a textbook, they actually break down tricky grammar and sentence structures so it's easier to grasp the concepts. The teachers are super supportive and patient whenever you get stuck. They are incredible and respond whenever you need help. Definitely recommend."
+        },
+        {
+          "name": "Suraj Dhayal",
+          "image": "/Review/Suraj dhayal.jpeg",
+          "rating": 5,
+          "review": "Gyanshala Foreign Language Academy is a finest institute in Lalkothi Jaipur for learning German language. The teachers are very supportive and hardworking. They are always ready to help you. The environment of the institute is very rich. Highly recommend!"
+        },
+        {
+          "name": "Ramjhan Chhimpa",
+          "image": "/Review/Ramjhan Chhimpa.jpeg",
+          "rating": 5,
+          "review": "I joined German language classes in Jaipur here and I must say the teaching quality is very good. The faculty is supportive, friendly, and always ready to clear doubts. The classes are interactive with lots of speaking practice, which makes learning enjoyable. Overall, a great place to improve German."
+        },
+        {
+          "name": "Suvidhi Loonker",
+          "image": "/Review/Suvidhi Loonker.jpeg",
+          "rating": 5,
+          "review": "I had an incredible experience at this German coaching institute! The faculty members are extremely knowledgeable, approachable, and genuinely dedicated to ensuring each student’s success. The learning atmosphere is positive, supportive, and highly conducive to acquiring language skills. Whether you’re a beginner or looking to refine your knowledge, this institute provides the perfect balance of structured teaching and practical exercises. I wholeheartedly recommend it to anyone looking for a top-tier German language learning experience."
+        },
+        {
+          "name": "Shivam Tak",
+          "image": "/Review/Shivam tak.png",
+          "rating": 5,
+          "review": "Gyanshala is actually having some quality teaching and support toward student. It is a really very good experience. All the details covered by faculty is really great. Every smallest information was well explained by faculty. I am really thankful to Gyanshala teachers for making German language so easy to learn and understand."
+        },
+        {
+          "name": "Jatin Sharma",
+          "image": "/Review/Jatin Sharma.jpeg",
+          "rating": 5,
+          "review": "The Gyanshala Foreign Language Academy is an excellent place to learn languages. I am currently doing the English spoken course here, and I have seen a lot of improvement in myself. The teachers are knowledgeable, experienced, and very supportive with a friendly attitude. Thanks to their guidance, I can now speak English more fluently and confidently."
+        },
+        {
+          "name": "Deepak Chaudhary",
+          "image": "/Review/Deepak Choudhary.jpeg",
+          "rating": 5,
+          "review": "I recently completed a course at Gyanshala academy, and I must say it exceeded my expectations. The instructors were not only highly knowledgeable but also incredibly patient, catering to the varying skill levels of each student with tailored teaching methods. The curriculum was well-structured, covering all aspects of the language from grammar to conversational skills, and the small class sizes ensured ample opportunity for interaction and practice. Overall, I highly recommend Gyanshala Academy Institute to anyone looking to master the language effectively and enjoyably."
+        },
+        {
+          "name": "Khushi Sharma",
+          "image": "/Review/Khushi Sharma.jpeg",
+          "rating": 5,
+          "review": "I would 100% recommend this institute for all learners. I am learning German here and my experience here is just so amazing. Teachers and the whole environment is so good. Dilip sir and Ashweer sir are brilliant and fantastic teachers. They support and understand students and are the most helpful. This institute provide the best nurturing environment. Anyone who needs guidance for studying abroad and learning foreign language must attend here. Tested and recommend institute."
+        },
+        {
+          "name": "Akshat Pandey",
+          "image": "/Review/Akshat Pandey.jpeg",
+          "rating": 5,
+          "review": "I started learning German here exact 1 year before and now I have completed B2 certification. From the level A1 to B2 I had the most amazing experience here while studying and interacting with others. Teachers here have very deep knowledge about everything like getting job in the German field, studying abroad and Techniques for the slow learners."
+        },
+        {
+          "name": "Rahul Soni",
+          "image": "/Review/Rahul Soni.jpeg",
+          "rating": 5,
+          "review": "Das ist ein schönes Institut und die Lehrer sind nett und hilfreich. Ich empfehle das Institut für alle, die Deutsch in Jaipur lernen wollen."
+        },
+        {
+          "name": "Lavesh Rajput",
+          "image": "/Review/Lavesh Rajput.jpeg",
+          "rating": 5,
+          "review": "GYANSHALA is a great place to learn foreign languages, where you get a healthy environment and great support from the staff. Their personalised attention to their students help to learn even faster. Well equipped digital classroom, interaction with natives and supportive faculty are also a very big support to the students. Coming to the career guidance and counseling, it is also a strong side of Gyanshala."
+        },
+        {
+          "name": "Jayalaxmi",
+          "image": "/Review/Jayalaxmi.jpeg",
+          "rating": 5,
+          "review": "Had an excellent experience here. The teachers are well qualified. It made learning german easy. This institute is highly recommended to everyone who wishes to learn any foreign language."
+        },
+        {
+          "name": "Shailja Rathore",
+          "image": "/Review/Shailja Rathore.jpeg",
+          "rating": 5,
+          "review": "Wenn jemand in Jaipur deutsch lernen möchte, der am Gyanshala Institut einmal besuchen soll. Die Lehrer sind sehr hilfreich und freundlich. Das Lernen am Gyanshala fühlt nie schwer, sondern genießt man die Atmosphäre!"
+        },
+        {
+          "name": "Veronica Velasco",
+          "image": "/Review/Veronica Velasco.jpeg",
+          "rating": 5,
+          "review": "I had a fantastic experience learning German at Gyanshala Foreign Language Academy with Mr. Dilip Sinsinwar. Thanks to his excellent teaching methods and patient guidance, I was able to complete the A1 level in a short period of time. Mr. Sinsinwar made the lessons engaging and easy to understand, which greatly helped in building my confidence with the language. The academy provides a supportive learning environment, and I highly recommend it to anyone looking to learn German quickly and effectively. Vielen Dank, Mr. Sinsinwar and Gyanshala!"
+        },
+        {
+          "name": "Sanju Punia",
+          "image": "/Review/Sanju Punia.jpeg",
+          "rating": 5,
+          "review": "Best german language institute in jaipur. I am from Haryana and joined here for B1 and B2 level. I am learning from Disha Mam and found the class best among all the classes I've taken earlier in Jaipur as well as Delhi. For students interested in studying or working in Germany, the academy offers counseling services, assistance with university admissions, visa applications, and information on job opportunities within its network. Supporting staff, positive environment. Highly recommended! ✅✨"
+        }
+      ]
+    },
+    {
+      "id": "sec-faqs",
+      "key": "faqs",
+      "name": "Frequently Asked Questions",
+      "is_active": true,
+      "order_index": 10
+    },
+    {
+      "id": "sec-enquiry",
+      "key": "enquiry",
+      "name": "Course Enquiry & Free Counseling",
+      "is_active": true,
+      "order_index": 11
+    }
+  ],
+  "pages": [
+    {
+      "id": "page-1",
+      "slug": "/",
+      "title": "Home - Gyanshala Academy",
+      "meta_title": "German Language Classes in Jaipur | Gyanshala Foreign Language Academy",
+      "meta_description": "Premier German Language Institute in Jaipur offering A1 to C2 CEFR levels, Ausbildung, Nursing & Study in Germany consulting.",
+      "is_published": true
+    },
+    {
+      "id": "page-2",
+      "slug": "/about-us",
+      "title": "About Us",
+      "meta_title": "About Us | Gyanshala Foreign Language Academy - Jaipur",
+      "meta_description": "Learn about Gyanshala: journey since 2018, mission, vision, faculty, and pathways to global opportunities.",
+      "is_published": true
+    },
+    {
+      "id": "page-3",
+      "slug": "/german",
+      "title": "German Courses Overview",
+      "meta_title": "German Language Courses in Jaipur | A1 to C2 | Gyanshala",
+      "meta_description": "Explore CEFR German courses from A1 beginner to C2 mastery level with Goethe and TELC exam preparation.",
+      "is_published": true
+    },
+    {
+      "id": "page-4",
+      "slug": "/german/a1",
+      "title": "German A1 – Beginner Level",
+      "meta_title": "German A1 Course in Jaipur | Goethe A1 Exam Preparation",
+      "meta_description": "Start learning German from scratch with interactive lessons, vocabulary, and Goethe A1 exam training.",
+      "is_published": true
+    },
+    {
+      "id": "page-5",
+      "slug": "/german/a2",
+      "title": "German A2 – Elementary Level",
+      "meta_title": "German A2 Course in Jaipur | Elementary German",
+      "meta_description": "Enhance everyday German communication and grammar with comprehensive A2 course coaching.",
+      "is_published": true
+    },
+    {
+      "id": "page-6",
+      "slug": "/german/b1",
+      "title": "German B1 – Intermediate Level",
+      "meta_title": "German B1 Course in Jaipur | Ausbildung & Spouse Visa",
+      "meta_description": "Clear the crucial B1 exam required for German vocational training (Ausbildung) and job opportunities.",
+      "is_published": true
+    },
+    {
+      "id": "page-7",
+      "slug": "/german/b2",
+      "title": "German B2 – Upper-Intermediate",
+      "meta_title": "German B2 Course in Jaipur | Nursing & University Studies",
+      "meta_description": "Attain professional fluency needed for nursing licensing and direct university degrees in Germany.",
+      "is_published": true
+    },
+    {
+      "id": "page-8",
+      "slug": "/german/c1",
+      "title": "German C1 – Advanced Level",
+      "meta_title": "German C1 Course in Jaipur | Advanced Academic Fluency",
+      "meta_description": "Master advanced German for TestDaF, professional careers, and complex academic discourse.",
+      "is_published": true
+    },
+    {
+      "id": "page-9",
+      "slug": "/german/c2",
+      "title": "German C2 – Proficiency Level",
+      "meta_title": "German C2 Course in Jaipur | Native Mastery",
+      "meta_description": "Achieve native-level German precision for translation, diplomacy, and academic excellence.",
+      "is_published": true
+    },
+    {
+      "id": "page-10",
+      "slug": "/languages",
+      "title": "All Languages Overview",
+      "meta_title": "Foreign Language Courses in Jaipur | Gyanshala",
+      "meta_description": "Learn German, French, Spanish, and English in Jaipur with native-certified trainers.",
+      "is_published": true
+    },
+    {
+      "id": "page-11",
+      "slug": "/languages/french",
+      "title": "French Language Course",
+      "meta_title": "French Language Classes in Jaipur | DELF A1-B2",
+      "meta_description": "Learn French for Canada immigration, DELF certification, and international career options.",
+      "is_published": true
+    },
+    {
+      "id": "page-12",
+      "slug": "/languages/spanish",
+      "title": "Spanish Language Course",
+      "meta_title": "Spanish Language Classes in Jaipur | DELE Preparation",
+      "meta_description": "Learn conversational and business Spanish with qualified coaches for DELE exams.",
+      "is_published": true
+    },
+    {
+      "id": "page-13",
+      "slug": "/languages/english",
+      "title": "Spoken English & IELTS Prep",
+      "meta_title": "Spoken English & IELTS Coaching in Jaipur | Gyanshala",
+      "meta_description": "Boost English fluency, accent clarity, corporate communication, and IELTS band score.",
+      "is_published": true
+    },
+    {
+      "id": "page-14",
+      "slug": "/pathways",
+      "title": "Germany Pathways Overview",
+      "meta_title": "Study, Ausbildung & Career Pathways in Germany | Gyanshala",
+      "meta_description": "Explore tuition-free university study, paid dual vocational Ausbildung, and nursing placements in Germany.",
+      "is_published": true
+    },
+    {
+      "id": "page-15",
+      "slug": "/pathways/study-in-germany",
+      "title": "Study in Germany",
+      "meta_title": "Study in Germany from India | Tuition Free University Admissions",
+      "meta_description": "End-to-end consulting for Bachelors & Masters in top German public universities with APS certificate guidance.",
+      "is_published": true
+    },
+    {
+      "id": "page-16",
+      "slug": "/pathways/ausbildung",
+      "title": "Ausbildung in Germany",
+      "meta_title": "Ausbildung in Germany for Indian Students | Paid Dual Training",
+      "meta_description": "Get placed in 3-year paid vocational training in Germany with monthly stipends of €1,000+.",
+      "is_published": true
+    },
+    {
+      "id": "page-17",
+      "slug": "/pathways/nursing-in-germany",
+      "title": "Nursing in Germany",
+      "meta_title": "Nursing Jobs in Germany for Indian Nurses | Direct Placement",
+      "meta_description": "Fast-track German B2 licensing and direct hospital placement for B.Sc and GNM nurses.",
+      "is_published": true
+    },
+    {
+      "id": "page-18",
+      "slug": "/faqs",
+      "title": "Frequently Asked Questions",
+      "meta_title": "FAQs | Gyanshala Foreign Language Academy",
+      "meta_description": "Answers to common questions about German courses, Goethe exams, fees, batch timings, and Germany visas.",
+      "is_published": true
+    }
+  ],
+  "footer": {
+    "about_text": "Gyanshala – Foreign Language Academy was established in 2018 in Jaipur to support students in their learning journey and connect them with international education, Ausbildung, and professional opportunities in Germany and Europe.",
+    "contact": {
+      "address_title": "Gyanshala Foreign Language Academy",
+      "address_subtitle": "Jaipur, Rajasthan, India",
+      "google_maps_url": "https://maps.google.com/?cid=14451730170732164818",
+      "working_mode": "Offline Classroom Batches & Live Interactive Online Classes",
+      "working_hours": "Monday – Saturday: 9:00 AM – 7:00 PM (Sunday Closed)",
+      "primary_phone": "+91 91191 16677",
+      "secondary_phone": "+91 91191 16688",
+      "whatsapp": "+919119116677",
+      "email": "info@gyanshala.in"
+    },
+    "social_links": [
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/gyanshalaajaipur/"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/learnwithgyanshala/"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/gyanshala-foreign-language-academy-044459202"
+      }
+    ],
+    "copyright": "© 2026 Gyanshala – Foreign Language Academy. All Rights Reserved."
+  }
+}

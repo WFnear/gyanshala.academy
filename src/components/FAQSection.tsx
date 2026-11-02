@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -356,9 +356,30 @@ export default function FAQSection({
   showHeading = true,
   showBottomCTA,
 }: FAQSectionProps) {
+  const [faqs, setFaqs] = useState<FAQItem[]>(FAQ_DATA);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [openIds, setOpenIds] = useState<number[]>([]); // Default all closed
   const [searchQuery, setSearchQuery] = useState<string>("");
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadFaqs() {
+      try {
+        const res = await fetch("/api/admin/faqs");
+        if (!res.ok) return;
+        const json = await res.json();
+        if (json.data && Array.isArray(json.data) && json.data.length > 0 && isMounted) {
+          setFaqs(json.data);
+        }
+      } catch {
+        // quiet fallback to static FAQ_DATA
+      }
+    }
+    loadFaqs();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const toggleFAQ = (id: number) => {
     setOpenIds((prev) =>
@@ -370,8 +391,8 @@ export default function FAQSection({
   const effectiveLimit = isHomepage ? (limit ?? 8) : limit;
 
   const filteredFAQs = isHomepage
-    ? FAQ_DATA.slice(0, effectiveLimit)
-    : FAQ_DATA.filter((item) => {
+    ? faqs.slice(0, effectiveLimit)
+    : faqs.filter((item) => {
         const matchesCategory =
           selectedCategory === "all" || item.category === selectedCategory;
         const matchesSearch =
@@ -506,8 +527,8 @@ export default function FAQSection({
               {CATEGORIES.map((cat) => {
                 const count =
                   cat.id === "all"
-                    ? FAQ_DATA.length
-                    : FAQ_DATA.filter((item) => item.category === cat.id).length;
+                    ? faqs.length
+                    : faqs.filter((item) => item.category === cat.id).length;
                 const isActive = selectedCategory === cat.id;
 
                 return (

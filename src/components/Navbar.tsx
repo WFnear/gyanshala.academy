@@ -1,12 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  // Dynamic CMS state (defaults to null, loads real CMS navbar)
+  const [dynamicNav, setDynamicNav] = useState<any[] | null>(null);
+  const [ctaConfig, setCtaConfig] = useState({ text: "Enquiry Now", href: "/enquiry", is_active: true });
+
+  useEffect(() => {
+    fetch("/api/admin/cms/navbar")
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && res.data?.items) {
+          setDynamicNav(res.data.items.filter((i: any) => i.is_active));
+          if (res.data.cta) setCtaConfig(res.data.cta);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const toggleDropdown = (name: string) => {
     setOpenDropdown(openDropdown === name ? null : name);
@@ -54,134 +70,188 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links (Reduced spacing) */}
           <div className="hidden lg:flex items-center gap-0.5 xl:gap-1">
-            <Link
-              href="/"
-              className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
-            >
-              Home
-            </Link>
-
-            {/* German Courses Dropdown */}
-            <div className="relative group">
-              <Link
-                href="/german"
-                className="flex items-center gap-1 px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors cursor-pointer"
-              >
-                <span>German Courses</span>
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:rotate-180 text-white/90"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-              </Link>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 min-w-max pt-2 z-50">
-                <div style={{ backgroundColor: "#ffffff" }} className="bg-[#ffffff] rounded-xl shadow-xl border border-gray-100 p-2 min-w-[270px]">
-                  {germanCourses.map((item) => (
+            {dynamicNav ? (
+              dynamicNav.map((item) => {
+                const hasSubs = item.children && item.children.length > 0;
+                if (!hasSubs) {
+                  return (
                     <Link
-                      key={item.label}
+                      key={item.id || item.label}
                       href={item.href}
-                      className="block px-3.5 py-2.5 text-sm font-medium text-zinc-700 hover:bg-[#BC0202] hover:text-white rounded-lg transition-colors whitespace-nowrap"
+                      className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
                     >
                       {item.label}
                     </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+                  );
+                }
 
-            {/* Germany Pathways Dropdown */}
-            <div className="relative group">
-              <button
-                type="button"
-                className="flex items-center gap-1 px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors cursor-pointer"
-              >
-                <span>Germany Pathways</span>
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:rotate-180 text-white/90"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-              </button>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 min-w-max pt-2 z-50">
-                <div style={{ backgroundColor: "#ffffff" }} className="bg-[#ffffff] rounded-xl shadow-xl border border-gray-100 p-2 min-w-[240px]">
-                  {germanyPathways.map((item) => (
+                return (
+                  <div key={item.id || item.label} className="relative group">
                     <Link
-                      key={item.label}
                       href={item.href}
-                      className="block px-3.5 py-2.5 text-sm font-medium text-zinc-700 hover:bg-[#BC0202] hover:text-white rounded-lg transition-colors whitespace-nowrap"
+                      className="flex items-center gap-1 px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors cursor-pointer"
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      <svg
+                        className="w-4 h-4 transition-transform group-hover:rotate-180 text-white/90"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
                     </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* All Languages Dropdown */}
-            <div className="relative group">
-              <button
-                type="button"
-                className="flex items-center gap-1 px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors cursor-pointer"
-              >
-                <span>All Languages</span>
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:rotate-180 text-white/90"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
+                    <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 min-w-max pt-2 z-50">
+                      <div style={{ backgroundColor: "#ffffff" }} className="bg-[#ffffff] rounded-xl shadow-xl border border-gray-100 p-2 min-w-[240px]">
+                        {item.children.filter((c: any) => c.is_active !== false).map((sub: any) => (
+                          <Link
+                            key={sub.id || sub.label}
+                            href={sub.href}
+                            className="block px-3.5 py-2.5 text-sm font-medium text-zinc-700 hover:bg-[#BC0202] hover:text-white rounded-lg transition-colors whitespace-nowrap"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <>
+                <Link
+                  href="/"
+                  className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-              </button>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 min-w-max pt-2 z-50">
-                <div style={{ backgroundColor: "#ffffff" }} className="bg-[#ffffff] rounded-xl shadow-xl border border-gray-100 p-2 min-w-[200px]">
-                  {allLanguages.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="block px-3.5 py-2.5 text-sm font-medium text-zinc-700 hover:bg-[#BC0202] hover:text-white rounded-lg transition-colors whitespace-nowrap"
+                  Home
+                </Link>
+
+                {/* German Courses Dropdown */}
+                <div className="relative group">
+                  <Link
+                    href="/german"
+                    className="flex items-center gap-1 px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors cursor-pointer"
+                  >
+                    <span>German Courses</span>
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover:rotate-180 text-white/90"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
                     >
-                      {item.label}
-                    </Link>
-                  ))}
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </Link>
+                  <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 min-w-max pt-2 z-50">
+                    <div style={{ backgroundColor: "#ffffff" }} className="bg-[#ffffff] rounded-xl shadow-xl border border-gray-100 p-2 min-w-[270px]">
+                      {germanCourses.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className="block px-3.5 py-2.5 text-sm font-medium text-zinc-700 hover:bg-[#BC0202] hover:text-white rounded-lg transition-colors whitespace-nowrap"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            {/* About Us */}
-            <Link
-              href="/about-us"
-              className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
-            >
-              About Us
-            </Link>
+                {/* Germany Pathways Dropdown */}
+                <div className="relative group">
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors cursor-pointer"
+                  >
+                    <span>Germany Pathways</span>
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover:rotate-180 text-white/90"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </button>
+                  <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 min-w-max pt-2 z-50">
+                    <div style={{ backgroundColor: "#ffffff" }} className="bg-[#ffffff] rounded-xl shadow-xl border border-gray-100 p-2 min-w-[240px]">
+                      {germanyPathways.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className="block px-3.5 py-2.5 text-sm font-medium text-zinc-700 hover:bg-[#BC0202] hover:text-white rounded-lg transition-colors whitespace-nowrap"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
-            {/* FAQs */}
-            <Link
-              href="/faqs"
-              className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
-            >
-              FAQs
-            </Link>
+                {/* All Languages Dropdown */}
+                <div className="relative group">
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors cursor-pointer"
+                  >
+                    <span>All Languages</span>
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover:rotate-180 text-white/90"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </button>
+                  <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 min-w-max pt-2 z-50">
+                    <div style={{ backgroundColor: "#ffffff" }} className="bg-[#ffffff] rounded-xl shadow-xl border border-gray-100 p-2 min-w-[200px]">
+                      {allLanguages.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className="block px-3.5 py-2.5 text-sm font-medium text-zinc-700 hover:bg-[#BC0202] hover:text-white rounded-lg transition-colors whitespace-nowrap"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* About Us */}
+                <Link
+                  href="/about-us"
+                  className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
+                >
+                  About Us
+                </Link>
+
+                {/* FAQs */}
+                <Link
+                  href="/faqs"
+                  className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
+                >
+                  FAQs
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Right Action: CTA Button & Mobile Trigger */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link
-              href="/enquiry"
-              className="inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-2.5 rounded-lg text-sm font-bold text-white bg-[#ECBB0C] hover:bg-[#d9ab0b] shadow-sm sm:shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
-            >
-              Enquiry Now
-            </Link>
+            {ctaConfig.is_active && (
+              <Link
+                href={ctaConfig.href || "/enquiry"}
+                className="inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-2.5 rounded-lg text-sm font-bold text-white bg-[#ECBB0C] hover:bg-[#d9ab0b] shadow-sm sm:shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+              >
+                {ctaConfig.text || "Enquiry Now"}
+              </Link>
+            )}
 
             {/* Mobile Menu Button */}
             <div className="flex lg:hidden items-center">
@@ -246,133 +316,190 @@ export default function Navbar() {
 
         {/* Drawer Scrollable Links */}
         <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1">
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
-          >
-            Home
-          </Link>
-
-          {/* German Courses Mobile Accordion */}
-          <div>
-            <button
-              type="button"
-              onClick={() => toggleDropdown("german")}
-              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors cursor-pointer"
-            >
-              <span>German Courses</span>
-              <svg
-                className={`w-4 h-4 transform transition-transform text-white/90 ${openDropdown === "german" ? "rotate-180" : ""}`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
-            </button>
-            {openDropdown === "german" && (
-              <div className="pl-4 pr-2 py-1 space-y-1">
-                {germanCourses.map((item) => (
+          {dynamicNav ? (
+            dynamicNav.map((item) => {
+              const hasSubs = item.children && item.children.length > 0;
+              if (!hasSubs) {
+                return (
                   <Link
-                    key={item.label}
+                    key={item.id || item.label}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-3 py-2 rounded-md text-sm text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+                    className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
                   >
                     {item.label}
                   </Link>
-                ))}
-              </div>
-            )}
-          </div>
+                );
+              }
 
-          {/* Germany Pathways Mobile Accordion */}
-          <div>
-            <button
-              type="button"
-              onClick={() => toggleDropdown("pathways")}
-              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors cursor-pointer"
-            >
-              <span>Germany Pathways</span>
-              <svg
-                className={`w-4 h-4 transform transition-transform text-white/90 ${openDropdown === "pathways" ? "rotate-180" : ""}`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
-            </button>
-            {openDropdown === "pathways" && (
-              <div className="pl-4 pr-2 py-1 space-y-1">
-                {germanyPathways.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-3 py-2 rounded-md text-sm text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+              const isOpen = openDropdown === item.id || openDropdown === item.label;
+
+              return (
+                <div key={item.id || item.label}>
+                  <button
+                    type="button"
+                    onClick={() => toggleDropdown(item.id || item.label)}
+                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors cursor-pointer"
                   >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* All Languages Mobile Accordion */}
-          <div>
-            <button
-              type="button"
-              onClick={() => toggleDropdown("languages")}
-              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors cursor-pointer"
-            >
-              <span>All Languages</span>
-              <svg
-                className={`w-4 h-4 transform transition-transform text-white/90 ${openDropdown === "languages" ? "rotate-180" : ""}`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
+                    <span>{item.label}</span>
+                    <svg
+                      className={`w-4 h-4 transform transition-transform text-white/90 ${isOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </button>
+                  {isOpen && (
+                    <div className="pl-4 pr-2 py-1 space-y-1">
+                      {item.children.filter((c: any) => c.is_active !== false).map((sub: any) => (
+                        <Link
+                          key={sub.id || sub.label}
+                          href={sub.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block px-3 py-2 rounded-md text-sm text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <>
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
-            </button>
-            {openDropdown === "languages" && (
-              <div className="pl-4 pr-2 py-1 space-y-1">
-                {allLanguages.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-3 py-2 rounded-md text-sm text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+                Home
+              </Link>
+
+              {/* German Courses Mobile Accordion */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => toggleDropdown("german")}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors cursor-pointer"
+                >
+                  <span>German Courses</span>
+                  <svg
+                    className={`w-4 h-4 transform transition-transform text-white/90 ${openDropdown === "german" ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
                   >
-                    {item.label}
-                  </Link>
-                ))}
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </button>
+                {openDropdown === "german" && (
+                  <div className="pl-4 pr-2 py-1 space-y-1">
+                    {germanCourses.map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block px-3 py-2 rounded-md text-sm text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
 
-          {/* About Us */}
-          <Link
-            href="/about-us"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
-          >
-            About Us
-          </Link>
+              {/* Germany Pathways Mobile Accordion */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => toggleDropdown("pathways")}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors cursor-pointer"
+                >
+                  <span>Germany Pathways</span>
+                  <svg
+                    className={`w-4 h-4 transform transition-transform text-white/90 ${openDropdown === "pathways" ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </button>
+                {openDropdown === "pathways" && (
+                  <div className="pl-4 pr-2 py-1 space-y-1">
+                    {germanyPathways.map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block px-3 py-2 rounded-md text-sm text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-          {/* FAQs */}
-          <Link
-            href="/faqs"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
-          >
-            FAQs
-          </Link>
+              {/* All Languages Mobile Accordion */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => toggleDropdown("languages")}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors cursor-pointer"
+                >
+                  <span>All Languages</span>
+                  <svg
+                    className={`w-4 h-4 transform transition-transform text-white/90 ${openDropdown === "languages" ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </button>
+                {openDropdown === "languages" && (
+                  <div className="pl-4 pr-2 py-1 space-y-1">
+                    {allLanguages.map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block px-3 py-2 rounded-md text-sm text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* About Us */}
+              <Link
+                href="/about-us"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
+              >
+                About Us
+              </Link>
+
+              {/* FAQs */}
+              <Link
+                href="/faqs"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
+              >
+                FAQs
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Drawer Footer CTA */}

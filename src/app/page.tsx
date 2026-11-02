@@ -391,68 +391,100 @@ const studentReviews = [
 
 const studentsInGermany = [
   {
-    name: "Akshat Pandey",
-    image: "/studentsingermany/AKSHAT PANDEY.png",
-  },
-  {
-    name: "Ankit Maan",
-    image: "/studentsingermany/ANKIT MAAN.png",
-  },
-  {
-    name: "Anukalp Lawania",
-    image: "/studentsingermany/ANUKALP LAWANIA.png",
-  },
-  {
-    name: "Deepak Choudhary",
-    image: "/studentsingermany/DEEPAK CHOUDHARY.png",
-  },
-  {
-    name: "Jayalaxmi",
+    name: "Jayalakshmi S",
+    degree: "PhD in Medical Microbiology",
+    university: "Universitätsklinikum, Heidelberg",
     image: "/studentsingermany/JAAYALAXMI.png",
   },
   {
     name: "Lavesh Rajput",
+    degree: "Technical Logistics",
+    university: "University of Duisburg-Essen",
     image: "/studentsingermany/LAVESH RAJPUT.png",
   },
   {
     name: "Mehul Kumawat",
+    degree: "Water Science and Engineering",
+    university: "Karlsruhe Institute of Technology, Karlsruhe",
     image: "/studentsingermany/MEHUL KUMAWAT.png",
   },
   {
     name: "Rahul Soni",
+    degree: "Computational Mechanics",
+    university: "Essen Duisburg Universität, Essen",
     image: "/studentsingermany/RAHUL SONI.png",
   },
   {
-    name: "Riya Ahuja",
-    image: "/studentsingermany/RIYA AHUJA.png",
+    name: "Deepak Choudhary",
+    degree: "Masters in Business Administration",
+    university: "Otto-von-Guericke-University Magdeburg",
+    image: "/studentsingermany/DEEPAK CHOUDHARY.png",
   },
   {
-    name: "Saurav Yadav",
-    image: "/studentsingermany/SAURAV YADAV.png",
+    name: "Ankit Maan",
+    degree: "Master's in Digital Technologies",
+    university: "TU Clausthal, Wolfsburg",
+    image: "/studentsingermany/ANKIT MAAN.png",
   },
   {
-    name: "Shailja Rathore",
-    image: "/studentsingermany/SHAILJJA RATHOD.png",
-  },
-  {
-    name: "Shivam Tak",
-    image: "/studentsingermany/SHIVAM TAK.png",
-  },
-  {
-    name: "Shubham Gupta",
-    image: "/studentsingermany/Shubham Gupta.png",
-  },
-  {
-    name: "Shubhangi",
-    image: "/studentsingermany/SHUBHANGI.png",
+    name: "Akshat Pandey",
+    degree: "MS in Technische Logistik",
+    university: "Universität Duisburg-Essen, Osnabrück",
+    image: "/studentsingermany/AKSHAT PANDEY.png",
   },
   {
     name: "Suvidhi Loonker",
+    degree: "MSc International Management",
+    university: "Hochschule Fulda",
     image: "/studentsingermany/SUVIDHI LOONKER.png",
   },
   {
+    name: "Anukalp Lawania",
+    degree: "Scientific Instrumentation (M.Sc.)",
+    university: "Ernst-Abbe-Hochschule Jena",
+    image: "/studentsingermany/ANUKALP LAWANIA.png",
+  },
+  {
+    name: "Shubhangi",
+    degree: "M.Sc. in Data Science",
+    university: "Ludwig Maximilian University of Munich",
+    image: "/studentsingermany/SHUBHANGI.png",
+  },
+  {
+    name: "Shubham Gupta",
+    degree: "MS in Technical Logistics",
+    university: "Universität Duisburg-Essen, Magdeburg",
+    image: "/studentsingermany/Shubham Gupta.png",
+  },
+  {
+    name: "Saurabh Yadav",
+    degree: "MSc in Mechatronics",
+    university: "Universität Duisburg-Essen, Mülheim an der Ruhr, NRW",
+    image: "/studentsingermany/SAURAV YADAV.png",
+  },
+  {
+    name: "Riya Ahuja",
+    degree: "MSc in Data Science",
+    university: "Technical University of Braunschweig",
+    image: "/studentsingermany/RIYA AHUJA.png",
+  },
+  {
+    name: "Shivam Tak",
+    degree: "Commercial Vehicle Technology",
+    university: "RPTU Rheinland-Pfälzische Technische Universität",
+    image: "/studentsingermany/SHIVAM TAK.png",
+  },
+  {
     name: "Yuganshu Sharma",
+    degree: "Scientific Instrumentation (M.Sc.)",
+    university: "Ernst-Abbe-Hochschule Jena",
     image: "/studentsingermany/YUGANSHU SHARMA.png",
+  },
+  {
+    name: "Shailja Rathore",
+    degree: "Scientific Instrumentation (M.Sc.)",
+    university: "Ernst-Abbe-Hochschule Jena",
+    image: "/studentsingermany/SHAILJJA RATHOD.png",
   },
 ];
 
@@ -462,12 +494,108 @@ export default function Home() {
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
+  // Dynamic CMS State (defaults to authentic website data)
+  const [activeSlides, setActiveSlides] = useState(slides);
+  const [activeWhyChoose, setActiveWhyChoose] = useState(whyChoosePoints);
+  const [activeVideos, setActiveVideos] = useState(onlineVideos);
+  const [activeReviews, setActiveReviews] = useState(studentReviews);
+  const [activeStudents, setActiveStudents] = useState(studentsInGermany);
+  const [activeGermanCourses, setActiveGermanCourses] = useState([
+    { id: "a1", badge: "A1 Level", name: "A1 – Beginner Level", image: "/greenbg.jpg", href: "/german/a1" },
+    { id: "a2", badge: "A2 Level", name: "A2 – Elementary Level", image: "/greenbg.jpg", href: "/german/a2" },
+    { id: "b1", badge: "B1 Level", name: "B1 – Intermediate Level", image: "/greenbg.jpg", href: "/german/b1" },
+    { id: "b2", badge: "B2 Level", name: "B2 – Upper-Intermediate Level", image: "/greenbg.jpg", href: "/german/b2" },
+    { id: "c1", badge: "C1 Level", name: "C1 – Advanced Level", image: "/greenbg.jpg", href: "/german/c1" },
+    { id: "c2", badge: "C2 Level", name: "C2 – Proficiency Level", image: "/greenbg.jpg", href: "/german/c2" },
+  ]);
+  const [activePathways, setActivePathways] = useState([
+    {
+      id: "study",
+      title: "Study In Germany",
+      description:
+        "Pursue a Bachelor's or Master's degree at a German university. Get guidance on course selection, admission requirements, APS certification, and student visa preparation.",
+      target: "For students planning to pursue higher education in Germany.",
+      cta: "Explore Study Options →",
+      href: "/pathways/study-in-germany",
+      image: "/Pathways/students in germany .png",
+    },
+    {
+      id: "ausbildung",
+      title: "Ausbildung in Germany",
+      description:
+        "Learn a profession through practical workplace training and classroom education. Many dual training programmes offer a monthly allowance while you develop skills for a career in Germany.",
+      target: "For students who want professional training and practical work experience.",
+      cta: "Explore Ausbildung →",
+      href: "/pathways/ausbildung",
+      image: "/Pathways/ausbildung in germnay.png",
+    },
+    {
+      id: "nursing",
+      title: "Nursing in Germany",
+      description:
+        "Explore nursing employment opportunities in Germany if you have a GNM, BSc Nursing, or another relevant nursing qualification. Understand qualification recognition, German language requirements, and the steps towards professional registration.",
+      target: "For qualified nurses looking to build their careers in Germany.",
+      cta: "Explore Nursing Careers →",
+      href: "/pathways/nursing-in-germany",
+      image: "/Pathways/nursing jobs in germnay.png",
+    },
+  ]);
+  const [sectionsConfig, setSectionsConfig] = useState<any[] | null>(null);
+
+  useEffect(() => {
+    fetch("/api/admin/cms/homepage")
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && res.data) {
+          setSectionsConfig(res.data);
+          const hero = res.data.find((s: any) => s.key === "hero");
+          if (hero?.slides) setActiveSlides(hero.slides);
+          const why = res.data.find((s: any) => s.key === "why_choose");
+          if (why?.points) {
+            setActiveWhyChoose(
+              why.points.map((pt: any, i: number) => ({
+                ...pt,
+                icon: whyChoosePoints[i]?.icon || whyChoosePoints[0]?.icon,
+              }))
+            );
+          }
+          const stu = res.data.find((s: any) => s.key === "students_in_germany");
+          if (stu?.students) setActiveStudents(stu.students);
+          const rev = res.data.find((s: any) => s.key === "reviews");
+          if (rev?.reviews) setActiveReviews(rev.reviews);
+          const vid = res.data.find((s: any) => s.key === "videos");
+          if (vid?.videos) setActiveVideos(vid.videos);
+        }
+      })
+      .catch(() => {});
+
+    fetch("/api/admin/german-courses")
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          const filtered = res.data.filter((c: any) => c.is_active !== false);
+          if (filtered.length > 0) setActiveGermanCourses(filtered);
+        }
+      })
+      .catch(() => {});
+
+    fetch("/api/admin/germany-pathways")
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          const filtered = res.data.filter((p: any) => p.is_active !== false);
+          if (filtered.length > 0) setActivePathways(filtered);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const prevSlide = () => {
-    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ? activeSlides.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
-    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev === activeSlides.length - 1 ? 0 : prev + 1));
   };
 
   // Auto slide every 5 seconds
@@ -643,7 +771,7 @@ export default function Home() {
       >
         {/* Slides Container (Zero Horizontal Overflow) */}
         <div className="relative w-full h-full overflow-hidden">
-          {slides.map((slide, index) => {
+          {activeSlides.map((slide, index) => {
             const isActive = index === current;
             return (
               <div
@@ -745,7 +873,7 @@ export default function Home() {
 
         {/* Floating Indicator Dots */}
         <div className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 sm:gap-2 bg-black/45 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 shadow-xl">
-          {slides.map((_, index) => (
+          {activeSlides.map((_, index) => (
             <button
               key={index}
               type="button"
@@ -867,14 +995,7 @@ export default function Home() {
 
           {/* Course Cards Grid */}
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" staggerDelay={0.22}>
-            {[
-              { id: "a1", badge: "A1 Level", name: "A1 – Beginner Level" },
-              { id: "a2", badge: "A2 Level", name: "A2 – Elementary Level" },
-              { id: "b1", badge: "B1 Level", name: "B1 – Intermediate Level" },
-              { id: "b2", badge: "B2 Level", name: "B2 – Upper-Intermediate Level" },
-              { id: "c1", badge: "C1 Level", name: "C1 – Advanced Level" },
-              { id: "c2", badge: "C2 Level", name: "C2 – Proficiency Level" },
-            ].map((course, index) => {
+            {activeGermanCourses.map((course, index) => {
               const isEven = index % 2 === 0;
               return (
                 <StaggerItem
@@ -885,13 +1006,13 @@ export default function Home() {
                   hoverLift
                 >
                   <Link
-                    href={`/german/${course.id}`}
+                    href={course.href || `/german/${course.id}`}
                     className="group flex flex-col h-full bg-[#FFFAF3] dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
                   >
                     {/* Top Image Area with Level Badge */}
                     <CardImageReveal reversed={!isEven} className="relative w-full aspect-[16/10] sm:aspect-[3/2] flex items-center justify-center overflow-hidden select-none">
                       <Image
-                        src="/greenbg.jpg"
+                        src={course.image || "/greenbg.jpg"}
                         alt={course.badge}
                         fill
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 380px"
@@ -945,35 +1066,7 @@ export default function Home() {
 
           {/* 3 Pathway Cards Grid */}
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.24}>
-            {[
-              {
-                title: "Study In Germany",
-                description:
-                  "Pursue a Bachelor's or Master's degree at a German university. Get guidance on course selection, admission requirements, APS certification, and student visa preparation.",
-                target: "For students planning to pursue higher education in Germany.",
-                cta: "Explore Study Options →",
-                href: "/pathways/study-in-germany",
-                image: "/Pathways/students in germany .png",
-              },
-              {
-                title: "Ausbildung in Germany",
-                description:
-                  "Learn a profession through practical workplace training and classroom education. Many dual training programmes offer a monthly allowance while you develop skills for a career in Germany.",
-                target: "For students who want professional training and practical work experience.",
-                cta: "Explore Ausbildung →",
-                href: "/pathways/ausbildung",
-                image: "/Pathways/ausbildung in germnay.png",
-              },
-              {
-                title: "Nursing in Germany",
-                description:
-                  "Explore nursing employment opportunities in Germany if you have a GNM, BSc Nursing, or another relevant nursing qualification. Understand qualification recognition, German language requirements, and the steps towards professional registration.",
-                target: "For qualified nurses looking to build their careers in Germany.",
-                cta: "Explore Nursing Careers →",
-                href: "/pathways/nursing-in-germany",
-                image: "/Pathways/nursing jobs in germnay.png",
-              },
-            ].map((pathway, index) => (
+            {activePathways.map((pathway, index) => (
               <StaggerItem key={pathway.title} className="h-full" direction="alternate" index={index} hoverLift>
                 <Link
                   href={pathway.href}
@@ -1029,40 +1122,40 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          OUR STUDENTS IN GERMANY SECTION - RED BG (#BC0202), 2 ROWS & COLUMNS WITH ARROWS
+          OUR STUDENTS IN GERMANY SECTION - RED BG (#AC2424), 2 ROWS & COLUMNS WITH ARROWS
           ========================================================================= */}
-      <section id="students-in-germany" className="relative py-14 sm:py-20 lg:py-24 bg-[#BC0202] dark:bg-[#990202] border-b border-red-950/40 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="students-in-germany" className="relative py-8 sm:py-12 lg:py-14 bg-[#AC2424] dark:bg-[#8e1e1e] border-b border-red-950/40 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           {/* Main Heading */}
-          <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[48px] xl:text-[54px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
+          <FadeInUp className="text-center max-w-4xl mx-auto mb-4 sm:mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] font-normal text-white tracking-[-0.01em] leading-tight drop-shadow-sm">
               Our Students in Germany
             </h2>
           </FadeInUp>
 
-          {/* Students Slider: 2 rows flowing into columns, Left & Right arrows without BG */}
-          <div className="relative px-12 sm:px-16 lg:px-24 xl:px-28">
+          {/* Students Slider: 2 rows flowing into columns, Left & Right arrows with comfortable gap & larger size (Desktop/Tablet only) */}
+          <div className="relative px-0 sm:px-14 md:px-16 lg:px-22 xl:px-24">
 
-            {/* Left Arrow: Transparent, No BG, on Card's Left Flank */}
+            {/* Left Arrow: Hidden on mobile, visible on sm & above with clear gap from cards */}
             <button
               type="button"
               onClick={scrollPrevStudents}
               aria-label="Previous students"
-              className="absolute left-0 sm:left-1 lg:left-3 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-120 active:scale-90 p-1.5 cursor-pointer focus:outline-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] select-none"
+              className="hidden sm:flex items-center justify-center absolute left-0 sm:left-1 md:left-2 lg:left-3 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-115 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] select-none"
             >
-              <svg className="w-9 h-9 sm:w-11 sm:h-11 lg:w-14 lg:h-14 stroke-[2.75]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-16 lg:h-16 stroke-[2.75]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
 
-            {/* Right Arrow: Transparent, No BG, on Card's Right Flank */}
+            {/* Right Arrow: Hidden on mobile, visible on sm & above with clear gap from cards */}
             <button
               type="button"
               onClick={scrollNextStudents}
               aria-label="Next students"
-              className="absolute right-0 sm:right-1 lg:right-3 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-120 active:scale-90 p-1.5 cursor-pointer focus:outline-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] select-none"
+              className="hidden sm:flex items-center justify-center absolute right-0 sm:right-1 md:right-2 lg:right-3 top-1/2 -translate-y-1/2 z-20 text-white/90 hover:text-white transition-all duration-200 transform hover:scale-115 active:scale-90 p-1 cursor-pointer focus:outline-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] select-none"
             >
-              <svg className="w-9 h-9 sm:w-11 sm:h-11 lg:w-14 lg:h-14 stroke-[2.75]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-16 lg:h-16 stroke-[2.75]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>
@@ -1075,9 +1168,9 @@ export default function Home() {
               onMouseLeave={() => setIsStudentsPaused(false)}
               onTouchStart={() => setIsStudentsPaused(true)}
               onTouchEnd={() => setIsStudentsPaused(false)}
-              className="grid grid-rows-2 grid-flow-col auto-cols-[calc(50%-7px)] sm:auto-cols-[calc(33.333%-11px)] lg:auto-cols-[calc(25%-18px)] gap-3.5 sm:gap-4 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="grid grid-rows-2 grid-flow-col auto-cols-[calc(50%-6px)] sm:auto-cols-[calc(33.333%-10px)] lg:auto-cols-[calc(25%-15px)] gap-3 sm:gap-3.5 lg:gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 pt-1 px-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
-              {studentsInGermany.map((student, idx) => (
+              {activeStudents.map((student, idx) => (
                 <motion.div
                   key={student.name}
                   initial={{ opacity: 0, y: 15 }}
@@ -1099,11 +1192,21 @@ export default function Home() {
                       />
                     </div>
 
-                    {/* Student Name */}
-                    <div className="p-2 sm:p-3 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center">
-                      <h3 className="font-bold text-xs sm:text-sm lg:text-base text-zinc-900 dark:text-white leading-snug group-hover:text-[#C00000] transition-colors">
+                    {/* Student Name & University Details (Full text visible, multi-line wrapping matching official PDF) */}
+                    <div className="p-2 sm:p-2.5 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 text-center flex-1 flex flex-col justify-center min-h-[74px] sm:min-h-[82px] lg:min-h-[92px]">
+                      <h3 className="font-bold text-xs sm:text-sm lg:text-[15px] text-zinc-900 dark:text-white leading-tight group-hover:text-[#C00000] transition-colors">
                         {student.name}
                       </h3>
+                      {(student as any).degree && (
+                        <p className="text-[11px] sm:text-xs text-[#AC2424] font-semibold mt-0.5 sm:mt-1 leading-tight break-words">
+                          {(student as any).degree}
+                        </p>
+                      )}
+                      {(student as any).university && (
+                        <p className="text-[10px] sm:text-[11px] text-zinc-500 dark:text-zinc-400 font-medium mt-0.5 sm:mt-1 leading-tight sm:leading-snug whitespace-pre-line break-words">
+                          {(student as any).university.replace(", Mülheim", "\nMülheim")}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -1112,7 +1215,7 @@ export default function Home() {
 
             {/* Slide Dot Indicators */}
             {studentsTotalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-5 sm:mt-7">
+              <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-3 sm:mt-4">
                 {Array.from({ length: studentsTotalPages }).map((_, idx) => {
                   const isActive = studentsActiveIndex === idx;
                   return (
@@ -1142,7 +1245,7 @@ export default function Home() {
       </section>
 
       {/* Experienced Educators / Meet Our Team Section */}
-      <section id="team" className="py-14 sm:py-20 lg:py-24 bg-[#FBFBFB] dark:bg-zinc-900/30 border-b border-zinc-200/60 dark:border-zinc-800">
+      <section id="team" className="py-14 sm:py-20 lg:py-24 bg-[#C7D1D9] dark:bg-[#2a323d] border-b border-slate-300/80 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <FadeInUp className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
@@ -1271,7 +1374,7 @@ export default function Home() {
             
             {/* Left Column (3 items: order-1 on mobile & desktop) */}
             <FadeInLeft className="order-1 lg:order-1 lg:col-span-4 space-y-8 sm:space-y-10">
-              {whyChoosePoints.slice(0, 3).map((point) => (
+              {activeWhyChoose.slice(0, 3).map((point) => (
                 <div key={point.number} className="flex items-start gap-4 text-left group">
                   <div className="shrink-0 text-[#C00000] pt-1 transition-transform duration-300 group-hover:scale-110">
                     {point.icon}
@@ -1303,7 +1406,7 @@ export default function Home() {
 
             {/* Right Column (3 items: order-2 on mobile so points 4-6 follow points 1-3, order-3 on desktop) */}
             <FadeInRight className="order-2 lg:order-3 lg:col-span-4 space-y-8 sm:space-y-10">
-              {whyChoosePoints.slice(3, 6).map((point) => (
+              {activeWhyChoose.slice(3, 6).map((point) => (
                 <div key={point.number} className="flex items-start lg:flex-row-reverse gap-4 text-left lg:text-right group">
                   <div className="shrink-0 text-[#C00000] pt-1 transition-transform duration-300 group-hover:scale-110">
                     {point.icon}
@@ -1380,7 +1483,7 @@ export default function Home() {
 
           {/* Video Cards Grid */}
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto" staggerDelay={0.24}>
-            {onlineVideos.map((video, index) => {
+            {activeVideos.map((video, index) => {
               const isPlaying = playingVideoId === video.id;
 
               return (
@@ -1529,7 +1632,7 @@ export default function Home() {
               onTouchEnd={() => setIsReviewsPaused(false)}
               className="flex items-stretch gap-5 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
-            {studentReviews.map((item, idx) => (
+            {activeReviews.map((item, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 22 }}

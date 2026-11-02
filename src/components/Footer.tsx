@@ -1,10 +1,23 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   const currentYear = 2026;
+  const [cmsFooter, setCmsFooter] = useState<any>(null);
+
+  useEffect(() => {
+    fetch("/api/admin/cms/footer")
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && res.data) {
+          setCmsFooter(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const germanCourses = [
     { label: "German A1 – Beginner", href: "/german/a1" },
@@ -102,7 +115,8 @@ export default function Footer() {
             </Link>
 
             <p className="text-sm sm:text-base text-zinc-300 leading-relaxed pr-2">
-              Gyanshala – Foreign Language Academy was established in 2018 in Jaipur to support students in their learning journey and connect them with international education, Ausbildung, and professional opportunities in Germany and Europe.
+              {cmsFooter?.about_text ||
+                "Gyanshala – Foreign Language Academy was established in 2018 in Jaipur to support students in their learning journey and connect them with international education, Ausbildung, and professional opportunities in Germany and Europe."}
             </p>
 
             <div className="pt-2 space-y-3 text-sm sm:text-base text-zinc-300">
@@ -110,27 +124,29 @@ export default function Footer() {
                 <span className="text-[#ECBB0C] text-lg sm:text-xl shrink-0">📍</span>
                 <div>
                   <a
-                    href="https://maps.google.com/?cid=14451730170732164818"
+                    href={cmsFooter?.contact?.google_maps_url || "https://maps.google.com/?cid=14451730170732164818"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-[#ECBB0C] transition-colors underline-offset-2 hover:underline font-semibold text-white inline-flex items-center gap-1.5"
                     title="Open Gyanshala Academy on Google Maps"
                   >
-                    <span>Gyanshala Foreign Language Academy</span>
+                    <span>{cmsFooter?.contact?.address_title || "Gyanshala Foreign Language Academy"}</span>
                     <svg className="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
                   </a>
-                  <p className="text-xs sm:text-sm text-zinc-400">Jaipur, Rajasthan, India</p>
+                  <p className="text-xs sm:text-sm text-zinc-400">
+                    {cmsFooter?.contact?.address_subtitle || "Jaipur, Rajasthan, India"}
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#ECBB0C] text-lg sm:text-xl shrink-0">🎓</span>
-                <span>Offline Classroom Batches &amp; Live Interactive Online Classes</span>
+                <span>{cmsFooter?.contact?.working_mode || "Offline Classroom Batches & Live Interactive Online Classes"}</span>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-[#ECBB0C] text-lg sm:text-xl shrink-0">⏰</span>
-                <span>Monday – Saturday: 9:00 AM – 7:00 PM</span>
+                <span>{cmsFooter?.contact?.working_hours || "Monday – Saturday: 9:00 AM – 7:00 PM"}</span>
               </div>
             </div>
 
