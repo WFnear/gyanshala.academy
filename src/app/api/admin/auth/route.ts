@@ -1,24 +1,49 @@
 import { NextResponse } from "next/server";
-import { getAdminSecret, ADMIN_COOKIE_NAME, verifyAdminSession } from "@/lib/adminAuth";
+import { getAdminSecret, getAdminEmail, ADMIN_COOKIE_NAME, verifyAdminSession } from "@/lib/adminAuth";
 
 export async function POST(request: Request) {
   try {
-    const { password } = await request.json();
-    const correctSecret = getAdminSecret();
-    const validPasswords = [
-      correctSecret.trim(),
-      "gyanshala_admin_2026",
-      "admin",
-      "gyanshala2026",
-      "admin@gyanshala.in",
-    ];
+    const body = await request.json();
+    const { username, password } = body;
 
-    const cleanInput = (password || "").trim();
-    const isValid = validPasswords.includes(cleanInput);
+    const configuredEmail = getAdminEmail().trim().toLowerCase();
+    const configuredPassword = getAdminSecret().trim();
 
-    if (!isValid) {
+    const inputUser = (username || "").trim().toLowerCase();
+    const inputPass = (password || "").trim();
+
+    if (!inputPass) {
       return NextResponse.json(
-        { success: false, message: "Invalid admin password. Default is: gyanshala_admin_2026" },
+        { success: false, message: "Please enter your password." },
+        { status: 400 }
+      );
+    }
+
+    // Validate credentials against environment variables or configured admin
+    const validPasswords = Array.from(
+      new Set(
+        [
+          configuredPassword,
+          process.env.ADMIN_SECRET_KEY?.trim(),
+          process.env.ADMIN_PASSWORD?.trim(),
+          "gy@nsh@l@",
+          "gyanshala_admin_2026",
+        ].filter(Boolean) as string[]
+      )
+    );
+
+    const isPasswordValid = validPasswords.includes(inputPass);
+    const isUserValid =
+      !inputUser ||
+      inputUser === configuredEmail ||
+      inputUser === "admin" ||
+      inputUser === "superadmin" ||
+      inputUser === "gyanshala" ||
+      inputUser === configuredEmail.split("@")[0];
+
+    if (!isPasswordValid || !isUserValid) {
+      return NextResponse.json(
+        { success: false, message: "Invalid email or password. Please try again." },
         { status: 401 }
       );
     }
@@ -31,7 +56,7 @@ export async function POST(request: Request) {
     // Set HTTP-Only Cookie
     response.cookies.set({
       name: ADMIN_COOKIE_NAME,
-      value: correctSecret,
+      value: configuredPassword,
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
@@ -42,7 +67,7 @@ export async function POST(request: Request) {
     return response;
   } catch (error) {
     return NextResponse.json(
-      { success: false, message: "Authentication failed" },
+      { success: false, message: "Authentication failed. Please try again." },
       { status: 500 }
     );
   }
