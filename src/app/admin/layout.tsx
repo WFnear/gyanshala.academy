@@ -160,21 +160,17 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
       >
-        {/* Brand Header */}
-        <div className="p-5 flex items-center justify-between border-b border-white/10 shrink-0">
-          <Link href="/admin" className="flex items-center gap-3 group">
-            {/* White Mortarboard / Academy Icon */}
-            <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-white shadow-inner group-hover:scale-105 transition-transform">
-              <GraduationCap size={24} className="stroke-[2.2]" />
-            </div>
-            <div>
-              <span className="block text-base font-extrabold tracking-wide uppercase leading-tight text-white">
-                GYANSHALA
-              </span>
-              <span className="block text-xs text-white/70 font-medium tracking-wide">
-                Academy Admin
-              </span>
-            </div>
+        {/* Brand Header with Official Gyanshala Cropped Logo */}
+        <div className="px-5 py-4 flex items-center justify-between border-b border-white/10 shrink-0">
+          <Link href="/admin" className="flex items-center group">
+            <Image
+              src="/Logo/LOGO.NEW.GYANSHALA.cropped.png"
+              alt="Gyanshala Foreign Language Academy"
+              width={240}
+              height={70}
+              className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-102"
+              priority
+            />
           </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
