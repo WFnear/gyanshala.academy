@@ -1509,12 +1509,11 @@ export default function Home() {
                             onClick={() => setPlayingVideoId(video.id)}
                             className="relative w-full h-full cursor-pointer group/thumb"
                           >
-                            <Image
+                            <img
                               src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                               alt={video.title}
-                              fill
-                              unoptimized
-                              className="object-cover object-center group-hover/thumb:scale-105 transition-transform duration-500 ease-out"
+                              className="w-full h-full object-cover object-center group-hover/thumb:scale-105 transition-transform duration-500 ease-out"
+                              loading="lazy"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20 group-hover/thumb:from-black/50 transition-colors" />
 

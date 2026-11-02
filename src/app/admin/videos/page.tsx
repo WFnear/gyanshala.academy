@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Video,
@@ -195,12 +194,12 @@ export default function VideoLessonsAdminPage() {
           >
             {/* YouTube Thumbnail Preview */}
             <div className="relative w-full aspect-video bg-black overflow-hidden group">
-              <Image
+              {/* Using standard img to avoid Next.js external image domain restriction */}
+              <img
                 src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                 alt={video.title}
-                fill
-                unoptimized
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                 <div className="w-12 h-12 rounded-full bg-[#BC0202] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
