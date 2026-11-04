@@ -104,7 +104,7 @@ export default function AdminDashboardPage() {
           ===================================================================== */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="border-l-4 border-[#BC0202] pl-3.5">
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             Dashboard
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-medium">

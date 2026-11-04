@@ -1,37 +1,69 @@
-// Shared in-memory store for leads when Supabase is running locally
+// Persistent storage for student enquiries / leads (Stored in src/data/enquiries.json)
+import fs from "fs";
+import path from "path";
 import { EnquiryLead } from "./databaseSeedData";
 
-// Global reference for Next.js hot reload persistence
-declare global {
-  var __GYANSHALA_LEADS__: EnquiryLead[] | undefined;
+const ENQUIRIES_FILE = path.join(process.cwd(), "src", "data", "enquiries.json");
+
+function readEnquiries(): EnquiryLead[] {
+  try {
+    if (fs.existsSync(ENQUIRIES_FILE)) {
+      const raw = fs.readFileSync(ENQUIRIES_FILE, "utf8");
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.error("Error reading enquiries file:", err);
+  }
+  return [];
 }
 
-if (!global.__GYANSHALA_LEADS__) {
-  global.__GYANSHALA_LEADS__ = [];
+function writeEnquiries(leads: EnquiryLead[]): void {
+  try {
+    const dir = path.dirname(ENQUIRIES_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(ENQUIRIES_FILE, JSON.stringify(leads, null, 2), "utf8");
+  } catch (err) {
+    console.error("Error writing enquiries file:", err);
+  }
 }
 
 export function getMemoryLeads(): EnquiryLead[] {
-  return global.__GYANSHALA_LEADS__ || [];
+  return readEnquiries();
 }
 
 export function addMemoryLead(lead: EnquiryLead): void {
-  if (!global.__GYANSHALA_LEADS__) {
-    global.__GYANSHALA_LEADS__ = [];
+  const leads = readEnquiries();
+  // Put newest lead at top
+  const existingIdx = leads.findIndex((l) => l.id === lead.id);
+  if (existingIdx !== -1) {
+    leads[existingIdx] = lead;
+  } else {
+    leads.unshift(lead);
   }
-  global.__GYANSHALA_LEADS__.unshift(lead);
+  writeEnquiries(leads);
 }
 
 export function updateMemoryLead(id: string, updates: Partial<EnquiryLead>): EnquiryLead | null {
-  if (!global.__GYANSHALA_LEADS__) return null;
-  const index = global.__GYANSHALA_LEADS__.findIndex((l) => l.id === id);
+  const leads = readEnquiries();
+  const index = leads.findIndex((l) => l.id === id);
   if (index === -1) return null;
-  global.__GYANSHALA_LEADS__[index] = { ...global.__GYANSHALA_LEADS__[index], ...updates };
-  return global.__GYANSHALA_LEADS__[index];
+  leads[index] = { ...leads[index], ...updates };
+  writeEnquiries(leads);
+  return leads[index];
 }
 
 export function deleteMemoryLead(id: string): boolean {
-  if (!global.__GYANSHALA_LEADS__) return false;
-  const prevLen = global.__GYANSHALA_LEADS__.length;
-  global.__GYANSHALA_LEADS__ = global.__GYANSHALA_LEADS__.filter((l) => l.id !== id);
-  return global.__GYANSHALA_LEADS__.length < prevLen;
+  const leads = readEnquiries();
+  const prevLen = leads.length;
+  const filtered = leads.filter((l) => l.id !== id);
+  if (filtered.length < prevLen) {
+    writeEnquiries(filtered);
+    return true;
+  }
+  return false;
 }

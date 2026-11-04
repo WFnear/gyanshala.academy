@@ -211,18 +211,68 @@
       ]
     },
     {
+      "id": "sec-about",
+      "key": "about",
+      "name": "About Us / Our Journey",
+      "is_active": true,
+      "order_index": 2,
+      "title": "Our journey since 2018",
+      "paragraph1": "Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals.",
+      "paragraph2": "Gyanshala works to connect learners with international educational opportunities and offers language learning, consultation, and student guidance services. The academy aims to help students choose programmes suited to their interests and career goals, while encouraging them to become confident global citizens rooted in their traditions and ready to face the world.",
+      "btnText": "View More",
+      "btnHref": "/about-us",
+      "image": "/Aboutusgyanshala.in.png"
+    },
+    {
       "id": "sec-partners",
       "key": "partners",
       "name": "Useful German Learning Resources",
       "is_active": true,
-      "order_index": 2
+      "order_index": 3,
+      "resources": [
+        {
+          "name": "DAAD",
+          "url": "https://www.daad.de/en/",
+          "icon": "/partners/daad.png"
+        },
+        {
+          "name": "German Radio",
+          "url": "https://www.deutschland.fm/",
+          "icon": "/partners/german-radio.png"
+        },
+        {
+          "name": "Goethe-Institut",
+          "url": "https://www.goethe.de/ins/in/en/sta/del.html",
+          "icon": "/partners/goethe.png"
+        },
+        {
+          "name": "telc Exam",
+          "url": "https://www.telc.net/",
+          "icon": "/partners/telc.png"
+        },
+        {
+          "name": "Deutsche Welle (DW)",
+          "url": "https://www.dw.com/",
+          "icon": "/partners/dw.png"
+        },
+        {
+          "name": "Germany in India",
+          "url": "https://india.diplo.de/",
+          "icon": "/partners/germany-in-india.png"
+        },
+        {
+          "name": "Make it in Germany",
+          "url": "https://www.make-it-in-germany.com/en/",
+          "icon": "/partners/make-it-in-germany.png"
+        }
+      ]
     },
     {
       "id": "sec-why-choose",
       "key": "why_choose",
       "name": "Why Learn With Us?",
       "is_active": true,
-      "order_index": 3,
+      "order_index": 4,
       "heading": "Why Learn With Us?",
       "subheading": "Comprehensive German language education tailored for your success in Germany and global careers.",
       "points": [
@@ -263,7 +313,7 @@
       "key": "highlights",
       "name": "Highlights of Gyanshala",
       "is_active": true,
-      "order_index": 4,
+      "order_index": 5,
       "items": [
         {
           "title": "Exceptional Study Material",
@@ -296,14 +346,14 @@
       "key": "courses",
       "name": "German Courses",
       "is_active": true,
-      "order_index": 5
+      "order_index": 6
     },
     {
       "id": "sec-counseling",
       "key": "counseling",
       "name": "Free Counseling & Demo Class",
       "is_active": true,
-      "order_index": 6,
+      "order_index": 7,
       "title": "Book Your Free Demo Class & Counseling Session",
       "subtitle": "Speak directly with certified language trainers and study in Germany pathway experts."
     },
@@ -312,7 +362,7 @@
       "key": "videos",
       "name": "Free Video Lessons",
       "is_active": true,
-      "order_index": 7,
+      "order_index": 8,
       "videos": [
         {
           "id": "video-1",
@@ -347,7 +397,7 @@
       "key": "students_in_germany",
       "name": "Our Students in Germany",
       "is_active": true,
-      "order_index": 8,
+      "order_index": 9,
       "students": [
         {
           "id": "sig-1",
@@ -532,7 +582,7 @@
       "key": "reviews",
       "name": "What Our Students Say",
       "is_active": true,
-      "order_index": 9,
+      "order_index": 10,
       "reviews": [
         {
           "name": "Karan Pareek",
@@ -649,14 +699,14 @@
       "key": "faqs",
       "name": "Frequently Asked Questions",
       "is_active": true,
-      "order_index": 10
+      "order_index": 11
     },
     {
       "id": "sec-enquiry",
       "key": "enquiry",
       "name": "Course Enquiry & Free Counseling",
       "is_active": true,
-      "order_index": 11
+      "order_index": 12
     }
   ],
   "pages": [
@@ -803,6 +853,30 @@
       "meta_title": "FAQs | Gyanshala Foreign Language Academy",
       "meta_description": "Answers to common questions about German courses, Goethe exams, fees, batch timings, and Germany visas.",
       "is_published": true
+    },
+    {
+      "id": "page-19",
+      "slug": "/enquiry",
+      "title": "Course Enquiry & Free Demo",
+      "meta_title": "Course Enquiry & Free Counseling | Gyanshala Academy Jaipur",
+      "meta_description": "Book your free demo class or counseling session for German, foreign languages and Germany pathways.",
+      "is_published": true
+    },
+    {
+      "id": "page-20",
+      "slug": "/privacy-policy",
+      "title": "Privacy Policy",
+      "meta_title": "Privacy Policy | Gyanshala Foreign Language Academy",
+      "meta_description": "Learn how Gyanshala Academy collects, protects and handles student information and website data.",
+      "is_published": true
+    },
+    {
+      "id": "page-21",
+      "slug": "/terms-and-conditions",
+      "title": "Terms & Conditions",
+      "meta_title": "Terms & Conditions | Gyanshala Foreign Language Academy",
+      "meta_description": "Terms of service, admission guidelines, course enrollment terms and fee policies at Gyanshala.",
+      "is_published": true
     }
   ],
   "footer": {
@@ -830,6 +904,14 @@
       {
         "name": "LinkedIn",
         "url": "https://www.linkedin.com/in/gyanshala-foreign-language-academy-044459202"
+      },
+      {
+        "name": "YouTube",
+        "url": "https://www.youtube.com/@gyanshalaforeignlanguage"
+      },
+      {
+        "name": "Google Profile (GMB)",
+        "url": "https://maps.google.com/?cid=14451730170732164818"
       }
     ],
     "copyright": "© 2026 Gyanshala – Foreign Language Academy. All Rights Reserved."

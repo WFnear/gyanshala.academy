@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ImageUpload from "@/components/admin/ImageUpload";
 import {
   Plus,
   Edit2,
@@ -339,7 +340,7 @@ export default function AdminTestimonialsPage() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#BC0202]">
             TESTIMONIALS
           </p>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-0.5">
+          <h1 className="font-serif text-2xl sm:text-3xl font-normal text-slate-900 tracking-tight mt-0.5">
             What Our Students Say
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
@@ -485,19 +486,13 @@ export default function AdminTestimonialsPage() {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                  Student Photo Path / URL
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="e.g. /Review/KaranPareek.png"
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#BC0202]"
-                />
-              </div>
+              <ImageUpload
+                label="Student Photo"
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+                aspectRatio="square"
+                helperText="Upload reviewer profile photo (JPG, PNG, WebP)"
+              />
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">

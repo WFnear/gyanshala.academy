@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ImageUpload from "@/components/admin/ImageUpload";
 import {
   Plus,
   Trash2,
@@ -487,19 +488,13 @@ export default function StudentsInGermanyAdminPage() {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                  Student Image Path
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="e.g. /studentsingermany/JAAYALAXMI.png"
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#BC0202]"
-                />
-              </div>
+              <ImageUpload
+                label="Student Photo"
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+                aspectRatio="square"
+                helperText="Upload student photo from your computer or phone"
+              />
 
               <div className="flex items-center gap-2 pt-1">
                 <input

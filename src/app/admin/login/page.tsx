@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2, ShieldCheck } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2 } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -53,7 +53,10 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-[#F4F6F9] flex flex-col items-center justify-center p-4 sm:p-6 text-slate-900 font-sans">
+    <div
+      className="min-h-screen w-full bg-[#F4F6F9] flex flex-col items-center justify-center p-4 sm:p-6 text-slate-900 font-sans"
+      style={{ fontFamily: "var(--font-plus-jakarta), var(--font-raleway), sans-serif" }}
+    >
       <div className="w-full max-w-md">
 
         {/* Main Production Card */}
@@ -76,20 +79,16 @@ export default function AdminLoginPage() {
                   priority
                 />
               </Link>
-              <div className="mt-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-xs border border-white/20 text-[11px] font-bold text-white tracking-widest uppercase">
-                <ShieldCheck size={13} className="text-white" />
-                <span>Admin CMS Portal</span>
-              </div>
             </div>
           </div>
 
           {/* Form Section */}
           <div className="p-6 sm:p-8">
-            <div className="mb-5 text-center sm:text-left">
+            <div className="mb-6 text-center sm:text-left">
               <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                 Sign In
               </h1>
-              <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+              <p className="text-xs sm:text-sm text-slate-500 mt-1">
                 Enter your credentials to access the Gyanshala control panel
               </p>
             </div>

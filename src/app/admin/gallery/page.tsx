@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import ImageUpload from "@/components/admin/ImageUpload";
 import {
   Image as ImageIcon,
   Plus,
@@ -215,19 +216,13 @@ export default function GalleryPage() {
                 </select>
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-600 mb-1">
-                  Image Path or URL
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  placeholder="/Hero/IMG_20250806_170204918_HDR.jpg or https://..."
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-900 focus:bg-white focus:outline-none focus:border-[#BC0202]"
-                />
-              </div>
+              <ImageUpload
+                label="Gallery Photo"
+                value={imageUrl}
+                onChange={(url) => setImageUrl(url)}
+                aspectRatio="video"
+                helperText="Upload campus, classroom, or event photo from your computer"
+              />
 
               <div className="pt-3 flex gap-2">
                 <button

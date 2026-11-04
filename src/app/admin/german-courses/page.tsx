@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ImageUpload from "@/components/admin/ImageUpload";
 import {
   Plus,
   Edit2,
@@ -183,7 +184,7 @@ export default function AdminGermanCoursesPage() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#BC0202]">
             LANGUAGE TRAINING
           </p>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-0.5">
+          <h1 className="font-serif text-2xl sm:text-3xl font-normal text-slate-900 tracking-tight mt-0.5">
             German Courses
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
@@ -332,19 +333,13 @@ export default function AdminGermanCoursesPage() {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                  Card Background Image
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="/greenbg.jpg"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#BC0202]"
-                />
-              </div>
+              <ImageUpload
+                label="Card Background Image"
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+                aspectRatio="banner"
+                helperText="Upload background banner image for this level card"
+              />
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">

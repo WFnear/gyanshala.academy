@@ -80,7 +80,7 @@ const externalResources = [
   },
   {
     name: "telc Exam",
-    url: "https://deutsch-pruefung.de/",
+    url: "https://www.telc.net/",
     icon: "/partners/telc.png",
   },
   {

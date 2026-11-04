@@ -154,7 +154,7 @@ export default function AdminEnquiriesPage() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             Student Leads &amp; Enquiries
           </h1>
           <p className="text-sm text-slate-500 mt-1">

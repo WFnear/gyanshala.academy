@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import ImageUpload from "@/components/admin/ImageUpload";
 import {
   Layers,
   MoveUp,
@@ -21,6 +22,10 @@ import {
   Star,
   Loader2,
   Save,
+  FileText,
+  Globe,
+  Award,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function HomepageAdminPage() {
@@ -29,8 +34,19 @@ export default function HomepageAdminPage() {
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
-  // Active sub-editor tab: "overview" | "hero" | "why_choose" | "students" | "reviews" | "videos"
+  // Active sub-editor tab: "overview" | "hero" | "about" | "why_choose" | "highlights" | "students" | "reviews" | "videos" | "partners"
   const [activeTab, setActiveTab] = useState<string>("overview");
+
+  // Read URL query parameter "?tab=..."
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get("tab");
+      if (tabParam) {
+        setActiveTab(tabParam);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     async function loadSections() {
@@ -94,10 +110,13 @@ export default function HomepageAdminPage() {
 
   // Helpers to get specific section data
   const heroSection = sections.find((s) => s.key === "hero");
+  const aboutSection = sections.find((s) => s.key === "about");
   const whyChooseSection = sections.find((s) => s.key === "why_choose");
+  const highlightsSection = sections.find((s) => s.key === "highlights");
   const studentsSection = sections.find((s) => s.key === "students_in_germany");
   const reviewsSection = sections.find((s) => s.key === "reviews");
   const videosSection = sections.find((s) => s.key === "videos");
+  const partnersSection = sections.find((s) => s.key === "partners");
 
   if (loading) {
     return (
@@ -107,12 +126,24 @@ export default function HomepageAdminPage() {
     );
   }
 
+  const homepageTabs = [
+    { id: "overview", label: "Sections Order & Visibility", icon: Sliders },
+    { id: "hero", label: "Hero Slider Banner", icon: Sparkles },
+    { id: "about", label: "About Us / Our Journey", icon: FileText },
+    { id: "why_choose", label: "Why Choose Us?", icon: ShieldCheck },
+    { id: "highlights", label: "Highlights of Gyanshala", icon: Award },
+    { id: "students", label: "Our Students in Germany", icon: Users },
+    { id: "reviews", label: "Student Reviews & Testimonials", icon: Star },
+    { id: "videos", label: "Free Video Lessons", icon: Video },
+    { id: "partners", label: "Useful German Learning Resources", icon: Globe },
+  ];
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+          <h1 className="font-serif text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
             <Layers className="text-[#BC0202]" size={26} />
             <span>Homepage CMS Manager</span>
           </h1>
@@ -142,20 +173,20 @@ export default function HomepageAdminPage() {
 
       {/* Navigation Sub-Tabs */}
       <div className="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-slate-200">
-        {[
-          { id: "overview", label: "Homepage Sections & Order", icon: Sliders },
-          { id: "hero", label: "Hero Slider", icon: Sparkles },
-          { id: "why_choose", label: "Why Learn With Us?", icon: Check },
-          { id: "students", label: "Our Students in Germany", icon: Users },
-          { id: "reviews", label: "What Our Students Say", icon: Star },
-          { id: "videos", label: "Free Video Lessons", icon: Video },
-        ].map((tab) => {
+        {homepageTabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                if (typeof window !== "undefined") {
+                  const url = new URL(window.location.href);
+                  url.searchParams.set("tab", tab.id);
+                  window.history.replaceState(null, "", url.toString());
+                }
+              }}
               className={`cursor-pointer px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap flex items-center gap-2 transition ${
                 isActive
                   ? "bg-[#BC0202] text-white shadow-xs"
@@ -227,20 +258,33 @@ export default function HomepageAdminPage() {
                 </button>
 
                 {/* Direct Edit link to tab if applicable */}
-                {["hero", "why_choose", "students_in_germany", "reviews", "videos"].includes(section.key) && (
+                {["hero", "about", "why_choose", "highlights", "students_in_germany", "reviews", "videos", "partners"].includes(section.key) && (
                   <button
                     onClick={() => {
                       if (section.key === "hero") setActiveTab("hero");
+                      if (section.key === "about") setActiveTab("about");
                       if (section.key === "why_choose") setActiveTab("why_choose");
+                      if (section.key === "highlights") setActiveTab("highlights");
                       if (section.key === "students_in_germany") setActiveTab("students");
                       if (section.key === "reviews") setActiveTab("reviews");
                       if (section.key === "videos") setActiveTab("videos");
+                      if (section.key === "partners") setActiveTab("partners");
                     }}
                     className="cursor-pointer px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg flex items-center gap-1"
                   >
                     <Edit3 size={13} />
                     <span>Edit Content</span>
                   </button>
+                )}
+
+                {section.key === "courses" && (
+                  <a
+                    href="/admin/german-courses"
+                    className="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-[#BC0202] text-xs font-semibold rounded-lg flex items-center gap-1"
+                  >
+                    <Edit3 size={13} />
+                    <span>Manage Courses</span>
+                  </a>
                 )}
 
                 <button
@@ -299,20 +343,20 @@ export default function HomepageAdminPage() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Image Path</label>
-                    <input
-                      type="text"
+                  <div className="md:col-span-2">
+                    <ImageUpload
+                      label="Slide Banner Image"
                       value={slide.image}
-                      onChange={(e) => {
+                      aspectRatio="banner"
+                      helperText="Upload banner image from computer (1920x800 recommended)"
+                      onChange={(url) => {
                         const updatedSlides = [...heroSection.slides];
-                        updatedSlides[sIdx].image = e.target.value;
+                        updatedSlides[sIdx].image = url;
                         const updated = sections.map((s) =>
                           s.key === "hero" ? { ...s, slides: updatedSlides } : s
                         );
                         setSections(updated);
                       }}
-                      className="w-full px-3 py-2 text-sm font-mono border border-slate-300 rounded-xl"
                     />
                   </div>
 
@@ -718,6 +762,257 @@ export default function HomepageAdminPage() {
             className="cursor-pointer px-6 py-2.5 bg-[#BC0202] hover:bg-[#990202] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition"
           >
             {saving ? "Saving..." : "Save Videos"}
+          </button>
+        </div>
+      )}
+
+      {/* TAB 7: ABOUT US / OUR JOURNEY */}
+      {activeTab === "about" && (
+        <div className="space-y-5">
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">About Us / Our Journey Since 2018</h2>
+            <p className="text-xs text-slate-500">Edit the journey introduction, story paragraphs, and featured visual</p>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6 space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Section Heading</label>
+                <input
+                  type="text"
+                  value={aboutSection?.title || "Our journey since 2018"}
+                  onChange={(e) => {
+                    const updated = sections.map((s) =>
+                      s.key === "about" ? { ...s, title: e.target.value } : s
+                    );
+                    setSections(updated);
+                  }}
+                  className="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl"
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <ImageUpload
+                  label="About Us Featured Image"
+                  value={aboutSection?.image || "/Aboutusgyanshala.in.png"}
+                  aspectRatio="banner"
+                  helperText="Upload campus or classroom photo for About Us section"
+                  onChange={(url) => {
+                    const updated = sections.map((s) =>
+                      s.key === "about" ? { ...s, image: url } : s
+                    );
+                    setSections(updated);
+                  }}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Paragraph 1 (Introduction)</label>
+              <textarea
+                rows={3}
+                value={aboutSection?.paragraph1 || "Gyanshala – Foreign Language Academy was established in 2018 as an initiative to support students in their learning journey, provide a global platform, and help them achieve their academic goals."}
+                onChange={(e) => {
+                  const updated = sections.map((s) =>
+                    s.key === "about" ? { ...s, paragraph1: e.target.value } : s
+                  );
+                  setSections(updated);
+                }}
+                className="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Paragraph 2 (Mission & Guidance)</label>
+              <textarea
+                rows={3}
+                value={aboutSection?.paragraph2 || "Gyanshala works to connect learners with international educational opportunities and offers language learning, consultation, and student guidance services. The academy aims to help students choose programmes suited to their interests and career goals, while encouraging them to become confident global citizens rooted in their traditions and ready to face the world."}
+                onChange={(e) => {
+                  const updated = sections.map((s) =>
+                    s.key === "about" ? { ...s, paragraph2: e.target.value } : s
+                  );
+                  setSections(updated);
+                }}
+                className="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Button Text</label>
+                <input
+                  type="text"
+                  value={aboutSection?.btnText || "View More"}
+                  onChange={(e) => {
+                    const updated = sections.map((s) =>
+                      s.key === "about" ? { ...s, btnText: e.target.value } : s
+                    );
+                    setSections(updated);
+                  }}
+                  className="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Button URL</label>
+                <input
+                  type="text"
+                  value={aboutSection?.btnHref || "/about-us"}
+                  onChange={(e) => {
+                    const updated = sections.map((s) =>
+                      s.key === "about" ? { ...s, btnHref: e.target.value } : s
+                    );
+                    setSections(updated);
+                  }}
+                  className="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={() => saveSections(sections)}
+            disabled={saving}
+            className="cursor-pointer px-6 py-2.5 bg-[#BC0202] hover:bg-[#990202] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition"
+          >
+            {saving ? "Saving..." : "Save About Us Section"}
+          </button>
+        </div>
+      )}
+
+      {/* TAB 8: HIGHLIGHTS OF GYANSHALA */}
+      {activeTab === "highlights" && (
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">Highlights of Gyanshala</h2>
+            <p className="text-xs text-slate-500">Edit the key highlight benefit cards displayed on the homepage</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(highlightsSection?.items || [
+              { title: "Exceptional Study Material", description: "Diverse study material to our students for a world class language knowledge." },
+              { title: "Certified Language Trainer", description: "Empowering you to achieve fluency and confidence in your chosen language." },
+              { title: "Study Abroad Counselling", description: "Expert study abroad counseling to guide your journey toward global education opportunities." },
+              { title: "Flexible Hours", description: "Learn from your comfort zone with multiple batch timing options." },
+              { title: "Smart Classrooms", description: "Study with interactive digital setups and advanced modern learning facilities." },
+              { title: "Ausbildung in Germany", description: "Complete pathway guidance for vocational training and career opportunities in Germany." }
+            ]).map((item: any, idx: number) => (
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200/90 p-4 space-y-3">
+                <div className="text-xs font-bold text-[#BC0202]">Highlight #{idx + 1}</div>
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-600">Title</label>
+                  <input
+                    type="text"
+                    value={item.title}
+                    onChange={(e) => {
+                      const currentItems = highlightsSection?.items || [];
+                      const updated = [...currentItems];
+                      updated[idx] = { ...updated[idx], title: e.target.value };
+                      setSections(sections.map((s) => (s.key === "highlights" ? { ...s, items: updated } : s)));
+                    }}
+                    className="w-full px-2 py-1 text-xs border rounded-lg font-medium"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-600">Description</label>
+                  <textarea
+                    rows={2}
+                    value={item.description}
+                    onChange={(e) => {
+                      const currentItems = highlightsSection?.items || [];
+                      const updated = [...currentItems];
+                      updated[idx] = { ...updated[idx], description: e.target.value };
+                      setSections(sections.map((s) => (s.key === "highlights" ? { ...s, items: updated } : s)));
+                    }}
+                    className="w-full px-2 py-1 text-xs border rounded-lg text-slate-600"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={() => saveSections(sections)}
+            disabled={saving}
+            className="cursor-pointer px-6 py-2.5 bg-[#BC0202] hover:bg-[#990202] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition"
+          >
+            {saving ? "Saving..." : "Save Highlights"}
+          </button>
+        </div>
+      )}
+
+      {/* TAB 9: USEFUL GERMAN LEARNING RESOURCES */}
+      {activeTab === "partners" && (
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">Useful German Learning Resources (External Portals)</h2>
+            <p className="text-xs text-slate-500">Edit the infinite scrolling partner logos &amp; external resource links</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(partnersSection?.resources || [
+              { name: "DAAD", url: "https://www.daad.de/en/", icon: "/partners/daad.png" },
+              { name: "German Radio", url: "https://www.deutschland.fm/", icon: "/partners/german-radio.png" },
+              { name: "Goethe-Institut", url: "https://www.goethe.de/ins/in/en/sta/del.html", icon: "/partners/goethe.png" },
+              { name: "telc Exam", url: "https://www.telc.net/", icon: "/partners/telc.png" },
+              { name: "Deutsche Welle (DW)", url: "https://www.dw.com/", icon: "/partners/dw.png" },
+              { name: "Germany in India", url: "https://india.diplo.de/", icon: "/partners/germany-in-india.png" },
+              { name: "Make it in Germany", url: "https://www.make-it-in-germany.com/en/", icon: "/partners/make-it-in-germany.png" }
+            ]).map((res: any, idx: number) => (
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200/90 p-4 space-y-3">
+                <div className="text-xs font-bold text-[#BC0202]">Resource #{idx + 1}</div>
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-600">Portal / Organization Name</label>
+                  <input
+                    type="text"
+                    value={res.name}
+                    onChange={(e) => {
+                      const currentRes = partnersSection?.resources || [];
+                      const updated = [...currentRes];
+                      updated[idx] = { ...updated[idx], name: e.target.value };
+                      setSections(sections.map((s) => (s.key === "partners" ? { ...s, resources: updated } : s)));
+                    }}
+                    className="w-full px-2 py-1 text-xs border rounded-lg font-medium"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-600">External Website URL</label>
+                  <input
+                    type="text"
+                    value={res.url}
+                    onChange={(e) => {
+                      const currentRes = partnersSection?.resources || [];
+                      const updated = [...currentRes];
+                      updated[idx] = { ...updated[idx], url: e.target.value };
+                      setSections(sections.map((s) => (s.key === "partners" ? { ...s, resources: updated } : s)));
+                    }}
+                    className="w-full px-2 py-1 text-xs border rounded-lg font-mono text-slate-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-600">Logo Icon Path</label>
+                  <input
+                    type="text"
+                    value={res.icon}
+                    onChange={(e) => {
+                      const currentRes = partnersSection?.resources || [];
+                      const updated = [...currentRes];
+                      updated[idx] = { ...updated[idx], icon: e.target.value };
+                      setSections(sections.map((s) => (s.key === "partners" ? { ...s, resources: updated } : s)));
+                    }}
+                    className="w-full px-2 py-1 text-xs border rounded-lg font-mono text-slate-600"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={() => saveSections(sections)}
+            disabled={saving}
+            className="cursor-pointer px-6 py-2.5 bg-[#BC0202] hover:bg-[#990202] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition"
+          >
+            {saving ? "Saving..." : "Save Resources"}
           </button>
         </div>
       )}

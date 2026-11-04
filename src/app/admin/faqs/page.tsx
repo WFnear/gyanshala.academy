@@ -211,7 +211,7 @@ export default function AdminFAQsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+          <h1 className="font-serif text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
             <HelpCircle className="text-[#BC0202]" size={26} />
             <span>Frequently Asked Questions</span>
           </h1>

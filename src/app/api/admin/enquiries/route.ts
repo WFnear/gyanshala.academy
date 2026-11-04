@@ -16,38 +16,41 @@ export async function GET(request: Request) {
   const searchQuery = searchParams.get("search")?.toLowerCase();
   const format = searchParams.get("format");
 
-  let leads: EnquiryLead[] = [];
-  let source = "local_database";
+  // Always load all real leads from persistent local file storage (src/data/enquiries.json)
+  let leads: EnquiryLead[] = [...getMemoryLeads()];
+  let source = "database";
 
+  // If Supabase is connected and permitted, sync/merge any remote records
   if (isSupabaseConfigured) {
-    const supabase = getAdminSupabase();
-    if (supabase) {
-      let query = supabase.from("enquiries").select("*").order("created_at", { ascending: false });
+    try {
+      const supabase = getAdminSupabase();
+      if (supabase) {
+        const { data, error } = await supabase
+          .from("enquiries")
+          .select("*")
+          .order("created_at", { ascending: false });
 
-      if (statusFilter && statusFilter !== "all") {
-        query = query.eq("status", statusFilter);
+        if (!error && Array.isArray(data) && data.length > 0) {
+          const localIds = new Set(leads.map((l) => l.id));
+          for (const sLead of data as EnquiryLead[]) {
+            if (!localIds.has(sLead.id)) {
+              leads.push(sLead);
+            }
+          }
+          source = "supabase_synced";
+        }
       }
-      if (courseFilter && courseFilter !== "all") {
-        query = query.eq("course", courseFilter);
-      }
-
-      const { data, error } = await query;
-      if (!error && data) {
-        leads = data as EnquiryLead[];
-        source = "supabase";
-      }
+    } catch {
+      // Gracefully continue with local database
     }
   }
 
-  // Fallback to populated real leads if Supabase not configured or query empty
-  if (leads.length === 0 && source !== "supabase") {
-    leads = [...getMemoryLeads()];
-    if (statusFilter && statusFilter !== "all") {
-      leads = leads.filter((l) => l.status === statusFilter);
-    }
-    if (courseFilter && courseFilter !== "all") {
-      leads = leads.filter((l) => l.course === courseFilter);
-    }
+  // Apply filters
+  if (statusFilter && statusFilter !== "all") {
+    leads = leads.filter((l) => l.status === statusFilter);
+  }
+  if (courseFilter && courseFilter !== "all") {
+    leads = leads.filter((l) => l.course === courseFilter);
   }
 
   if (searchQuery) {
@@ -112,19 +115,22 @@ export async function POST(request: Request) {
       created_at: new Date().toISOString(),
     };
 
+    // Always add to persistent local storage
+    addMemoryLead(newLead);
+
+    // Also sync to Supabase if configured
     if (isSupabaseConfigured) {
-      const supabase = getAdminSupabase();
-      if (supabase) {
-        const { data, error } = await supabase.from("enquiries").insert([newLead]).select().single();
-        if (!error && data) {
-          return NextResponse.json({ success: true, data, source: "supabase" });
+      try {
+        const supabase = getAdminSupabase();
+        if (supabase) {
+          await supabase.from("enquiries").insert([newLead]);
         }
+      } catch {
+        // quiet
       }
     }
 
-    // In-memory add
-    addMemoryLead(newLead);
-    return NextResponse.json({ success: true, data: newLead, source: "local_database" });
+    return NextResponse.json({ success: true, data: newLead, source: "database" });
   } catch (err: unknown) {
     return NextResponse.json(
       { success: false, message: err instanceof Error ? err.message : "Error creating lead" },
@@ -145,24 +151,26 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ success: false, message: "Missing lead id" }, { status: 400 });
     }
 
-    if (isSupabaseConfigured) {
-      const supabase = getAdminSupabase();
-      if (supabase) {
-        const updateData: any = { updated_at: new Date().toISOString() };
-        if (status) updateData.status = status;
-        if (notes !== undefined) updateData.notes = notes;
+    // Always update local persistent storage
+    const updated = updateMemoryLead(id, { status, notes });
 
-        const { data, error } = await supabase.from("enquiries").update(updateData).eq("id", id).select().single();
-        if (!error && data) {
-          return NextResponse.json({ success: true, data, source: "supabase" });
+    // Also sync to Supabase if configured
+    if (isSupabaseConfigured) {
+      try {
+        const supabase = getAdminSupabase();
+        if (supabase) {
+          const updateData: any = { updated_at: new Date().toISOString() };
+          if (status) updateData.status = status;
+          if (notes !== undefined) updateData.notes = notes;
+          await supabase.from("enquiries").update(updateData).eq("id", id);
         }
+      } catch {
+        // quiet
       }
     }
 
-    // In-memory update
-    const updated = updateMemoryLead(id, { status, notes });
     if (updated) {
-      return NextResponse.json({ success: true, data: updated, source: "local_database" });
+      return NextResponse.json({ success: true, data: updated, source: "database" });
     }
 
     return NextResponse.json({ success: false, message: "Lead not found" }, { status: 404 });
@@ -188,19 +196,22 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ success: false, message: "Missing lead id" }, { status: 400 });
     }
 
+    // Always delete from persistent local storage
+    const deleted = deleteMemoryLead(id);
+
+    // Also sync to Supabase if configured
     if (isSupabaseConfigured) {
-      const supabase = getAdminSupabase();
-      if (supabase) {
-        const { error } = await supabase.from("enquiries").delete().eq("id", id);
-        if (!error) {
-          return NextResponse.json({ success: true, message: "Lead deleted from Supabase" });
+      try {
+        const supabase = getAdminSupabase();
+        if (supabase) {
+          await supabase.from("enquiries").delete().eq("id", id);
         }
+      } catch {
+        // quiet
       }
     }
 
-    // In-memory delete
-    deleteMemoryLead(id);
-    return NextResponse.json({ success: true, message: "Lead removed" });
+    return NextResponse.json({ success: true, message: "Lead removed successfully" });
   } catch (err: unknown) {
     return NextResponse.json(
       { success: false, message: err instanceof Error ? err.message : "Error deleting lead" },

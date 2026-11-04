@@ -156,7 +156,7 @@ export default function VideoLessonsAdminPage() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#BC0202]">
             ONLINE LEARNING
           </p>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-0.5">
+          <h1 className="font-serif text-2xl sm:text-3xl font-normal text-slate-900 tracking-tight mt-0.5">
             Free Video Lessons
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">

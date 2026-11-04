@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ImageUpload from "@/components/admin/ImageUpload";
 import {
   Plus,
   Edit2,
@@ -323,19 +324,13 @@ export default function FacultyAdminPage() {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                  Photo URL
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={form.image}
-                  onChange={(e) => setForm({ ...form, image: e.target.value })}
-                  placeholder="/teammembers/..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#BC0202]"
-                />
-              </div>
+              <ImageUpload
+                label="Educator Photo"
+                value={form.image}
+                onChange={(url) => setForm({ ...form, image: url })}
+                aspectRatio="square"
+                helperText="Upload educator photo (face/portrait works best)"
+              />
 
               <div className="flex items-center gap-2 pt-1">
                 <input
