@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "German C2 Course (Mastery & Proficiency Level) | Gyanshala Academy",
+  title: "German C2 Mastery Course | Near-Native German Proficiency Jaipur",
   description:
-    "Achieve near-native German proficiency. Master complex academic, literary, and professional communication. Comprehensive preparation for Goethe-Zertifikat C2 (GDS), telc C2, and ÖSD C2 in Jaipur.",
+    "Achieve near-native German proficiency (Goethe-Zertifikat C2: GDS) for translation, university teaching, and executive corporate roles with Gyanshala Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/german/c2",
+  },
+  openGraph: {
+    title: "German C2 Mastery Course | Near-Native German Proficiency Jaipur",
+    description:
+      "Achieve near-native German proficiency (Goethe-Zertifikat C2: GDS) for translation, university teaching, and executive corporate roles with Gyanshala Jaipur.",
+    url: "https://gyanshala.in/german/c2",
+  },
 };
 
 export default function GermanC2Page() {

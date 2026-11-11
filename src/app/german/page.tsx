@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "German Courses A1–C2 | Gyanshala Foreign Language Academy",
+  title: "German Language Courses (A1 to C2) | Gyanshala Academy Jaipur",
   description:
-    "Comprehensive German Language Courses from A1 to C2 levels at Gyanshala Academy Jaipur. CEFR aligned curriculum with certified faculty.",
+    "Comprehensive German Language Courses from A1 to C2 levels at Gyanshala Academy Jaipur. CEFR aligned curriculum with certified native faculty and exam prep.",
+  alternates: {
+    canonical: "https://gyanshala.in/german",
+  },
+  openGraph: {
+    title: "German Language Courses (A1 to C2) | Gyanshala Academy Jaipur",
+    description:
+      "Comprehensive German Language Courses from A1 to C2 levels at Gyanshala Academy Jaipur. CEFR aligned curriculum with certified native faculty and exam prep.",
+    url: "https://gyanshala.in/german",
+  },
 };
 
 const coursesData = [

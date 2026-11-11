@@ -14,9 +14,18 @@ import {
 } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "About Us | Gyanshala Foreign Language Academy - Jaipur",
+  title: "About Us | Gyanshala Foreign Language Academy Jaipur",
   description:
-    "Learn about Gyanshala Foreign Language Academy: our journey since 2018, mission, vision, goals, faculty, and pathways to global opportunities.",
+    "Learn about Gyanshala Foreign Language Academy: our journey since 2018 in Jaipur, mission, vision, certified faculty, and overseas pathways to Germany.",
+  alternates: {
+    canonical: "https://gyanshala.in/about-us",
+  },
+  openGraph: {
+    title: "About Us | Gyanshala Foreign Language Academy Jaipur",
+    description:
+      "Learn about Gyanshala Foreign Language Academy: our journey since 2018 in Jaipur, mission, vision, certified faculty, and overseas pathways to Germany.",
+    url: "https://gyanshala.in/about-us",
+  },
 };
 
 export default function AboutUsPage() {

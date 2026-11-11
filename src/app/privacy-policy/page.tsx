@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Gyanshala Foreign Language Academy",
+  title: "Privacy Policy | Gyanshala Foreign Language Academy Jaipur",
   description:
-    "Gyanshala Foreign Language Academy privacy policy explaining how we collect, use, share and protect personal information through our website, enquiries, registrations, and language classes in compliance with DPDP Act, 2023.",
+    "Read how Gyanshala Foreign Language Academy collects, protects, and handles personal data and student information in accordance with applicable privacy laws.",
+  alternates: {
+    canonical: "https://gyanshala.in/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Gyanshala Foreign Language Academy Jaipur",
+    description:
+      "Read how Gyanshala Foreign Language Academy collects, protects, and handles personal data and student information in accordance with applicable privacy laws.",
+    url: "https://gyanshala.in/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {

@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "German A1 Course (Beginner Level) | Gyanshala Foreign Language Academy",
+  title: "German A1 Beginner Course | Goethe-Zertifikat A1 Prep in Jaipur",
   description:
-    "Start your German language journey with confidence. Learn essential vocabulary, grammar, speaking, and prepare for Goethe-Zertifikat A1, telc A1, and ÖSD A1 exams in Jaipur.",
+    "Start your German language journey with German A1 at Gyanshala Jaipur. Master everyday vocabulary, basic grammar, and pass Goethe-Zertifikat, telc, or OSD A1.",
+  alternates: {
+    canonical: "https://gyanshala.in/german/a1",
+  },
+  openGraph: {
+    title: "German A1 Beginner Course | Goethe-Zertifikat A1 Prep in Jaipur",
+    description:
+      "Start your German language journey with German A1 at Gyanshala Jaipur. Master everyday vocabulary, basic grammar, and pass Goethe-Zertifikat, telc, or OSD A1.",
+    url: "https://gyanshala.in/german/a1",
+  },
 };
 
 export default function GermanA1Page() {

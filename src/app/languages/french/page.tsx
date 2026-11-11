@@ -2,8 +2,18 @@ import type { Metadata } from "next";
 import GermanCourseHero from "@/components/GermanCourseHero";
 
 export const metadata: Metadata = {
-  title: "French Language Course | Gyanshala Foreign Language Academy",
-  description: "Learn French language from beginner to advanced levels (DELF/DALF) at Gyanshala Academy Jaipur.",
+  title: "French Language Course in Jaipur | DELF & DALF Exam Preparation",
+  description:
+    "Learn French from beginner (A1) to advanced (B2) with certified instructors at Gyanshala Jaipur. Prepare for DELF/DALF and TEF immigration exams.",
+  alternates: {
+    canonical: "https://gyanshala.in/languages/french",
+  },
+  openGraph: {
+    title: "French Language Course in Jaipur | DELF & DALF Exam Preparation",
+    description:
+      "Learn French from beginner (A1) to advanced (B2) with certified instructors at Gyanshala Jaipur. Prepare for DELF/DALF and TEF immigration exams.",
+    url: "https://gyanshala.in/languages/french",
+  },
 };
 
 export default function FrenchPage() {

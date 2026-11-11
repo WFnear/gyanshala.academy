@@ -24,14 +24,52 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gyanshala.in"),
   title: "Gyanshala Academy - German Language & Global Pathways | Jaipur",
-  description: "Learn German (A1-C2), explore Germany study, Ausbildung, and nursing pathways, and learn foreign languages at Gyanshala Academy Jaipur.",
+  description:
+    "Learn German (A1-C2), explore Germany study, Ausbildung, and nursing pathways, and learn foreign languages at Gyanshala Academy Jaipur.",
+  alternates: {
+    canonical: "./",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png" },
-    ],
+    icon: [{ url: "/favicon.png", type: "image/png" }],
     shortcut: "/favicon.png",
     apple: "/favicon.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://gyanshala.in",
+    siteName: "Gyanshala Academy",
+    title: "Gyanshala Academy - German Language & Global Pathways | Jaipur",
+    description:
+      "Learn German (A1-C2), explore Germany study, Ausbildung, and nursing pathways, and learn foreign languages at Gyanshala Academy Jaipur.",
+    images: [
+      {
+        url: "/Logo/LOGO.NEW.GYANSHALA.png",
+        width: 1200,
+        height: 630,
+        alt: "Gyanshala Academy Jaipur",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gyanshala Academy - German Language & Global Pathways | Jaipur",
+    description:
+      "Learn German (A1-C2), explore Germany study, Ausbildung, and nursing pathways, and learn foreign languages at Gyanshala Academy Jaipur.",
+    images: ["/Logo/LOGO.NEW.GYANSHALA.png"],
   },
 };
 

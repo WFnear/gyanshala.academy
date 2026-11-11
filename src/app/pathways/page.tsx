@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Germany Pathways | Gyanshala Foreign Language Academy",
+  title: "Germany Pathways - Study, Ausbildung & Nursing Careers | Gyanshala",
   description:
-    "Explore pathways for higher education, vocational training (Ausbildung), and nursing careers in Germany with Gyanshala Academy Jaipur.",
+    "Unlock your future in Germany: Explore tuition-free public university degrees, paid dual Ausbildung with monthly stipends, and direct nursing placements.",
+  alternates: {
+    canonical: "https://gyanshala.in/pathways",
+  },
+  openGraph: {
+    title: "Germany Pathways - Study, Ausbildung & Nursing Careers | Gyanshala",
+    description:
+      "Unlock your future in Germany: Explore tuition-free public university degrees, paid dual Ausbildung with monthly stipends, and direct nursing placements.",
+    url: "https://gyanshala.in/pathways",
+  },
 };
 
 const pathwaysData = [

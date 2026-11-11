@@ -6,9 +6,18 @@ import { FadeInUp } from "@/components/ScrollReveal";
 
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Gyanshala Foreign Language Academy",
+  title: "Terms and Conditions | Gyanshala Foreign Language Academy Jaipur",
   description:
-    "Review the Terms and Conditions for enrolling in language courses, training programmes, and educational consulting services at Gyanshala Foreign Language Academy Jaipur.",
+    "Review the enrollment terms, attendance guidelines, code of conduct, and service conditions for courses at Gyanshala Foreign Language Academy Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/terms-and-conditions",
+  },
+  openGraph: {
+    title: "Terms and Conditions | Gyanshala Foreign Language Academy Jaipur",
+    description:
+      "Review the enrollment terms, attendance guidelines, code of conduct, and service conditions for courses at Gyanshala Foreign Language Academy Jaipur.",
+    url: "https://gyanshala.in/terms-and-conditions",
+  },
 };
 
 export default function TermsAndConditionsPage() {

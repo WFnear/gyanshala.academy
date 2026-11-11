@@ -2,8 +2,18 @@ import type { Metadata } from "next";
 import GermanCourseHero from "@/components/GermanCourseHero";
 
 export const metadata: Metadata = {
-  title: "Spanish Language Course | Gyanshala Foreign Language Academy",
-  description: "Learn Spanish language from A1 to C2 levels (DELE/SIELE) at Gyanshala Academy Jaipur.",
+  title: "Spanish Language Course in Jaipur | DELE & SIELE Certification",
+  description:
+    "Master Spanish language skills for study abroad, travel, and international careers. Comprehensive DELE and SIELE certification training at Gyanshala Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/languages/spanish",
+  },
+  openGraph: {
+    title: "Spanish Language Course in Jaipur | DELE & SIELE Certification",
+    description:
+      "Master Spanish language skills for study abroad, travel, and international careers. Comprehensive DELE and SIELE certification training at Gyanshala Jaipur.",
+    url: "https://gyanshala.in/languages/spanish",
+  },
 };
 
 export default function SpanishPage() {

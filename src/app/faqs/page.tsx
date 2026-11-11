@@ -4,9 +4,18 @@ import { FadeInUp } from "@/components/ScrollReveal";
 import FAQSection from "@/components/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions (FAQs) | Gyanshala Foreign Language Academy",
+  title: "Frequently Asked Questions (FAQs) | Gyanshala Academy Jaipur",
   description:
     "Find answers to frequently asked questions about learning German (A1-C2), Goethe-Zertifikat exams, studying in Germany, Ausbildung, nursing opportunities, fees, and admissions at Gyanshala Academy Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/faqs",
+  },
+  openGraph: {
+    title: "Frequently Asked Questions (FAQs) | Gyanshala Academy Jaipur",
+    description:
+      "Get answers to FAQs on German language levels (A1-C2), Goethe exam fees, batch timings, Ausbildung eligibility, and studying in Germany at Gyanshala Academy.",
+    url: "https://gyanshala.in/faqs",
+  },
 };
 
 export default function FAQsPage() {

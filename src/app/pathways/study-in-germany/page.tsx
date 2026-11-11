@@ -5,9 +5,18 @@ import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReve
 
 
 export const metadata: Metadata = {
-  title: "Study in Germany – Essential Guide for Indian Students | Gyanshala Academy",
+  title: "Study in Germany Guide for Indian Students | Universities & APS",
   description:
-    "Essential guide for Indian students 2026/27: Bachelor's & Master's eligibility, 70% Class XII rule, Studienkolleg, tuition-free public universities, €11,904 blocked account, APS certificate, and 7-step application process.",
+    "Complete 2026/27 roadmap to study in Germany: Bachelor's and Master's eligibility, APS certificate, blocked account setup, and public university applications.",
+  alternates: {
+    canonical: "https://gyanshala.in/pathways/study-in-germany",
+  },
+  openGraph: {
+    title: "Study in Germany Guide for Indian Students | Universities & APS",
+    description:
+      "Complete 2026/27 roadmap to study in Germany: Bachelor's and Master's eligibility, APS certificate, blocked account setup, and public university applications.",
+    url: "https://gyanshala.in/pathways/study-in-germany",
+  },
 };
 
 export default function StudyInGermanyPage() {

@@ -5,9 +5,18 @@ import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReve
 
 
 export const metadata: Metadata = {
-  title: "Ausbildung in Germany – Dual Vocational Training | Gyanshala Academy",
+  title: "Ausbildung in Germany - Dual Vocational Training for Indians | Guide",
   description:
-    "Earn while you learn in Germany through Dual Ausbildung: 2–3.5 years duration, Class 12 eligibility, monthly allowances (€724–€1,014+ gross in 2026), B1/B2 German requirement, and 18-month job seeker permit.",
+    "Earn a monthly stipend while training in Germany with Dual Ausbildung. Check Class 12 eligibility, B1/B2 German requirements, top trades, and visa steps.",
+  alternates: {
+    canonical: "https://gyanshala.in/pathways/ausbildung",
+  },
+  openGraph: {
+    title: "Ausbildung in Germany - Dual Vocational Training for Indians | Guide",
+    description:
+      "Earn a monthly stipend while training in Germany with Dual Ausbildung. Check Class 12 eligibility, B1/B2 German requirements, top trades, and visa steps.",
+    url: "https://gyanshala.in/pathways/ausbildung",
+  },
 };
 
 export default function AusbildungPage() {

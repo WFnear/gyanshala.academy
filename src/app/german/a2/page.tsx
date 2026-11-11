@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "German A2 Course (Elementary Level) | Gyanshala Foreign Language Academy",
+  title: "German A2 Elementary Course | Gyanshala Academy Jaipur",
   description:
-    "Take your German to the next level. Learn intermediate foundation grammar, expand vocabulary, write emails, and prepare for Goethe-Zertifikat A2, telc A2, and ÖSD A2 exams in Jaipur.",
+    "Advance your German skills with A2 elementary training. Learn sentence structures, conversational fluency, and prepare for Goethe, telc, and OSD A2 exams in Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/german/a2",
+  },
+  openGraph: {
+    title: "German A2 Elementary Course | Gyanshala Academy Jaipur",
+    description:
+      "Advance your German skills with A2 elementary training. Learn sentence structures, conversational fluency, and prepare for Goethe, telc, and OSD A2 exams in Jaipur.",
+    url: "https://gyanshala.in/german/a2",
+  },
 };
 
 export default function GermanA2Page() {

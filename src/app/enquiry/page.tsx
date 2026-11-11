@@ -4,8 +4,18 @@ import { FadeInUp } from "@/components/ScrollReveal";
 import EnquiryFormSection from "@/components/EnquiryFormSection";
 
 export const metadata: Metadata = {
-  title: "Enquiry Now | Gyanshala Foreign Language Academy",
-  description: "Get in touch with Gyanshala Foreign Language Academy Jaipur for German courses, global language programs, study in Germany, and Ausbildung counseling.",
+  title: "Course Enquiry & Free Demo Class | Gyanshala Academy Jaipur",
+  description:
+    "Book a free counselling session or demo class for German (A1-C2), French, Spanish, or English courses and Germany pathway guidance at Gyanshala Academy Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/enquiry",
+  },
+  openGraph: {
+    title: "Course Enquiry & Free Demo Class | Gyanshala Academy Jaipur",
+    description:
+      "Book a free counselling session or demo class for German (A1-C2), French, Spanish, or English courses and Germany pathway guidance at Gyanshala Academy Jaipur.",
+    url: "https://gyanshala.in/enquiry",
+  },
 };
 
 export default function EnquiryPage() {

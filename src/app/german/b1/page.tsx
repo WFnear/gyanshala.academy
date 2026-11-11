@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "German B1 Course (Intermediate Level) | Gyanshala Foreign Language Academy",
+  title: "German B1 Intermediate Course | Ausbildung & Visa Requirement Jaipur",
   description:
-    "Communicate independently in German. Prepare for Ausbildung, German university pathways, job seeker visas, and Goethe-Zertifikat B1, telc B1, and ÖSD B1 exams in Jaipur.",
+    "Achieve independent German proficiency required for Ausbildung, German job seeker visas, and university pathway programs with our Goethe B1 batch in Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/german/b1",
+  },
+  openGraph: {
+    title: "German B1 Intermediate Course | Ausbildung & Visa Requirement Jaipur",
+    description:
+      "Achieve independent German proficiency required for Ausbildung, German job seeker visas, and university pathway programs with our Goethe B1 batch in Jaipur.",
+    url: "https://gyanshala.in/german/b1",
+  },
 };
 
 export default function GermanB1Page() {

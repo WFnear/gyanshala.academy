@@ -4,8 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem, AnimatedButton, CardImageReveal, CardTextReveal } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "All Languages | Gyanshala Foreign Language Academy",
-  description: "Learn German, French, Spanish, and English with certified language experts at Gyanshala Academy Jaipur.",
+  title: "Foreign Language Courses in Jaipur | German, French, Spanish, English",
+  description:
+    "Explore premier foreign language training at Gyanshala Academy Jaipur. Certified native trainers, small batch sizes, and internationally recognized certifications.",
+  alternates: {
+    canonical: "https://gyanshala.in/languages",
+  },
+  openGraph: {
+    title: "Foreign Language Courses in Jaipur | German, French, Spanish, English",
+    description:
+      "Explore premier foreign language training at Gyanshala Academy Jaipur. Certified native trainers, small batch sizes, and internationally recognized certifications.",
+    url: "https://gyanshala.in/languages",
+  },
 };
 
 const languagesData = [

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /admin/*
+Disallow: /api/
+Disallow: /api/*
+Disallow: /_next/
+
+Sitemap: https://gyanshala.in/sitemap.xml
+Host: https://gyanshala.in

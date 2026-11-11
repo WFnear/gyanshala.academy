@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "German B2 Course (Upper-Intermediate Level) | Gyanshala Academy",
+  title: "German B2 Upper-Intermediate Course | Healthcare & Work in Germany",
   description:
-    "Achieve advanced communication skills. Crucial for healthcare & nursing jobs in Germany, university studies, and Goethe-Zertifikat B2, telc B2, and ÖSD B2 exams in Jaipur.",
+    "Attain professional fluency required for nursing, medical licensing, and direct German university admissions. Intensive Goethe and telc B2 coaching in Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/german/b2",
+  },
+  openGraph: {
+    title: "German B2 Upper-Intermediate Course | Healthcare & Work in Germany",
+    description:
+      "Attain professional fluency required for nursing, medical licensing, and direct German university admissions. Intensive Goethe and telc B2 coaching in Jaipur.",
+    url: "https://gyanshala.in/german/b2",
+  },
 };
 
 export default function GermanB2Page() {

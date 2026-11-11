@@ -5,9 +5,18 @@ import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReve
 
 
 export const metadata: Metadata = {
-  title: "Direct Nursing Jobs in Germany for Indian Nurses | Gyanshala Academy",
+  title: "Nursing Jobs in Germany for Indian Nurses | Anerkennung & B2 Guide",
   description:
-    "A practical guide for Indian BSc Nursing & GNM professionals: qualification recognition (Anerkennung), German B2 requirement, visa pathways (§18a, §16d), €4,587 median gross salary, and language training with Gyanshala.",
+    "Direct healthcare careers in Germany for BSc Nursing & GNM professionals: qualification recognition (Anerkennung), German B2 training, and hospital placements.",
+  alternates: {
+    canonical: "https://gyanshala.in/pathways/nursing-in-germany",
+  },
+  openGraph: {
+    title: "Nursing Jobs in Germany for Indian Nurses | Anerkennung & B2 Guide",
+    description:
+      "Direct healthcare careers in Germany for BSc Nursing & GNM professionals: qualification recognition (Anerkennung), German B2 training, and hospital placements.",
+    url: "https://gyanshala.in/pathways/nursing-in-germany",
+  },
 };
 
 export default function NursingInGermanyPage() {

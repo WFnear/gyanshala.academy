@@ -4,9 +4,18 @@ import Link from "next/link";
 import { FadeInUp, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "German C1 Course (Advanced Level) | Gyanshala Foreign Language Academy",
+  title: "German C1 Advanced Course | Academic & Professional Mastery Jaipur",
   description:
-    "Master advanced German for university admission, postgraduate research, medical licensing, and career excellence. Comprehensive preparation for Goethe C1, telc C1, and ÖSD C1 in Jaipur.",
+    "Master advanced academic and professional German at Gyanshala Academy. Ideal for master's degree students, researchers, and senior professionals in Jaipur.",
+  alternates: {
+    canonical: "https://gyanshala.in/german/c1",
+  },
+  openGraph: {
+    title: "German C1 Advanced Course | Academic & Professional Mastery Jaipur",
+    description:
+      "Master advanced academic and professional German at Gyanshala Academy. Ideal for master's degree students, researchers, and senior professionals in Jaipur.",
+    url: "https://gyanshala.in/german/c1",
+  },
 };
 
 export default function GermanC1Page() {
