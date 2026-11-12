@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse, connection } from "next/server";
 import { getAdminSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import { verifyAdminSession } from "@/lib/adminAuth";
+import { getSiteSettingJson, saveSiteSettingJson } from "@/lib/cmsService";
 
 export interface GermanCourse {
   id: string;
@@ -11,6 +12,8 @@ export interface GermanCourse {
   is_active: boolean;
   order_index?: number;
 }
+
+const SETTINGS_KEY = "cms_german_courses";
 
 const defaultGermanCourses: GermanCourse[] = [
   { id: "a1", badge: "A1 Level", name: "A1 – Beginner Level", image: "/greenbg.jpg", href: "/german/a1", is_active: true, order_index: 1 },
@@ -23,7 +26,7 @@ const defaultGermanCourses: GermanCourse[] = [
 
 let memoryCourses: GermanCourse[] = [...defaultGermanCourses];
 
-export async function GET() {
+async function loadCourses(): Promise<{ items: GermanCourse[]; source: string }> {
   if (isSupabaseConfigured) {
     const supabase = getAdminSupabase();
     if (supabase) {
@@ -32,16 +35,24 @@ export async function GET() {
         .select("*")
         .order("order_index", { ascending: true });
       if (!error && data && data.length > 0) {
-        return NextResponse.json({ success: true, data, source: "supabase" });
+        return { items: data, source: "supabase" };
       }
     }
+    const stored = await getSiteSettingJson<GermanCourse[]>(SETTINGS_KEY);
+    if (Array.isArray(stored) && stored.length > 0) {
+      return { items: stored, source: "supabase" };
+    }
   }
+  return { items: memoryCourses, source: "local_database" };
+}
 
-  return NextResponse.json({
-    success: true,
-    data: memoryCourses,
-    source: "local_database",
-  });
+export async function GET() {
+  await connection();
+  const { items, source } = await loadCourses();
+  return NextResponse.json(
+    { success: true, data: items, source },
+    { headers: { "Cache-Control": "no-store, max-age=0" } }
+  );
 }
 
 export async function POST(request: Request) {
@@ -58,6 +69,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Badge, Name and Link are required" }, { status: 400 });
     }
 
+    const { items } = await loadCourses();
     const newCourse: GermanCourse = {
       id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       badge,
@@ -65,7 +77,7 @@ export async function POST(request: Request) {
       image: image || "/greenbg.jpg",
       href,
       is_active: is_active !== false,
-      order_index: memoryCourses.length + 1,
+      order_index: items.length + 1,
     };
 
     if (isSupabaseConfigured) {
@@ -76,6 +88,13 @@ export async function POST(request: Request) {
           return NextResponse.json({ success: true, data, source: "supabase" });
         }
       }
+      const next = [...items, newCourse];
+      const saved = await saveSiteSettingJson(SETTINGS_KEY, next);
+      if (!saved.ok) {
+        return NextResponse.json({ success: false, message: saved.error || "Failed to save course" }, { status: 500 });
+      }
+      memoryCourses = next;
+      return NextResponse.json({ success: true, data: newCourse, source: "supabase" });
     }
 
     memoryCourses.push(newCourse);
@@ -123,6 +142,27 @@ export async function PUT(request: Request) {
           return NextResponse.json({ success: true, data, source: "supabase" });
         }
       }
+
+      const { items } = await loadCourses();
+      const index = items.findIndex((c) => c.id === id);
+      if (index === -1) {
+        return NextResponse.json({ success: false, message: "Course not found" }, { status: 404 });
+      }
+      const next = [...items];
+      next[index] = {
+        ...next[index],
+        ...(badge !== undefined && { badge }),
+        ...(name !== undefined && { name }),
+        ...(image !== undefined && { image }),
+        ...(href !== undefined && { href }),
+        ...(is_active !== undefined && { is_active }),
+      };
+      const saved = await saveSiteSettingJson(SETTINGS_KEY, next);
+      if (!saved.ok) {
+        return NextResponse.json({ success: false, message: saved.error || "Failed to update course" }, { status: 500 });
+      }
+      memoryCourses = next;
+      return NextResponse.json({ success: true, data: next[index], source: "supabase" });
     }
 
     const index = memoryCourses.findIndex((c) => c.id === id);
@@ -165,6 +205,11 @@ export async function DELETE(request: Request) {
     if (supabase) {
       await supabase.from("german_courses").delete().eq("id", id);
     }
+    const { items } = await loadCourses();
+    const next = items.filter((c) => c.id !== id);
+    await saveSiteSettingJson(SETTINGS_KEY, next);
+    memoryCourses = next;
+    return NextResponse.json({ success: true, message: "Course deleted" });
   }
 
   memoryCourses = memoryCourses.filter((c) => c.id !== id);

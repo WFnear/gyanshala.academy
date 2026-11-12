@@ -543,7 +543,7 @@ export default function HomeClient() {
   const [sectionsConfig, setSectionsConfig] = useState<any[] | null>(null);
 
   useEffect(() => {
-    fetch("/api/admin/cms/homepage")
+    fetch("/api/admin/cms/homepage", { cache: "no-store" })
       .then((r) => r.json())
       .then((res) => {
         if (res.success && res.data) {
@@ -569,7 +569,7 @@ export default function HomeClient() {
       })
       .catch(() => {});
 
-    fetch("/api/admin/german-courses")
+    fetch("/api/admin/german-courses", { cache: "no-store" })
       .then((r) => r.json())
       .then((res) => {
         if (res.success && Array.isArray(res.data) && res.data.length > 0) {
@@ -579,7 +579,7 @@ export default function HomeClient() {
       })
       .catch(() => {});
 
-    fetch("/api/admin/germany-pathways")
+    fetch("/api/admin/germany-pathways", { cache: "no-store" })
       .then((r) => r.json())
       .then((res) => {
         if (res.success && Array.isArray(res.data) && res.data.length > 0) {

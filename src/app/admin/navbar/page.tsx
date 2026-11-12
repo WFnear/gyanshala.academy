@@ -42,6 +42,7 @@ export default function NavbarAdminPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Modal State for adding/editing
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,12 +68,14 @@ export default function NavbarAdminPage() {
   }, []);
 
   function showToast(msg: string) {
+    setError(null);
     setToast(msg);
     setTimeout(() => setToast(null), 3000);
   }
 
-  async function saveChanges(updatedItems: NavItem[], updatedCta = cta) {
+  async function saveChanges(updatedItems: NavItem[] = items, updatedCta = cta) {
     setSaving(true);
+    setError(null);
     try {
       const res = await fetch("/api/admin/cms/navbar", {
         method: "PUT",
@@ -80,13 +83,15 @@ export default function NavbarAdminPage() {
         body: JSON.stringify({ items: updatedItems, cta: updatedCta }),
       });
       const data = await res.json();
-      if (data.success) {
-        setItems(data.items);
-        setCta(data.cta);
+      if (res.ok && data.success) {
+        if (Array.isArray(data.items)) setItems(data.items);
+        if (data.cta) setCta(data.cta);
         showToast("Navbar changes saved successfully!");
+      } else {
+        setError(data.message || "Failed to save navbar changes.");
       }
     } catch (e) {
-      alert("Error saving navbar changes");
+      setError("Error saving navbar changes");
     } finally {
       setSaving(false);
     }
@@ -251,18 +256,33 @@ export default function NavbarAdminPage() {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => openAddModal()}
-            className="cursor-pointer inline-flex items-center gap-1.5 px-4 py-2 bg-[#BC0202] hover:bg-[#990202] text-white text-xs sm:text-sm font-bold rounded-xl shadow-sm transition"
+            className="cursor-pointer inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold rounded-xl shadow-sm transition"
           >
             <Plus size={16} />
             <span>Add Menu Item</span>
+          </button>
+          <button
+            onClick={() => saveChanges(items, cta)}
+            disabled={saving}
+            className="cursor-pointer inline-flex items-center gap-1.5 px-4 py-2 bg-[#BC0202] hover:bg-[#990202] text-white text-xs sm:text-sm font-bold rounded-xl shadow-sm transition disabled:opacity-50"
+          >
+            {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
+            <span>{saving ? "Saving..." : "Save Changes"}</span>
           </button>
         </div>
       </div>
 
       {toast && (
-        <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 animate-fade-in">
-          <Check size={16} className="text-emerald-600" />
+        <div className="fixed bottom-6 right-6 z-40 px-4 py-3 bg-emerald-600 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-lg animate-fade-in">
+          <Check size={16} />
           <span>{toast}</span>
+        </div>
+      )}
+
+      {error && (
+        <div className="p-3 bg-red-50 border border-red-200 text-red-800 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2">
+          <AlertCircle size={16} className="text-red-600 shrink-0" />
+          <span>{error}</span>
         </div>
       )}
 
@@ -475,6 +495,22 @@ export default function NavbarAdminPage() {
             </div>
           );
         })}
+      </div>
+
+      {/* Bottom Save Bar */}
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <p className="text-xs text-slate-500">
+          Changes auto-save when you add, edit, reorder, hide, or delete an item. Click{" "}
+          <strong className="text-slate-700">Save Changes</strong> anytime to sync manually.
+        </p>
+        <button
+          onClick={() => saveChanges(items, cta)}
+          disabled={saving}
+          className="cursor-pointer inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-[#BC0202] hover:bg-[#990202] text-white text-xs sm:text-sm font-bold rounded-xl shadow-sm transition disabled:opacity-50 shrink-0"
+        >
+          {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
+          <span>{saving ? "Saving..." : "Save Changes"}</span>
+        </button>
       </div>
 
       {/* Add / Edit Modal */}

@@ -19,13 +19,106 @@ export function saveCmsData(data: any) {
     fs.writeFileSync(CMS_FILE_PATH, JSON.stringify(data, null, 2), "utf8");
     return true;
   } catch (err) {
-    console.error("Error writing cmsData.json:", err);
+    // Expected on read-only serverless filesystems (e.g. Vercel production)
+    console.warn("Local cmsData.json write skipped:", err instanceof Error ? err.message : err);
     return false;
   }
 }
 
+export async function getSiteSettingJson<T>(key: string): Promise<T | null> {
+  if (!isSupabaseConfigured) return null;
+  try {
+    const supabase = getAdminSupabase();
+    if (!supabase) return null;
+
+    const { data, error } = await supabase
+      .from("site_settings")
+      .select("value")
+      .eq("key", key)
+      .maybeSingle();
+
+    if (error || !data?.value) return null;
+    return JSON.parse(data.value) as T;
+  } catch (err) {
+    console.warn(`Supabase read failed for ${key}:`, err);
+    return null;
+  }
+}
+
+export async function saveSiteSettingJson(
+  key: string,
+  value: unknown
+): Promise<{ ok: boolean; error?: string }> {
+  if (!isSupabaseConfigured) {
+    return { ok: false, error: "Supabase is not configured" };
+  }
+  try {
+    const supabase = getAdminSupabase();
+    if (!supabase) {
+      return { ok: false, error: "Supabase admin client unavailable" };
+    }
+
+    const { error } = await supabase.from("site_settings").upsert(
+      {
+        key,
+        value: JSON.stringify(value),
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "key" }
+    );
+
+    if (error) {
+      console.error(`Supabase upsert error for ${key}:`, error);
+      return { ok: false, error: error.message };
+    }
+    return { ok: true };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown Supabase error";
+    console.error(`Supabase upsert exception for ${key}:`, err);
+    return { ok: false, error: message };
+  }
+}
+
+async function persistCmsSection(
+  supabaseKey: string,
+  applyLocal: (data: any) => void,
+  payloadToSync: unknown
+): Promise<{ ok: boolean; error?: string }> {
+  const data = getCmsData() || {};
+  applyLocal(data);
+  const localSaved = saveCmsData(data);
+
+  if (isSupabaseConfigured) {
+    const remote = await saveSiteSettingJson(supabaseKey, payloadToSync);
+    if (!remote.ok) {
+      return {
+        ok: false,
+        error: remote.error || "Failed to save changes to database.",
+      };
+    }
+    return { ok: true };
+  }
+
+  if (!localSaved) {
+    return {
+      ok: false,
+      error: "Database is not configured and server filesystem is read-only.",
+    };
+  }
+
+  return { ok: true };
+}
+
 // 1. NAVBAR
 export async function getNavbarCMS() {
+  const remote = await getSiteSettingJson<{ items?: any[]; cta?: any }>("cms_navbar");
+  if (remote && Array.isArray(remote.items)) {
+    return {
+      items: remote.items,
+      cta: remote.cta || { text: "Enquiry Now", href: "/enquiry", is_active: true },
+    };
+  }
+
   const data = getCmsData();
   return {
     items: data?.navbar || [],
@@ -34,113 +127,102 @@ export async function getNavbarCMS() {
 }
 
 export async function updateNavbarCMS(items: any[], cta?: any) {
-  const data = getCmsData() || {};
-  data.navbar = items;
-  if (cta) data.navbar_cta = cta;
-  saveCmsData(data);
+  const current = await getNavbarCMS();
+  const nextCta = cta ?? current.cta;
 
-  // Sync to Supabase if configured
-  if (isSupabaseConfigured) {
-    try {
-      const supabase = getAdminSupabase();
-      if (supabase) {
-        await supabase.from("site_settings").upsert({
-          key: "cms_navbar",
-          value: JSON.stringify({ items, cta }),
-          updated_at: new Date().toISOString(),
-        });
-      }
-    } catch (e) {
-      console.warn("Supabase sync skipped:", e);
-    }
+  const saved = await persistCmsSection(
+    "cms_navbar",
+    (data) => {
+      data.navbar = items;
+      if (nextCta) data.navbar_cta = nextCta;
+    },
+    { items, cta: nextCta }
+  );
+
+  if (!saved.ok) {
+    return { success: false, message: saved.error };
   }
 
-  return { success: true, items: data.navbar, cta: data.navbar_cta };
+  return { success: true, items, cta: nextCta };
 }
 
 // 2. HOMEPAGE SECTIONS
 export async function getHomepageSectionsCMS() {
+  const remote = await getSiteSettingJson<any[]>("cms_homepage_sections");
+  if (Array.isArray(remote)) {
+    return remote;
+  }
+
   const data = getCmsData();
   return data?.homepage_sections || [];
 }
 
 export async function updateHomepageSectionsCMS(sections: any[]) {
-  const data = getCmsData() || {};
-  data.homepage_sections = sections;
-  saveCmsData(data);
+  const saved = await persistCmsSection(
+    "cms_homepage_sections",
+    (data) => {
+      data.homepage_sections = sections;
+    },
+    sections
+  );
 
-  if (isSupabaseConfigured) {
-    try {
-      const supabase = getAdminSupabase();
-      if (supabase) {
-        await supabase.from("site_settings").upsert({
-          key: "cms_homepage_sections",
-          value: JSON.stringify(sections),
-          updated_at: new Date().toISOString(),
-        });
-      }
-    } catch (e) {
-      console.warn("Supabase sync skipped:", e);
-    }
+  if (!saved.ok) {
+    return { success: false, message: saved.error };
   }
 
-  return { success: true, sections: data.homepage_sections };
+  return { success: true, sections };
 }
 
 // 3. PAGES
 export async function getPagesCMS() {
+  const remote = await getSiteSettingJson<any[]>("cms_pages");
+  if (Array.isArray(remote)) {
+    return remote;
+  }
+
   const data = getCmsData();
   return data?.pages || [];
 }
 
 export async function updatePagesCMS(pages: any[]) {
-  const data = getCmsData() || {};
-  data.pages = pages;
-  saveCmsData(data);
+  const saved = await persistCmsSection(
+    "cms_pages",
+    (data) => {
+      data.pages = pages;
+    },
+    pages
+  );
 
-  if (isSupabaseConfigured) {
-    try {
-      const supabase = getAdminSupabase();
-      if (supabase) {
-        await supabase.from("site_settings").upsert({
-          key: "cms_pages",
-          value: JSON.stringify(pages),
-          updated_at: new Date().toISOString(),
-        });
-      }
-    } catch (e) {
-      console.warn("Supabase sync skipped:", e);
-    }
+  if (!saved.ok) {
+    return { success: false, message: saved.error };
   }
 
-  return { success: true, pages: data.pages };
+  return { success: true, pages };
 }
 
 // 4. FOOTER
 export async function getFooterCMS() {
+  const remote = await getSiteSettingJson<Record<string, any>>("cms_footer");
+  if (remote && typeof remote === "object") {
+    return remote;
+  }
+
   const data = getCmsData();
   return data?.footer || {};
 }
 
 export async function updateFooterCMS(footerData: any) {
-  const data = getCmsData() || {};
-  data.footer = footerData;
-  saveCmsData(data);
+  const saved = await persistCmsSection(
+    "cms_footer",
+    (data) => {
+      data.footer = footerData;
+    },
+    footerData
+  );
 
-  if (isSupabaseConfigured) {
-    try {
-      const supabase = getAdminSupabase();
-      if (supabase) {
-        await supabase.from("site_settings").upsert({
-          key: "cms_footer",
-          value: JSON.stringify(footerData),
-          updated_at: new Date().toISOString(),
-        });
-      }
-    } catch (e) {
-      console.warn("Supabase sync skipped:", e);
-    }
+  if (!saved.ok) {
+    return { success: false, message: saved.error };
   }
 
-  return { success: true, footer: data.footer };
+  return { success: true, footer: footerData };
 }

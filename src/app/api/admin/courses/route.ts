@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse, connection } from "next/server";
 import { getAdminSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import { verifyAdminSession } from "@/lib/adminAuth";
+import { getSiteSettingJson, saveSiteSettingJson } from "@/lib/cmsService";
 
 export interface LanguageCard {
   id: string;
@@ -10,6 +11,8 @@ export interface LanguageCard {
   is_active: boolean;
   order_index?: number;
 }
+
+const SETTINGS_KEY = "cms_languages";
 
 const defaultLanguages: LanguageCard[] = [
   {
@@ -48,7 +51,7 @@ const defaultLanguages: LanguageCard[] = [
 
 let memoryLanguages: LanguageCard[] = [...defaultLanguages];
 
-export async function GET() {
+async function loadLanguages(): Promise<{ items: LanguageCard[]; source: string }> {
   if (isSupabaseConfigured) {
     const supabase = getAdminSupabase();
     if (supabase) {
@@ -57,16 +60,24 @@ export async function GET() {
         .select("*")
         .order("order_index", { ascending: true });
       if (!error && data && data.length > 0) {
-        return NextResponse.json({ success: true, data, source: "supabase" });
+        return { items: data, source: "supabase" };
       }
     }
+    const stored = await getSiteSettingJson<LanguageCard[]>(SETTINGS_KEY);
+    if (Array.isArray(stored) && stored.length > 0) {
+      return { items: stored, source: "supabase" };
+    }
   }
+  return { items: memoryLanguages, source: "local_database" };
+}
 
-  return NextResponse.json({
-    success: true,
-    data: memoryLanguages,
-    source: "local_database",
-  });
+export async function GET() {
+  await connection();
+  const { items, source } = await loadLanguages();
+  return NextResponse.json(
+    { success: true, data: items, source },
+    { headers: { "Cache-Control": "no-store, max-age=0" } }
+  );
 }
 
 export async function POST(request: Request) {
@@ -83,13 +94,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Name, image and href are required" }, { status: 400 });
     }
 
+    const { items } = await loadLanguages();
     const newLang: LanguageCard = {
       id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       name,
       image,
       href,
       is_active: is_active !== false,
-      order_index: memoryLanguages.length + 1,
+      order_index: items.length + 1,
     };
 
     if (isSupabaseConfigured) {
@@ -100,6 +112,13 @@ export async function POST(request: Request) {
           return NextResponse.json({ success: true, data, source: "supabase" });
         }
       }
+      const next = [...items, newLang];
+      const saved = await saveSiteSettingJson(SETTINGS_KEY, next);
+      if (!saved.ok) {
+        return NextResponse.json({ success: false, message: saved.error || "Failed to save language" }, { status: 500 });
+      }
+      memoryLanguages = next;
+      return NextResponse.json({ success: true, data: newLang, source: "supabase" });
     }
 
     memoryLanguages.push(newLang);
@@ -146,6 +165,26 @@ export async function PUT(request: Request) {
           return NextResponse.json({ success: true, data, source: "supabase" });
         }
       }
+
+      const { items } = await loadLanguages();
+      const index = items.findIndex((l) => l.id === id);
+      if (index === -1) {
+        return NextResponse.json({ success: false, message: "Language not found" }, { status: 404 });
+      }
+      const next = [...items];
+      next[index] = {
+        ...next[index],
+        ...(name !== undefined && { name }),
+        ...(image !== undefined && { image }),
+        ...(href !== undefined && { href }),
+        ...(is_active !== undefined && { is_active }),
+      };
+      const saved = await saveSiteSettingJson(SETTINGS_KEY, next);
+      if (!saved.ok) {
+        return NextResponse.json({ success: false, message: saved.error || "Failed to update language" }, { status: 500 });
+      }
+      memoryLanguages = next;
+      return NextResponse.json({ success: true, data: next[index], source: "supabase" });
     }
 
     const index = memoryLanguages.findIndex((l) => l.id === id);
@@ -187,6 +226,11 @@ export async function DELETE(request: Request) {
     if (supabase) {
       await supabase.from("languages").delete().eq("id", id);
     }
+    const { items } = await loadLanguages();
+    const next = items.filter((l) => l.id !== id);
+    await saveSiteSettingJson(SETTINGS_KEY, next);
+    memoryLanguages = next;
+    return NextResponse.json({ success: true, message: "Language deleted" });
   }
 
   memoryLanguages = memoryLanguages.filter((l) => l.id !== id);

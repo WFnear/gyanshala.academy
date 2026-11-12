@@ -24,11 +24,12 @@ export default function AdminSettingsPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadSettings() {
       try {
-        const res = await fetch("/api/admin/settings");
+        const res = await fetch("/api/admin/settings", { cache: "no-store" });
         const data = await res.json();
         if (data.success && data.data) {
           setSettings((prev) => ({ ...prev, ...data.data }));
@@ -47,6 +48,7 @@ export default function AdminSettingsPage() {
     e.preventDefault();
     setSaving(true);
     setSaveSuccess(false);
+    setError(null);
 
     try {
       const res = await fetch("/api/admin/settings", {
@@ -55,12 +57,15 @@ export default function AdminSettingsPage() {
         body: JSON.stringify({ settings }),
       });
       const data = await res.json();
-      if (data.success) {
+      if (res.ok && data.success) {
         setSaveSuccess(true);
         setTimeout(() => setSaveSuccess(false), 3000);
+      } else {
+        setError(data.message || "Failed to save settings.");
       }
     } catch (err) {
       console.error("Failed to save settings:", err);
+      setError("Failed to save settings. Please try again.");
     } finally {
       setSaving(false);
     }
@@ -163,7 +168,9 @@ export default function AdminSettingsPage() {
           </div>
 
           <div className="flex items-center justify-between pt-3">
-            {saveSuccess ? (
+            {error ? (
+              <span className="text-xs font-bold text-red-600">{error}</span>
+            ) : saveSuccess ? (
               <span className="text-xs font-bold text-emerald-700 flex items-center gap-1.5">
                 <Check size={15} /> Settings saved successfully!
               </span>

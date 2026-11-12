@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse, connection } from "next/server";
 import { getAdminSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import { verifyAdminSession } from "@/lib/adminAuth";
+import { getSiteSettingJson, saveSiteSettingJson } from "@/lib/cmsService";
 
 export interface Pathway {
   id: string;
@@ -13,6 +14,8 @@ export interface Pathway {
   is_active: boolean;
   order_index?: number;
 }
+
+const SETTINGS_KEY = "cms_germany_pathways";
 
 const defaultPathways: Pathway[] = [
   {
@@ -55,7 +58,7 @@ const defaultPathways: Pathway[] = [
 
 let memoryPathways: Pathway[] = [...defaultPathways];
 
-export async function GET() {
+async function loadPathways(): Promise<{ items: Pathway[]; source: string }> {
   if (isSupabaseConfigured) {
     const supabase = getAdminSupabase();
     if (supabase) {
@@ -64,16 +67,24 @@ export async function GET() {
         .select("*")
         .order("order_index", { ascending: true });
       if (!error && data && data.length > 0) {
-        return NextResponse.json({ success: true, data, source: "supabase" });
+        return { items: data, source: "supabase" };
       }
     }
+    const stored = await getSiteSettingJson<Pathway[]>(SETTINGS_KEY);
+    if (Array.isArray(stored) && stored.length > 0) {
+      return { items: stored, source: "supabase" };
+    }
   }
+  return { items: memoryPathways, source: "local_database" };
+}
 
-  return NextResponse.json({
-    success: true,
-    data: memoryPathways,
-    source: "local_database",
-  });
+export async function GET() {
+  await connection();
+  const { items, source } = await loadPathways();
+  return NextResponse.json(
+    { success: true, data: items, source },
+    { headers: { "Cache-Control": "no-store, max-age=0" } }
+  );
 }
 
 export async function POST(request: Request) {
@@ -90,6 +101,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Title, description and link are required" }, { status: 400 });
     }
 
+    const { items } = await loadPathways();
     const newPathway: Pathway = {
       id: title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       title,
@@ -99,7 +111,7 @@ export async function POST(request: Request) {
       href,
       image: image || "/Pathways/students in germany .png",
       is_active: is_active !== false,
-      order_index: memoryPathways.length + 1,
+      order_index: items.length + 1,
     };
 
     if (isSupabaseConfigured) {
@@ -110,6 +122,13 @@ export async function POST(request: Request) {
           return NextResponse.json({ success: true, data, source: "supabase" });
         }
       }
+      const next = [...items, newPathway];
+      const saved = await saveSiteSettingJson(SETTINGS_KEY, next);
+      if (!saved.ok) {
+        return NextResponse.json({ success: false, message: saved.error || "Failed to save pathway" }, { status: 500 });
+      }
+      memoryPathways = next;
+      return NextResponse.json({ success: true, data: newPathway, source: "supabase" });
     }
 
     memoryPathways.push(newPathway);
@@ -159,6 +178,29 @@ export async function PUT(request: Request) {
           return NextResponse.json({ success: true, data, source: "supabase" });
         }
       }
+
+      const { items } = await loadPathways();
+      const index = items.findIndex((p) => p.id === id);
+      if (index === -1) {
+        return NextResponse.json({ success: false, message: "Pathway not found" }, { status: 404 });
+      }
+      const next = [...items];
+      next[index] = {
+        ...next[index],
+        ...(title !== undefined && { title }),
+        ...(description !== undefined && { description }),
+        ...(target !== undefined && { target }),
+        ...(cta !== undefined && { cta }),
+        ...(href !== undefined && { href }),
+        ...(image !== undefined && { image }),
+        ...(is_active !== undefined && { is_active }),
+      };
+      const saved = await saveSiteSettingJson(SETTINGS_KEY, next);
+      if (!saved.ok) {
+        return NextResponse.json({ success: false, message: saved.error || "Failed to update pathway" }, { status: 500 });
+      }
+      memoryPathways = next;
+      return NextResponse.json({ success: true, data: next[index], source: "supabase" });
     }
 
     const index = memoryPathways.findIndex((p) => p.id === id);
@@ -203,6 +245,11 @@ export async function DELETE(request: Request) {
     if (supabase) {
       await supabase.from("germany_pathways").delete().eq("id", id);
     }
+    const { items } = await loadPathways();
+    const next = items.filter((p) => p.id !== id);
+    await saveSiteSettingJson(SETTINGS_KEY, next);
+    memoryPathways = next;
+    return NextResponse.json({ success: true, message: "Pathway deleted" });
   }
 
   memoryPathways = memoryPathways.filter((p) => p.id !== id);

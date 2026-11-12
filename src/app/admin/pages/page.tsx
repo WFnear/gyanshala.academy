@@ -74,9 +74,11 @@ export default function PagesAdminPage() {
         body: JSON.stringify({ pages: updated }),
       });
       const data = await res.json();
-      if (data.success) {
-        setPages(data.pages);
+      if (res.ok && data.success) {
+        if (data.pages) setPages(data.pages);
         showToast("Pages updated successfully!");
+      } else {
+        alert(data.message || "Error saving pages");
       }
     } catch (e) {
       alert("Error saving pages");

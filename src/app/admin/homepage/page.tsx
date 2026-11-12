@@ -79,9 +79,11 @@ export default function HomepageAdminPage() {
         body: JSON.stringify({ sections: updatedSections }),
       });
       const data = await res.json();
-      if (data.success) {
-        setSections(data.sections);
+      if (res.ok && data.success) {
+        if (data.sections) setSections(data.sections);
         showToast("Homepage updated successfully!");
+      } else {
+        alert(data.message || "Error saving homepage sections");
       }
     } catch (e) {
       alert("Error saving homepage sections");

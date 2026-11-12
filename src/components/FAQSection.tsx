@@ -365,7 +365,7 @@ export default function FAQSection({
     let isMounted = true;
     async function loadFaqs() {
       try {
-        const res = await fetch("/api/admin/faqs");
+        const res = await fetch("/api/admin/faqs", { cache: "no-store" });
         if (!res.ok) return;
         const json = await res.json();
         if (json.data && Array.isArray(json.data) && json.data.length > 0 && isMounted) {

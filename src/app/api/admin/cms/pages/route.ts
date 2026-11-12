@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
+import { connection } from "next/server";
 import { verifyAdminSession } from "@/lib/adminAuth";
 import { getPagesCMS, updatePagesCMS } from "@/lib/cmsService";
 
 export async function GET() {
+  await connection();
   const pages = await getPagesCMS();
-  return NextResponse.json({ success: true, data: pages });
+  return NextResponse.json(
+    { success: true, data: pages },
+    { headers: { "Cache-Control": "no-store, max-age=0" } }
+  );
 }
 
 export async function PUT(request: Request) {
@@ -20,7 +25,7 @@ export async function PUT(request: Request) {
     }
 
     const result = await updatePagesCMS(pages);
-    return NextResponse.json(result);
+    return NextResponse.json(result, { status: result.success ? 200 : 500 });
   } catch (err: unknown) {
     return NextResponse.json(
       { success: false, message: err instanceof Error ? err.message : "Error updating pages" },
@@ -53,7 +58,10 @@ export async function POST(request: Request) {
     };
 
     pages.push(newPage);
-    await updatePagesCMS(pages);
+    const result = await updatePagesCMS(pages);
+    if (!result.success) {
+      return NextResponse.json(result, { status: 500 });
+    }
     return NextResponse.json({ success: true, data: newPage });
   } catch (err: unknown) {
     return NextResponse.json(

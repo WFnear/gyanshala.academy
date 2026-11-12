@@ -52,9 +52,11 @@ export default function FooterAdminPage() {
         body: JSON.stringify(footer),
       });
       const data = await res.json();
-      if (data.success) {
-        setFooter(data.footer);
+      if (res.ok && data.success) {
+        if (data.footer) setFooter(data.footer);
         showToast("Footer updated successfully!");
+      } else {
+        alert(data.message || "Error saving footer data");
       }
     } catch (e) {
       alert("Error saving footer data");

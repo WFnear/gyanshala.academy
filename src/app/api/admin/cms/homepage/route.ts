@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
+import { connection } from "next/server";
 import { verifyAdminSession } from "@/lib/adminAuth";
 import { getHomepageSectionsCMS, updateHomepageSectionsCMS } from "@/lib/cmsService";
 
 export async function GET() {
+  await connection();
   const sections = await getHomepageSectionsCMS();
-  return NextResponse.json({ success: true, data: sections });
+  return NextResponse.json(
+    { success: true, data: sections },
+    { headers: { "Cache-Control": "no-store, max-age=0" } }
+  );
 }
 
 export async function PUT(request: Request) {
@@ -20,7 +25,7 @@ export async function PUT(request: Request) {
     }
 
     const result = await updateHomepageSectionsCMS(sections);
-    return NextResponse.json(result);
+    return NextResponse.json(result, { status: result.success ? 200 : 500 });
   } catch (err: unknown) {
     return NextResponse.json(
       { success: false, message: err instanceof Error ? err.message : "Error updating homepage" },

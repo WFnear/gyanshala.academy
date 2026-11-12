@@ -8,10 +8,17 @@
       "is_active": true
     },
     {
+      "id": "nav-5",
+      "label": "About Us",
+      "href": "/about-us",
+      "order_index": 2,
+      "is_active": true
+    },
+    {
       "id": "nav-2",
       "label": "German Courses",
       "href": "/german",
-      "order_index": 2,
+      "order_index": 3,
       "is_active": true,
       "children": [
         {
@@ -62,7 +69,7 @@
       "id": "nav-3",
       "label": "Germany Pathways",
       "href": "/pathways",
-      "order_index": 3,
+      "order_index": 4,
       "is_active": true,
       "children": [
         {
@@ -99,7 +106,7 @@
       "id": "nav-4",
       "label": "All Languages",
       "href": "/languages",
-      "order_index": 4,
+      "order_index": 5,
       "is_active": true,
       "children": [
         {
@@ -131,13 +138,6 @@
           "is_active": true
         }
       ]
-    },
-    {
-      "id": "nav-5",
-      "label": "About Us",
-      "href": "/about-us",
-      "order_index": 5,
-      "is_active": true
     },
     {
       "id": "nav-6",
@@ -880,10 +880,10 @@
     }
   ],
   "footer": {
-    "about_text": "Gyanshala – Foreign Language Academy was established in 2018 in Jaipur to support students in their learning journey and connect them with international education, Ausbildung, and professional opportunities in Germany and Europe.",
+    "about_text": "Gyanshala – Foreign Language Academy was established in 2019 in Jaipur to support students in their learning journey and connect them with international education, Ausbildung, and professional opportunities in Germany and Europe.",
     "contact": {
       "address_title": "Gyanshala Foreign Language Academy",
-      "address_subtitle": "Jaipur, Rajasthan, India",
+      "address_subtitle": "Jaipur, Rajasthan, INDIA",
       "google_maps_url": "https://maps.google.com/?cid=14451730170732164818",
       "working_mode": "Offline Classroom Batches & Live Interactive Online Classes",
       "working_hours": "Monday – Saturday: 9:00 AM – 7:00 PM (Sunday Closed)",

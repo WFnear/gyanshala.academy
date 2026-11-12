@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
+import { connection } from "next/server";
 import { verifyAdminSession } from "@/lib/adminAuth";
 import { getFooterCMS, updateFooterCMS } from "@/lib/cmsService";
 
 export async function GET() {
+  await connection();
   const footer = await getFooterCMS();
-  return NextResponse.json({ success: true, data: footer });
+  return NextResponse.json(
+    { success: true, data: footer },
+    { headers: { "Cache-Control": "no-store, max-age=0" } }
+  );
 }
 
 export async function PUT(request: Request) {
@@ -16,7 +21,7 @@ export async function PUT(request: Request) {
   try {
     const body = await request.json();
     const result = await updateFooterCMS(body);
-    return NextResponse.json(result);
+    return NextResponse.json(result, { status: result.success ? 200 : 500 });
   } catch (err: unknown) {
     return NextResponse.json(
       { success: false, message: err instanceof Error ? err.message : "Error updating footer" },

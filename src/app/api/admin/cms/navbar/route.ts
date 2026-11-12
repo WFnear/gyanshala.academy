@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
+import { connection } from "next/server";
 import { verifyAdminSession } from "@/lib/adminAuth";
 import { getNavbarCMS, updateNavbarCMS } from "@/lib/cmsService";
 
 export async function GET() {
+  await connection();
   const data = await getNavbarCMS();
-  return NextResponse.json({ success: true, data });
+  return NextResponse.json(
+    { success: true, data },
+    { headers: { "Cache-Control": "no-store, max-age=0" } }
+  );
 }
 
 export async function PUT(request: Request) {
@@ -20,7 +25,7 @@ export async function PUT(request: Request) {
     }
 
     const result = await updateNavbarCMS(items, cta);
-    return NextResponse.json(result);
+    return NextResponse.json(result, { status: result.success ? 200 : 500 });
   } catch (err: unknown) {
     return NextResponse.json(
       { success: false, message: err instanceof Error ? err.message : "Error updating navbar" },

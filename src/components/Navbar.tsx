@@ -13,7 +13,7 @@ export default function Navbar() {
   const [ctaConfig, setCtaConfig] = useState({ text: "Enquiry Now", href: "/enquiry", is_active: true });
 
   useEffect(() => {
-    fetch("/api/admin/cms/navbar")
+    fetch("/api/admin/cms/navbar", { cache: "no-store" })
       .then((r) => r.json())
       .then((res) => {
         if (res.success && res.data?.items) {
