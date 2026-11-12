@@ -110,27 +110,41 @@ async function persistCmsSection(
 }
 
 // 1. NAVBAR
+function isLegacyFaqNavItem(item: any): boolean {
+  const href = String(item?.href || "").trim().toLowerCase();
+  const label = String(item?.label || "").trim().toLowerCase();
+  return (
+    href === "/faqs" ||
+    href === "/faq" ||
+    href === "/#faqs" ||
+    label === "faqs" ||
+    label === "faq"
+  );
+}
+
 export async function getNavbarCMS() {
   const remote = await getSiteSettingJson<{
     items?: any[];
     cta?: any;
-    migrated_contact_us?: boolean;
+    migrated_contact_us_v2?: boolean;
   }>("cms_navbar");
 
   if (remote && Array.isArray(remote.items)) {
     const cta = remote.cta || { text: "Enquiry Now", href: "/enquiry", is_active: true };
 
-    if (!remote.migrated_contact_us) {
-      const hasContact = remote.items.some((i) => i?.href === "/contact-us" || i?.href === "/contact");
-      const hasLegacyFaq = remote.items.some((i) => i?.href === "/faqs");
+    if (!remote.migrated_contact_us_v2) {
+      const hasContact = remote.items.some(
+        (i) => i?.href === "/contact-us" || i?.href === "/contact"
+      );
+      const hasLegacyFaq = remote.items.some(isLegacyFaqNavItem);
       if (!hasContact && hasLegacyFaq) {
         const migratedItems = remote.items.map((i) =>
-          i?.href === "/faqs" ? { ...i, label: "Contact Us", href: "/contact-us" } : i
+          isLegacyFaqNavItem(i) ? { ...i, label: "Contact Us", href: "/contact-us" } : i
         );
         await saveSiteSettingJson("cms_navbar", {
           items: migratedItems,
           cta,
-          migrated_contact_us: true,
+          migrated_contact_us_v2: true,
         });
         return { items: migratedItems, cta };
       }
@@ -159,7 +173,7 @@ export async function updateNavbarCMS(items: any[], cta?: any) {
       data.navbar = items;
       if (nextCta) data.navbar_cta = nextCta;
     },
-    { items, cta: nextCta, migrated_contact_us: true }
+    { items, cta: nextCta, migrated_contact_us_v2: true }
   );
 
   if (!saved.ok) {
