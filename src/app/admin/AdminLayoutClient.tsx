@@ -26,6 +26,7 @@ import {
   Sliders,
   Sparkles,
   ExternalLink,
+  Camera,
 } from "lucide-react";
 
 interface AdminLayoutProps {
@@ -45,18 +46,21 @@ const homepageSections = [
   { name: "Highlights of Gyanshala", href: "/admin/homepage?tab=highlights", icon: Sparkles },
   { name: "Free Video Lessons (YouTube)", href: "/admin/videos", icon: Video },
   { name: "Student Reviews & Testimonials", href: "/admin/testimonials", icon: MessageSquareQuote },
+  { name: "Photo Gallery (Campus & Moments)", href: "/admin/gallery", icon: Camera },
   { name: "Frequently Asked Questions (FAQ)", href: "/admin/faqs", icon: HelpCircle },
   { name: "Useful German Learning Resources", href: "/admin/homepage?tab=partners", icon: Globe },
   { name: "Footer", href: "/admin/footer", icon: PanelBottom },
 ];
 
-// 2. All 21 Website Pages grouped by Category
+// 2. All Website Pages grouped by Category
 const websitePages = [
   {
     category: "Main & Core Pages",
     items: [
       { name: "Home", slug: "/" },
       { name: "About Us", slug: "/about-us" },
+      { name: "Contact Us", slug: "/contact-us" },
+      { name: "Photo Gallery", slug: "/gallery" },
       { name: "Course Enquiry & Free Demo", slug: "/enquiry" },
       { name: "Frequently Asked Questions (FAQ)", slug: "/faqs" },
     ],
@@ -211,7 +215,7 @@ export default function AdminLayoutClient({ children }: AdminLayoutProps) {
           <div className="pt-2 border-t border-white/10">
             <div className="px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-white/50 flex items-center justify-between">
               <span>HOMEPAGE SECTIONS</span>
-              <span className="text-[10px] bg-white/15 px-1.5 py-0.5 rounded-full text-white font-mono">14</span>
+              <span className="text-[10px] bg-white/15 px-1.5 py-0.5 rounded-full text-white font-mono">15</span>
             </div>
             <div className="space-y-0.5">
               {homepageSections.map((sec) => {
@@ -256,7 +260,7 @@ export default function AdminLayoutClient({ children }: AdminLayoutProps) {
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="px-2 py-0.5 text-[10px] font-bold bg-white/20 rounded-full text-white">
-                  21 Pages
+                  23 Pages
                 </span>
                 {pagesMenuOpen ? <ChevronDown size={15} /> : <ChevronRight size={15} />}
               </div>
