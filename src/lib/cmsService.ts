@@ -111,11 +111,34 @@ async function persistCmsSection(
 
 // 1. NAVBAR
 export async function getNavbarCMS() {
-  const remote = await getSiteSettingJson<{ items?: any[]; cta?: any }>("cms_navbar");
+  const remote = await getSiteSettingJson<{
+    items?: any[];
+    cta?: any;
+    migrated_contact_us?: boolean;
+  }>("cms_navbar");
+
   if (remote && Array.isArray(remote.items)) {
+    const cta = remote.cta || { text: "Enquiry Now", href: "/enquiry", is_active: true };
+
+    if (!remote.migrated_contact_us) {
+      const hasContact = remote.items.some((i) => i?.href === "/contact-us" || i?.href === "/contact");
+      const hasLegacyFaq = remote.items.some((i) => i?.href === "/faqs");
+      if (!hasContact && hasLegacyFaq) {
+        const migratedItems = remote.items.map((i) =>
+          i?.href === "/faqs" ? { ...i, label: "Contact Us", href: "/contact-us" } : i
+        );
+        await saveSiteSettingJson("cms_navbar", {
+          items: migratedItems,
+          cta,
+          migrated_contact_us: true,
+        });
+        return { items: migratedItems, cta };
+      }
+    }
+
     return {
       items: remote.items,
-      cta: remote.cta || { text: "Enquiry Now", href: "/enquiry", is_active: true },
+      cta,
     };
   }
 
@@ -136,7 +159,7 @@ export async function updateNavbarCMS(items: any[], cta?: any) {
       data.navbar = items;
       if (nextCta) data.navbar_cta = nextCta;
     },
-    { items, cta: nextCta }
+    { items, cta: nextCta, migrated_contact_us: true }
   );
 
   if (!saved.ok) {

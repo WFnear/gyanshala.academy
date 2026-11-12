@@ -541,6 +541,26 @@ export default function HomeClient() {
     },
   ]);
   const [sectionsConfig, setSectionsConfig] = useState<any[] | null>(null);
+  const [activeGallery, setActiveGallery] = useState<any[]>([
+    {
+      id: 1,
+      title: "Jaipur Campus Reception & Main Hall",
+      category: "Campus",
+      image_url: "/Hero/IMG_20250806_170204918_HDR.jpg",
+    },
+    {
+      id: 2,
+      title: "Interactive German Batch in Session",
+      category: "Classroom",
+      image_url: "/Hero/IMG_20250806_121152807_HDR.jpg",
+    },
+    {
+      id: 3,
+      title: "Goethe Exam Preparation Workshop",
+      category: "Events",
+      image_url: "/Hero/hero3x.jpg",
+    },
+  ]);
 
   useEffect(() => {
     fetch("/api/admin/cms/homepage", { cache: "no-store" })
@@ -585,6 +605,16 @@ export default function HomeClient() {
         if (res.success && Array.isArray(res.data) && res.data.length > 0) {
           const filtered = res.data.filter((p: any) => p.is_active !== false);
           if (filtered.length > 0) setActivePathways(filtered);
+        }
+      })
+      .catch(() => {});
+
+    fetch("/api/admin/gallery", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          const filtered = res.data.filter((g: any) => g.is_active !== false);
+          if (filtered.length > 0) setActiveGallery(filtered);
         }
       })
       .catch(() => {});
@@ -1705,6 +1735,56 @@ export default function HomeClient() {
 
           </div>
 
+        </div>
+      </section>
+
+      {/* Campus & Events Gallery Section */}
+      <section id="gallery" className="py-14 sm:py-20 bg-white dark:bg-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeInUp className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
+            <div>
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#A61911] leading-none mb-3">
+                PHOTO GALLERY
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-zinc-900 dark:text-zinc-100 tracking-normal leading-tight">
+                Campus &amp; Student Moments
+              </h2>
+            </div>
+
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#BC0202] hover:bg-[#990202] text-white text-xs sm:text-sm font-bold shadow-sm transition self-start sm:self-auto"
+            >
+              <span>View All Photos →</span>
+            </Link>
+          </FadeInUp>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {activeGallery.slice(0, 6).map((item) => (
+              <Link
+                key={item.id}
+                href="/gallery"
+                className="group bg-[#FCF9EA] dark:bg-zinc-900 rounded-2xl border border-zinc-200/90 dark:border-zinc-800 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="relative aspect-[4/3] bg-zinc-900 overflow-hidden">
+                  <img
+                    src={item.image_url}
+                    alt={item.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider">
+                    {item.category}
+                  </span>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-sm sm:text-base text-zinc-900 dark:text-white group-hover:text-[#BC0202] transition-colors line-clamp-1">
+                    {item.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
