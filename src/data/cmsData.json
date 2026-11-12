@@ -141,8 +141,8 @@
     },
     {
       "id": "nav-6",
-      "label": "FAQs",
-      "href": "/faqs",
+      "label": "Contact Us",
+      "href": "/contact-us",
       "order_index": 6,
       "is_active": true
     }
@@ -876,6 +876,22 @@
       "title": "Terms & Conditions",
       "meta_title": "Terms & Conditions | Gyanshala Foreign Language Academy",
       "meta_description": "Terms of service, admission guidelines, course enrollment terms and fee policies at Gyanshala.",
+      "is_published": true
+    },
+    {
+      "id": "page-22",
+      "slug": "/contact-us",
+      "title": "Contact Us",
+      "meta_title": "Contact Us | Gyanshala Foreign Language Academy Jaipur",
+      "meta_description": "Contact Gyanshala Foreign Language Academy in Jaipur. Campus address, phone numbers, email, Google Map, and enquiry form.",
+      "is_published": true
+    },
+    {
+      "id": "page-23",
+      "slug": "/gallery",
+      "title": "Photo Gallery",
+      "meta_title": "Photo Gallery | Gyanshala Foreign Language Academy Jaipur",
+      "meta_description": "Campus life, classrooms, events and student moments at Gyanshala Foreign Language Academy.",
       "is_published": true
     }
   ],

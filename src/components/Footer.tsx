@@ -46,8 +46,10 @@ export default function Footer() {
 
   const quickLinks = [
     { label: "About Gyanshala", href: "/about-us" },
-    { label: "Experienced Faculty", href: "/#team" },
+    { label: "Photo Gallery", href: "/gallery" },
     { label: "Frequently Asked Questions", href: "/faqs" },
+    { label: "Contact Us", href: "/contact-us" },
+    { label: "Experienced Faculty", href: "/#team" },
     { label: "Course Enquiry & Demo", href: "/enquiry" },
     { label: "Find Us on Google Maps", href: "https://maps.google.com/?cid=14451730170732164818" },
     { label: "Terms & Conditions", href: "/terms-and-conditions" },

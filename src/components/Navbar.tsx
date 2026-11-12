@@ -231,12 +231,12 @@ export default function Navbar() {
                   About Us
                 </Link>
 
-                {/* FAQs */}
+                {/* Contact Us */}
                 <Link
-                  href="/faqs"
+                  href="/contact-us"
                   className="px-2.5 py-2 text-sm font-semibold text-white hover:text-white/80 rounded-md transition-colors"
                 >
-                  FAQs
+                  Contact Us
                 </Link>
               </>
             )}
@@ -490,13 +490,13 @@ export default function Navbar() {
                 About Us
               </Link>
 
-              {/* FAQs */}
+              {/* Contact Us */}
               <Link
-                href="/faqs"
+                href="/contact-us"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-white/10 transition-colors"
               >
-                FAQs
+                Contact Us
               </Link>
             </>
           )}
