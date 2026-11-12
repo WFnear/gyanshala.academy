@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import EnquiryFormSection from "@/components/EnquiryFormSection";
 import {
   FadeInUp,
   FadeInLeft,
@@ -690,6 +691,11 @@ export default function AboutUsPage() {
           </FadeInUp>
         </div>
       </section>
+
+      {/* =========================================================================
+          SECTION 10 · ENQUIRY FORM (SAME AS ENQUIRY PAGE)
+          ========================================================================= */}
+      <EnquiryFormSection />
 
     </main>
   );
